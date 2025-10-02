@@ -50,7 +50,7 @@ gdzie $\uu{f_i}^\Mm$ oznacza interpretację symbolu $\uu{f_1}^\Mm$ w kontekście
 Mając dany język $L$ mówimy/piszemy w nim przy pomocy
 \begin{itemize}
   \item symbolów języka,
-  \item symboli logicznych $\land$, $\lor$, $\neg$, $\to$, $\lr$, $\forall$, $\exists$, $=$,
+  \item symboli logicznych $\land$, $\lor$, $\neg$, $\to$, $\lr$ (!!! $\implies$ oraz $\iff$ będą dla nas elementami metajęzyka !!!), $\forall$, $\exists$, $=$,
   \item zmiennych, np. $x_i$ dla $i\in \N$, $y$, $z$,
   \item oraz symboli pomocniczych takich jak nawiasy, przecinki etc.
 \end{itemize}
@@ -76,8 +76,48 @@ Mając dany język $L$ mówimy/piszemy w nim przy pomocy
     \end{itemize}
 \end{enumerate}
 
-\subsection{Atomizm logiczny}
+\subsection{Zdania w języku}
 
+Niech $\phi\in \mathcal{F}_L$ będzie formułą w której występuje, co najmniej raz, zmienna $v$. Jeśli pewne wystąpienie $v$ w $\phi$ jest w zasięgu pewnego kwantyfikatora $Q_v\in\{\forall,\;\exists\}$, to spośród wszystkich wystąpień $Q_v$ w $\phi$ w których zasięgu jest $v$ wybieramy to najbardziej na prawo i mówimy, że to \buff{$Q_v$ wiąże dane wystąpienie $v$} w $\phi$. Na przykład
+\begin{center}
+  \begin{tikzpicture}
+    \node at (0,0) {$\forall\;x\;\exists\;y\;(x\in y\;\land\;\forall\;x\;(x\in y \to x=y))$};
+    \draw[->] (-2.95, -.1) -- (-2.95, -.5) -- (2.4, -.5) -- (2.3, -.1);
+    \draw[->, green] (.2, -.1) -- (.2, -.7) -- node[midway, below] {wiąże} (2.1, -.7) -- (2.2, -.1);
+  \end{tikzpicture}
+\end{center}
+Jeśli nie ma kwantyfikatora $Q_v$ jak wyżej, to wystąpienie $v$ w $\phi$ jest \buff{wolne}.
+
+Zapis $\phi(v_1,...,v_n)$ oznacza, że wszystkie wolne zmienne w $\phi$ są wśród $v_1$, ..., $v_n$.
+
+\begin{definition}{zdanie}{}
+  Formalne zdanie w języku $L$ to formuła niezawierająca zmiennych wolnych.
+\end{definition}
+
+\buff{Powstaje pytanie co to znaczy, że formuła z $L$ jest prawdziwa w strukturze \Mm{} dla $L$?}
+
+Niech \Mm{} będzie modelem dla $L=\{\uu{f}_i,...,\uu{P}_j,...,\uu{c}_t,...\}$, $\{\uu{a}\;:\;a\in \Mm\}$ będzie zbiorem nowych symboli stałych. Rozważmy nowy język $L(\Mm)=L\cup \{\uu{a}\;:\;a\in \Mm\}$.
+Termy stałe $\tau$ z $L(\Mm)$ interpretujemy w \Mm{} w następujący sposób:
+\begin{itemize}
+  \item jeśli $\tau$ jest symbolem stałym w $L$, to $\tau^\Mm\in\Mm$ jest interpretacją $\uu{c}_i^\Mm$
+  \item jeśli $\tau$ {\color{red}CO TU SIE WYTENTEGOWUYJE}
+\end{itemize}
+
+\begin{definition}{}{}
+  $\Mm\models\phi$ oznacza, że $\phi$ jest prawdziwe/spełniane w \Mm.
+\end{definition}
+
+\begin{enumerate}[label=\alph*)]
+  \item zdania atomowe:
+    \begin{itemize}
+      \item $\Mm\models \tau_1=\tau_2\iff\uu{\tau}_1^\Mm=\uu{\tau}_2^\Mm$
+      \item $\Mm\models \uu{P}_j(\tau_1,..., \tau_n)\iff (\uu{\tau}_1^\Mm,...,\uu{\tau}_n^\Mm)\in\uu{P}_j^\Mm$
+    \end{itemize}
+  \item zdania złożone:
+    \begin{itemize}
+      \item $\Mm\models\phi\;\land\;\phi\iff\Mm\models\phi\text{ oraz }\Mm\models\psi$
+    \end{itemize}
+\end{enumerate}
 
 
 
