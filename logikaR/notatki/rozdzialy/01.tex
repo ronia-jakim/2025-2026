@@ -1,0 +1,66 @@
+\chapter{Formalizacja matematyki}
+
+\section{02.10.2025}{Uproszczony model rzeczywistości matematycznej: struktura I rzędu}
+
+\subsection{Model języka i język struktury modelu}
+
+\begin{definition}{model}{}
+  \buff{Model} to struktura matematyczna składająca się z
+  \begin{itemize}
+    \item niepustego zbioru będącego \acc{uniwersum} $A\neq \emptyset$,
+    \item \acc{funkcji} $f_1,..., f_k$ o arności $n_i$ (tzn. $f_i:A^{n_i}\to A$),
+    \item \acc{relacji} (predykatów) w $A$, $P_1,..., P_n$, gdzie $P_i\subseteq A^{n_i}$,
+    \item \acc{stałych} z $A$ $c_1,..., c_l\in A$.
+  \end{itemize}
+\end{definition}
+
+Zapisujemy
+$$\Mm=(A; f_1,...,f_k; P_1,...,P_n; c_1,...,c_l)$$
+gdzie $k,n,l$ to liczby kardynalne, zazwyczaj skończone (tzn. $k,n,l\in\N$).
+
+\begin{example}[m]
+\item Jeśli $n=0$, czyli nie mamy relacji, to \Mm{} jest strukturą algebraiczną. Weźmy na przykład grupę. Grupa jest zdefiniowana jako zbiór $G$ z wyróżnionym elementem neutralnym $e$, operacją mnożenia $\cdot$ oraz brania elementu odwrotnego $^{-1}$. Operacje to funkcje, a element neutralny to stała. Sam zbiór $G$ to z kolei uniwersum, czyli mamy model:
+  $$(G; \cdot, ^{-1};\;;e)$$
+\item Rodzina zbiorów $V$ z relacją należenia $\in$ jest modelem z jedną relacją, ale bez funkcji i bez stałych:
+  $$(V;\;;\in;\;)$$
+\end{example}
+
+Symbole oznaczające funkcje, relacje, stałe będziemy od ich znaczenia odróżniać przez podkreślenie:
+\begin{itemize}
+  \item $\underline{f_i}$, $\underline{P_j}$, $\underline{c_t}$ to symbole, 
+  \item natomiast $f_i$, $P_J$, $c_t$ to funkcja, relacja, stała.
+\end{itemize}
+
+\begin{definition}{język}{}
+  Język
+  $$L=\{\underline{f_1},...,\underline{f_k};\underline{P_1},..., \underline{P_n}; \underline{c_1},...,\uu{c_l}\}$$
+  składa się z symboli: funkcyjnych, relacyjnych, stałych wraz z przypisanymi tym symbolom arnościami, tzn. $f_j$ to symbol funkcjsi $n_i$-argumentowej etc.
+\end{definition}
+
+Język jak wyżej jest nazywany językiem struktury \Mm{}, typem podobieństwa \Mm{}, \buff{sygnaturą \Mm{}}. Z kolei \Mm{} jest modelem dla $L$.
+
+Szerzej będziemy dla \Mm{} - modelu dla $L$ - pisać
+$$(\Mm; \uu{f_1}^\Mm, ..., \uu{f_k}^\Mm; \uu{P_1}^\Mm,...,\uu{P_n}^\Mm; \uu{c_1}^\Mm,...,\uu{c_l}^\Mm)$$
+gdzie $\uu{f_i}^\Mm$ oznacza interpretację symbolu $\uu{f_1}^\Mm$ w kontekście modelu \Mm.
+
+\begin{remark}{}{}
+  Dla dowolnego języka $L$ istnieje wiele struktur \Mm.
+\end{remark}
+
+Mając dany język $L$ mówimy/piszemy w nim przy pomocy
+\begin{itemize}
+  \item symbolów języka,
+  \item symboli logicznych $\land$, $\lor$, $\neg$, $\to$, $\lr$, $\forall$, $\exists$, $=$,
+  \item zmiennych, np. $x_i$ dla $i\in \N$, $y$, $z$,
+  \item oraz symboli pomocniczych takich jak nawiasy, przecinki etc.
+\end{itemize}
+
+\begin{remark}{}{}
+  Spójniki można ograniczyć do $\land$, $\neg$ i kwantyfikatora $\exists$. Całą resztę spójników można zdefiniować jako macra przy pomocy tych trzech, np.
+  $$p\lor q\quad :=\quad \neg(\neg p\land \neq q)$$
+\end{remark}
+
+
+
+
+
