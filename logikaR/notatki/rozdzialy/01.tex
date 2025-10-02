@@ -60,6 +60,24 @@ Mając dany język $L$ mówimy/piszemy w nim przy pomocy
   $$p\lor q\quad :=\quad \neg(\neg p\land \neq q)$$
 \end{remark}
 
+\textbf{Wyrażenia języka $L$:}
+\begin{enumerate}[label=\alph*)]
+  \item \buff{wyrażenia nazwowe} (termy) należą do $\mathcal{T}_L$ i są definiowane rekurencyjnie:
+    \begin{itemize}
+      \item zmienna, symbol stałej należą do $\mathcal{T}_L$ i nazywają się \acc{termami atomowymi}
+      \item jeśli $\tau_1$, ..., $\tau_n\in \mathcal{T}_L$, a $\uu{f}$ jest symbolem $n$-argumentowej funkcji z $L$, to $\uu{f}(\tau_1,...,\tau_n)\in \mathcal{T}_L$ i nazywa się \acc{termem złożonym}. 
+    \end{itemize}
+  \item \buff{formuły} oznaczamy $\mathcal{F}_L$ i definiujemy rekurencyjnie w następujący sposób
+    \begin{itemize}
+      \item dla wszystkich termów $\tau_1,...,\tau_n$ zachodzi $(\tau_1=\tau_2)\in \mathcal{F}_L$ oraz dla $n$-argumentowego symbolu relacji $\uu{P}_j$: $\uu{P}_j(\tau_1,...,\tau_n)\in  \mathcal{F}_L$ - to są \acc{formuły atomowe},
+      \item $\phi,\psi\in\mathcal{F}_L\implies (\neg \phi), (\phi\land\psi)\in \mathcal{F}_L$
+
+        $\phi\in \mathcal{F}_L$ $\implies (\exists\;r\;\phi),(\forall\;r\phi)\in\mathcal{F}_L$ ($r$ występujące w wyrażeniach nazywamy zmiennymi)
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Atomizm logiczny}
+
 
 
 
