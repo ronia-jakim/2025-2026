@@ -1,0 +1,29 @@
+%! TeX program = lualatex
+\documentclass[twoside, a4paper, 12pt]{book}
+
+\title{Logika R}
+\author{\color{subtext1}Weronika Jakimowicz}
+\date{Zima 2025/26}
+
+\usepackage[dates, pl]{../../template}
+
+\usepackage{halloweenmath}
+
+\let\oldamalg\amalg
+\renewcommand{\amalg}{\widetilde{\oldamalg}}
+
+
+\begin{document}
+\frontmatter 
+\maketitle
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\tableofcontents
+\mainmatter
+
+\pagestyle{fancy}
+
+\include{rozdzialy/01}
+  
+\end{document}
