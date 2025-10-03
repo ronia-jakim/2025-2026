@@ -158,71 +158,83 @@ To daje nam, że $\Mm\models\phi$ dla każdego $\phi\in\mathcal{F}_L$.
 
 Kwantyfikatujemy po zmiennych, nie po podzbiorach uniwersum, bo to jest logika I rzędu. Zbiory tworzymy w umyśle, postrzegamy indywidua. Teorie wyższych rzędów nie są absolutne.
 
-Atomizm logiczny - każde zdanie można zredukować do zdań atomowych, których już dalej się rozbić nie da. Nie obchodzi nas tutaj nadmiernie spełnianie zdań.
+% \buff{Atomizm logiczny} - każde zdanie można zredukować do zdań atomowych, których już dalej się rozbić nie da. 
 
-\begin{konwencja}{}{}
-  $\phi$ jest fałszywe, gdy $\Mm\not\models\phi$
-\end{konwencja}
+% Można tutaj od razu udowodnić, że zachodzi prawo wyłączonego środka.
 
-Można tutaj od razu udowodnić, że zachodzi prawo wyłączonego środka.
+% Spełnianie dla formuł $\phi(v_1,...,v_n)$ języka $L$:
+% \begin{itemize} $(a_1,...,a_n)\subseteq |\Mm| $ spełnia $\phi$ jak wyżej w $\Mm$, jeśli $\Mm\models\phi(\uu{a}_1,...,\uu{a}_n)$
+%   \item uniwersalne domknięcie $\phi(v_1,...,v_n)$ to formuła
+%     $$\overline{\phi}=\forall\;v_1,...,\forall\;v_n\;\phi(v_1,...,v_n)$$
+%     z dokładnością do równoważności formuł jest jednoznacznie zdefiniowane $\Mm\models\phi\iff\Mm\models\overline\phi$
+% \end{itemize}
 
-Spełnianie dla formuł $\phi(v_1,...,v_n)$ języka $L$:
-\begin{itemize}
-  \item $(a_1,...,a_n)\subseteq |\Mm| $ spełnia $\phi$ jak wyżej w $\Mm$, jeśli $\Mm\models\phi(\uu{a}_1,...,\uu{a}_n)$
-  \item uniwersalne domknięcie $\phi(v_1,...,v_n)$ to formuła
-    $$\overline{\phi}=\forall\;v_1,...,\forall\;v_n\;\phi(v_1,...,v_n)$$
-    z dokładnością do równoważności formuł jest jednoznacznie zdefiniowane $\Mm\models\phi\iff\Mm\models\overline\phi$
-\end{itemize}
+\begin{definition}{spełnianie formuły}{}
+  Krotka $\langle a_1,...,a_n\rangle$ elementów z uniwersum $\Mm$ \buff{spełnia formułę} $\phi$ języka, gdy $\Mm\models\phi(\uu{a}_1,...,\uu{a}_n)$.
+\end{definition}
+
+\begin{definition}{uniwersalne domknięcie}{}
+  Dla formuły $\phi$ języka $L$ jej \buff{uniwersalne domknięcie} $\phi$ to formuła
+  $$\overline{\phi}:=\forall\;x_1\;\forall\;x_2\;...\forall\;x_n\;\phi$$
+\end{definition}
+W następnej części wykładu pokażemy, że 
+$$\Mm\models\phi\iff\Mm\models\overline{\phi}$$
 
 Powyższe zagadnienia mówią, że domyślny kwantyfikator to kwantyfikator $\forall$. To ma spełnienie w naturalnej matematyce, np. przemienność dodawania $(\R, +)\models\;x+y=y+x$ gdzie pomijamy $\forall\;x\;\forall\;y$.
 
 \subsection{Tautologie}
 
-\begin{definition}{tautologia}{}
-  Niech $\phi\in\mathcal{F}_L$. Wtedy $\phi$ jest \buff{tautologią} klasycznego rachunku logicznego, gdy jest zawsze prawdziwe. Zapisujemy to $\models\phi$, co oznacza $\forall\;\Mm$ modelu $L$ $\Mm\models\phi$.
+\begin{definition}{tautologia KRL}{}
+  Niech $\phi\in\mathcal{F}_L$. Wtedy $\phi$ jest \buff{tautologią} klasycznego rachunku logicznego [KRL], gdy jest zawsze prawdziwe. Zapisujemy to $\models\phi$, co oznacza $\forall\;\Mm$ modelu $L$ $\Mm\models\phi$.
 \end{definition}
 
 \buff{Jak rozpoznać, czy $\models\phi$?} Ogólnie jest to pytanie nierozstrzygalne (twierdzenie G\"odla).
 
-Niektóre tautologie łatwo rozpoznać.
+Niektóre tautologie łatwo rozpoznać, jak przykłady niżej.
 \begin{example}[m]
   \item $x=x$
   \item $=$ jest relacją równoważności
 \end{example}
 
-\begin{enumerate}[label=\alph*)]
-  \item formuły zdaniowe (schematy)
+Przygodę z tautologiami rozpoczynamy od \buff{tautologicznych formuł zdaniowych} (czyli schematów).
 
-    Niech $Z=\{p_0, p_1,...,p_n, r, q,...\}$ będzie zbiorem zmiennych zdaniowych. Zbiór formuł zdaniowych $S=S_Z$ nad $Z$ definiujemy w następujący sposób:
-    \begin{itemize}
-      \item $v\in Z\implies v\in S$
-      \item $\alpha, \beta\in S\implies \neg\alpha, \alpha\;\land\;\beta\in S$
-      \item skrótowo: $\lor, \to, \lr\in S$
-    \end{itemize}
+Niech $Z=\{p_0, p_1,...,p_n, r, q,...\}$ będzie zbiorem zmiennych zdaniowych. Zbiór formuł zdaniowych $S=S_Z$ nad $Z$ definiujemy w następujący sposób:
+\begin{itemize}
+  \item $v\in Z\implies v\in S$
+  \item $\alpha, \beta\in S\implies \neg\alpha, \alpha\;\land\;\beta\in S$
+  \item skrótowo: $\lor, \to, \lr\in S$
+\end{itemize}
 
-    Wartościowanie logiczne formuł zdaniowych to dowolna funkcja $v:S\to \{0,1\}$ taka, że dla każdych $\alpha,\beta\in S$ 
-    \begin{itemize}
-      \item $v(\neg\alpha)=1-v(\alpha)$
-      \item $v(\alpha\;\land\;\beta)=\min\{v(\alpha), v(\beta)\}$
-    \end{itemize}
-  
-    Powiemy, że $\alpha\in S$ jest \buff{tautologią} ($\models\alpha$) gdy dla każdego wartościowania $v$ zachodzi $v(\alpha)=1$.
+\begin{definition}{wartościowanie}{}
+  \buff{Wartościowanie logiczne formuł zdaniowych} to dowolna funkcja $v:S\to \{0,1\}$ taka, że dla każdych $\alpha,\beta\in S$ 
+  \begin{itemize}
+    \item $v(\neg\alpha)=1-v(\alpha)$
+    \item $v(\alpha\;\land\;\beta)=\min\{v(\alpha), v(\beta)\}$
+  \end{itemize}
+\end{definition}
 
-    Na przykład: $\models\neg(\alpha\;\land\;\neg\alpha)$ dla każdego $\alpha\in S$
+\begin{definition}{tautologia KRZ}{}
+  Powiemy, że $\alpha\in S$ jest \buff{tautologią} ($\models\alpha$) gdy dla każdego wartościowania $v$ zachodzi $v(\alpha)=1$.
+\end{definition}
 
-    Istnieje algorytm rozstrzygający, czy $\models \alpha$ dla $\alpha\in S$ (metoda 0-1): wartość $v(\alpha)$ zależy tylko od $v(x)$ dla zmiennych zdaniowych $x$ w $\alpha$.
+Na przykład: $\models\neg(\alpha\;\land\;\neg\alpha)$ dla każdego $\alpha\in S$
 
-    \begin{definition}{}{}
-      Załóżmy, że $\alpha\in S$ jest zbudowany ze zmiennych $p_1,..., p_n\in Z$ oraz $\phi_1,..., \phi_n\in\mathcal{F}_L$ i $\phi\in\mathcal{F}_L$ powstaje z $\alpha$ przez zastąpienie $p_i$ przez $\phi_i$ wszędzie w $\alpha$ (zapisujemy $\phi=\alpha(p_1/\phi_1,...,p_n/\phi_n)$. Mówimy, że $\phi$ jest \buff{jest przykładem formuły $\alpha$}. 
-    \end{definition}
+Istnieje algorytm rozstrzygający, czy $\models \alpha$ dla $\alpha\in S$ (metoda 0-1): wartość $v(\alpha)$ zależy tylko od $v(x)$ dla zmiennych zdaniowych $x$ w $\alpha$.
 
-    \begin{theorem}{}{}
-      Jeśli $\models\alpha$ i $\phi$ jest przykładem $\alpha$ to $\models\phi$.
-    \end{theorem}
-    \begin{proof}
-      Ćwiczenie
-    \end{proof}
-\end{enumerate}
+\begin{definition}{przykład formuły}{}
+  Załóżmy, że $\alpha\in S$ jest zbudowany ze zmiennych $p_1,..., p_n\in Z$ oraz $\phi_1,..., \phi_n\in\mathcal{F}_L$ i $\phi\in\mathcal{F}_L$ powstaje z $\alpha$ przez zastąpienie $p_i$ przez $\phi_i$ wszędzie w $\alpha$ (zapisujemy $\phi=\alpha(p_1/\phi_1,...,p_n/\phi_n)$. Mówimy, że $\phi$ jest \buff{jest przykładem formuły $\alpha$}. 
+\end{definition}
+
+Weźmy na przykład formułą $\alpha=p_1\;\land\;p_2$, wtedy $\phi=\phi_1\;\land\;\phi_2$ jest przykładem formuły $\alpha$.
+
+\begin{theorem}{}{}
+  Jeśli $\models\alpha$ i $\phi$ jest przykładem $\alpha$ to $\models\phi$.
+\end{theorem}
+\begin{proof}
+  Ćwiczenie
+\end{proof}
+
+{\color{red}\large TUTAJ KONCZE REVISIONS}
 
 \begin{definition}{}{}
   Reguła wnioskowania składa się z:
@@ -298,7 +310,7 @@ Aksjomaty równości ($v_i$ - wolne zmienne):
     \item $\alpha_1:\forall\;x\;\phi\to \phi(x/y)$ (A2)
     \item $\alpha_2:\forall\;x\;\neg\phi\to\neg\phi(x/y)$ (A2)
     \item $\alpha_3:\alpha_2\to (\phi(x/y)\to \neg\forall\;x\;\neg\phi)$ (A0 $(p\to\neg q)\to(q\to\neg p)$)
-    \item $\alpha_4:\phi(x/y)\to\neg\forall\;x\;\neg\phi$ ($\alpha_2,\alph_3$ oraz Modus Ponens)
+    \item $\alpha_4:\phi(x/y)\to\neg\forall\;x\;\neg\phi$ ($\alpha_2,\alpha_3$ oraz Modus Ponens)
     \item $\alpha_5:\alpha_1\to(\alpha_4\to \beta)$, gdzie $\beta=\forall\;x\;\phi\to\neg\forall\;x\;\neg\phi$ (A0, przechodność)
     \item $\alpha_6:\beta$ (Modus Ponens)
   \end{enumerate}
@@ -341,12 +353,12 @@ Aksjomaty równości ($v_i$ - wolne zmienne):
   $\phi$ oraz $\overline{\phi}$ są równoważne
 \end{fact}
 \begin{proof}
-  $\phi\vdash\overline{\phi}$ to $\forall$-reguła zastosowana tyle razy ile użyliśmy kwantyfikatorów w $\overdash{\phi}$
+  $\phi\vdash\overline{\phi}$ to $\forall$-reguła zastosowana tyle razy ile użyliśmy kwantyfikatorów w $\overline{\phi}$
 
   $\overline{\phi}\vdash\phi$ to z twierdzenia o dedukcji (zadanie) $\overline{\phi}\vdash\phi\iff\vdash\overline{\phi}\to\phi$ (drugie to wynik z A2) 
 \end{proof}
 
-\begin{conclusion}
+\begin{conclusion}{}{}
   $X\subseteq\mathcal{F}_L$
 
   $X$ oraz $\{\overline{\phi}\;:\;\phi\in X\}$ są równoważne

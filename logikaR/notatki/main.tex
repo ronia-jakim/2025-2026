@@ -14,20 +14,68 @@
 \newcommand{\Mm}{\ensuremath{\mathfrak{M}}}
 \newcommand{\lr}{\leftrightarrow}
 
-\newcommand{\Cn}{\text{Cn}}
+\DeclareMathOperator{\Cn}{Cn}
+\DeclareMathOperator{\Th}{Th}
 
-
-\newtcolorbox{konwencja}{
+\newtcolorbox{KONWENCJA}{
   title={Konwencja},
-  fonttitle=\bfseries,
-  lower separated = false,
-  colback = red!5, 
-  colframe = pink!80!red,
-  colbacktitle = violet!50!pink,
-  enhanced, 
-  attach boxed title to top left={yshift=-0.1in,xshift=0.15in},
-  boxed title style={boxrule=0pt,colframe=white,},
+  fonttitle = \bfseries,
+  coltitle = blue!40!purple!40!black,
+  description color = blue!40!purple!40!black, 
+  description font = \bfseries\large,
+  colbacktitle = white, %green!40!black!75,
+  breakable, 
+  enhanced,
+  attach boxed title to top left = {
+    xshift=0.5cm, 
+    yshift=-\tcboxedtitleheight/2
+  },
+  boxed title style = {
+    boxrule=0pt,
+    colframe=white
+  },
+  top=3mm,
+  bottom=4mm,
+  colback=white,
+  frame hidden,
+  borderline west = {1pt}{0pt}{purple!40!blue!40},
+  % borderline north = {1pt}{0pt}{purple!40!blue!40},
+  borderline south = {1pt}{0pt}{purple!40!blue!40},
+  overlay={%
+    % Draw a 50% wide line at the top
+    \draw[line width=1pt, purple!40!blue!40]
+      ([xshift=0]frame.north west) -- % start 25% in
+      ([xshift=0.03\linewidth]frame.north west);  % end 25% before the right edge
+
+    \draw[line width=1pt, purple!40!blue!40]
+      ([xshift=0.186\linewidth]frame.north west) -- % start 25% in
+      ([xshift=0.3\linewidth]frame.north west);  % end 25% before the right edge
+
+    \draw[line width=1pt, purple!40!blue!40]
+      ([xshift=0.32\linewidth]frame.north west) -- % start 25% in
+      ([xshift=0.38\linewidth]frame.north west);  % end 25% before the right edge
+
+    % \draw[line width=1pt, purple!40!blue!40]
+    %   ([xshift=0.41\linewidth]frame.north west) -- % start 25% in
+    %   ([xshift=0.44\linewidth]frame.north west);  % end 25% before the right edge
+    %
+    % \draw[line width=1pt, purple!40!blue!40]
+    %   ([xshift=0.48\linewidth]frame.north west) -- % start 25% in
+    %   ([xshift=0.495\linewidth]frame.north west);  % end 25% before the right edge
+  },
+  arc=0mm,
+  after skip=5mm,
+  before skip=5mm,
+  width=0.9\textwidth
 }
+
+\newenvironment{konwencja}{
+    \begin{center}
+    \begin{KONWENCJA}{}{}
+  }{
+    \end{KONWENCJA}
+    \end{center}
+  }
 
 \begin{document}
 \frontmatter 
