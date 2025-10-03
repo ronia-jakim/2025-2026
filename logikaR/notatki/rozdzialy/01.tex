@@ -7,9 +7,9 @@
 \begin{definition}{model}{}
   \buff{Model} to struktura matematyczna składająca się z
   \begin{itemize}
-    \item niepustego zbioru będącego \acc{uniwersum} $A\neq \emptyset$,
+    \item niepustego zbioru będącego \acc{uniwersum} (dziedzina) $A\neq\emptyset$,
     \item \acc{funkcji} $f_1,..., f_k$ o arności $n_i$ (tzn. $f_i:A^{n_i}\to A$),
-    \item \acc{relacji} (predykatów) w $A$, $P_1,..., P_n$, gdzie $P_i\subseteq A^{n_i}$,
+    \item \acc{relacji} (orzeczników, predykatów) w $A$, $P_1,..., P_n$, gdzie $P_i\subseteq A^{n_i}$,
     \item \acc{stałych} z $A$ $c_1,..., c_l\in A$.
   \end{itemize}
 \end{definition}
@@ -18,34 +18,45 @@ Zapisujemy
 $$\Mm=(A; f_1,...,f_k; P_1,...,P_n; c_1,...,c_l)$$
 gdzie $k,n,l$ to liczby kardynalne, zazwyczaj skończone (tzn. $k,n,l\in\N$).
 
+\begin{konwencja}{}{}
+  $$(\Mm:=)|\Mm|:=A$$
+\end{konwencja}
+
 \begin{example}[m]
-\item Jeśli $n=0$, czyli nie mamy relacji, to \Mm{} jest strukturą algebraiczną. Weźmy na przykład grupę. Grupa jest zdefiniowana jako zbiór $G$ z wyróżnionym elementem neutralnym $e$, operacją mnożenia $\cdot$ oraz brania elementu odwrotnego $^{-1}$. Operacje to funkcje, a element neutralny to stała. Sam zbiór $G$ to z kolei uniwersum, czyli mamy model:
+\item Jeśli $n=0$, czyli nie mamy relacji, to \Mm{} jest \acc{strukturą algebraiczną} (algebrą ogólną). Weźmy na przykład grupę. Grupa jest zdefiniowana jako zbiór $G$ z wyróżnionym elementem neutralnym $e$, operacją mnożenia $\cdot$ oraz brania elementu odwrotnego $^{-1}$. Operacje to funkcje, a element neutralny to stała. Sam zbiór $G$ to z kolei uniwersum, czyli mamy model:
   $$(G; \cdot, ^{-1};\;;e)$$
 \item Rodzina zbiorów $V$ z relacją należenia $\in$ jest modelem z jedną relacją, ale bez funkcji i bez stałych:
   $$(V;\;;\in;\;)$$
+  Taką strukturę nazywamy \acc{strukturą relacyjną}.
 \end{example}
 
 Symbole oznaczające funkcje, relacje, stałe będziemy od ich znaczenia odróżniać przez podkreślenie:
 \begin{itemize}
-  \item $\underline{f_i}$, $\underline{P_j}$, $\underline{c_t}$ to symbole, 
+  \item $\underline{f}_i$, $\underline{P}_j$, $\underline{c}_t$ to symbole, 
   \item natomiast $f_i$, $P_J$, $c_t$ to funkcja, relacja, stała.
 \end{itemize}
 
 \begin{definition}{język}{}
   Język
-  $$L=\{\underline{f_1},...,\underline{f_k};\underline{P_1},..., \underline{P_n}; \underline{c_1},...,\uu{c_l}\}$$
-  składa się z symboli: funkcyjnych, relacyjnych, stałych wraz z przypisanymi tym symbolom arnościami, tzn. $f_j$ to symbol funkcjsi $n_i$-argumentowej etc.
+  $$L=\{\underline{f}_1,...,\underline{f}_k;\underline{P}_1,..., \underline{P}_n; \underline{c}_1,...,\uu{c}_l\}$$
+  składa się z symboli: funkcyjnych, relacyjnych, stałych wraz z przypisanymi tym symbolom arnościami, tzn. $f_j$ to symbol funkcji $n_i$-argumentowej etc.
 \end{definition}
 
 Język jak wyżej jest nazywany językiem struktury \Mm{}, typem podobieństwa \Mm{}, \buff{sygnaturą \Mm{}}. Z kolei \Mm{} jest modelem dla $L$.
 
+\begin{konwencja}{}{}
 Szerzej będziemy dla \Mm{} - modelu dla $L$ - pisać
 $$(\Mm; \uu{f_1}^\Mm, ..., \uu{f_k}^\Mm; \uu{P_1}^\Mm,...,\uu{P_n}^\Mm; \uu{c_1}^\Mm,...,\uu{c_l}^\Mm)$$
 gdzie $\uu{f_i}^\Mm$ oznacza interpretację symbolu $\uu{f_1}^\Mm$ w kontekście modelu \Mm.
+\end{konwencja}
 
 \begin{remark}{}{}
   Dla dowolnego języka $L$ istnieje wiele struktur \Mm.
 \end{remark}
+
+\begin{example}
+  Język grup
+\end{example}
 
 Mając dany język $L$ mówimy/piszemy w nim przy pomocy
 \begin{itemize}
@@ -62,18 +73,29 @@ Mając dany język $L$ mówimy/piszemy w nim przy pomocy
 
 \textbf{Wyrażenia języka $L$:}
 \begin{enumerate}[label=\alph*)]
-  \item \buff{wyrażenia nazwowe} (termy) należą do $\mathcal{T}_L$ i są definiowane rekurencyjnie:
+  \item \buff{wyrażenia nazwowe} (termy) należą do $\mathcal{T}_L$ ($\text{Term}_L$) i są definiowane rekurencyjnie:
     \begin{itemize}
       \item zmienna, symbol stałej należą do $\mathcal{T}_L$ i nazywają się \acc{termami atomowymi}
       \item jeśli $\tau_1$, ..., $\tau_n\in \mathcal{T}_L$, a $\uu{f}$ jest symbolem $n$-argumentowej funkcji z $L$, to $\uu{f}(\tau_1,...,\tau_n)\in \mathcal{T}_L$ i nazywa się \acc{termem złożonym}. 
     \end{itemize}
-  \item \buff{formuły} oznaczamy $\mathcal{F}_L$ i definiujemy rekurencyjnie w następujący sposób
+  \item \buff{formuły} oznaczamy $\mathcal{F}_L$ ($\text{Form}_L$) i definiujemy rekurencyjnie w następujący sposób
     \begin{itemize}
       \item dla wszystkich termów $\tau_1,...,\tau_n$ zachodzi $(\tau_1=\tau_2)\in \mathcal{F}_L$ oraz dla $n$-argumentowego symbolu relacji $\uu{P}_j$: $\uu{P}_j(\tau_1,...,\tau_n)\in  \mathcal{F}_L$ - to są \acc{formuły atomowe},
       \item $\phi,\psi\in\mathcal{F}_L\implies (\neg \phi), (\phi\land\psi)\in \mathcal{F}_L$
 
-        $\phi\in \mathcal{F}_L$ $\implies (\exists\;r\;\phi),(\forall\;r\phi)\in\mathcal{F}_L$ ($r$ występujące w wyrażeniach nazywamy zmiennymi)
+        $\phi\in \mathcal{F}_L$ $\implies (\exists\;r\;\phi),(\forall\;r\phi)\in\mathcal{F}_L$ ($r$ występujące w wyrażeniach nazywamy zmiennymi) 
+        
+        Formuły z tego punktu nazywamy \acc{formuły złożone}.
     \end{itemize}
+\end{enumerate}
+
+\buff{Hierarchia symboli} logicznych umożliwia pomijanie nawiasów:
+\begin{enumerate}
+  \item symbole matematyczne
+  \item kwantyfikatory
+  \item negacja $\neg$
+  \item $\land$, $\lor$
+  \item $\to$, $\lr$
 \end{enumerate}
 
 \subsection{Zdania w języku}
@@ -86,38 +108,336 @@ Niech $\phi\in \mathcal{F}_L$ będzie formułą w której występuje, co najmnie
     \draw[->, green] (.2, -.1) -- (.2, -.7) -- node[midway, below] {wiąże} (2.1, -.7) -- (2.2, -.1);
   \end{tikzpicture}
 \end{center}
-Jeśli nie ma kwantyfikatora $Q_v$ jak wyżej, to wystąpienie $v$ w $\phi$ jest \buff{wolne}.
 
-Zapis $\phi(v_1,...,v_n)$ oznacza, że wszystkie wolne zmienne w $\phi$ są wśród $v_1$, ..., $v_n$.
+Jeśli nie ma kwantyfikatora $Q_v$ jak wyżej, to wystąpienie $v$ w $\phi$ jest \buff{wolne}. Popatrzmy na przykład na formułę
+$$\exists {\color{red}y}\;x\in {\color{red}y}\;\land\;\forall\;x\;(x\in {\color{blue}y}\to x={\color{blue}y}).$$
+Kwantyfikator z czerwonym $y$ wiąże czerwony $y$, a niebieskie $y$ pozostają wolne. Dodając nawias pierwszy kwantyfikator wiąże już wszystkie występienia $y$:
+$$\exists {\color{red}y}\;(x\in {\color{red}y}\;\land\;\forall\;x\;(x\in {\color{red}y}\to x={\color{red}y})).$$
+
+\begin{konwencja}{}{}
+  Zapis $\phi(v_1,...,v_n)$ oznacza, że wszystkie wolne zmienne w $\phi$ są wśród $v_1$, ..., $v_n$ (ale niekoniecznie wszystkie $v_i$ są zmiennymi wolnymi).
+\end{konwencja}
 
 \begin{definition}{zdanie}{}
   Formalne zdanie w języku $L$ to formuła niezawierająca zmiennych wolnych.
 \end{definition}
 
+Tarski podał na początku XX wieku definicję prawdy. Nieco później udowodnił twierdzenie, że nie da się prawdy zdefiniować.
+
 \buff{Powstaje pytanie co to znaczy, że formuła z $L$ jest prawdziwa w strukturze \Mm{} dla $L$?}
 
-Niech \Mm{} będzie modelem dla $L=\{\uu{f}_i,...,\uu{P}_j,...,\uu{c}_t,...\}$, $\{\uu{a}\;:\;a\in \Mm\}$ będzie zbiorem nowych symboli stałych. Rozważmy nowy język $L(\Mm)=L\cup \{\uu{a}\;:\;a\in \Mm\}$.
-Termy stałe $\tau$ z $L(\Mm)$ interpretujemy w \Mm{} w następujący sposób:
+Niech \Mm{} będzie modelem dla $L=\{\uu{f}_i,...,\uu{P}_j,...,\uu{c}_t,...\}$ oraz $\{\uu{a}\;:\;a\in \Mm\}$ niech będzie zbiorem nowych symboli stałych. Rozważmy nowy, większy język 
+$$L(\Mm)=L\cup \{\uu{a}\;:\;a\in |\Mm|\},$$
+którego modelem nadal jest \Mm{} ($\uu{a}^\Mm:=a$).
+
+Termy stałe $\sigma^\Mm\in |\Mm|$ z $L(\Mm)$ interpretujemy w \Mm{} w następujący sposób:
 \begin{itemize}
-  \item jeśli $\tau$ jest symbolem stałym w $L$, to $\tau^\Mm\in\Mm$ jest interpretacją $\uu{c}_i^\Mm$
-  \item jeśli $\tau$ {\color{red}CO TU SIE WYTENTEGOWUYJE}
+  \item jeśli $\uu{\tau}$ jest symbolem stałym $\uu{c}_i$ w $L$, to $\tau^\Mm\in\Mm$ jest interpretacją $\uu{c}_i^\Mm$
+  \item jeśli $\tau=\uu{f}_i(\uu{\tau}_1,...,\uu{\tau}_n)$ jest termem złożonym, to $\sigma^\Mm=\uu{f}_i^\Mm(\uu{\tau}_1^\Mm,...,\uu\tau_n^\Mm)$. 
 \end{itemize}
 
-\begin{definition}{}{}
+\begin{konwencja}{}{}
   $\Mm\models\phi$ oznacza, że $\phi$ jest prawdziwe/spełniane w \Mm.
-\end{definition}
+\end{konwencja}
 
 \begin{enumerate}[label=\alph*)]
   \item zdania atomowe:
     \begin{itemize}
-      \item $\Mm\models \tau_1=\tau_2\iff\uu{\tau}_1^\Mm=\uu{\tau}_2^\Mm$
-      \item $\Mm\models \uu{P}_j(\tau_1,..., \tau_n)\iff (\uu{\tau}_1^\Mm,...,\uu{\tau}_n^\Mm)\in\uu{P}_j^\Mm$
+      \item $\Mm\models \tau_1=\tau_2\iff\tau_1^\Mm=\tau_2^\Mm$
+      \item $\Mm\models \uu{P}_j(\tau_1,..., \tau_n)\iff (\tau_1^\Mm,...,\tau_n^\Mm)\in\uu{P}_j^\Mm$
     \end{itemize}
   \item zdania złożone:
     \begin{itemize}
       \item $\Mm\models\phi\;\land\;\phi\iff\Mm\models\phi\text{ oraz }\Mm\models\psi$
+      \item $\Mm\models\neg\phi\iff $ nieprawda, że $\Mm\models \phi$ (oznaczamy $\Mm\not\models\phi$)
+      \item $\Mm\models\exists\;v\;\phi$ (jest tym samym co $\exists\;v\;\phi(v)$, bo zakładamy, że nie ma innych zmiennych wolnych w $\phi$, bo to jest zdanie) $\iff \Mm\models\underset{=\phi(\uu{a})}{\phi(v/\uu{a})}$ dla pewnego $a\in|\Mm|$, gdzie $\phi(\uu{a})$ jest formułą powstającą z $\phi$ przez zastąpnienie każdego wolnego wystąpienia $v$ w $\phi$ przez $\uu{a}$.
     \end{itemize}
 \end{enumerate}
+
+To daje nam, że $\Mm\models\phi$ dla każdego $\phi\in\mathcal{F}_L$.
+
+Kwantyfikatujemy po zmiennych, nie po podzbiorach uniwersum, bo to jest logika I rzędu. Zbiory tworzymy w umyśle, postrzegamy indywidua. Teorie wyższych rzędów nie są absolutne.
+
+Atomizm logiczny - każde zdanie można zredukować do zdań atomowych, których już dalej się rozbić nie da. Nie obchodzi nas tutaj nadmiernie spełnianie zdań.
+
+\begin{konwencja}{}{}
+  $\phi$ jest fałszywe, gdy $\Mm\not\models\phi$
+\end{konwencja}
+
+Można tutaj od razu udowodnić, że zachodzi prawo wyłączonego środka.
+
+Spełnianie dla formuł $\phi(v_1,...,v_n)$ języka $L$:
+\begin{itemize}
+  \item $(a_1,...,a_n)\subseteq |\Mm| $ spełnia $\phi$ jak wyżej w $\Mm$, jeśli $\Mm\models\phi(\uu{a}_1,...,\uu{a}_n)$
+  \item uniwersalne domknięcie $\phi(v_1,...,v_n)$ to formuła
+    $$\overline{\phi}=\forall\;v_1,...,\forall\;v_n\;\phi(v_1,...,v_n)$$
+    z dokładnością do równoważności formuł jest jednoznacznie zdefiniowane $\Mm\models\phi\iff\Mm\models\overline\phi$
+\end{itemize}
+
+Powyższe zagadnienia mówią, że domyślny kwantyfikator to kwantyfikator $\forall$. To ma spełnienie w naturalnej matematyce, np. przemienność dodawania $(\R, +)\models\;x+y=y+x$ gdzie pomijamy $\forall\;x\;\forall\;y$.
+
+\subsection{Tautologie}
+
+\begin{definition}{tautologia}{}
+  Niech $\phi\in\mathcal{F}_L$. Wtedy $\phi$ jest \buff{tautologią} klasycznego rachunku logicznego, gdy jest zawsze prawdziwe. Zapisujemy to $\models\phi$, co oznacza $\forall\;\Mm$ modelu $L$ $\Mm\models\phi$.
+\end{definition}
+
+\buff{Jak rozpoznać, czy $\models\phi$?} Ogólnie jest to pytanie nierozstrzygalne (twierdzenie G\"odla).
+
+Niektóre tautologie łatwo rozpoznać.
+\begin{example}[m]
+  \item $x=x$
+  \item $=$ jest relacją równoważności
+\end{example}
+
+\begin{enumerate}[label=\alph*)]
+  \item formuły zdaniowe (schematy)
+
+    Niech $Z=\{p_0, p_1,...,p_n, r, q,...\}$ będzie zbiorem zmiennych zdaniowych. Zbiór formuł zdaniowych $S=S_Z$ nad $Z$ definiujemy w następujący sposób:
+    \begin{itemize}
+      \item $v\in Z\implies v\in S$
+      \item $\alpha, \beta\in S\implies \neg\alpha, \alpha\;\land\;\beta\in S$
+      \item skrótowo: $\lor, \to, \lr\in S$
+    \end{itemize}
+
+    Wartościowanie logiczne formuł zdaniowych to dowolna funkcja $v:S\to \{0,1\}$ taka, że dla każdych $\alpha,\beta\in S$ 
+    \begin{itemize}
+      \item $v(\neg\alpha)=1-v(\alpha)$
+      \item $v(\alpha\;\land\;\beta)=\min\{v(\alpha), v(\beta)\}$
+    \end{itemize}
+  
+    Powiemy, że $\alpha\in S$ jest \buff{tautologią} ($\models\alpha$) gdy dla każdego wartościowania $v$ zachodzi $v(\alpha)=1$.
+
+    Na przykład: $\models\neg(\alpha\;\land\;\neg\alpha)$ dla każdego $\alpha\in S$
+
+    Istnieje algorytm rozstrzygający, czy $\models \alpha$ dla $\alpha\in S$ (metoda 0-1): wartość $v(\alpha)$ zależy tylko od $v(x)$ dla zmiennych zdaniowych $x$ w $\alpha$.
+
+    \begin{definition}{}{}
+      Załóżmy, że $\alpha\in S$ jest zbudowany ze zmiennych $p_1,..., p_n\in Z$ oraz $\phi_1,..., \phi_n\in\mathcal{F}_L$ i $\phi\in\mathcal{F}_L$ powstaje z $\alpha$ przez zastąpienie $p_i$ przez $\phi_i$ wszędzie w $\alpha$ (zapisujemy $\phi=\alpha(p_1/\phi_1,...,p_n/\phi_n)$. Mówimy, że $\phi$ jest \buff{jest przykładem formuły $\alpha$}. 
+    \end{definition}
+
+    \begin{theorem}{}{}
+      Jeśli $\models\alpha$ i $\phi$ jest przykładem $\alpha$ to $\models\phi$.
+    \end{theorem}
+    \begin{proof}
+      Ćwiczenie
+    \end{proof}
+\end{enumerate}
+
+\begin{definition}{}{}
+  Reguła wnioskowania składa się z:
+  \begin{itemize}
+    \item przesłanek $\phi_1,....,\phi_n\in\mathcal{F}_L$
+    \item tezy $\phi$.
+  \end{itemize}
+  Zapisujemy 
+  $$\frac{\phi_1,...,\phi_n}{\phi}$$
+
+  Reguła wnioskowania jest poprawna, kiedy nie prowadzi nas na manowce. 
+  \begin{enumerate}
+    \item $\frac{\phi_1,...,\phi_n}{\phi}$ jest \buff{poprawna}, jeśli dla każdego modelu $\Mm$ dla $L$ $\Mm\models\phi_1\;\land...\land\;\phi_n\implies \Mm\models\phi$
+    \item $\frac{\alpha_1,...,\alpha_n}{\alpha}$ jest poprawna, jeśli dla każdego wartościowania $v$ 
+  \end{enumerate}
+\end{definition}
+
+\begin{example}[m]
+  \item Modus Ponens (reguła odrywania, cut rule) 
+    $$\frac{\alpha,\alpha\to \beta}{\beta}$$
+  \item reguła generalizacji ($\forall\;$-rule)
+    $$\frac{\phi}{\forall\;v\;\phi(v)}$$
+\end{example}
+
+KRL - $\phi$ etc, KRZ - $\alpha$, $\beta$ etc
+
+Aksjomatyczne ujęcie KRL:
+\begin{itemize}
+  \item[(A0)] przykład dowolnej tautologii KRZ
+  \item[(A1)] $\forall\;v\;(\phi\to\psi)\to(\phi\to\forall\;v\;\psi)$, gdy $v$ nie jest wolna w $\phi$
+  \item[(A2)] $\forall\;v\;\phi\to\phi(v/t)$ (to jest poprawny zapis, ale dla pewności: $(\forall\;v\;\phi)\to\phi(v/t)$)
+    $t$ to jest term podstawiany za każde wolne wystąpienie $v$ w $\phi$ pod warunkiem, że żadne z takich wystąpień nie jest w zasięgu kwantyfikatora wiążącego zmienną występującą w termie $t$.
+
+    Zastrzeżenie jest istotne: $\phi:\exists\;y\;x\neq y$, $t=y$, wtedy $\phi(x/t)=\exists\;y\;y\neq y$ i mamy
+    $$\not\models\forall\;x\phi\to\phi(x/t)=\forall\;\exists\;y\;x\neq y\to \exists\;y\;y\neq y$$
+\end{itemize}
+
+Aksjomaty równości ($v_i$ - wolne zmienne):
+\begin{itemize}
+  \item $v_1=v_1$
+  \item $v_1=v_2\to t(...v_1...)=t(...v_1/v_2...)$ 
+  \item $v_1=v_2\to (\phi(...v_1...)\to \phi(...v_2...))$ gdzie $v_1$ to wolne wystąpienie w $\phi$ niebędące w zasięgu kwantyfikatora wiążącego $v_2$.
+\end{itemize}
+
+\begin{definition}{}{}
+  Dowodliwość w KRL: dla $X\subseteq \mathcal{F}_L$ oraz $\phi\in\mathcal{F}_L$
+
+  $X\vdash \phi$ $\iff$ istnieje ciąg formuł (dowód formalny) $\alpha_1$, .., $\alpha_n=\phi$ takie, że dla każdego $i\leq n$
+  \begin{enumerate}
+    \item $\alpha_1\in X\;\lor\;\alpha_i$ jest aksjomatem KRL
+    \item $\alpha_i$ wynika z $\{\alpha_1,...,\alpha_{i-1}\}$ na mocy Morus Ponens lub $\forall$-rule, tzn. $\exists\;j,t<i\;\alpha_t=\alpha_j\to \alpha_i$
+      $$\frac{\alpha_j,\alpha_j\to\alpha_i}{\alpha_i}$$
+      lub $\exists\;j<i\;\alpha_i=\forall\;v\;\alpha_j$
+      $$\frac{\alpha_j}{\forall\;v\alpha_j}$$
+  \end{enumerate}
+\end{definition}
+
+\begin{konwencja}{}{}
+  $\vdash \phi$ gdy $\emptyset\vdash\phi$
+
+  Takie $\phi$ nazywamy \buff{tezą} KRL
+\end{konwencja}
+
+\begin{remark}{}{}
+  $X\vdash \phi$ $\iff$ $\exists\;X_0\subseteq X$ skończony $X_0\vdash \phi$
+\end{remark}
+
+\begin{example}
+  Pokażemy, że $\vdash \forall\;x\;\phi\to\exists\;x\;\phi$, to znaczy
+  $$\vdash \forall\;x\;\phi\to \neg\;\forall\;x\;\neg\phi$$
+  
+  \begin{enumerate}
+    \item $\alpha_1:\forall\;x\;\phi\to \phi(x/y)$ (A2)
+    \item $\alpha_2:\forall\;x\;\neg\phi\to\neg\phi(x/y)$ (A2)
+    \item $\alpha_3:\alpha_2\to (\phi(x/y)\to \neg\forall\;x\;\neg\phi)$ (A0 $(p\to\neg q)\to(q\to\neg p)$)
+    \item $\alpha_4:\phi(x/y)\to\neg\forall\;x\;\neg\phi$ ($\alpha_2,\alph_3$ oraz Modus Ponens)
+    \item $\alpha_5:\alpha_1\to(\alpha_4\to \beta)$, gdzie $\beta=\forall\;x\;\phi\to\neg\forall\;x\;\neg\phi$ (A0, przechodność)
+    \item $\alpha_6:\beta$ (Modus Ponens)
+  \end{enumerate}
+\end{example}
+
+\begin{example}
+  $\phi:x=x$
+  $$\vdash\forall\;x\;x=x\to\exists\;x\;x=x$$
+  jest fałszywe w dziedzinie pustej, czyli modelu
+  $$(\emptyset; f_1,...,f_n; P_1,...,P_j;)$$
+  gdzie nie ma stałych. Czyli coś z aksjomatów musi zawodzić w dziedzinie pustej - pytanie co?
+\end{example}
+
+\begin{center}
+  \buff{Od tej pory modele są niepuste}
+\end{center}
+
+\begin{remark}{}{}
+  Poprawność (soundness) KRL
+  $$\vdash\phi\implies \models\phi$$
+\end{remark}
+\begin{proof}
+  Ćwiczenie
+\end{proof}
+
+\begin{theorem}{G\"odela o pełności KRL}{}
+  $$\models\phi\implies\vdash\phi$$
+\end{theorem}
+
+\begin{definition}{}{}
+  Dla $X\subseteq\mathcal{F}_L$ zbiór konsekwencji $X$ to $\Cn(X)=\{\phi\in\mathcal{F}_L\;:\;X\vdash \phi\}$
+  \begin{itemize}
+    \item $X$ jest teorią, gdy $X=\Cn(X)$
+    \item $A$ jest zbiorem aksjomatów teorii $X$, gdy $X=\Cn(A)$
+    \item zbiory $X$, $Y$ są równoważne, gdy $\Cn(X)=\Cn(Y)$ co równoważnie można powiedzieć: $X\vdash Y$ i $Y\vdash X$
+  \end{itemize}
+\end{definition}
+
+\begin{fact}{}{}
+  $\phi$ oraz $\overline{\phi}$ są równoważne
+\end{fact}
+\begin{proof}
+  $\phi\vdash\overline{\phi}$ to $\forall$-reguła zastosowana tyle razy ile użyliśmy kwantyfikatorów w $\overdash{\phi}$
+
+  $\overline{\phi}\vdash\phi$ to z twierdzenia o dedukcji (zadanie) $\overline{\phi}\vdash\phi\iff\vdash\overline{\phi}\to\phi$ (drugie to wynik z A2) 
+\end{proof}
+
+\begin{conclusion}
+  $X\subseteq\mathcal{F}_L$
+
+  $X$ oraz $\{\overline{\phi}\;:\;\phi\in X\}$ są równoważne
+\end{conclusion}
+
+\begin{definition}{}{}
+  $X$ jest sprzeczny, jeżeli $X\vdash\phi$ oraz $X\vdash\neg\phi$ dla pewnego zdania $\phi\in\mathcal{F}_L$
+\end{definition}
+
+W przeciwnym razie $X$ jest niesprzeczny.
+
+\begin{definition}{}{}
+  \begin{enumerate}
+    \item $\Mm\models X\iff \forall\;\phi\in X\;\Mm\models\phi$ (\Mm jest modelem $X$)
+    \item $X$ jest zupełny $\iff$ $\forall$ zdania $\phi$ ($X\vdash \phi$ lub $x\vdash\neg\phi$)
+    \item $X$ jest rozstrzygalny $\iff$ istnieje algorytm rozstrzygający, czy $X\vdash\phi$
+  \end{enumerate}
+\end{definition}
+
+\begin{example}[m]
+\item teoria $\Mm$ $\Th(\Mm):=\{\phi\;:\;M\models\phi\}$ jest niesprzeczna i zupełna
+\item $\emptyset$ jest niesprzeczny
+\end{example}
+
+\begin{theorem}{G\"odela o istnieniu modelu}{}
+  Jeśli $S$ jest niesprzecznym zbiorem zdań, to $S$ ma model.
+\end{theorem}
+
+\begin{proof}
+  (by Leon Henkin)
+
+  Dla przypadków, gdy $L$ i $S$ są przeliczalne, ogólny dowód jest bez większej idei, ale używa "ble ble kombinatoryczne z liczb kardynalnych".
+
+  $L'=L\cup\{c_n\;:\;n\in\N\}$, gdzie $c_n$ to nowe w stosunku do $L$ symbole stałe
+
+  $\{\phi_n\;:\;n\in\N\}$ to numeracja formuł $\mathcal{F}_L(x)$ z co najwyżej jedną wolną zmienną $x$
+
+  Niech $f:\omega\to\omega$ (czyli $\N\to\N$) rosnąca taka, że $c_{f(n)}$ nie występuje w formułach $\phi_0(x),...,\phi_n(x)$
+
+  $S_n=S\cup\{\exists\;x\;\phi_i(x)\to\phi_i(x/c_{f(i)}\;:\;i<n\}$ (aksjomat postaci jaka w $\{\}$ nazywa się aksjomatem Henkina
+
+  $S=S_0\subseteq S_1\subseteq...$ to ciąg rosnący
+  
+  $S_\omega=\bigcup S_n$
+
+  FAKT: zbiór $S_\omega$ jest niesprzeczny
+
+  Dowód nie wprost: gdyby był sprzeczny, to sprzeczność wynikałaby ze skończonego podzbioru, czyli pewne $S_n$ jest sprzeczne, czyli możemy wybrać $n$ najmniejsze takie, że $S_{n+1}=S_n\cup\{\exists\;x\;\phi_n(x)\to\phi_n(x/c_{f(n)})\}$ jest sprzeczne
+
+  ponieważ $n$ jest najmniejsze, to $S_n$ nie jest sprzeczne
+
+  $H$ niech będzie zdaniem w $\{\}$
+
+  $$S_n\cup\{H\}\vdash \alpha\;\land\;\neg\alpha$$
+  dla pewnego $\alpha$
+  z tego wiemy, że
+  $$S_n\vdash(\exists\;x\;\phi_n(x)\to\phi_n(c_{f(n)})\to\alpha\;\land\;\neg\alpha$$
+  A0 daje nam, że 
+  $$S_n\vdash \neg(\exists\;x\;\phi_n(x)\to\phi_n(c_{f(n)}))$$
+  znowu korzystając z A0 dostajemy
+  $$S_n\vdash\exists\;x\;\phi_n(x)\;\land\;\neg\phi_n(c_{f(n)})$$
+  $$S_n\vdash\exists\;x\;\phi_n(x)\text{ i } \S_n\vdash\neg\phi_n(c_{f(n)})$$
+  w dowodzie po prawej od i $c_{f(n)}$ zastępujemy nową zmienną $y$
+
+  po tej zamianie powstaje dowód $S_n\vdash \neg\phi_n(y)$, korzystamy z $\forall$ żeby dostać $S_n\vdash\forall\;y\neq\phi_n(y)$ z A2 dla $t=x$ dostajemy $S_n\vdash\neg\phi_n(x)$, z $\forall$-reguły mamy $S_n\vdash\forall\;x\;\neg\phi_n(x)$, ale nadal prawdą jest, że $\S_n\vdash\exists\;x\;\phi_n(x)$
+
+  Mamy skońcozny dowód, że $S_\omega$ jest niesprzeczny
+
+  Twierdzenie Lidenbauma(???) jeśli mamy niesprzeczny zbiór formuł/zdań to możemy go rozszerzyć do maksymalnego niesprzecznego zbioru formuł/zdań, który jest zupełny i niesprzeczny zbiór formuł/zdań
+  
+  Korzystamy, żeby dostać $S'\supseteq S_\omega$, który jest zupełny i niesprzecznym zbiorem zdań w $L'$
+
+  $S'$ opisuje strukturę modelu na $\{c_n\;:\;n<\omega\}$
+
+  mamy relację równoważności na zbiorze $C=\{c_n\;:\;n<\omega\}$: $c_n\sim c_m\iff S'\vdash c_n=c_m$
+  \begin{itemize}
+    \item symetria: aksjomat równości
+  \end{itemize}
+
+  Niech $\Mm=\{c_n/\sim\;:\;n\in\omega\}=C/\sim$
+  $L'$ - struktura na $M$
+  \begin{enumerate}
+    \item $P_i^\Mm(c_{i_1}/\sim,...,c_{i_n}/\sim)\iff S'\vdash P_i(c_{i_1},...,c_{i_n})$
+    \item $f^\Mm_i(c_{i_1}/\sim,...,c_{i_k}/\sim)=c_{i_n}/\sim\iff S'\vdash f_i(c_{i_1},..., c_{i_k})=c_{i_n}$
+  \end{enumerate}
+
+  {\color{red}TUTAJ MAM DOŚĆ NEWELA}
+\end{proof}
+
+
+
 
 
 
