@@ -1,6 +1,6 @@
 \chapter{Formalizacja matematyki}
 
-\section{02.10.2025}{Uproszczony model rzeczywistości matematycznej: struktura I rzędu}
+\section{Uproszczony model rzeczywistości matematycznej: struktura I rzędu}
 
 \subsection{Model języka i język struktury modelu}
 
@@ -228,15 +228,13 @@ Istnieje algorytm rozstrzygający, czy $\models \alpha$ dla $\alpha\in S$ (metod
 Weźmy na przykład formułą $\alpha=p_1\;\land\;p_2$, wtedy $\phi=\phi_1\;\land\;\phi_2$ jest przykładem formuły $\alpha$.
 
 \begin{theorem}{}{}
-  Jeśli $\models\alpha$ i $\phi$ jest przykładem $\alpha$ to $\models\phi$.
+  Jeśli $\models\alpha$ i $\phi$ jest przykładem $\alpha$, to $\models\phi$.
 \end{theorem}
 \begin{proof}
   Ćwiczenie
 \end{proof}
 
-{\color{red}\large TUTAJ KONCZE REVISIONS}
-
-\begin{definition}{}{}
+\begin{definition}{reguła wnioskowania}{}
   Reguła wnioskowania składa się z:
   \begin{itemize}
     \item przesłanek $\phi_1,....,\phi_n\in\mathcal{F}_L$
@@ -247,8 +245,10 @@ Weźmy na przykład formułą $\alpha=p_1\;\land\;p_2$, wtedy $\phi=\phi_1\;\lan
 
   Reguła wnioskowania jest poprawna, kiedy nie prowadzi nas na manowce. 
   \begin{enumerate}
-    \item $\frac{\phi_1,...,\phi_n}{\phi}$ jest \buff{poprawna}, jeśli dla każdego modelu $\Mm$ dla $L$ $\Mm\models\phi_1\;\land...\land\;\phi_n\implies \Mm\models\phi$
+    \item $\frac{\phi_1,...,\phi_n}{\phi}$ jest \buff{poprawna}, jeśli dla każdego modelu $\Mm$ dla $L$ 
+      $$\Mm\models\phi_1\;\land...\land\;\phi_n\implies \Mm\models\phi$$
     \item $\frac{\alpha_1,...,\alpha_n}{\alpha}$ jest poprawna, jeśli dla każdego wartościowania $v$ 
+      $$v(\alpha_1)=...=v(\alpha_n)=1\implies v(\alpha)=1$$
   \end{enumerate}
 \end{definition}
 
@@ -259,51 +259,66 @@ Weźmy na przykład formułą $\alpha=p_1\;\land\;p_2$, wtedy $\phi=\phi_1\;\lan
     $$\frac{\phi}{\forall\;v\;\phi(v)}$$
 \end{example}
 
-KRL - $\phi$ etc, KRZ - $\alpha$, $\beta$ etc
+% KRL - $\phi$ etc, KRZ - $\alpha$, $\beta$ etc
 
-Aksjomatyczne ujęcie KRL:
-\begin{itemize}
-  \item[(A0)] przykład dowolnej tautologii KRZ
-  \item[(A1)] $\forall\;v\;(\phi\to\psi)\to(\phi\to\forall\;v\;\psi)$, gdy $v$ nie jest wolna w $\phi$
-  \item[(A2)] $\forall\;v\;\phi\to\phi(v/t)$ (to jest poprawny zapis, ale dla pewności: $(\forall\;v\;\phi)\to\phi(v/t)$)
+\section{Aksjomatyczne ujęcie KRL}
+\begin{enumerate}[label=\textbf{\color{green}(A\arabic*)},ref=\color{green!60!black}(A\arabic*), start=0]
+  \item\label{A0} formuła będąca przykładem dowolnego zdania KRZ, które jest tautologią
+  \item\label{A1} $\forall\;v\;(\phi\to\psi)\to(\phi\to\forall\;v\;\psi)$, gdy $v$ nie jest wolna w $\phi$
+  \item\label{A2} $\forall\;v\;\phi\to\phi(v/t)$ (to jest poprawny zapis, ale dla pewności: $(\forall\;v\;\phi)\to\phi(v/t)$)
+
     $t$ to jest term podstawiany za każde wolne wystąpienie $v$ w $\phi$ pod warunkiem, że żadne z takich wystąpień nie jest w zasięgu kwantyfikatora wiążącego zmienną występującą w termie $t$.
+\end{enumerate}
 
-    Zastrzeżenie jest istotne: $\phi:\exists\;y\;x\neq y$, $t=y$, wtedy $\phi(x/t)=\exists\;y\;y\neq y$ i mamy
-    $$\not\models\forall\;x\phi\to\phi(x/t)=\forall\;\exists\;y\;x\neq y\to \exists\;y\;y\neq y$$
-\end{itemize}
+Zastrzeżenie aksjomacie \ref{A2} jest istotne: jeśli weźmiemy jako $\phi$ formułę 
+$$\phi = \exists\;y\;x\neq y$$ 
+i podstawimy za wolne wystąpienia $x$ term $t=y$, to 
+$$\phi(x/t)=\exists\;y\;y\neq y$$ 
+co z \ref{A2} dałoby
+$$\not\models\forall\;x\phi\to\phi(x/t)=\forall\;\exists\;y\;x\neq y\to \exists\;y\;y\neq y$$
 
-Aksjomaty równości ($v_i$ - wolne zmienne):
-\begin{itemize}
-  \item $v_1=v_1$
-  \item $v_1=v_2\to t(...v_1...)=t(...v_1/v_2...)$ 
-  \item $v_1=v_2\to (\phi(...v_1...)\to \phi(...v_2...))$ gdzie $v_1$ to wolne wystąpienie w $\phi$ niebędące w zasięgu kwantyfikatora wiążącego $v_2$.
-\end{itemize}
+\begin{definition}{aksjomaty równości}{}
+{Aksjomaty równości} ($v_i$ - wolne zmienne):
+\begin{enumerate}[label=\textbf{\color{orange}(R\arabic*)},ref=\color{orange!60!black}R\arabic*]
+  \item\label{R1} $v_1=v_1$
+  \item\label{R2} $v_1=v_2\to t(...v_1...)=t(...v_1/v_2...)$ 
+  \item\label{R3} $v_1=v_2\to (\phi(...v_1...)\to \phi(...v_2...))$ gdzie $v_1$ to wolne wystąpienie w $\phi$ niebędące w zasięgu kwantyfikatora wiążącego $v_2$.
+\end{enumerate}
+\end{definition}
 
-\begin{definition}{}{}
-  Dowodliwość w KRL: dla $X\subseteq \mathcal{F}_L$ oraz $\phi\in\mathcal{F}_L$
+\subsection{Dowodliwość}
 
-  $X\vdash \phi$ $\iff$ istnieje ciąg formuł (dowód formalny) $\alpha_1$, .., $\alpha_n=\phi$ takie, że dla każdego $i\leq n$
+\begin{definition}{dowód formalny}{}
+  Niech $X\subseteq\mathcal{F}_L$ będzie dowolnym podzbiorem formuł. 
+
+  Powiemy, że \buff{$X$ dowodzi $\phi\in \mathcal{F}_L$}, 
+  $X\vdash \phi$ wtedy i tylko wtedy gdy istnieje ciąg formuł \buff{(dowód formalny)} $\alpha_1$, .., $\alpha_n=\phi$ takie, że dla każdego $i\leq n$
   \begin{enumerate}
-    \item $\alpha_1\in X\;\lor\;\alpha_i$ jest aksjomatem KRL
-    \item $\alpha_i$ wynika z $\{\alpha_1,...,\alpha_{i-1}\}$ na mocy Morus Ponens lub $\forall$-rule, tzn. $\exists\;j,t<i\;\alpha_t=\alpha_j\to \alpha_i$
-      $$\frac{\alpha_j,\alpha_j\to\alpha_i}{\alpha_i}$$
-      lub $\exists\;j<i\;\alpha_i=\forall\;v\;\alpha_j$
-      $$\frac{\alpha_j}{\forall\;v\alpha_j}$$
+    \item $\alpha_i\in X$ lub $\alpha_i$ jest aksjomatem KRL
+    \item $\alpha_i$ wynika z $\{\alpha_1,...,\alpha_{i-1}\}$ na mocy 
+      \begin{itemize}
+        \item Modus Ponens, tzn. $(\exists\;j,t<i)\;\alpha_t=(\alpha_j\to \alpha_i)$
+          $$\frac{\alpha_j,\alpha_j\to\alpha_i}{\alpha_i}$$
+        \item lub $\forall$-rule $(\exists\;j<i)\;\alpha_i=(\forall\;v\;\alpha_j)$
+          $$\frac{\alpha_j}{\forall\;v\;\alpha_j}$$
+      \end{itemize}
   \end{enumerate}
 \end{definition}
 
 \begin{konwencja}{}{}
   $\vdash \phi$ gdy $\emptyset\vdash\phi$
-
-  Takie $\phi$ nazywamy \buff{tezą} KRL
 \end{konwencja}
+
+\begin{definition}{teza KRL}{}
+  Jeśli $\phi$ jest takie, że $\vdash\phi$, to $\phi$ nazywamy \buff{tezą} KRL.
+\end{definition}
 
 \begin{remark}{}{}
   $X\vdash \phi$ $\iff$ $\exists\;X_0\subseteq X$ skończony $X_0\vdash \phi$
 \end{remark}
 
 \begin{example}
-  Pokażemy, że $\vdash \forall\;x\;\phi\to\exists\;x\;\phi$, to znaczy
+  Pokażemy, że $\vdash \forall\;x\;\phi\to\exists\;x\;\phi$, co jest równoważne
   $$\vdash \forall\;x\;\phi\to \neg\;\forall\;x\;\neg\phi$$
   
   \begin{enumerate}
@@ -311,18 +326,17 @@ Aksjomaty równości ($v_i$ - wolne zmienne):
     \item $\alpha_2:\forall\;x\;\neg\phi\to\neg\phi(x/y)$ (A2)
     \item $\alpha_3:\alpha_2\to (\phi(x/y)\to \neg\forall\;x\;\neg\phi)$ (A0 $(p\to\neg q)\to(q\to\neg p)$)
     \item $\alpha_4:\phi(x/y)\to\neg\forall\;x\;\neg\phi$ ($\alpha_2,\alpha_3$ oraz Modus Ponens)
-    \item $\alpha_5:\alpha_1\to(\alpha_4\to \beta)$, gdzie $\beta=\forall\;x\;\phi\to\neg\forall\;x\;\neg\phi$ (A0, przechodność)
-    \item $\alpha_6:\beta$ (Modus Ponens)
+    \item $\alpha_5:\alpha_1\to(\alpha_4\to (\forall\;x\;\phi\to\neg\forall\;x\;\neg\phi))$ (A0 $(p\to q)\to((q\to r)\to(p\to r))$)
+    \item $\alpha_6:(\forall\;x)\;\phi\to\neg(\forall\;x)\neg\phi$ (Modus Ponens)
   \end{enumerate}
 \end{example}
 
-\begin{example}
-  $\phi:x=x$
-  $$\vdash\forall\;x\;x=x\to\exists\;x\;x=x$$
-  jest fałszywe w dziedzinie pustej, czyli modelu
-  $$(\emptyset; f_1,...,f_n; P_1,...,P_j;)$$
-  gdzie nie ma stałych. Czyli coś z aksjomatów musi zawodzić w dziedzinie pustej - pytanie co?
-\end{example}
+Rozważmy $\phi$ dane $x=x$. Zdanie
+$$\vdash(\forall\;x)\;x=x\to(\exists\;x)x=x$$
+jest fałszywe w dziedzinie putestj, czyli modelu
+$$(\emptyset; f_1,...,f_n; P_1,...,P_j;)$$
+gdzie nie ma elementów uniwersum. Czyli coś z aksjomatów musi zawodzić w dziedzinie pustej - pytanie co?
+
 
 \begin{center}
   \buff{Od tej pory modele są niepuste}
@@ -333,29 +347,44 @@ Aksjomaty równości ($v_i$ - wolne zmienne):
   $$\vdash\phi\implies \models\phi$$
 \end{remark}
 \begin{proof}
-  Ćwiczenie
+  Dowód polega na indukcji względem długości formuły (albo długości dowodu) i jest pozostawiony jako ćwiczenie.
 \end{proof}
 
 \begin{theorem}{G\"odela o pełności KRL}{}
   $$\models\phi\implies\vdash\phi$$
 \end{theorem}
 
-\begin{definition}{}{}
-  Dla $X\subseteq\mathcal{F}_L$ zbiór konsekwencji $X$ to $\Cn(X)=\{\phi\in\mathcal{F}_L\;:\;X\vdash \phi\}$
+Czyli $\models\phi\iff\vdash\phi$.
+
+\begin{definition}{zbiór konsekwencji}{}
+  Dla $X\subseteq\mathcal{F}_L$ \buff{zbiór konsekwencji} $X$ to $\Cn(X)=\{\phi\in\mathcal{F}_L\;:\;X\vdash \phi\}$
   \begin{itemize}
     \item $X$ jest teorią, gdy $X=\Cn(X)$
     \item $A$ jest zbiorem aksjomatów teorii $X$, gdy $X=\Cn(A)$
-    \item zbiory $X$, $Y$ są równoważne, gdy $\Cn(X)=\Cn(Y)$ co równoważnie można powiedzieć: $X\vdash Y$ i $Y\vdash X$
+    \item \acc{zbiory $X$, $Y$ są równoważne}, gdy $\Cn(X)=\Cn(Y)$ co równoważnie można powiedzieć: $X\vdash Y$ i $Y\vdash X$
   \end{itemize}
 \end{definition}
 
+\begin{theorem}{twierdzenie o dedukcji}{tw dedukcja}
+  Jeśli $\phi$ jest zdaniem, to $(X\vdash\phi\to\psi\iff X\cup\{\phi\}\vdash\phi)$
+\end{theorem}
+
+\begin{proof}
+  Dowód powyższego twierdzenia jest zadaniem na 1 liście zadań.
+\end{proof}
+
 \begin{fact}{}{}
-  $\phi$ oraz $\overline{\phi}$ są równoważne
+  $\phi$ oraz $\overline{\phi}$ są równoważne, czyli $\phi\vdash\overline{\phi}$ oraz $\overline{\phi}\vdash\phi$.
 \end{fact}
 \begin{proof}
-  $\phi\vdash\overline{\phi}$ to $\forall$-reguła zastosowana tyle razy ile użyliśmy kwantyfikatorów w $\overline{\phi}$
+  $\phi\vdash\overline{\phi}$ 
 
-  $\overline{\phi}\vdash\phi$ to z twierdzenia o dedukcji (zadanie) $\overline{\phi}\vdash\phi\iff\vdash\overline{\phi}\to\phi$ (drugie to wynik z A2) 
+  Wystarczy zastosować $\forall$-regułę tyle razy ile dopisaliśmy kwantyfikatorów w $\overline{\phi}$.
+
+  $\overline{\phi}\vdash\phi$ 
+
+  Aksjomat \ref{A2} mówi, że $\overline{\phi}\to\phi$. Używając do tego \hyperref[twierdzenia o dedukcji]{th:tw dedukcja} dostajemy
+  $$\emptyset\cup\{\overline{\phi}\}\vdash \phi\iff\emptyset\vdash\overline{\phi}\to\phi.$$
 \end{proof}
 
 \begin{conclusion}{}{}
@@ -364,11 +393,11 @@ Aksjomaty równości ($v_i$ - wolne zmienne):
   $X$ oraz $\{\overline{\phi}\;:\;\phi\in X\}$ są równoważne
 \end{conclusion}
 
-\begin{definition}{}{}
-  $X$ jest sprzeczny, jeżeli $X\vdash\phi$ oraz $X\vdash\neg\phi$ dla pewnego zdania $\phi\in\mathcal{F}_L$
+\begin{definition}{zbiór sprzeczny}{}
+  $X$ jest \buff{sprzeczny}, jeżeli $X\vdash\phi$ oraz $X\vdash\neg\phi$ dla pewnego zdania $\phi\in\mathcal{F}_L$
 \end{definition}
 
-W przeciwnym razie $X$ jest niesprzeczny.
+W przeciwnym razie mówimy, że $X$ jest niesprzeczny.
 
 \begin{definition}{}{}
   \begin{enumerate}

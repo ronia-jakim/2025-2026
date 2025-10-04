@@ -5,7 +5,7 @@
 \author{\color{subtext1}Weronika Jakimowicz}
 \date{Zima 2025/26}
 
-\usepackage[dates, pl]{../../template}
+\usepackage[pl]{../../template}
 
 \usepackage{halloweenmath}
 
@@ -51,9 +51,13 @@
       ([xshift=0.186\linewidth]frame.north west) -- % start 25% in
       ([xshift=0.3\linewidth]frame.north west);  % end 25% before the right edge
 
-    \draw[line width=1pt, purple!40!blue!40]
-      ([xshift=0.32\linewidth]frame.north west) -- % start 25% in
-      ([xshift=0.38\linewidth]frame.north west);  % end 25% before the right edge
+    \filldraw[purple!40!blue!40] ([xshift=0.3\linewidth]frame.north west) circle (1pt);
+    \filldraw[purple!40!blue!40] ([xshift=0.31\linewidth]frame.north west) circle (0.8pt);
+    \filldraw[purple!40!blue!40] ([xshift=0.32\linewidth]frame.north west) circle (0.4pt);
+
+    % \draw[line width=1pt, purple!40!blue!40]
+    %   ([xshift=0.32\linewidth]frame.north west) -- % start 25% in
+    %   ([xshift=0.38\linewidth]frame.north west);  % end 25% before the right edge
 
     % \draw[line width=1pt, purple!40!blue!40]
     %   ([xshift=0.41\linewidth]frame.north west) -- % start 25% in
