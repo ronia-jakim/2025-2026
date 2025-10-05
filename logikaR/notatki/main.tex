@@ -42,7 +42,6 @@
   % borderline north = {1pt}{0pt}{purple!40!blue!40},
   borderline south = {1pt}{0pt}{purple!40!blue!40},
   overlay={%
-    % Draw a 50% wide line at the top
     \draw[line width=1pt, purple!40!blue!40]
       ([xshift=0]frame.north west) -- % start 25% in
       ([xshift=0.03\linewidth]frame.north west);  % end 25% before the right edge
@@ -54,18 +53,6 @@
     \filldraw[purple!40!blue!40] ([xshift=0.3\linewidth]frame.north west) circle (1pt);
     \filldraw[purple!40!blue!40] ([xshift=0.31\linewidth]frame.north west) circle (0.8pt);
     \filldraw[purple!40!blue!40] ([xshift=0.32\linewidth]frame.north west) circle (0.4pt);
-
-    % \draw[line width=1pt, purple!40!blue!40]
-    %   ([xshift=0.32\linewidth]frame.north west) -- % start 25% in
-    %   ([xshift=0.38\linewidth]frame.north west);  % end 25% before the right edge
-
-    % \draw[line width=1pt, purple!40!blue!40]
-    %   ([xshift=0.41\linewidth]frame.north west) -- % start 25% in
-    %   ([xshift=0.44\linewidth]frame.north west);  % end 25% before the right edge
-    %
-    % \draw[line width=1pt, purple!40!blue!40]
-    %   ([xshift=0.48\linewidth]frame.north west) -- % start 25% in
-    %   ([xshift=0.495\linewidth]frame.north west);  % end 25% before the right edge
   },
   arc=0mm,
   after skip=5mm,

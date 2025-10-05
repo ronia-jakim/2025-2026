@@ -287,7 +287,7 @@ $$\not\models\forall\;x\phi\to\phi(x/t)=\forall\;\exists\;y\;x\neq y\to \exists\
 \end{definition}
 
 \subsection{Dowodliwość}
-
+ 
 \begin{definition}{dowód formalny}{}
   Niech $X\subseteq\mathcal{F}_L$ będzie dowolnym podzbiorem formuł. 
 
@@ -313,7 +313,7 @@ $$\not\models\forall\;x\phi\to\phi(x/t)=\forall\;\exists\;y\;x\neq y\to \exists\
   Jeśli $\phi$ jest takie, że $\vdash\phi$, to $\phi$ nazywamy \buff{tezą} KRL.
 \end{definition}
 
-\begin{remark}{}{}
+\begin{remark}{}{skonczony dowodzi}
   $X\vdash \phi$ $\iff$ $\exists\;X_0\subseteq X$ skończony $X_0\vdash \phi$
 \end{remark}
 
@@ -399,62 +399,71 @@ Czyli $\models\phi\iff\vdash\phi$.
 
 W przeciwnym razie mówimy, że $X$ jest niesprzeczny.
 
-\begin{definition}{}{}
+\begin{definition}{zbiór zupełny, rozstrzygalny}{}
   \begin{enumerate}
-    \item $\Mm\models X\iff \forall\;\phi\in X\;\Mm\models\phi$ (\Mm jest modelem $X$)
-    \item $X$ jest zupełny $\iff$ $\forall$ zdania $\phi$ ($X\vdash \phi$ lub $x\vdash\neg\phi$)
-    \item $X$ jest rozstrzygalny $\iff$ istnieje algorytm rozstrzygający, czy $X\vdash\phi$
+    \item Powiemy, że \buff{\Mm{} jest modelem $X$}, oznaczane $\Mm\models X\iff (\forall\;\phi\in X)\;\Mm\models\phi$.
+    \item $X$ jest \buff{zupełny} $\iff (\forall\;\text{zdania }\phi)\;(X\vdash \phi\text{ lub } X\vdash \neg\phi$.
+    \item $X$ jest \buff{rozstrzygalny} $\iff$ istnieje algorytm rozstrzygający, czy $X\vdash\phi$. 
   \end{enumerate}
 \end{definition}
 
 \begin{example}[m]
-\item teoria $\Mm$ $\Th(\Mm):=\{\phi\;:\;M\models\phi\}$ jest niesprzeczna i zupełna
+\item \acc{Teoria struktury \Mm{}}, definiowana jako zbiór $\Th(\Mm):=\{\phi\;:\;M\models\phi\}$, jest niesprzeczna i zupełna.
 \item $\emptyset$ jest niesprzeczny
 \end{example}
 
 \begin{theorem}{G\"odela o istnieniu modelu}{}
-  Jeśli $S$ jest niesprzecznym zbiorem zdań, to $S$ ma model.
+  Jeśli $S$ jest niesprzecznym zbiorem zdań (równoważnie: formuł), to $S$ ma model.
 \end{theorem}
 
 \begin{proof}
-  (by Leon Henkin)
+  Przedstawimy dowód Leona Henkina dla przypadku, gdy $L$ i $S$ są przeliczalne. Ogólny dowód jest analogiczny, ale wymaga nieprzyjemnych fikołków kombinatorycznych na liczbach kardynalnych.
 
-  Dla przypadków, gdy $L$ i $S$ są przeliczalne, ogólny dowód jest bez większej idei, ale używa "ble ble kombinatoryczne z liczb kardynalnych".
+  Zacznijmy od powiększenia języka $L$ o nowe symbole
+  $$L'=L\cup\{c_n\;:\;n<\omega\}$$
+  i ponumerowania jego formuł postaci $\phi(x)$ (z co najwyżej jedną wolną zmienną $x$)
+  $$\{\phi_n\;:\;n<\omega\}$$
 
-  $L'=L\cup\{c_n\;:\;n\in\N\}$, gdzie $c_n$ to nowe w stosunku do $L$ symbole stałe
+  Zdefiniujmy pomocniczą rosnącą funkcję $f:\omega\to\omega$ taką, że $c_{f(n)}$ nie występuje w formułach $\phi_0(x)$, $\phi_1(x)$, ..., $\phi_n(x)$. Przy pomocy $f$ definiujemy rodzinę zbiorów
+  $$S_n:=S\cup\{\underbrace{(\exists\;x)\;\phi_i(x)\to\phi_i(c_{f(i)})}_{\text{aksjomat Henkina}}\;:\;i<n\}.$$
+  Mamy $S=S_0\subseteq S_1\subseteq ...$ i niech
+  $$S_\omega=\bigcup S_n$$
 
-  $\{\phi_n\;:\;n\in\N\}$ to numeracja formuł $\mathcal{F}_L(x)$ z co najwyżej jedną wolną zmienną $x$
+  \begin{fact}{}{}
+    Zbiór $S_\omega$ jest niesprzeczny.
+  \end{fact}
 
-  Niech $f:\omega\to\omega$ (czyli $\N\to\N$) rosnąca taka, że $c_{f(n)}$ nie występuje w formułach $\phi_0(x),...,\phi_n(x)$
+  \begin{proof}
+    Załóżmy nie wprost, że $S_\omega$ jest sprzeczny. Sprzeczność ta wynika ze skończonego podzbioru (patrz \ref{rm:skonczony dowodzi}), czyli istnieje $n$ takie, że $S_{n+1}$ jest sprzeczny. Wybierzmy najmniejsze takie $n$. Dla pewnego zdania $\alpha$ mamy
+    $$S_{n+1}\vdash\alpha\;\land\;\neg\alpha.$$
+    Zapiszmy $S_{n+1}$ jako
+    $$S_{n+1}:=S_n\cup\{\underbrace{(\exists\;x)\;\phi_n(x)\to\phi_n(c_{f(i)})}_{H}\},$$
+    w tedy z twierdzenia o dedukcji (\ref{th:tw dedukcja}) mamy
+    $$S_n\cup\{H\}\vdash \alpha\;\land\;\neg\alpha\quad\iff\quad S_n\vdash H\to\alpha\;\land\;\neg\alpha$$
+    Korzystając z aksjomatu \ref{A0} dla $(p\to(q\;\land\;\neg q))\to\neg p$ i Modus Ponens dostajemy
+    $$S_n\vdash \neg((\exists\;x)\;\phi_n(x)\to\phi_n(c_{f(n)}))$$
+    korzystając jeszcze raz z \ref{A0} ($\neg(p\to q)\to (p\;\land\;\neg q)$) oraz MP mamy
+    $$S_n\vdash (\exists\;x)\;\phi_n(x)\;\land\;\neg\pni_n(c_{f(n)})$$
+    z czego wnioskujemy, że
+    \begin{align*}
+      &S_n\vdash (\exists\;x)\;\phi_n(x)\\ 
+      &S_n\vdash \neg\phi_n(c_{f(n)})
+    \end{align*}
+    Wybieraliśmy funkcję $f$ tak, żeby symbol $c_{f(n)}$ nie występował w zdaniach $S_n$, więc możemy go zamienić na dowolny inny, np $y$, a następnie skorzystać z $\forall$-reguły by dostać
+    $$S_n\vdash \neg\phi_n(y)\implies S_n\vdash (\forall\;y)\;\neg\phi_n(y).$$
+    Dzięki \ref{A2} i faktowi, że $c_{f(n)}$ nie występowało nigdzie indziej w $\phi_n$ (w tym nie było nigdy wiązane przez kwantyfikatory), możemy zamienić
+    $$S_n\vdash (\forall\;y)\;\neg\phi_n(y)\to \neg\phi_n(y/x).$$
+    Korzystając z MP mamy
+    $$S_n\vdash \neg\phi_n(x),$$
+    a z $\forall$-reguły:
+    $$S_n\vdash (\forall\;x)\;\neg\phi_n(x)$$
+    co pokazuje, że $S_n$ jest sprzeczne, bo $S_n\vdash (\exists\;x)\;\phi_n(x)$.
+  \end{proof}
 
-  $S_n=S\cup\{\exists\;x\;\phi_i(x)\to\phi_i(x/c_{f(i)}\;:\;i<n\}$ (aksjomat postaci jaka w $\{\}$ nazywa się aksjomatem Henkina
 
-  $S=S_0\subseteq S_1\subseteq...$ to ciąg rosnący
-  
-  $S_\omega=\bigcup S_n$
 
-  FAKT: zbiór $S_\omega$ jest niesprzeczny
 
-  Dowód nie wprost: gdyby był sprzeczny, to sprzeczność wynikałaby ze skończonego podzbioru, czyli pewne $S_n$ jest sprzeczne, czyli możemy wybrać $n$ najmniejsze takie, że $S_{n+1}=S_n\cup\{\exists\;x\;\phi_n(x)\to\phi_n(x/c_{f(n)})\}$ jest sprzeczne
 
-  ponieważ $n$ jest najmniejsze, to $S_n$ nie jest sprzeczne
-
-  $H$ niech będzie zdaniem w $\{\}$
-
-  $$S_n\cup\{H\}\vdash \alpha\;\land\;\neg\alpha$$
-  dla pewnego $\alpha$
-  z tego wiemy, że
-  $$S_n\vdash(\exists\;x\;\phi_n(x)\to\phi_n(c_{f(n)})\to\alpha\;\land\;\neg\alpha$$
-  A0 daje nam, że 
-  $$S_n\vdash \neg(\exists\;x\;\phi_n(x)\to\phi_n(c_{f(n)}))$$
-  znowu korzystając z A0 dostajemy
-  $$S_n\vdash\exists\;x\;\phi_n(x)\;\land\;\neg\phi_n(c_{f(n)})$$
-  $$S_n\vdash\exists\;x\;\phi_n(x)\text{ i } \S_n\vdash\neg\phi_n(c_{f(n)})$$
-  w dowodzie po prawej od i $c_{f(n)}$ zastępujemy nową zmienną $y$
-
-  po tej zamianie powstaje dowód $S_n\vdash \neg\phi_n(y)$, korzystamy z $\forall$ żeby dostać $S_n\vdash\forall\;y\neq\phi_n(y)$ z A2 dla $t=x$ dostajemy $S_n\vdash\neg\phi_n(x)$, z $\forall$-reguły mamy $S_n\vdash\forall\;x\;\neg\phi_n(x)$, ale nadal prawdą jest, że $\S_n\vdash\exists\;x\;\phi_n(x)$
-
-  Mamy skońcozny dowód, że $S_\omega$ jest niesprzeczny
 
   Twierdzenie Lidenbauma(???) jeśli mamy niesprzeczny zbiór formuł/zdań to możemy go rozszerzyć do maksymalnego niesprzecznego zbioru formuł/zdań, który jest zupełny i niesprzeczny zbiór formuł/zdań
   

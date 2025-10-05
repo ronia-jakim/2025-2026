@@ -240,10 +240,10 @@
 \tcbuselibrary{breakable}
 \tcbuselibrary{skins}
 
-\tcbset{greenTHM/.style={
+\tcbset{theoremBoxTHM/.style n args={2}{
     fonttitle = \bfseries\large,
-    coltitle = green!50!black,
-    description color = green!50!black, 
+    coltitle = #1!50!black,
+    description color = #2!50!black,
     description font = \bfseries\large,
     colbacktitle = white, %green!40!black!75,
     breakable, 
@@ -260,92 +260,11 @@
     bottom=4mm,
     colback=white,
     frame hidden,
-    borderline={1pt}{0pt}{green!40},
+    borderline={1pt}{0pt}{#1!40},
     arc=0mm,
     after skip=5mm,
     before skip=5mm
-  }
-}
-
-\tcbset{orangeTHM/.style={
-    fonttitle = \bfseries\large,
-    coltitle = orange!60!black,
-    description color = orange!60!black, 
-    description font = \bfseries\large,
-    colbacktitle = white, %green!40!black!75,
-    breakable, 
-    enhanced,
-    attach boxed title to top left = {
-      xshift=0.5cm, 
-      yshift=-\tcboxedtitleheight/2
-    },
-    boxed title style = {
-      boxrule=0pt,
-      colframe=white
-    },
-    top=6mm,
-    bottom=4mm,
-    colback=white,
-    frame hidden,
-    borderline={1pt}{0pt}{orange!40}, 
-    arc=0mm,
-    before skip=5mm,
-    after skip=5mm
-  }
-}
-
-\tcbset{purpleTHM/.style={
-    fonttitle = \bfseries\large,
-    coltitle = purple!60!black,
-    description color = purple!60!black, 
-    description font = \bfseries\large,
-    colbacktitle = white, %green!40!black!75,
-    breakable, 
-    enhanced,
-    attach boxed title to top left = {
-      xshift=0.5cm, 
-      yshift=-\tcboxedtitleheight/2
-    },
-    boxed title style = {
-      boxrule=0pt,
-      colframe=white
-    },
-    top=6mm,
-    bottom=4mm,
-    colback=white,
-    frame hidden,
-    borderline={1pt}{0pt}{blue!40!purple!20}, 
-    arc=0mm,
-    before skip=5mm,
-    after skip=5mm
-  }
-}
-
-\tcbset{blueTHM/.style={
-    fonttitle = \bfseries\large,
-    coltitle = blue!60!black,
-    description color = blue!60!black, 
-    description font = \bfseries\large,
-    colbacktitle = white, %green!40!black!75,
-    breakable, 
-    enhanced,
-    attach boxed title to top left = {
-      xshift=0.5cm, 
-      yshift=-\tcboxedtitleheight/2
-    },
-    boxed title style = {
-      boxrule=0pt,
-      colframe=white
-    },
-    top=6mm,
-    bottom=4mm,
-    colback=white,
-    frame hidden,
-    borderline={1pt}{0pt}{blue!40}, 
-    arc=0mm,
-    before skip=5mm,
-    after skip=5mm
-  }
+  },
 }
 
 \def\deff{Definition}
@@ -359,44 +278,96 @@
 \NewTcbTheorem[
   auto counter, 
   number within=chapter
-]{definition}{\deff}{greenTHM}{def} 
+  ]{definition}{\deff}{ theoremBoxTHM={green}{green} }{def} 
 
 \NewTcbTheorem[
   use counter from=definition
-]{theorem}{\thmm}{orangeTHM}{th}
+  ]{theorem}{\thmm}{ theoremBoxTHM={orange}{orange} }{th}
 
 \NewTcbTheorem[
   use counter from=definition
-]{remark}{\rmm}{purpleTHM}{rm}
+  ]{remark}{\rmm}{ theoremBoxTHM={blue}{purple} }{rm}
 
 
 \NewTcbTheorem[
   use counter from=definition,
   crefname={lemma}{lemmas}
-]{lemma}{\lmm}{purpleTHM}{lmm}
-
+  ]{lemmmma}{\lmm}{ theoremBoxTHM={blue}{purple} }{lmm}
+\newenvironment{lemma}[2]{
+  \begin{lemmmma}{#1}{#2}
+}{
+  \end{lemmmma}
+}
 \NewTcbTheorem[
   use counter from=definition,
   crefname={conclusion}{conclusions}
-]{conc}{\wnn}{blueTHM}{con}
-
-\NewTcbTheorem[
-  use counter from=definition,
-  crefname={fact}{facts}
-]{fact}{\fc}{blueTHM}{fac}
-
+  ]{conc}{\wnn}{ theoremBoxTHM={blue}{purple} }{con}
 \newenvironment{conclusion}[2]{
   \begin{conc*}{#1}{#2}
   }{
   \end{conc*}
 }
 
+\NewTcbTheorem[
+  use counter from=definition,
+  crefname={facct}{facts}
+  ]{facct}{\fc}{ theoremBoxTHM={blue}{purple} }{fac}
+\newenvironment{fact}[2]{
+  \begin{facct}{#1}{#2}
+  }{
+    \end{facct}
+  }
+
+\RequirePackage{emoji}
+
+\newcounter{proofdepth}
+
+\def\dwd{Proof}
+\renewenvironment{proof}{
+  \renewenvironment{fact}[2]{
+    \begin{center}\begin{facct*}[width=0.8\linewidth, theoremBoxTHM={black}{black}]{##1}{##2}
+  }{
+    \end{facct*}\end{center}
+  }
+  \renewenvironment{lemma}[2]{
+    \begin{center}\begin{lemmmma*}[width=0.8\linewidth, theoremBoxTHM={black}{black}]{##1}{##2}
+  }{
+    \end{lemmmma*}\end{center}
+  }
+  \stepcounter{proofdepth}%
+  \ifnum\value{proofdepth}>1
+    % --- Nested proof style ---
+    \begin{center}
+    \begin{minipage}{0.85\linewidth} % make it narrower
+      {\bfseries\color{green!40!black} \dwd}$ $\newline
+    \else
+      {\bfseries\color{green!60!black} \dwd}$ $\newline
+    \fi
+}{
+  \ifnum\value{proofdepth}>1
+    \begin{flushright} \emoji{hatching-chick} \end{flushright}$ $\newline
+    \end{minipage}
+    \end{center}
+  \else
+    \begin{flushright} \emoji{peacock} \end{flushright}$ $\newline
+  \fi
+  \addtocounter{proofdepth}{-1}%
+}
+
+
+
+
 
 \NewTcbTheorem[
   use counter from=definition
 ]{proposition}{\propp}{orangeTHM}{prop}
 
-
+\tcbset{every box on layer 2/.append style={
+  late options/.style={
+    left=25pt,
+    right=25pt,
+  }
+}}
 
 \RequirePackage{xparse}
 
@@ -447,15 +418,6 @@
 }
 
 \RequirePackage{svg}
-
-\def\dwd{Proof}
-
-\RequirePackage{emoji}
-
-\renewenvironment{proof}{{\bfseries\color{green!60!black} \dwd}$ $\newline}{
-  \begin{flushright} \emoji{peacock} \end{flushright}$ $\newline
-}
-
 
 \RequirePackage{soul}
 
