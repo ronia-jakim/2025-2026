@@ -443,7 +443,7 @@ W przeciwnym razie mówimy, że $X$ jest niesprzeczny.
     Korzystając z aksjomatu \ref{A0} dla $(p\to(q\;\land\;\neg q))\to\neg p$ i Modus Ponens dostajemy
     $$S_n\vdash \neg((\exists\;x)\;\phi_n(x)\to\phi_n(c_{f(n)}))$$
     korzystając jeszcze raz z \ref{A0} ($\neg(p\to q)\to (p\;\land\;\neg q)$) oraz MP mamy
-    $$S_n\vdash (\exists\;x)\;\phi_n(x)\;\land\;\neg\pni_n(c_{f(n)})$$
+    $$S_n\vdash (\exists\;x)\;\phi_n(x)\;\land\;\neg\phi_n(c_{f(n)})$$
     z czego wnioskujemy, że
     \begin{align*}
       &S_n\vdash (\exists\;x)\;\phi_n(x)\\ 
@@ -486,6 +486,8 @@ W przeciwnym razie mówimy, że $X$ jest niesprzeczny.
   {\color{red}TUTAJ MAM DOŚĆ NEWELA}
 \end{proof}
 
+
+Aksjomat Henkina mówi, że jeśli $\Mm\models (\exists\;x)\;\phi(x)$ to istnieje $c\in \Mm$ takie, że $\Mm\models(\exists\;x)\;\phi(x)\to\phi(c)$.
 
 
 
