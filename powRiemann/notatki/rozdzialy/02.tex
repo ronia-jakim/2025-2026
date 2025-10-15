@@ -1,0 +1,62 @@
+Ustalmy język $L$, niech $M$ i $N$ będą $L$-strukturami.
+
+\begin{definition}{}{}
+  \begin{enumerate}
+    \item $M$ i $N$ są równoważne, $M\equiv N$, gdy dla każdego zdania $\phi$ $M\models\phi\iff N\models\phi$, co jest równoważne $\Th(M)=\Th(N)$
+    \item $M\subseteq N$ jest podstrukturą (podmodelem) modelu $N$, gdy $|M|\subseteq|N|$ oraz
+      \begin{itemize}
+        \item dla każdego indeksu $i$ $\uu{f}_i^M=\uu{f}_i^N|_M$, czyli interpretacja symbolu $\uu f_i$ w $M$ jest interpretacją $\uu f_i$ w $N$ ograniczoną do $M$
+        \item analogicznie dla relacji i stałych
+      \end{itemize}
+    \item $g:M\xrightarrow{\cong}N$ jest izomorfizmem struktur, gdy $g:|M|\to|N|$ jest bijekcją oraz
+      \begin{itemize}
+        \item dla wszystkich $\overline{a}\subseteq M$ zachodzi $M\models P_i(\overline{a})\iff N\models P_i(g(\overline{a}))$
+        \item dla $\overline{a}\subseteq M$ i $b\in M$ zachodzi $M\models f_i(\overline{a})=b\iff N\models f_i(\overline{a})=b$
+        \item $M\models c_i=b\iff N\models c_i=g(b)$
+      \end{itemize}
+    \item $M\cong N$ są izomorficzne gdy istnieje między nimi izomorfizm
+    \item $M\prec N$ jest elementarną podstrukturą, gdy $M\subseteq N$ i dla każdej formuły $\phi(\overline{x})\in F_i$ i każdej krotki $\overline{a}$ mamy $M\models \phi(\overline{a})\iff N\models\phi(\overline{a})$
+    \item $f:\xrightarrow{\equiv}N$ gdy $f:M\xrightarrow{\cong}N$ i $f(M)\prec N$
+  \end{enumerate}
+\end{definition}
+
+"Istnieje zbiór, który nie jest ani równoliczby z $\N$ ani z $\R$" jest zdaniem II rzędu, bo zależy od teorii mnogości jaka pod nim leży.
+
+\begin{theorem}{Test Tarskiego-Vaughta}{} 
+  Załóżmy, że $A\subseteq M$. Wtedy $A$ jest uniwersum elementarnej podstruktury M wtedy i tylko wtedy gdy 
+  \begin{itemize}
+    \item dla każdych $\phi(x, \overline{y})\in F_L$ oraz $\overline{a}\subseteq A$ jeśli $M\models(\exists\;x)\;\phi(x,\overline{a})$ to $M\models \phi(b, \overline{a})$ dla pewnego $b\in A$
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  $\implies$ jest proste i pozostawiamy jako ćwiczenie
+
+  $\impliedby$
+
+  \begin{enumerate}[label=\alph*)]
+    \item $A$ jest uniwersum podstruktury $M$, tzn. dla każdego $\uu f_i\in L$ i $\uu c_j\in L$ takich, 
+      {\large\color{red}JA TUTAJ NIE MYŚLĘ}
+    \item $N$ podstruktura $M$ taka, że $|N|=A$
+  \end{enumerate}
+\end{proof}
+
+Wniosek:
+\begin{theorem}{L\"owenheima-Skolema}{}
+  \begin{enumerate}
+    \item (dolne) $A\subseteq M$ to istnieje $N\prec M$, $A\subseteq N$ taka, że $||N||=|A|+|L|$ ($|L|:=|F_L|$)
+    \item (górne) istnieją elementarne rozszerzenia $N\succ M$ dowolnej mocy ($||N||$)
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  nie chce mi sie sluchac dowodu
+\end{proof}
+
+paradoks L\"owenheima-Skolema: nie da się wyrazić nierpzeliczalności w logice I rzędu
+
+definicja gier
+
+
+
+

@@ -1,0 +1,86 @@
+%! TeX program = lualatex
+\documentclass[twoside, a4paper, 12pt]{book}
+
+\title{Logika R}
+\author{\color{subtext1}Weronika Jakimowicz}
+\date{Zima 2025/26}
+
+\usepackage[pl, dates]{../../template}
+
+\usepackage{halloweenmath}
+
+\let\oldamalg\amalg
+\newcommand{\uu}[1]{\underline{#1}}
+\newcommand{\Mm}{\ensuremath{\mathfrak{M}}}
+\newcommand{\lr}{\leftrightarrow}
+
+\DeclareMathOperator{\Cn}{Cn}
+\DeclareMathOperator{\Th}{Th}
+
+\newtcolorbox{KONWENCJA}{
+  title={Konwencja},
+  fonttitle = \bfseries,
+  coltitle = blue!40!purple!40!black,
+  description color = blue!40!purple!40!black, 
+  description font = \bfseries\large,
+  colbacktitle = white, %green!40!black!75,
+  breakable, 
+  enhanced,
+  attach boxed title to top left = {
+    xshift=0.5cm, 
+    yshift=-\tcboxedtitleheight/2
+  },
+  boxed title style = {
+    boxrule=0pt,
+    colframe=white
+  },
+  top=3mm,
+  bottom=4mm,
+  colback=white,
+  frame hidden,
+  borderline west = {1pt}{0pt}{purple!40!blue!40},
+  % borderline north = {1pt}{0pt}{purple!40!blue!40},
+  borderline south = {1pt}{0pt}{purple!40!blue!40},
+  overlay={%
+    \draw[line width=1pt, purple!40!blue!40]
+      ([xshift=0]frame.north west) -- % start 25% in
+      ([xshift=0.03\linewidth]frame.north west);  % end 25% before the right edge
+
+    \draw[line width=1pt, purple!40!blue!40]
+      ([xshift=0.186\linewidth]frame.north west) -- % start 25% in
+      ([xshift=0.3\linewidth]frame.north west);  % end 25% before the right edge
+
+    \filldraw[purple!40!blue!40] ([xshift=0.3\linewidth]frame.north west) circle (1pt);
+    \filldraw[purple!40!blue!40] ([xshift=0.31\linewidth]frame.north west) circle (0.8pt);
+    \filldraw[purple!40!blue!40] ([xshift=0.32\linewidth]frame.north west) circle (0.4pt);
+  },
+  arc=0mm,
+  after skip=5mm,
+  before skip=5mm,
+  width=0.9\textwidth
+}
+
+\newenvironment{konwencja}{
+    \begin{center}
+    \begin{KONWENCJA}{}{}
+  }{
+    \end{KONWENCJA}
+    \end{center}
+  }
+
+\begin{document}
+\frontmatter 
+\maketitle
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\tableofcontents
+\mainmatter
+
+\pagestyle{fancy}
+
+\include{rozdzialy/01}
+
+% \include{rozdzialy/02}
+  
+\end{document}
