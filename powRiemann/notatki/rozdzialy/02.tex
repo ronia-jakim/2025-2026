@@ -1,62 +1,115 @@
-Ustalmy język $L$, niech $M$ i $N$ będą $L$-strukturami.
+\section{22.10.2025}{}
+
+\begin{example}[m]
+  \item Jak wygląda zbiór zer wielomianu $y^2-x$ w $\C P^2$? Najpierw musimy ten wielomian ujednorodnić.
+    $$\Sigma=\{[x:y:z]\;:\;y^2-xz=0\}$$
+    Wstawiając w kolejno $x$, $y$ i $z$ wartość $1$ dostajemy powierzchnie w $\C^2$ (spełnione są założenia twierdzenia o funkcji uwikłanej).
+  \item Zera wielomianu $y^2-p(x)$, gdzie $p(x)\in\C[x]$ i $d=\deg(p)>3$.
+    Wersja ujednorodniona to
+    $$y^{2-d}-\sum_{k=0}^da_kx^kz^{d-k}.$$
+    $y^2-p(x)=0$ zadaje w $\C^2$ powierzchnię, o ile $p$ ma jednorodne pierwiastki. 
+
+    Punkty w $\C P^2$ dla których $z=0$ to $-a_dx^d=0$. Jest w $\Sigma\subseteq \C P^2$ jeden taki punkt: $[0:1:0]$.
+
+    W mapie $y=1$ mamy zera wielomianu
+    $$q(x,z)=z^{d-2}-\sum a_kx^kz^{d-k}=0$$
+    punktowi $[0:1:0]$ w tej mapie odpowiada punkt $(0,0)$. Ale $q_x(0,0)=q_z(0,0)=0$. Dziś będziemy w tym przypadku konstruować nieosobliwą powierzchnię Riemanna.
+\end{example}
+
+Niech $p(x,y)\in\C[x,y]$ będzie nierozkładalny (i różny od $ax+b$).
+$$p(x,y)=a_0(x)y^n+a_1(x)y^{n-1}+...+a_n(x),$$
+gdzie $a_i(x)\in\C[x]$.
+
+Zbiór $S_1=\{x\in \C\;:\;(\exists\;y\in\C)\;p(x,y)=0=p_y(x,y)\}$
+jest skończony. Podobnie $S_0=\{x\in\C\;:\;a_0(x)=0\}$. Czyli $S=S_0\cup S_1\cup\{\infty\}$ jest skończonym podzbiorem $\overline{\C}$.
+$$pr_1:\C^2\to\C$$
+$$Reg:=Z(p)\cap pr_1^{-1}(\overline{\C}-S)$$
+będzie obrazek
+
+\begin{fact}{}{}
+  $\Pi=pr_1|_{Reg}:Reg\to\overline{\C}-S$ jest $n$-krotnym nakryciem.
+\end{fact}
 
 \begin{definition}{}{}
-  \begin{enumerate}
-    \item $M$ i $N$ są równoważne, $M\equiv N$, gdy dla każdego zdania $\phi$ $M\models\phi\iff N\models\phi$, co jest równoważne $\Th(M)=\Th(N)$
-    \item $M\subseteq N$ jest podstrukturą (podmodelem) modelu $N$, gdy $|M|\subseteq|N|$ oraz
-      \begin{itemize}
-        \item dla każdego indeksu $i$ $\uu{f}_i^M=\uu{f}_i^N|_M$, czyli interpretacja symbolu $\uu f_i$ w $M$ jest interpretacją $\uu f_i$ w $N$ ograniczoną do $M$
-        \item analogicznie dla relacji i stałych
-      \end{itemize}
-    \item $g:M\xrightarrow{\cong}N$ jest izomorfizmem struktur, gdy $g:|M|\to|N|$ jest bijekcją oraz
-      \begin{itemize}
-        \item dla wszystkich $\overline{a}\subseteq M$ zachodzi $M\models P_i(\overline{a})\iff N\models P_i(g(\overline{a}))$
-        \item dla $\overline{a}\subseteq M$ i $b\in M$ zachodzi $M\models f_i(\overline{a})=b\iff N\models f_i(\overline{a})=b$
-        \item $M\models c_i=b\iff N\models c_i=g(b)$
-      \end{itemize}
-    \item $M\cong N$ są izomorficzne gdy istnieje między nimi izomorfizm
-    \item $M\prec N$ jest elementarną podstrukturą, gdy $M\subseteq N$ i dla każdej formuły $\phi(\overline{x})\in F_i$ i każdej krotki $\overline{a}$ mamy $M\models \phi(\overline{a})\iff N\models\phi(\overline{a})$
-    \item $f:\xrightarrow{\equiv}N$ gdy $f:M\xrightarrow{\cong}N$ i $f(M)\prec N$
-  \end{enumerate}
+  tutaj można nakrycia definiować
 \end{definition}
 
-"Istnieje zbiór, który nie jest ani równoliczby z $\N$ ani z $\R$" jest zdaniem II rzędu, bo zależy od teorii mnogości jaka pod nim leży.
+\begin{example}[m]
+  \item $\R^1\to S^1$
+  \item $S^1\to S^1$
+  \item $\C\to\C/\Z[i]$
+  \item $exp:\C\to\C-\{0\}$
+  \item $B(0, r^{1/k})-\{0\}\to B(0,r)-\{0\}$ przez $z\mapsto z^k$
+\end{example}
 
-\begin{theorem}{Test Tarskiego-Vaughta}{} 
-  Załóżmy, że $A\subseteq M$. Wtedy $A$ jest uniwersum elementarnej podstruktury M wtedy i tylko wtedy gdy 
-  \begin{itemize}
-    \item dla każdych $\phi(x, \overline{y})\in F_L$ oraz $\overline{a}\subseteq A$ jeśli $M\models(\exists\;x)\;\phi(x,\overline{a})$ to $M\models \phi(b, \overline{a})$ dla pewnego $b\in A$
-  \end{itemize}
-\end{theorem}
+\begin{example}
+  antyprzykład: $\pi:O_\C\to \C$ jest lokalnym homeomorfizmem
+
+  $\pi^{-1}(B(0,\epsilon))$ ma składową spójną
+  $$\{\underline{(\frac{1}{z})}_w\;:\;w\in B(0,\epsilon)-\{0\}\}=U$$
+  $\pi|_ULU\to B(0,\epsilon)$ nie jest homeomorfizmem
+
+  rysunek?
+\end{example}
+
+\begin{fact}{}{}
+  $\Pi:Reg\to \overline{\C}-S$ est $n$-krotnym nakryciem
+\end{fact}
 
 \begin{proof}
-  $\implies$ jest proste i pozostawiamy jako ćwiczenie
+  Niech $x_0\in\overline{\C}-S$ i produkujemy otoczenie żeby się zgadzało.
 
-  $\impliedby$
+  $$\pi^{-1}(x_0)=\{(x_0, y)\;:\;p(x_0,y)=0\},$$
+  gdzie $p(x_0, y)$ jest wielomianem zmiennej $y$ stopnia $n$ o pojedynczych pierwiastkach $y_1,..., y_n\in\C$, więc $|\pi^{-1}(x_0)|=n$.
 
-  \begin{enumerate}[label=\alph*)]
-    \item $A$ jest uniwersum podstruktury $M$, tzn. dla każdego $\uu f_i\in L$ i $\uu c_j\in L$ takich, 
-      {\large\color{red}JA TUTAJ NIE MYŚLĘ}
-    \item $N$ podstruktura $M$ taka, że $|N|=A$
-  \end{enumerate}
+  Wokół każdego $(x_0, y_i)$ zbiór $Reg$ jest wykresem funkcji
+
+  {\color{red}
+    oj coś tutaj skipnęłam z $D$ hehe
+    jest w zdjęciu
+  }
+
+  Niech $x_1\in D$. Wtedy rozwiązaniami równania $p(x_1, y)=0$ są $y_1(x_1), y_2(x_1),..., y_n(x_1)$ są parami różne i jest ich dokładnie $n$, czyli stopień $p(x_1, y)$ - więc to są wszystkie rozwiązania. Stąd $\pi^{-1}(x_1)\subseteq\bigcup\widetilde{D_i}$.
 \end{proof}
 
-Wniosek:
-\begin{theorem}{L\"owenheima-Skolema}{}
+Niech $s\in S$. Rozważmy $B(s, \epsilon)$ - koło wokół $s$ - rozłączne z $S-\{s\}$. Niech $B^*(s)=B(s, \epsilon)-\{s\}$ (małe koło wokół $s$ nakłóte w $s$). Wtedy $\pi:\pi^{-1}(B*(s))\to B*(s)$ jest nakryciem (być może niespójnym). 
+
+Niech $B_j*(s)$ będzie składową spójną tego przeciwobrazu.
+diagram boże jak mi sie dzisiaj nie chce pisac
+
+\begin{lemma}{nakryciowy}{}
+  Istnieje homeomorfizm $f_{s,j}$ zamykający diagram
+
+  Ten $f_{s,j}$ jest biholomorfizmem, bo $\pi$, $z\mapsto z^k$ są lokalnymi boholomorfizmami
+\end{lemma}
+
+o jesuuu obrazeeeeeeeeeek
+
+Dla każdego $B_j*(s)$ dokładamy punkcik $\hat{s_j}$. $f_{s,j}$ rozszerzamy deklarując $f_{s,j}(\hat{s_j})$ i dostajemy mapę $B_j*(s)\cup\{\hat{s_j})=:B_j(s)\to B(0, \epsilon^{1/k})$.
+
+W ten sposób zbudowaliśmy tzw. powierzchnię Riemanna $\Sigma(p)\supseteq Reg$ funkcji algebracznej określonej przez $p$.
+
+\begin{theorem}{}{}
   \begin{enumerate}
-    \item (dolne) $A\subseteq M$ to istnieje $N\prec M$, $A\subseteq N$ taka, że $||N||=|A|+|L|$ ($|L|:=|F_L|$)
-    \item (górne) istnieją elementarne rozszerzenia $N\succ M$ dowolnej mocy ($||N||$)
+    \item $\Sigma(p)$ jest zwarta
+    \item odwzorowanie $Reeg\ni (x,y)\mapsto y$ określa meromorficzną funkcję na $\Sigma(p)$
+    \item $Reg$ jest spójny
+    \item Niech $Z_{proj}(p)$ - projektywne uzwarcenie, czyli zbiór zer ujednorodnionego $p$
+
+      Wtedy włożenie $Reg\hookrightarrow Z_{proj}(p)$ rozszerza się do holomorficznej surjekcji $\Sigma(p)\to Z_{proj}(p)$.
   \end{enumerate}
 \end{theorem}
 
+Tutaj przykład i obrazek
+
 \begin{proof}
-  nie chce mi sie sluchac dowodu
+  \begin{enumerate}
+    \item Pokryjemy $\Sigma(p)$ skończoną liczbą domkniętych dysków. Wokół każdego $s\in S$ wybieramy mały domknięty dysk $D_s$, którego przeciwobraz w $\Sigma(p)$ to skończona suma domkniętych dysków $D_j(s)$ - domknięte otoczenie $\hat{s_j}$.
+
+      Niech $V=\overline{\C}-\bigcup_{s\in S}D(s)$, wtedy $\overline{V}$ jest zwartym podzbiorem $\overline{\C}-S$. Dla każdego $x\in\overline{V}$ wybieramy dysk $D(x)\subseteq\overline{\C}-S$ prawidłowo nakryty
+      
+      kolejne zdjęcie
+  \end{enumerate}
 \end{proof}
-
-paradoks L\"owenheima-Skolema: nie da się wyrazić nierpzeliczalności w logice I rzędu
-
-definicja gier
-
-
 
 
