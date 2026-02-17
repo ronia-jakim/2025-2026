@@ -1,43 +1,57 @@
 %! TeX program = lualatex
-\documentclass[twoside, a4paper, 12pt]{book}
+% \documentclass[twoside, a4paper, 12pt]{book}
+\documentclass[a4paper, 12pt]{article}
 
 \title{Latimer-MacDuffy i geometria hiperboliczna}
 \author{\color{subtext1}Weronika Jakimowicz}
 \date{2026}
 
-\usepackage[pl, dates]{../template}
-
-\usepackage{halloweenmath}
-
-\let\oldamalg\amalg
-\newcommand{\uu}[1]{\underline{#1}}
-\newcommand{\Mm}{\ensuremath{\mathfrak{M}}}
-\newcommand{\lr}{\leftrightarrow}
-
-\DeclareMathOperator{\Cn}{Cn}
-\DeclareMathOperator{\Th}{Th}
-
-\newenvironment{konwencja}{
-    \begin{center}
-    \begin{KONWENCJA}{}{}
-  }{
-    \end{KONWENCJA}
-    \end{center}
-  }
+\input{preamble.tex}
 
 \begin{document}
-\frontmatter 
 \maketitle
 \thispagestyle{empty}
-\setcounter{page}{0}
 
-\tableofcontents
-\mainmatter
+\section{Model płaszczyzny hiperbolicznej}
 
-\pagestyle{fancy}
+górna półpłaszczyzna zespolona $H=\{z\in\C\;:\;\Im(z)\geq0\}$
 
-\section{Twierdzenie Latimer-MacDuffy}
+mamy formę kwadratową
+$$ax^2+bxy+cy^2$$
+czyli macierz
+$$\begin{bmatrix}
+  a & \frac{b}{2} \\ 
+  \frac{b}{2} & c
+\end{bmatrix}$$
+z wielomianem charakterystycznym
+$$t^2+(a+c)t+(ac-\frac{b^2}{4})$$
+ta macierz ma wartości własne - pytanie ile rzeczywistych
+
+wypadałoby przypomnieć mapping class group i torusika?
+
+% to się wogóle nazywa conic section?
 
 
-  
+elipsa o objętości $1$ i środku $0$:
+$$ax^2+bxy+cy^2=1$$
+tu nie jestem pewna co zrobić 
+no potrafię to zmienić na $x^2+y^2=0$ bo jak przerzucę $1$ to będę musiała przy reparametryzacji podoklejać $i$
+
+
+para prostych przechodzących przez $0$:
+$$0=(x-ay)(x-by)=x^2-(a+b)xy+aby^2$$
+to potrafię zmienić tak, żeby było
+$$0=(x'-y')(x'+y')$$
+na obrazku widać
+
+
+prosta podwójna:
+$$0=(x-ay)^2=x^2-2axy+a^2y^2$$
+tutaj faktycznie $(x,y)$ oraz $(-x, -y)$ daje to samo i wogóle skalowanie mi nic nie zmienia jak na $\R P^2$
+
+
+
+jeśli mam elipsę
+
+
 \end{document}
