@@ -1,0 +1,43 @@
+%! TeX program = lualatex
+\documentclass[twoside, a4paper, 12pt]{book}
+
+\title{Latimer-MacDuffy i geometria hiperboliczna}
+\author{\color{subtext1}Weronika Jakimowicz}
+\date{2026}
+
+\usepackage[pl, dates]{../template}
+
+\usepackage{halloweenmath}
+
+\let\oldamalg\amalg
+\newcommand{\uu}[1]{\underline{#1}}
+\newcommand{\Mm}{\ensuremath{\mathfrak{M}}}
+\newcommand{\lr}{\leftrightarrow}
+
+\DeclareMathOperator{\Cn}{Cn}
+\DeclareMathOperator{\Th}{Th}
+
+\newenvironment{konwencja}{
+    \begin{center}
+    \begin{KONWENCJA}{}{}
+  }{
+    \end{KONWENCJA}
+    \end{center}
+  }
+
+\begin{document}
+\frontmatter 
+\maketitle
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\tableofcontents
+\mainmatter
+
+\pagestyle{fancy}
+
+\section{Twierdzenie Latimer-MacDuffy}
+
+
+  
+\end{document}
