@@ -2,7 +2,7 @@
 % \documentclass[twoside, a4paper, 12pt]{book}
 \documentclass[a4paper, 12pt]{article}
 
-\title{Latimer-MacDuffy i geometria hiperboliczna}
+\title{Hiperbole tańczą, tańczą hiperbole}
 \author{\color{subtext1}Weronika Jakimowicz}
 \date{2026}
 
@@ -12,46 +12,149 @@
 \maketitle
 \thispagestyle{empty}
 
-\section{Model płaszczyzny hiperbolicznej}
+Badanie form kwadratowych -> ciekawe pytanie z teorii liczb. Nie umiem pisać wstępóóóów.
 
-górna półpłaszczyzna zespolona $H=\{z\in\C\;:\;\Im(z)\geq0\}$
+\section{Przestrzeń form kwadratowych}
 
-mamy formę kwadratową
-$$ax^2+bxy+cy^2$$
-czyli macierz
-$$\begin{bmatrix}
+Interesują nas formy kwadratowe na $\R^2$ z ustaloną bazą. Każda taka forma zapisuje się jako
+$$Q(x,y)=ax^2+bxy+cy^2,$$
+przypisujemy jej więc symetryczną macierz
+$$A_Q=\begin{bmatrix}
   a & \frac{b}{2} \\ 
   \frac{b}{2} & c
 \end{bmatrix}$$
-z wielomianem charakterystycznym
-$$t^2+(a+c)t+(ac-\frac{b^2}{4})$$
-ta macierz ma wartości własne - pytanie ile rzeczywistych
+Przestrzeń niezdegenerowanych form kwadratowych jest trójwymiarowa, ale możemy uprościć jej badanie przez pytanie o przestrzeń
+$$ax^2+bxy+cy^2=0,$$
+która jest niezmiennicza na skalowanie. Innymi słowy interesuje nas projektywizacja przestrzeni niezdegenerowanych form kwadratowych, czyli $\R P^2$.
 
-wypadałoby przypomnieć mapping class group i torusika?
+Pierwszym niezmiennikiem formy kwadratowej $Q$ jest wyznacznik jej macierzy $A_Q$ z dokładnością do skalowania, $\det(A_Q)=ac-\frac{b^2}{4}$. Pojawia się pierwsza klasyfikacja rzeczywistych form kwadratowych:
+\begin{enumerate}
+  \item $\det(A_Q)>0$, wtedy dyskryminant równania $ax^2+bxy+cy^2=0$ jest ujemny, więc nie posiada ono rozwiązań rzeczywistych poza $(0,0)$. Dostajemy więc równanie postaci $(x-zy)(x-\overline{z}y)=0$ dla pewnej liczby zespolonej $z$. 
+  \item $\det(A_Q)=0$, wtedy dyskryminant równania również jest zerowy więc jest jedno podwójne równanie. Dostajemy wtedy tak zwaną \emph{podwójną prostą} $(x-ay)^2=0$.
+  \item $\det(A_Q)<0$, wtedy dyskryminant równania jest dodatni, widzimy więc dwie liniowo niezależne proste $(x-ay)(x-by)=0$.
+\end{enumerate}
 
-% to się wogóle nazywa conic section?
+Geometrycznie formy o zerowym wyznaczniku definiują w $\R P^2$ krzywą
+$$b^2-4ac=0$$
+która jest okręgiem. Zmieniamy współrzędne na $b=2x$, $a=y+z$ oraz $c=z-y$ i otrzymujemy równanie okręgu o promieniu $z$
+$$4x^2=4(z^2-y^2)\to x^2+y^2=z^2.$$
+Jego wnętrze, topologicznie dysk, to formy spełniające $\det(A_Q)>0$. Możemy na tej przestrzeni określić odległość między dwoma punktami $A$, $B$ jako dwustosunek między punktami $P$ i $Q$ będącymi punktami przecięcia prostej przechodzącej przez $A$ i $B$ z krzywą $\det(A_Q)=0$. Ta konstrukcja to dokładnie model Kleine'a płaszczyzny hiperbolicznej.
 
+\section{Klasyfikowanie form przy pomocy płaszczyzny hiperbolicznej}
 
-elipsa o objętości $1$ i środku $0$:
-$$ax^2+bxy+cy^2=1$$
-tu nie jestem pewna co zrobić 
-no potrafię to zmienić na $x^2+y^2=0$ bo jak przerzucę $1$ to będę musiała przy reparametryzacji podoklejać $i$
-
-
-para prostych przechodzących przez $0$:
-$$0=(x-ay)(x-by)=x^2-(a+b)xy+aby^2$$
-to potrafię zmienić tak, żeby było
-$$0=(x'-y')(x'+y')$$
-na obrazku widać
-
-
-prosta podwójna:
-$$0=(x-ay)^2=x^2-2axy+a^2y^2$$
-tutaj faktycznie $(x,y)$ oraz $(-x, -y)$ daje to samo i wogóle skalowanie mi nic nie zmienia jak na $\R P^2$
+Górna półpłaszczyzna z metryką $ds^2=\frac{dx^2+dy^2}{y^2}$ jest modelem płaszczyzny hiperbolicznej Poincarego. Wygodnie jest o niej myśleć jako o górnej półpłaszczyźnie zespolonej $H^2$ z grupą automorfizmów
+$$\Aut(H^2)=\{z\mapsto \frac{az+b}{cz+d}\;:\;a,b,c,d\in \R\}\cong PSL(2, \R).$$
 
 
+Niech $Q(x,y)=ax^2+bxy+cy^2$ będzie formą z obszaru ograniczonego przez okrąg $\det(A_Q)=0$. Wtedy $Q(x,y)=(x-zy)(x-\overline{z}y)$ dla pewnej liczby zespolonej $z$ takiej, że $\Im(z)>0$.
 
-jeśli mam elipsę
+\begin{lemma}
+  Dla formy kwadratowej $Q$ i liczby zespolonej $z_0$ jak wyżej istnieje dokładnie jedna liczba 
+  $$z_1\in \{z\;:\;-\frac{1}{2}< \Re(z)\leq \frac{1}{2}\;\land\;|z|\geq1\}=P$$
+  taka że istnieje element $M\in PSL(2, \Z)$ taki, że $z_0=Mz_1$.
+\end{lemma}
 
+\begin{proof}
+  Niech $n=\lfloor\Re(z_0)\rfloor$. Rozważmy działanie macierzy 
+  $$M_n=\begin{bmatrix}1&-n\\0&1\end{bmatrix}.$$
+  Wtedy oczywiście $-\frac{1}{2}<\Re(M_n(z_0))\leq\frac{1}{2}$. Może się jednak przydarzyć, że $\Im(M_n(z_0))$ jest na tyle małe, że $|z_0|< 1$. Rozważamy wtedy macierz 
+  $$A=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$$
+  wtedy punkt $z_0'=A(z_0)=\frac{-1}{z_0}$ leży poza okręgiem jednostkowym. Powtarzając te dwie operacje w skończenie wielu krokach trafimy do punktu w $P$.
+
+  Dla jedyności wystarczy pokazać, że jeśli $z_1$, $z_2\in P$ to nie istnieje macierz $M\in PSL(2, \Z)-\{Id\}$ taka, że $z_1=Mz_2$. Załóżmy nie wprost, że istnieje
+  $$M=\begin{bmatrix}a & b\\c&d\end{bmatrix}\in PSL(2, Z)$$
+  takie, że $z_1=Mz_2$. Bez starty ogólności $\Im(z_1)\geq\Im(z_2)$. Wtedy 
+  $$\Im(Mz_1)=\frac{\Im(z_1)}{|cz_1+d|^2}$$
+  czyli $|cz_1+d|\leq 1$. Wtedy
+  \begin{itemize}
+    \item $c=0\implies d=1\implies a=1\implies Mz_1=z_1+b\implies b=0\implies M=Id\implies z_1=z_2$ co daje sprzeczność
+    \item $c=\pm1\implies |z_1+d|\leq 1$. Jeśli $d=0$ to wtedy $|z_1|\leq 1$ i $z_1\not\in P$ co jest sprzeczne. Jeśli $d=\pm 1$ to $|z_1+d|^2=|z_1|+d^2+2x_1d>|z_1|^2+d^2-|d|>|z_1|^2>1$.
+    \item $|c|\geq2\implies |cz_1+d|^2\geq |cz_1|^2=|c|^2|z_1|^2\geq|c|\geq 2$.
+  \end{itemize}
+  W takim razie $z_1=z_2$ i $M=Id$.
+\end{proof}
+
+W takim razie dobrze określonym niezmiennikiem formy $Q$ takiej, że $\det(A_Q)>0$ jest liczba zespolona $z\in P$. Powstaje pytanie czy istnieje analogiczny sposób klasyfikacji form o ujemnym wyznaczniku macierzy?
+
+Dla form o ujemnym wyznaczniku, czyli lądujących poza okręgiem $\det(A_Q)=0$, możemy poprowadzić dwie proste styczne do tego okręgu przechodzące przez interesującą nas formę. To daje dwa punkty na okręgu, które możemy połączyć cięciwą w okręgu. Interpretuje się to jako geodezyjna na płaszczyźnie hiperbolicznej, czyli półokrąg oparty na osi rzeczywistej.
+
+PRZYKŁAD
+
+Rozważam $x^2+4xy+y^2$, czyli punkt $(1, 4, 1)$. Szukam prostych w $\R P^2$, dostaję
+$$(1+t(2+\sqrt{3});4+t;1)$$
+$$(1+t(2-\sqrt{3});4+t;1)$$
+pierwsza daje formę $(y-(2+\sqrt{3})x)^2$, druga to $(y-(2-\sqrt{3})x)^2$
+
+cyk mam okrąg
+$$(x-2)^2+y^2=3\implies |z-2|=\sqrt{3}$$
+i w sumie to utknęłam, bo dla $x=\frac{1}{2}$ idealnie przecinam okrąg $|z|=1$
+
+czuję tutaj ułamki łańcuchowe? akurat dla $2+\sqrt{3}$ ląduję po inwersji w $\sqrt{3}-2$ i po jeszcze jednej wracam do $2+\sqrt{3}$ i nie robię po drodze odbijania o $x=\sqrt{1}{2}$
+
+
+Jak mam $(1;3;1)$ to punkty na $OX$ to
+dobra, mam
+$(1+t(3\pm\sqrt{5});3+2t;1)$
+trzeba rozwiązać dla jakich $t$ spełnia $b^2-4a=0$
+
+
+
+
+
+% Formy kwadratowe na płaszczyźnie zapisane w pewnej ustalonej bazie tworzą przestrzeń trójwymiarową:
+% $$ax^2+bxy+cy^2\mapsto (a,b,c),$$
+% ale ponieważ interesują nas rozwiązania równania
+% $$ax^2+bxy+cy^2=0$$
+% to możemy przejść do projektywizacji przestrzeni form kwadratowych, czyli w przypadku form o współczynnikach rzeczywistych - przestrzeni $\R P^2$.
+%
+% Każdej takiej formie możemy przypisujemy macierz
+% $$\begin{bmatrix}
+%   a & \frac{b}{2} \\ 
+%   \frac{b}{2} & c
+% \end{bmatrix}$$
+%
+%
+%
+% \section{Model płaszczyzny hiperbolicznej}
+%
+% górna półpłaszczyzna zespolona $H=\{z\in\C\;:\;\Im(z)\geq0\}$
+%
+% mamy formę kwadratową
+% $$ax^2+bxy+cy^2$$
+% czyli macierz
+% $$\begin{bmatrix}
+%   a & \frac{b}{2} \\ 
+%   \frac{b}{2} & c
+% \end{bmatrix}$$
+% z wielomianem charakterystycznym
+% $$t^2+(a+c)t+(ac-\frac{b^2}{4})$$
+% ta macierz ma wartości własne - pytanie ile rzeczywistych
+%
+% wypadałoby przypomnieć mapping class group i torusika?
+%
+% % to się wogóle nazywa conic section?
+%
+%
+% elipsa o objętości $1$ i środku $0$:
+% $$ax^2+bxy+cy^2=1$$
+% tu nie jestem pewna co zrobić 
+% no potrafię to zmienić na $x^2+y^2=0$ bo jak przerzucę $1$ to będę musiała przy reparametryzacji podoklejać $i$
+%
+%
+% para prostych przechodzących przez $0$:
+% $$0=(x-ay)(x-by)=x^2-(a+b)xy+aby^2$$
+% to potrafię zmienić tak, żeby było
+% $$0=(x'-y')(x'+y')$$
+% na obrazku widać
+%
+%
+% prosta podwójna:
+% $$0=(x-ay)^2=x^2-2axy+a^2y^2$$
+% tutaj faktycznie $(x,y)$ oraz $(-x, -y)$ daje to samo i wogóle skalowanie mi nic nie zmienia jak na $\R P^2$
+%
+%
+%
+% jeśli mam elipsę
+%
 
 \end{document}
