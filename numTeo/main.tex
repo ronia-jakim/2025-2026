@@ -12,7 +12,7 @@
 \maketitle
 \thispagestyle{empty}
 
-Badanie form kwadratowych -> ciekawe pytanie z teorii liczb. Nie umiem pisać wstępóóóów.
+Badanie form kwadratowych -> pytanie z teorii liczb. Nie umiem pisać wstępóóóów.
 
 \section{Przestrzeń form kwadratowych}
 
@@ -74,28 +74,96 @@ Niech $Q(x,y)=ax^2+bxy+cy^2$ będzie formą z obszaru ograniczonego przez okrąg
   W takim razie $z_1=z_2$ i $M=Id$.
 \end{proof}
 
+\begin{lemma}
+  Różnym formom kwadratowym $Q_1$, $Q_2$ odpowiadają różne punkty w zbiorze $P$.
+\end{lemma}
+
+\begin{proof}
+  Proste ćwiczenie dla czytelnika.
+\end{proof}
+
 W takim razie dobrze określonym niezmiennikiem formy $Q$ takiej, że $\det(A_Q)>0$ jest liczba zespolona $z\in P$. Powstaje pytanie czy istnieje analogiczny sposób klasyfikacji form o ujemnym wyznaczniku macierzy?
 
 Dla form o ujemnym wyznaczniku, czyli lądujących poza okręgiem $\det(A_Q)=0$, możemy poprowadzić dwie proste styczne do tego okręgu przechodzące przez interesującą nas formę. To daje dwa punkty na okręgu, które możemy połączyć cięciwą w okręgu. Interpretuje się to jako geodezyjna na płaszczyźnie hiperbolicznej, czyli półokrąg oparty na osi rzeczywistej.
 
-PRZYKŁAD
+\begin{example}
+  Rozważmy formę $x^2+4xy+y^2$, czyli punkt $(1;4;1)$ na płaszczyźnie rzutowej. Szukamy dwóch prostych przez niego przechodzących, które są styczne do okręgu $b^2-4ac=0$. Dostajemy proste
+  $$(1+t(2+\sqrt{3});4+t;1)$$
+  $$(1+t(2-\sqrt{3});4+t;1)$$
+  przecinające okrąg w punktach $(7+4\sqrt{3};4+2\sqrt{3};1)$ oraz $(7-4\sqrt{3};4-2\sqrt{3};1)$. Dostajemy formy
+  $$(7+4\sqrt{3})x^2+(4+2\sqrt{3})xy+y^2=(y-(2+\sqrt{3})x)^2$$
+  $$(7-4\sqrt{3})x^2+(4-2\sqrt{3})xy+y^2=(y-(2-\sqrt{3})x)^2$$
+  czyli punkty $2+\sqrt{3}$ oraz $2-\sqrt{3}$ na płaszczyźnie hiperbolicznej, połączone geodezyjną $(x-2)^2+y^2=3$
+  \begin{center}
+    \begin{tikzpicture}
+      \fill[green, opacity=.1] (.5, 0) rectangle (-.5, 4.2);
+      \draw[green, thick] (.5,0)--(.5,4.2);
+      \draw[green, thick] (-.5,0)--(-.5,4.2);
+      \filldraw[draw=green, fill=white, thick] (1,0) arc (0:180:1);
+      \draw[->] (-3, 0) -- (5.2, 0);
+      \draw[->] (0, -1) -- (0, 4.2);
+      \draw[red, thick] ({2+sqrt(3)}, 0) arc (0:180:{sqrt(3)});
+      \draw[blue, thick] ({2+sqrt(3)-1}, 0) arc (0:180:{sqrt(3)});
+      % \begin{scope}[scalex=-1]
+      %   \draw[blue, thick] ({2+sqrt(3)-1}, 0) arc (0:180:{sqrt(3)});
+      % \end{scope}
+    \end{tikzpicture}
+  \end{center}
+\end{example}
 
-Rozważam $x^2+4xy+y^2$, czyli punkt $(1, 4, 1)$. Szukam prostych w $\R P^2$, dostaję
-$$(1+t(2+\sqrt{3});4+t;1)$$
-$$(1+t(2-\sqrt{3});4+t;1)$$
-pierwsza daje formę $(y-(2+\sqrt{3})x)^2$, druga to $(y-(2-\sqrt{3})x)^2$
+\begin{example}
+  Rozważmy formę $x^2+3xy+y^2$, czyli punkt $(1;3;1)$ na płaszczyźnie rzutowej. Możemy przez niego poprowadzić proste styczne do okręgu $b^2-4ac=0$ w punktach 
+  $$(\frac{7+3\sqrt{5}}{2};3+\sqrt{5};1)$$
+  $$(\frac{7-3\sqrt{5}}{2};3-\sqrt{5};1)$$
+  które odpowiadają punktom $\frac{3-\sqrt{5}}{2}$ oraz $\frac{3+\sqrt{5}}{2}$ na płaszczyźnie hiperbolicznej, połączone geodezyjną $(x-\frac{3}{2})^2+y^2=\frac{5}{4}$
+  \begin{center}
+    \begin{tikzpicture}
+      \fill[green, opacity=.1] (.5, 0) rectangle (-.5, 4.2);
+      \draw[green, thick] (.5,0)--(.5,4.2);
+      \draw[green, thick] (-.5,0)--(-.5,4.2);
+      \filldraw[draw=green, fill=white, thick] (1,0) arc (0:180:1);
+      \draw[->] (-3, 0) -- (5.2, 0);
+      \draw[->] (0, -1) -- (0, 4.2);
+      \draw[red, thick] ({1.5+0.5*sqrt(5)}, 0) arc (0:180:{sqrt(5)/2});
+    \end{tikzpicture}
+  \end{center}
+\end{example}
 
-cyk mam okrąg
-$$(x-2)^2+y^2=3\implies |z-2|=\sqrt{3}$$
-i w sumie to utknęłam, bo dla $x=\frac{1}{2}$ idealnie przecinam okrąg $|z|=1$
+niezmiennikami powinny być punkty na osi tej geodezyjnej, ale one nie wpadną do paseczka w aktualnej sytuacji
 
-czuję tutaj ułamki łańcuchowe? akurat dla $2+\sqrt{3}$ ląduję po inwersji w $\sqrt{3}-2$ i po jeszcze jednej wracam do $2+\sqrt{3}$ i nie robię po drodze odbijania o $x=\sqrt{1}{2}$
+mogę im robić ułamki łańcuchowe, czyli inwersja + translacja i Lagrange powiedział że dla form kwadratowych to to będzie periodyczne
 
+jeśli się przesunę leciutko to mam też inwersję + translację i w końcu wpadnę do paseczka
 
-Jak mam $(1;3;1)$ to punkty na $OX$ to
-dobra, mam
-$(1+t(3\pm\sqrt{5});3+2t;1)$
-trzeba rozwiązać dla jakich $t$ spełnia $b^2-4a=0$
+tutaj jak wydzielę to się zamknę -> troszkę się kojarzy z tą periodycznością?
+
+ale translacja nie jest odbijaniem względem $\Re(z)=\pm\frac{1}{2}$, bo te odbicia to $\pm1-\overline{z}$
+
+czy umiem zfabrykować formę, której będa odpowiadać punkty bliżej niż $1$ od siebie?
+$(y-\frac{1}{3}x)^2$, $(y+\frac{1}{3}x)^2$
+to są punkty $(\frac{1}{9};-\frac{2}{3};1)$ i $(\frac{1}{9};\frac{2}{3};1)$
+puszczam styczne do nich i dostaję punkt $(-\frac{1}{9};0;1)$
+
+% PRZYKŁAD
+%
+% Rozważam $x^2+4xy+y^2$, czyli punkt $(1, 4, 1)$. Szukam prostych w $\R P^2$, dostaję
+% $$(1+t(2+\sqrt{3});4+t;1)$$
+% $$(1+t(2-\sqrt{3});4+t;1)$$
+% pierwsza daje formę $(y-(2+\sqrt{3})x)^2$, druga to $(y-(2-\sqrt{3})x)^2$
+%
+% cyk mam okrąg
+% $$(x-2)^2+y^2=3\implies |z-2|=\sqrt{3}$$
+% i w sumie to utknęłam, bo dla $x=\frac{1}{2}$ idealnie przecinam okrąg $|z|=1$
+%
+% czuję tutaj ułamki łańcuchowe? akurat dla $2+\sqrt{3}$ ląduję po inwersji w $\sqrt{3}-2$ i po jeszcze jednej wracam do $2+\sqrt{3}$ i nie robię po drodze odbijania o $x=\sqrt{1}{2}$
+%
+%
+% Jak mam $(1;3;1)$ to punkty na $OX$ to
+% dobra, mam
+% $(1+t(3\pm\sqrt{5});3+2t;1)$
+% trzeba rozwiązać dla jakich $t$ spełnia $b^2-4a=0$
+%
+% to jest zły przykład? bo ciekawiej jest dla $x^2+3xy+y^2$
 
 
 
