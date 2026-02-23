@@ -74,6 +74,8 @@ Niech $Q(x,y)=ax^2+bxy+cy^2$ będzie formą z obszaru ograniczonego przez okrąg
   W takim razie $z_1=z_2$ i $M=Id$.
 \end{proof}
 
+Zbiór $P$ jak wyżej nazywany jest \text{dziedziną fundamentalną} dla działania grupy $PSL(2,\Z)$ na płaszczyźnie hiperbolicznej - dowolne dwa jego punkty nigdy nie będą w tej samej orbicie wspomnianego działania.
+
 \begin{lemma}
   Różnym formom kwadratowym $Q_1$, $Q_2$ odpowiadają różne punkty w zbiorze $P$.
 \end{lemma}
@@ -93,8 +95,8 @@ Dla form o ujemnym wyznaczniku, czyli lądujących poza okręgiem $\det(A_Q)=0$,
   przecinające okrąg w punktach $(7+4\sqrt{3};4+2\sqrt{3};1)$ oraz $(7-4\sqrt{3};4-2\sqrt{3};1)$. Dostajemy formy
   $$(7+4\sqrt{3})x^2+(4+2\sqrt{3})xy+y^2=(y-(2+\sqrt{3})x)^2$$
   $$(7-4\sqrt{3})x^2+(4-2\sqrt{3})xy+y^2=(y-(2-\sqrt{3})x)^2$$
-  czyli punkty $2+\sqrt{3}$ oraz $2-\sqrt{3}$ na płaszczyźnie hiperbolicznej, połączone geodezyjną $(x-2)^2+y^2=3$
-  \begin{center}
+  czyli punkty $2+\sqrt{3}$ oraz $2-\sqrt{3}$ na płaszczyźnie hiperbolicznej, połączone geodezyjną $\gamma$ określoną wzorem $(x-2)^2+y^2=3$ (czerwony półokrąg na rysunku \ref{przyklad 1}). 
+  \begin{figure}[h]\centering
     \begin{tikzpicture}
       \fill[green, opacity=.1] (.5, 0) rectangle (-.5, 4.2);
       \draw[green, thick] (.5,0)--(.5,4.2);
@@ -104,12 +106,35 @@ Dla form o ujemnym wyznaczniku, czyli lądujących poza okręgiem $\det(A_Q)=0$,
       \draw[->] (0, -1) -- (0, 4.2);
       \draw[red, thick] ({2+sqrt(3)}, 0) arc (0:180:{sqrt(3)});
       \draw[blue, thick] ({2+sqrt(3)-1}, 0) arc (0:180:{sqrt(3)});
+      \fill (0.5, {sqrt(11)/2});
+      \fill (-0.5, {sqrt(11)/2});
       % \begin{scope}[scalex=-1]
       %   \draw[blue, thick] ({2+sqrt(3)-1}, 0) arc (0:180:{sqrt(3)});
       % \end{scope}
     \end{tikzpicture}
-  \end{center}
+    \caption{Przypisanie geodezyjnej do formy o dodatnim wyróżniku.\label{przyklad 1}}
+  \end{figure}
 \end{example}
+
+\begin{lemma}\label{lemat o pierwiastkach}
+  Geodezyjna przypisana formie $ax^2+bxy+cy^2$ dla $b^2-4ac>0$ łączy liczby $\lambda_1$, $\lambda_2$ takie, że $ax^2+bxy+cy^2=(y-\lambda_1x)(y-\lambda_2x)$
+\end{lemma}
+
+\begin{proof}\color{red}
+  DUŻO LICZENIA BĘDZIE
+\end{proof}
+
+Z lematu \ref{lemat o pierwiastkach} wynika, że długość geodezyjnej przypisanej formie jest jej niezmiennikiem - zależy tylko od odległości na prostej rzeczywistej między jej pierwiastkami. Nie jest to jednak idealny niezmiennik - bez problemu znajdziemy dwie różne formy, które mają pierwiastki w tej samej odległości od siebie, np. $x^2+4xy+y^2$ oraz $y^2-2xy+2x^2$. Pojawia się więc pytanie o inne niezmienniki, które formie tego typu możemy przypisać.
+
+\begin{example}
+  Rozważmy jeszcze raz formę $x^2+4xy+y^2$ z poprzedniego przykładu. Przypisana jej geodezyjna przecina się ona z dziedziną fundamentalną $P$ tylko w punkcie $e^{i\pi/3}$. Chcemy sprawić, że $\gamma$ przecina wnętrze $P$, przesuwamy ją więc w lewo o jeden przy pomocy izometrii z $PSL(2,\Z)$, $z\mapsto z-1$. W ten sposób dostajemy geodezyjną określoną przez $(x-1)^2+y^2=3$ przecinającą prostą $|\Re(z)|=\frac{1}{2}$ na dokładnie tej samej wysokości co prostą $|\Re(z)|=\frac{1}{2}$, czyli $\frac{\sqrt{11}}{2}$.
+  Z drugiej strony
+\end{example}
+
+
+\begin{theorem}
+
+\end{theorem}
 
 \begin{example}
   Rozważmy formę $x^2+3xy+y^2$, czyli punkt $(1;3;1)$ na płaszczyźnie rzutowej. Możemy przez niego poprowadzić proste styczne do okręgu $b^2-4ac=0$ w punktach 
@@ -143,6 +168,9 @@ czy umiem zfabrykować formę, której będa odpowiadać punkty bliżej niż $1$
 $(y-\frac{1}{3}x)^2$, $(y+\frac{1}{3}x)^2$
 to są punkty $(\frac{1}{9};-\frac{2}{3};1)$ i $(\frac{1}{9};\frac{2}{3};1)$
 puszczam styczne do nich i dostaję punkt $(-\frac{1}{9};0;1)$
+
+
+
 
 % PRZYKŁAD
 %
@@ -224,5 +252,15 @@ puszczam styczne do nich i dostaję punkt $(-\frac{1}{9};0;1)$
 %
 % jeśli mam elipsę
 %
+
+\section{}
+
+\begin{theorem}[Latimer MacDuffy]
+  Niech $\lambda=(\lambda_1,...,\lambda_n)$ będą wartościami własnymi macierzy $A\in SL(n, \Z)$. Wtedy liczba klas sprzężoności $A$ przez macierze z $GL(n,\Z)$ jest równa liczbie klas ideałów pierścienia $R=\Z[\lambda]$.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
 
 \end{document}
