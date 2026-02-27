@@ -81,7 +81,7 @@ Zbiór $P$ jak wyżej nazywany jest \text{dziedziną fundamentalną} dla działa
 \end{lemma}
 
 \begin{proof}
-  Proste ćwiczenie dla czytelnika.
+  \color{red}Proste ćwiczenie dla czytelnika.
 \end{proof}
 
 W takim razie dobrze określonym niezmiennikiem formy $Q$ takiej, że $\det(A_Q)>0$ jest liczba zespolona $z\in P$. Powstaje pytanie czy istnieje analogiczny sposób klasyfikacji form o ujemnym wyznaczniku macierzy?
@@ -112,7 +112,7 @@ Dla form o ujemnym wyznaczniku, czyli lądujących poza okręgiem $\det(A_Q)=0$,
       %   \draw[blue, thick] ({2+sqrt(3)-1}, 0) arc (0:180:{sqrt(3)});
       % \end{scope}
     \end{tikzpicture}
-    \caption{Przypisanie geodezyjnej do formy o dodatnim wyróżniku.\label{przyklad 1}}
+    \caption{Przypisanie geodezyjnej do formy $x^2+4xy+y^2$ o dodatnim wyróżniku.\label{przyklad 1}}
   \end{figure}
 \end{example}
 
@@ -121,27 +121,24 @@ Dla form o ujemnym wyznaczniku, czyli lądujących poza okręgiem $\det(A_Q)=0$,
 \end{lemma}
 
 \begin{proof}\color{red}
-  DUŻO LICZENIA BĘDZIE
+  DUŻO LICZENIA BĘDZIE?
+
+  mam $(a;b;1)$ -> $ax^2+bxy+y^2=(y-\lambda_1x)(y-\lambda_2x)$ to ma dwa rozw, proste powinny przesuwać jeden pierwiastek na drugi liniowo, czyli pewnie jakieś $(y-[t\lambda_1+(1-t)\lambda_2]x)(y-\lambda_2x)$
 \end{proof}
 
-Z lematu \ref{lemat o pierwiastkach} wynika, że długość geodezyjnej przypisanej formie jest jej niezmiennikiem - zależy tylko od odległości na prostej rzeczywistej między jej pierwiastkami. Nie jest to jednak idealny niezmiennik - bez problemu znajdziemy dwie różne formy, które mają pierwiastki w tej samej odległości od siebie, np. $x^2+4xy+y^2$ oraz $y^2-2xy+2x^2$. Pojawia się więc pytanie o inne niezmienniki, które formie tego typu możemy przypisać.
+Z lematu \ref{lemat o pierwiastkach} wynika, że długość geodezyjnej przypisanej formie jest jej niezmiennikiem - zależy tylko od odległości na prostej rzeczywistej między jej pierwiastkami. Nie jest to jednak idealny niezmiennik - bez problemu znajdziemy dwie różne formy, które mają pierwiastki w tej samej odległości od siebie, np. $x^2+4xy+y^2$ oraz $y^2-2xy+2x^2$. Pojawia się więc pytanie o inne niezmienniki, które formie tego typu przypisać możemy.
 
-\begin{example}
-  Rozważmy jeszcze raz formę $x^2+4xy+y^2$ z poprzedniego przykładu. Przypisana jej geodezyjna przecina się ona z dziedziną fundamentalną $P$ tylko w punkcie $e^{i\pi/3}$. Chcemy sprawić, że $\gamma$ przecina wnętrze $P$, przesuwamy ją więc w lewo o jeden przy pomocy izometrii z $PSL(2,\Z)$, $z\mapsto z-1$. W ten sposób dostajemy geodezyjną określoną przez $(x-1)^2+y^2=3$ przecinającą prostą $|\Re(z)|=\frac{1}{2}$ na dokładnie tej samej wysokości co prostą $|\Re(z)|=\frac{1}{2}$, czyli $\frac{\sqrt{11}}{2}$.
-  Z drugiej strony
+\setcounter{example}{0}
+\begin{example}[ciąg dalszy]
+  Rozważmy jeszcze raz formę $x^2+4xy+y^2$ z poprzedniego przykładu. Przypisana jej geodezyjna przecina się ona z dziedziną fundamentalną $P$ tylko w punkcie $e^{i\pi/3}$. Chcemy sprawić, że $\gamma$ przecina wnętrze $P$, przesuwamy ją więc w lewo o jeden przy pomocy izometrii z $PSL(2,\Z)$, $z\mapsto z-1$. W ten sposób dostajemy geodezyjną określoną przez $(x-1)^2+y^2=3$ przecinającą prostą $|\Re(z)|=\frac{1}{2}$ na dokładnie tej samej wysokości co prostą $|\Re(z)|=\frac{1}{2}$, czyli $\frac{\sqrt{11}}{2}$. 
 \end{example}
 
-
-\begin{theorem}
-
-\end{theorem}
-
 \begin{example}
-  Rozważmy formę $x^2+3xy+y^2$, czyli punkt $(1;3;1)$ na płaszczyźnie rzutowej. Możemy przez niego poprowadzić proste styczne do okręgu $b^2-4ac=0$ w punktach 
+  Jako kolejny przykład przyjrzyjmy się formie $x^2+3xy+y^2$, czyli punkt $(1;3;1)$ na płaszczyźnie rzutowej. Możemy przez niego poprowadzić proste styczne do okręgu $b^2-4ac=0$ w punktach 
   $$(\frac{7+3\sqrt{5}}{2};3+\sqrt{5};1)$$
   $$(\frac{7-3\sqrt{5}}{2};3-\sqrt{5};1)$$
-  które odpowiadają punktom $\frac{3-\sqrt{5}}{2}$ oraz $\frac{3+\sqrt{5}}{2}$ na płaszczyźnie hiperbolicznej, połączone geodezyjną $(x-\frac{3}{2})^2+y^2=\frac{5}{4}$
-  \begin{center}
+  które odpowiadają punktom $\frac{3-\sqrt{5}}{2}$ oraz $\frac{3+\sqrt{5}}{2}$ na płaszczyźnie hiperbolicznej, połączone geodezyjną $(x-\frac{3}{2})^2+y^2=\frac{5}{4}$, zaznaczoną czerwonym półokręgiem na rysunku \ref{przyklad 2}. Chcemy, żeby przecinała niepusto jedną z prostych $|\Re(z)|=\frac{1}{2}$, więc przesuwamy ją o jeden w lewo i dostajemy geodezyjną $(x-\frac{1}{2})^2+y^2=\frac{5}{4}$ zaznaczoną na niebiesko. Zauważmy, że odbijanie jej od prostej $\Re(z)=\frac{1}{2}$ składa ją na pół - mamy tylko jedno odbicie.
+  \begin{figure}[h]\centering
     \begin{tikzpicture}
       \fill[green, opacity=.1] (.5, 0) rectangle (-.5, 4.2);
       \draw[green, thick] (.5,0)--(.5,4.2);
@@ -150,25 +147,62 @@ Z lematu \ref{lemat o pierwiastkach} wynika, że długość geodezyjnej przypisa
       \draw[->] (-3, 0) -- (5.2, 0);
       \draw[->] (0, -1) -- (0, 4.2);
       \draw[red, thick] ({1.5+0.5*sqrt(5)}, 0) arc (0:180:{sqrt(5)/2});
+      \draw[blue, thick] ({.5+0.5*sqrt(5)}, 0) arc (0:180:{sqrt(5)/2});
     \end{tikzpicture}
-  \end{center}
+    \caption{Przypisanie geodezyjnej do formy $x^2+3xy+y^2$ o dodatnim wyróżniku.\label{przyklad 2}}
+  \end{figure}
 \end{example}
 
-niezmiennikami powinny być punkty na osi tej geodezyjnej, ale one nie wpadną do paseczka w aktualnej sytuacji
+\begin{lemma}
+  Niech $\gamma$ będzie geodezyjną przypisaną formie $Q(x,y)=ax^2+bxy+cy^2$ o dodatnim wyznaczniku. Po zastosowaniu skończenie wielu inwersji $z\mapsto\frac{-1}{z}$ oraz przesunięć o liczby całkowite wzdłuż osi rzeczywistej, geodezyjna przecina wnętrze dziedziny fundamentalnej $P$. Wtedy liczba jej odbić od brzegów $P$ jest niezmiennikiem formy $Q$.
+\end{lemma}
 
-mogę im robić ułamki łańcuchowe, czyli inwersja + translacja i Lagrange powiedział że dla form kwadratowych to to będzie periodyczne
+\begin{lemma}
+  Ułamki łańcuchowe obu krańców geodezyjnej przypisanej nieokreślonej formie mają ten sam period.
+\end{lemma}
 
-jeśli się przesunę leciutko to mam też inwersję + translację i w końcu wpadnę do paseczka
+\begin{theorem}
+  Liczba odbić geodezyjnej od brzegu $P$ jest równa periodowi ułamków łańcuchowych jej końców.
+\end{theorem}
 
-tutaj jak wydzielę to się zamknę -> troszkę się kojarzy z tą periodycznością?
+\section{Powiązanie z algebrą}
 
-ale translacja nie jest odbijaniem względem $\Re(z)=\pm\frac{1}{2}$, bo te odbicia to $\pm1-\overline{z}$
+\begin{lemma}
+  Niech $A\in SL(n,\Z)$ będzie macierzą z wartością własną $\lambda$. Niech $K$ będzie ciałem zawierającym $K$, wtedy istnieje wektor własny $(v_1,...,v_n)$ macierzy $A$ taki, że $v_i\in O_K$ dla każdego $i$.
+\end{lemma}
 
-czy umiem zfabrykować formę, której będa odpowiadać punkty bliżej niż $1$ od siebie?
-$(y-\frac{1}{3}x)^2$, $(y+\frac{1}{3}x)^2$
-to są punkty $(\frac{1}{9};-\frac{2}{3};1)$ i $(\frac{1}{9};\frac{2}{3};1)$
-puszczam styczne do nich i dostaję punkt $(-\frac{1}{9};0;1)$
+\begin{lemma}
+  W drugą stronę: mając ideał $I=\langle v_1,...,v_n\rangle$ z $O_K$ znajdziemy macierz $A$ taką, że istnieje $\lambda$ takie, że $Av=\lambda v$. 
+\end{lemma}
 
+\begin{lemma}\color{blue}
+  Macierze z $SL(n,\Z)$ sprzeżone przez $GL(n,\Z)$ dają ten sam ideał, a różne bazy ideału dają macierze z $SL(n,\Z)$ sprzężone przez macierz z $GL(n,\Z)$.
+\end{lemma}
+
+\begin{theorem}[Latimer i MacDuffy]
+  Niech $\lambda=(\lambda_1,...,\lambda_n)$ będą wartościami własnymi macierzy $A\in SL(n, \Z)$. Wtedy liczba klas sprzężoności $A$ przez macierze z $GL(n,\Z)$ jest równa liczbie klas ideałów pierścienia $R=\Z[\lambda]$.
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+
+% niezmiennikami powinny być punkty na osi tej geodezyjnej, ale one nie wpadną do paseczka w aktualnej sytuacji
+%
+% mogę im robić ułamki łańcuchowe, czyli inwersja + translacja i Lagrange powiedział że dla form kwadratowych to to będzie periodyczne
+%
+% jeśli się przesunę leciutko to mam też inwersję + translację i w końcu wpadnę do paseczka
+%
+% tutaj jak wydzielę to się zamknę -> troszkę się kojarzy z tą periodycznością?
+%
+% ale translacja nie jest odbijaniem względem $\Re(z)=\pm\frac{1}{2}$, bo te odbicia to $\pm1-\overline{z}$
+%
+% czy umiem zfabrykować formę, której będa odpowiadać punkty bliżej niż $1$ od siebie?
+% $(y-\frac{1}{3}x)^2$, $(y+\frac{1}{3}x)^2$
+% to są punkty $(\frac{1}{9};-\frac{2}{3};1)$ i $(\frac{1}{9};\frac{2}{3};1)$
+% puszczam styczne do nich i dostaję punkt $(-\frac{1}{9};0;1)$
+%
 
 
 
@@ -252,15 +286,5 @@ puszczam styczne do nich i dostaję punkt $(-\frac{1}{9};0;1)$
 %
 % jeśli mam elipsę
 %
-
-\section{}
-
-\begin{theorem}[Latimer MacDuffy]
-  Niech $\lambda=(\lambda_1,...,\lambda_n)$ będą wartościami własnymi macierzy $A\in SL(n, \Z)$. Wtedy liczba klas sprzężoności $A$ przez macierze z $GL(n,\Z)$ jest równa liczbie klas ideałów pierścienia $R=\Z[\lambda]$.
-\end{theorem}
-
-\begin{proof}
-
-\end{proof}
 
 \end{document}
