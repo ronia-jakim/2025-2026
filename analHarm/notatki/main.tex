@@ -1,11 +1,11 @@
 %! TeX program = lualatex
 \documentclass[twoside, a4paper, 12pt]{book}
 
-\title{Logika R}
+\title{Wstęp do analizy harmonicznej na grupach}
 \author{\color{subtext1}Weronika Jakimowicz}
-\date{Zima 2025/26}
+\date{Lato 2025/26}
 
-\usepackage[pl]{../../template}
+\usepackage[pl, dates]{../../template}
 
 \usepackage{halloweenmath}
 
@@ -68,6 +68,10 @@
     \end{center}
   }
 
+\DeclareMathOperator{\Hh}{\mathcal{H}}
+\DeclareMathOperator{\U}{\mathcal{U}}
+\DeclareMathOperator{\B}{\mathcal{B}}
+
 \begin{document}
 \frontmatter 
 \maketitle
@@ -79,8 +83,10 @@
 
 \pagestyle{fancy}
 
-\include{rozdzialy/01}
+\chapter{Analiza funkcjonalna}  
 
-\include{rozdzialy/02}
-  
+\include{rozdzialy/01_wstep_sploty}
+
+\include{rozdzialy/02_lemat_schura}
+
 \end{document}
