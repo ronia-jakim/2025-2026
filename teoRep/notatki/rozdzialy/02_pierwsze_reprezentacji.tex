@@ -1,0 +1,49 @@
+\chapter{Pierwsze kroki w teorii reprezentacji}
+
+% POTEM: Diagramy younga
+
+Reprezentacja grupy to próba zrozumienia jej przez pryzmat przestrzeni wektorowej.
+
+\section{03.03.2026}{Podstawowe definicje}
+
+\begin{definition}{}{}
+  Niech $G$ będzie grupą, a $V$ przestrzenią wektorową nad ciałem $K$ (domyślnie $K=\C$). \buff{Liniową reprezentacją} grupy $G$ na $V$ nazywamy działanie grupy $G$ na $V$ przez liniowe automorfizmy. Innymi słowy, reprezentacja to liniowy homomorfizm
+  $$\rho:G\to GL(V).$$
+\end{definition}
+
+Jeśli $\dim(V)=n$ to przez $GL(V)$ rozumiemy macierze $n\times n$ o wyrazach z $K$ i niezerowym wyznaczniku.
+
+\begin{example}[m]
+  \item Rozważmy odwzorowanie 
+    $$\rho: \Z_n\to GL(2, \R)$$
+    zadane przez 
+    $$\rho(g)=\begin{bmatrix}\cos(\frac{2\pi}{g})&-\sin(\frac{2\pi}{g})\\ \sin(\frac{2\pi}{g})&\cos(\frac{2\pi}{g})\end{bmatrix}.$$
+    Od razu poznajemy, że macierz $\rho(g)$ to macierz obrotu o kąt $\frac{2\pi}{g}$. Nad $\C$ możemy zapisać $\rho(g)=e^{\frac{2\pi i}{g}}$.
+  \item Popatrzmy teraz na dwie reprezentacje znanej nam już grupy permutacji $S_3$. 
+
+    Pierwsza reprezentacja to działanie na $\R^3$ przez permutowanie współrzędnych. Taka reprezentacja ma podprzestrzeń niezmienniczą: $V=\{(x_1,x_2, x_3)\;:\;x_1+x_2+x_3=0\}$.
+
+    Zanim zdefiniujemy drugą reprezentację, przygotujemy pasującą nam przestrzeń liniową. Niech $V$ będzie rzeczywistą przestrzenią wektorową z bazą $\{e_{\sigma_1}, e_{\sigma_2}\}$ i symetryczną formą dwuliniową
+    $$B(e_{\sigma_i}, e_{\sigma_j})=\begin{cases}1 & i=j\\\cos(\frac{2\pi}3)&i\neq j\end{cases}.$$
+    Definiujemy reprezentację (nazywaną \emph{reprezentacją Titsa}) na generatorach $S_3$ jako $\rho(\sigma_i)(v)=v-2B(v, e_{\sigma_i})e_{\sigma_i}$. Sprawdzenie poprawności oraz czy autorka nie pomyliła znaków zostaje pozostawione jako ćwiczenie dla czytelnika.
+\end{example}
+
+\subsection{Reprezentacje nieprzywiedlnie}
+
+\begin{definition}{reprezentacja nieprzywiedlnia}{}
+  Niech $\rho:G\to GL(V)$ będzie reprezentacją liniową. Powiemy, że $\rho$ jest \buff{nieprzywiedlnia} (ang. irreducible), jeśli $V$ nie zawiera żadnej niezmienniczej na działanie $G$ przez $\rho$ podprzestrzeni różnej od $0$ i całego $V$.
+\end{definition}
+
+Dla przypomnienia: podprzestrzeń $W\subseteq V$ jest niezmiennicza na działanie $G$, jeśli dla każdego $g\in G$ zachodzi $gW\subseteq W$.
+
+\begin{example}
+  Reprezentacja $S_3$ przez macierze permutacji nie jest nieprzywiedlnia na $\R^3$, ale jeśli ograniczymy tę reprezentację do podprzestrzeni $V_0=\{(x_1,x_2,x_3)\;:\;\sum x_i=0\}$ to staje się ona nieprzywiedlnia.
+\end{example}
+
+Jeśli grupa $G$ działa na przestrzeni wektorowej $V$ z iloczynem skalarnym, to przywiedlniość reprezentacji $\rho$ jest równoważna istnieniu rozkładu $V=W\oplus W^\perp$, gdzie $W$ jest niezmiennicza na $G$.
+
+
+
+
+
+
