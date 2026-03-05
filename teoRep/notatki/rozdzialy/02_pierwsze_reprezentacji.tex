@@ -4,7 +4,7 @@
 
 Reprezentacja grupy to próba zrozumienia jej przez pryzmat przestrzeni wektorowej.
 
-\section{03.03.2026}{Podstawowe definicje}
+\section{Podstawowe definicje}
 
 \begin{definition}{}{}
   Niech $G$ będzie grupą, a $V$ przestrzenią wektorową nad ciałem $K$ (domyślnie $K=\C$). \buff{Liniową reprezentacją} grupy $G$ na $V$ nazywamy działanie grupy $G$ na $V$ przez liniowe automorfizmy. Innymi słowy, reprezentacja to liniowy homomorfizm
@@ -24,8 +24,28 @@ Jeśli $\dim(V)=n$ to przez $GL(V)$ rozumiemy macierze $n\times n$ o wyrazach z 
     Pierwsza reprezentacja to działanie na $\R^3$ przez permutowanie współrzędnych. Taka reprezentacja ma podprzestrzeń niezmienniczą: $V=\{(x_1,x_2, x_3)\;:\;x_1+x_2+x_3=0\}$.
 
     Zanim zdefiniujemy drugą reprezentację, przygotujemy pasującą nam przestrzeń liniową. Niech $V$ będzie rzeczywistą przestrzenią wektorową z bazą $\{e_{\sigma_1}, e_{\sigma_2}\}$ i symetryczną formą dwuliniową
-    $$B(e_{\sigma_i}, e_{\sigma_j})=\begin{cases}1 & i=j\\\cos(\frac{2\pi}3)&i\neq j\end{cases}.$$
+    $$B(e_{\sigma_i}, e_{\sigma_j})=\begin{cases}1 & i=j\\\cos(\frac{\pi}3)&i\neq j\end{cases}.$$
     Definiujemy reprezentację (nazywaną \emph{reprezentacją Titsa}) na generatorach $S_3$ jako $\rho(\sigma_i)(v)=v-2B(v, e_{\sigma_i})e_{\sigma_i}$. Sprawdzenie poprawności oraz czy autorka nie pomyliła znaków zostaje pozostawione jako ćwiczenie dla czytelnika.
+\end{example}
+
+\begin{definition}{równoważność reprezentacji}{}
+  Niech $\rho:G\to GL(V)$ i $\rho':G\to GL(V')$ będą dwoma reprezentacjami grupy $G$. Powiemy, że $\rho$ i $\rho'$ są \buff{równoważne} (lub izomorficzne), \buff{$\rho\approx\rho'$}, jeśli istnieje izomorfizm $\phi: V\to V'$ taki, że diagram
+  $$\begin{tikzcd}[column sep=large]
+    V\arrow[r, "\phi"]\arrow[d, "\rho(g)" left] & V'\arrow[d, "\rho'(g)"]\\ 
+    V\arrow[r, "\phi" below] & V'
+  \end{tikzcd}$$
+  komutuje dla wszystkich $g$.
+\end{definition}
+
+\begin{example}
+  $G$ - grp skończona, $l^2(G)\ni f$, $(\rho(g)f)(h)=f(hg)$
+
+  wszystkie parami nieizomorficzne nieprzywiedlnie reprezentacje $\{(\rho_1, V_1),...,(\rho_k, V_k)\}$ $G$
+  $\pi: V_1^{\dim V_1}\oplus...\oplus V_k^{\dim V_k}$
+
+  wtedy $\rho\simeq \pi$
+
+  \color{red} reprezentacje Titsa na różnych wyborach generatorów?
 \end{example}
 
 \subsection{Reprezentacje nieprzywiedlnie}
@@ -40,7 +60,39 @@ Dla przypomnienia: podprzestrzeń $W\subseteq V$ jest niezmiennicza na działani
   Reprezentacja $S_3$ przez macierze permutacji nie jest nieprzywiedlnia na $\R^3$, ale jeśli ograniczymy tę reprezentację do podprzestrzeni $V_0=\{(x_1,x_2,x_3)\;:\;\sum x_i=0\}$ to staje się ona nieprzywiedlnia.
 \end{example}
 
-Jeśli grupa $G$ działa na przestrzeni wektorowej $V$ z iloczynem skalarnym, to przywiedlniość reprezentacji $\rho$ jest równoważna istnieniu rozkładu $V=W\oplus W^\perp$, gdzie $W$ jest niezmiennicza na $G$.
+Załóżmy, że grupa $G$ działa na przestrzeni wektorowej $V$ z iloczynem skalarnym $\langle\cdot,\cdot\rangle$ w sposób zachowujący ten iloczyn. To znaczy, dla każdego $g\in G$ oraz $v,w\in V$ zachodzi $\langle v,w\rangle=\langle gv,gw\rangle$. W takiej sytuacji reprezentacja grupy $G$ dana przez to działanie jest przywiedlnie wtedy i tylko wtedy gdy istnieje rozkład $V=W\oplus W^\perp$ taki, że zarówno $W$ jak i $W^\perp$ są niezmiennicze na $G$.
+
+Dla grup skończonych działających na przestrzeni $(V, \langle\cdot,\cdot\rangle)$ zawsze jesteśmy w stanie stworzyć iloczyn skalarny niezmienniczy na jej działanie: 
+$$\langle v,w\rangle_G=\frac{1}{|G|}\sum_{g\in G}\langle gv, gw\rangle.$$
+
+W bardzo podobny sposób jesteśmy w stanie stworzyć niezmienniczy iloczyn skalarny na grupie zwartej (wystarczy wziąć do ręki miarę Haara $G$ zamiast $|G|$ i wycałkować). Dla grup lokalnie zwartych jest to już nieco problematyczne, gdyż miara Haara całej grupy wcale nie musi być skończona, wystarczy popatrzeć na $\R$.
+
+\begin{theorem}{}{}
+  Jeśli $G$ jest grupą skończoną (lub zwartą), to każda jej reprezentacja $\rho:G\to GL(V)$ jest sumą prostą reprezentacji nieprzywiedlnich.
+\end{theorem}
+
+\begin{proof}
+  Udowodnimy twierdzenie wyżej przez indukcję względem $\dim(V)$.
+
+  Dla $\dim(V)=0$ wszystko jest jasne. Dla $\dim(V)\geq 1$ sprawdzamy, czy istnieje podprzestrzeń $W\subseteq V$ niezmiennicza na $\rho$. Jeśli nie istnieje, to $\rho$ jest już nieprzywiedlnia. W przeciwnym przypadku na mocy uwagi wyżej mamy rozkład $V=W\oplus W^\perp$. Ponieważ $W$ jak i $W^\perp$ są niezmiennicze na działanie $G$, możemy obciąć $\rho$ do tych podprzestrzeni tak, że $\rho=\rho\restriction{W}\oplus \rho_{\upharpoonright W^\perp}$
+  Ponieważ $\dim(W), \dim(W^\perp)<\dim(V)$ to znajdujemy rozkład $\rho_{\upharpoonright W}$ oraz $\rho_{\upharpoonright W^\perp}$ i łączymy je do rozkładu całego $\rho$.
+\end{proof}
+
+Powstaje pytanie o unikalność rozkładu reprezentacji na reprezentacje nieprzywiedlnie. Wystarczy wziąć reprezentację trywialną, czyli wszystkie elementy grupy działają przez macierz identycznościową. Taka reprezentacja rozkłada się w sumę $1$-wymiarowych reprezentacji, a jak wiadomo na przestrzeni $n$-wymiarowej mamy niesłychanie wiele wyborów $n$ liniowo niezależnych jej podprzestrzeni $1$-wymiarowych.
+
+\begin{theorem}{}{}
+  Niech $G$ będzie grupą skończoną, a $\{(\rho_1, V_1),...,(\rho_k, V_k)\}$ wszystkimi jej nieizomorficznymi reprezentacjami nieprzywiedlnimi. Wtedy
+  $$|G|=\sum (\dim V_i)^2$$
+\end{theorem}
+
+
+
+
+
+
+
+
+
 
 
 
