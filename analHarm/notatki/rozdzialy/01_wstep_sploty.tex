@@ -1,5 +1,7 @@
 \section{27.02.2026}{Sploty}
 
+\subsection{Topologie na przestrzeni operatorowej}
+
 Przyjmujemy oznaczenia:
 \begin{itemize}
   \item $G$ - grupa topologiczna
@@ -18,16 +20,101 @@ Przyjmujemy oznaczenia:
 WO zachowuje się dobrze na liniowych przestrzeniach topologicznych, tzn. jeśli $V$ jest przestrzenią liniową, to dla wszystkich $v\in V$ oraz $\xi\in V^*$ odwzorowanie $g\mapsto \xi(gv)$ jest ciągłe.
 
 \begin{remark}{}{}
-  Odwzorowanie $G\to \U(\Hh)$ jest ciągle względem SO/WO $\iff$ $(\forall\;g\in G)\;g\mapsto gv/g\mapsto \langle w,gv\rangle$ są ciągłe.
+  Odwzorowanie $G\to \U(\Hh)$ jest ciągle względem SO/WO $\iff$ dla wszystkich $g\in G$ odwzorowania 
+  $$g\mapsto gv/g\mapsto \langle w,gv\rangle$$ 
+  są ciągłe.
 \end{remark}
 
 \begin{fact}{}{}
   SO i WO topologie na $\U(\Hh)$ są takie same, ale nie jest to prawdą na $\B(\Hh)$
 \end{fact}
 
-\begin{proof}
-  Zadanie.
+\begin{proof}\color{red}
+  Sprawdzenie że na $\B(\Hh)$ te topologie się różnią jest zadaniem na liście. Wystarczy wziąć dowolną nieskończenie wymiarową przestrzeń Hilberta.
+
+  Na $\U(\Hh)$ z twierdzenia Riesza wiemy, że WO $\subseteq$ SO. Do SO $\subseteq$ WO patrzymy na kulę w SO, czyli dla $T$ oraz $\epsilon$ rozważamy zbiór
+  $$\{S\in \U(\Hh)\;:\;\forall\;u\;|Su-Tu|<\epsilon\}=\{U\mapsto Uu\}^{-1}[B_\epsilon (Tu)]$$
+  Chcemy pokazać, że jest on przeciwobrazem zbioru otwartego przez iloczyn skalarny, czyli bierzemy $S$ takie, że $|Su-Tu|<\epsilon$ dla ustalonego $T$.
+  \begin{align*}
+    |Su-Tu|<\epsilon &\iff \langle Su-Tu,Su-Tu\rangle <\epsilon^2 \iff \\ 
+                     &\iff \langle Su, Su\rangle-2\Re\langle Tu, Su\rangle +\langle Tu, Tu\rangle <\epsilon^2        
+  \end{align*}
+  $$\underbrace{\{S\;:\;|u|^2-\frac{\epsilon^2}{2}<\Re\langle Tu,Su\rangle\}}_B=\langle Tu, -u\rangle^{-1}[B]$$
 \end{proof}
+
+\subsection{Przeplatacze}
+
+Całka to będzie funkcjonał
+$$C_c(G)\to \R$$
+gdzie $C_c$ to ciągłe funkcje o zwartym nośniku na topologicznej grupie $G$.
+
+{\color{red}
+Całki są sensowne dla grup lokalnie zwartych.
+}
+
+Interesują nas reprezentacje unitarne grup, tzn.
+$$\pi:G\to \U(\Hh)$$
+co czasem będziemy pisali po prostu jak działanie grupy na przestrzeni Hilberta, a czasami $(\pi)$ będzie tym samym co $\Hh$ - zależy od kaprysu skryby (a bardziej wykładowcy).
+
+\begin{definition}{przeplatacze}{}\color{red}
+  $Hom_G(\pi, \pi')$ to zbiór przeplataczy, czyli odwzorowań $\phi:\Hh\to\Hh$ takich, że $\pi\phi = \phi \pi'$.
+\end{definition}
+
+\begin{lemma}{}{}
+  Niech $P_V$ oznacza rzut ortogonalny $P_V:\Hh\to V$.
+  
+  $V$ jest niezmienniczą podprzestrzenią $\pi$ $\iff$ $P_V\in \Hom_G(\pi, \pi)$.
+\end{lemma}
+
+\begin{proof}
+  $\impliedby$
+
+  Dla każdego $v\in V$ mamy $v=P_Vv$, czyli $\pi(g)v=\pi(g)P_Vv=P_V(\pi(g)v)\in V$
+
+  $\implies$
+
+  Ponieważ $V$ jest niezmienniczą podprzestrzenią, to $\Hh=V\oplus V^\perp$ i obie podprzestrzenie są niezmiennicze. Więc dla dowolnego $\Hh\ni v=v_1+v_2$ dla $v_1\in V$ i $v_2\in V^\perp$. Czyli 
+  $$\pi(g)P_V(v_1+v_2)=\pi(g)v_1=P_V(v_1)=P_V(\pi(g)(v_1)+\pi(g)(v_2))=P_V(\pi(g)(v_1+v_2))$$
+\end{proof}
+
+\begin{fact}{}{}
+  Na lokalnie zwartej grupie istnieje jedyna ze względu na skalowanie całka (miara) niezmiennicza na lewe przesunięcia. Nazywa się to \buff{miarą Haara}.
+\end{fact}
+
+\begin{proof}
+  Dowód był semestr temu.
+\end{proof}
+
+Zazwyczaj lewo i prawo niezmiennicze miary są nieco różne, ale nie bardzo - są proporcjonalne. Funkcję
+$$\Delta:G\to \R$$
+która zwraca proporcję między lewo a prawo niezmienniczą miarą nazywamy \buff{funkcją modularną}.
+
+\begin{example}
+  Rozważmy grupę przekształceń afinicznych prostej rzeczywistej, czyli 
+  $$G=\{x\mapsto ax+b\;:\;a\in\R^*, b\in \R\}=\R\rtimes \R^*$$ z operacją składania odwzorowań. Wówczas prawo niezmiennicza miara Haara to 
+  $$\mu_R=\frac{dadb}{a^2}$$
+  a lewo niezmiennicza miara Haara to
+  $$\mu_L=\frac{dadb}{a}.$$
+  Ich stosunek, czyli funkcja modularna na $G$, to $\Delta(a,b)=\frac{1}{a}$
+\end{example}
+
+\subsection{Miary Radona i sploty}
+
+Zbiór \buff{miar Radona} oznaczamy $M(G)$ i dla nas będzie to to samo co zbiór $(C_b(G))^*$, bo miara to całka, a całka to funkcjonał liniowy.
+
+$$
+\begin{tikzcd}
+  & M(G\times G)\arrow[d, "m_*"]\\ 
+  M(G)\times M(G) \arrow[ur] \arrow[r] & M(G)
+\end{tikzcd}
+$$
+
+Mając 
+
+
+
+
+
 
 
 
