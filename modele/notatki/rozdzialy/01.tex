@@ -1,0 +1,113 @@
+\chapter{Własności modeli}
+
+\section{Lista 1}
+
+\subsection{Przestrzeń Stone'a $S_n(A)$}
+
+Przestrzeń Stone to
+$$S_n(A)=\{p(\overline{x})\;:\;p(x)\text{ zupełny nad }A\subseteq M\}$$
+z bazą topologii stworzoną ze zbiorów
+$$[\phi]:=\{p(\overline{x})\in S_n(A)\;:\;\phi\in p(\overline{x})\}$$
+dla $\phi\in Form_{L(A)}(\overline{x})$.
+
+$p(\overline{x})\restriction{A}=p(\overline{x})\cap L(A)$.
+
+Przestrzeń Stone jest
+\begin{itemize}
+  \item zwarta,
+  \item Hausdorffa,
+  \item 0-wymiarowa (baza clopenów).
+\end{itemize}
+
+
+\begin{zadanie}
+  Załóżmy, że $A\subseteq B\subseteq M$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Udowodnić, że funkcja obcięcia $r:S_n(B)\to S_n(A)$ jest ciągła.
+    \item Udowodnić, że funkcja obcięcia $r':S_{n+1}(A)\to S_n(A)$ indukowana przez ograniczenie do formuł o zmiennych $x_0,...,x_{n-1}$ jest ciągła.
+  \end{enumerate}
+\end{zadanie}
+
+\subsection{Przymiotniki modelowe}
+
+Model $M$ jest 
+\begin{description}[font=\bfseries\color{green}]
+  \item[$\kappa$-nasycony] - dla każdego $A\subseteq M$, $|A|<\kappa$, każdy $1$-typ $p(x)$ nad $A$ jest realizowany w $M$
+  \item[nasycony] jeśli $|M|$-nasycony
+  \item[$\kappa$-uniwersalny] - dla wszystkich $N\equiv M$ jeśli $|N|\leq \kappa$ to istnieje $f:N\elementarna M$
+  \item[uniwersalny] jeśli $|M|$-uniwersalny
+  \item[$\kappa$-jednorodny] - dla wszystkich $A\subseteq M$ takich, że $|A|<\kappa$ dla wszystkich $a\in M$ i wszystkich funkcji $f:A\elementarna M$ istnieje $f\subseteq g:A\cup\{a\}\elementarna M$
+  \item[jednorodny] jeśli $|M|$-jednorodny 
+  \item[silnie $\kappa$-jednorodny] jeśli $g$ w definicji wyżej jest elementarną funkcją z $M$ do $M$ 
+  \item[$\kappa$-zwarty] jeśli dla każdego $1$-typu nad $M$ $p$ jeśli $|p|<\kappa$ to $p(M)\neq \emptyset$.
+\end{description}
+
+\begin{zadanie}
+  Udowodnić, że jeśli $M$ jest $\kappa$-nasycony, $p\in S_n(A)$, $A\subseteq M$, $|A|<\kappa$, to $p$ jest realizowany w $M$.
+\end{zadanie}
+
+\begin{zadanie}
+  Udowodnić, że jeśli $M\subseteq N$ jest podstrukturą to dla każdego termu języka $L$ i $\overline{a}\subseteq M$ mamy $\tau^M(\overline{a})=\tau^N(\overline{a})$.
+\end{zadanie}
+
+\subsection{Elementarne systemy proste}
+
+Funkcja $f:A\elementarna N$ jest elementarna, jeśli 
+$$(\forall\;\overline{a}\subseteq A)(\forall\;\phi(\overline{x}))\;M\models \phi(\overline{a})\iff N\models\phi(f(\overline{a}))\iff tp^M(\overline{a})=tp^N(f(\overline{a}))$$
+
+Bycie elementarną podstrukturą jest relacją przechodnią.
+
+Niech $(I,\leq)$ będzie częsciowym porządkiem takim, że $(\forall\;a,b\in I)(\exists c\in I)\;(a\leq c\;\land\;b\leq c)$. Powiemy, że $(M_i, f_{ij})_{i\leq j}$ jest \buff{skierowanym systemem elementarnym}, jeśli 
+\begin{itemize} 
+  \item wszystkie funkcje $f_{ij}$ są elementarne oraz $f_{ij}f_{jk}=f_{ik}$ dla wszystkich $i\leq j\leq k$ 
+  \item oraz $f_{ii}=id$.
+\end{itemize}
+Obiekt $M=\varinjlim M_i$ jest granicą prostą tego systemu, jeśli mamy elementarne funkcje $\mu_i:M_i\to M$ takie, że wszystkie diagramy
+$$\begin{tikzcd}
+  & M \\ 
+  M_i\arrow[ur, "\mu_i" above left]\arrow[rr, "f_{ij}" below] & & M_j\arrow[ul, "\mu_j" above right]
+\end{tikzcd}$$
+komutują oraz $M$ spełnia własność uniwersalną, tzn.
+$$\begin{tikzcd}
+  M \arrow[rr, dashed, "\exists!f"] & & M' \\ 
+                                    & M_i\arrow[ur, "\mu_i'" below right]\arrow[ul, "\mu_i" below left]
+\end{tikzcd}$$
+
+\buff{Konstrukcja granicy prostej}:
+\begin{itemize}
+  \item $S=\bigsqcup M_i$ rozłączna suma struktur systemu
+  \item definiujemy na $S$ relację równoważności
+    $$\begin{tikzcd}[column sep=tiny, row sep=tiny]
+      x\arrow[r, phantom, sloped, "\sim"] & y &\iff & (\exists\;t\geq i,j)\;f_{it}(x)=f_{jt}(y) \\ 
+      M_i\arrow[u, sloped, phantom, "\ni"] & M_j\arrow[u, sloped, phantom, "\ni"]
+    \end{tikzcd}$$
+  \item $M=S/\sim$
+\end{itemize}
+
+\begin{zadanie}
+  Sprawdzić konstrukcję granicy prostej elementarnego systemu skierowanego struktur oraz udowodnić, że ta struktura spełnia definicję i odpowiednie funkcje są elementarne.
+\end{zadanie}
+
+\begin{zadanie}
+  Dwa systemy skierowane są izomorficzne, gdy istnieje system izomorfizmów $h_i:M_i\to N_i$, $i\in I$ komutujących z funkcjami wiązącymi $f_{ij}$, $g_{ij}$. Udowodnić, że każdy system skierowany struktur jest izomorficzny z systemem, w którym wszystkie funkcje wiązące to inkluzje. Granicą prostą takiego systemu jest wówczas zwykła suma.
+\end{zadanie}
+
+\begin{zadanie}
+  Przedstawić dowolną strukturę (dla języka przeliczalnego) jako granicę prostą elementarnego systemu skierowanego struktur przeliczalnych.
+\end{zadanie}
+
+\buff{Dolne twierdzenie L\"owenheima-Skolema}: jeśli $M$ jest strukturą dla języka przeliczalnego, to dla $S\subseteq M$ istnieje elementarna podstruktura $M_S\prec M$ taka, że $|M_S|\leq |S|+|Form_L|$. 
+
+\begin{lemma}{o rozszerzaniu odwzorowań elementarnych}{}
+  Niech $M,N\models T$, $A\subseteq M$ i $B\subseteq N$. Weźmy element $a\in M$ oraz $b\in N$. Wtedy elementarna surjekcja $f:A\elementarna B$ rozszerza się do elementarnego odwzorowania $f\cup\{(a,b)\}$ $\iff$ $tp(a/A)=f^*(tp(b/B))$.
+\end{lemma}
+
+\begin{zadanie}
+  Udowodnić lemat o rozszerzaniu odwzorowań elementarnych.
+\end{zadanie}
+
+
+
+
+
+
