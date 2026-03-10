@@ -21,7 +21,7 @@ Jeśli $\dim(V)=n$ to przez $GL(V)$ rozumiemy macierze $n\times n$ o wyrazach z 
     Od razu poznajemy, że macierz $\rho(g)$ to macierz obrotu o kąt $\frac{2\pi}{g}$. Nad $\C$ możemy zapisać $\rho(g)=e^{\frac{2\pi i}{g}}$.
   \item Popatrzmy teraz na dwie reprezentacje znanej nam już grupy permutacji $S_3$. 
 
-    Pierwsza reprezentacja to działanie na $\R^3$ przez permutowanie współrzędnych. Taka reprezentacja ma podprzestrzeń niezmienniczą: $V=\{(x_1,x_2, x_3)\;:\;x_1+x_2+x_3=0\}$.
+    Pierwsza reprezentacja to działanie na $\R^3$ przez permutowanie współrzędnych. Taka reprezentacja ma dwuwymiarową podprzestrzeń niezmienniczą: $V=\{(x_1,x_2, x_3)\;:\;x_1+x_2+x_3=0\}$.
 
     Zanim zdefiniujemy drugą reprezentację, przygotujemy pasującą nam przestrzeń liniową. Niech $V$ będzie rzeczywistą przestrzenią wektorową z bazą $\{e_{\sigma_1}, e_{\sigma_2}\}$ i symetryczną formą dwuliniową
     $$B(e_{\sigma_i}, e_{\sigma_j})=\begin{cases}1 & i=j\\\cos(\frac{\pi}3)&i\neq j\end{cases}.$$
@@ -85,16 +85,115 @@ Powstaje pytanie o unikalność rozkładu reprezentacji na reprezentacje nieprzy
   $$|G|=\sum (\dim V_i)^2$$
 \end{theorem}
 
+\begin{proof}
+  Dowód z niezerowym prawdopodobieństwem pojawi się kiedyś. Opiera się on o fakt, że algebra grupowa jest izomorficzna z sumą prostą algebra macierzowych.
+\end{proof}
+
+\begin{definition}{reprezentacja regularna}{}
+  % Reprezentacja regularna to działanie grupy na samej sobie przez lewe przesunięcia.
+  Lewa regularna reprezentacja $\lambda$ grupy $G$ to reprezentacja na przestrzeni funkcji ciągłych, $C^*(G)$, zadana przez
+  $$\lambda(g)f(x)=f(g^{-1}x)$$
+\end{definition}
+
+\subsection{Charakter}
+
+\begin{definition}{charakter}{}
+  Niech $\rho:G\to GL(V)$ będzie reprezentacją grupy $G$ nad ciałem $K$. Funkcję $\chi:G\to K$ daną przez $\chi(g)=Tr(\rho(g))$ nazywamy \buff{charakterem reprezentacji $\rho$}.
+\end{definition}
+
+Innymi słowy: charakter przypisuje reprezentacji sumę jej wartości własnych.
+
+Na tę chwilę będą interesować nas unitarne reprezentacje grup skończonych.
+
+\begin{fact}{}{}
+  Jeśli $\chi$ jest charakterem $n$-wymiarowej reprezentacji to
+  \begin{itemize}
+    \item $\chi(1)=n$
+    \item $\chi(s^{-1})=\chi(s)^*$ (gdy reprezentacja jest unitarna)
+    \item $\chi(tst^{-1})=\chi(s)$
+  \end{itemize}
+\end{fact}
+
+\begin{lemma}{Schura}{}
+  Niech $\rho_i:G\to GL(V_i)$, $i=1,2$ będą dwoma nieprzywiedlnimi reprezentacjami grupy $G$. Niech $f:V_1\to V_2$ będzie liniowym odwzorowaniem takim, że $\rho_2f=f\rho_1$. Wtedy
+  \begin{enumerate}
+    \item jeśli $\rho_1$ nie jest izomorficzne z $\rho_2$ to $f=0$,
+    \item jeśli $V_1=V_2$ oraz $\rho_1=\rho_2$ to $f$ jest wielokrotnością identyczności.
+  \end{enumerate}
+\end{lemma}
+
+Na przestrzeni zespolonych funkcji ze skończonej grupy $G$ możemy określić iloczyn skalarny wzorem
+$$\langle \phi, \psi\rangle=\frac{1}{|G|}\sum_{g\in G}\phi(g)\psi(g)^*$$
+W takim razie mając dwie unitarne reprezentacje $G$ jesteśmy w stanie
+\begin{itemize}
+  \item policzyć normę charakteru tej reprezentacji,
+  \item sprawdzić, czy są one ortogonalne licząc iloczyn skalarny ich charakterów.
+\end{itemize}
+
+Jak się okazuje, charaktery są przydatnym narzędziem do badania reprezentacji grup.
+
+\begin{theorem}{}{}
+  Niech $V=W_1\oplus W_2\oplus ... \oplus W_n$ będzie rozkładem reprezentacji $G$ o charakterze $\phi$ na nieprzywiedlnie podreprezentacje. Jeśli $W$ jest inną reprezentacją $G$ z charakterem $\chi$ to liczba $W_i$ które są z $W$ izomorficzne wynosi $\langle \chi, \phi\rangle$.
+\end{theorem}
+
+\begin{theorem}{}{}
+  Nieredukowalne reprezentacje o tym samym charakterze są izomorficzne.
+\end{theorem}
+
+\begin{theorem}{}{}
+  Reprezentacja $V$ o charakterze $\chi$ jest nieredukowalna $\iff$ $\langle\chi,\chi\rangle=1$
+\end{theorem}
+
+\section{Miara Haara}
+
+Oryginalna praca w której Haar dowodzi istnienie lewo-niezmienniczej miary jest konstruktywna, ale my, ku smutkowi wykładowcy, podamy dowód bez liczenia.
+
+\begin{definition}{}{}
+  Niech $G$ będzie grupą topologiczną lokalnie zwartą. Miara Haara $\mu$ na $G$ to niezerowa miara Radona która jest lewo niezmiennicza, tj. $\mu(gE)=\mu(E)$ dla każdego $g\in G$ oraz dla każdego $E$ borelowskiego.
+\end{definition}
+
+Dla grup, które nie są lokalnie zwarte możemy definiować miary Gaussa.
+
+\begin{lemma}{}{}
+  Jeśli $\mu$ jest lewo-niezmienniczą miarą Haara na $G$ to $\tilde{\mu}(E)=\mu(E^{-1})$ jest prawo-niezmienniczą miara Haara na $G$.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    \tilde{\mu}(Eg)=\mu(g^{-1}E^{-1})=\mu(E^{-1})=\tilde{\mu}(E)
+  \end{align*}
+\end{proof}
+
+% Istnieje grupa, która jest $T_{5/2}$ ale nie $T_4$
+
+\begin{theorem}{}{}
+  Na lokalnie zwartej grupie istnieje jedyna z dokładnością do stałych lewo-niezmiennicza miara.
+\end{theorem}
+
+Pierwsze dowody istnienia miary Haara były dla grup ośrodkowych i my się do tych grup ograniczymy.
+
+\begin{proof}
+  Oznaczmy
+  $$C^+_c(G)=\{f\in C_c(G)\;:\;f\geq 0\;\land\;f\not\equiv 0\}$$
+  liniowe kombinacje elementów tego zbioru dają całe $C_c(G)$.
+
+
+  Używamy twierdzenia o fix-punkcie, co jest niekonstruktywną zabawką.
+
+  \begin{theorem}{Kakutani}{}
+    Niech $K\subseteq E$ będzie zwartym podzbiorem przestrzeni lokalnie wypukłej, czyli każdy otwarty podzbiór zawiera mniejszy otwarty podzbiór wypukły. Jeśli $G$ działa na $E$ przez operatory liniowe tak, że $gK\subseteq K$ dla wszystkich $g\in G$ to istnieje punkt $k_0\in K$ taki, że $gk_0=k_0$ dla wszystkich $g\in G$.
+  \end{theorem}
+\end{proof}
+
+
+na wykładzie - szkic dowodu dla grup zwartych
+
+on leci z riesza
+
+$A(S_3)$ - afiniczna grupa permutacji
 
 
 
-
-
-
-
-
-
-Bardzo ciekawymi przykładami reprezentacji nieprzywiedlnich są nieprzwyiedlnie reprezentacje grup $S_n$, klasyfikowane za pomocą diagramów Younga.
 
 
 
