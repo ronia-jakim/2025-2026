@@ -100,8 +100,11 @@ która zwraca proporcję między lewo a prawo niezmienniczą miarą nazywamy \bu
 
 \subsection{Miary Radona i sploty}
 
-Zbiór \buff{miar Radona} oznaczamy $M(G)$ i dla nas będzie to to samo co zbiór $(C_b(G))^*$, bo miara to całka, a całka to funkcjonał liniowy.
+Zbiór \buff{miar Radona} oznaczamy $M(G)$ i dla nas będzie to to samo co zbiór $(C_b(G))^*$. Pokażemy teraz, że na $M(G)$ można zdefiniować mnożenie.
 
+Zacznijmy od zdefiniowania mnożenia na $M(G)$, czyli sensownego odwzorowania
+$$MG\times MG\to MG.$$
+Zrobimy to korzystając z cofnięcia mnożenia na grupie, $m_*:M(G\times G)\to MG$.
 $$
 \begin{tikzcd}
   & M(G\times G)\arrow[d, "m_*"]\\ 
@@ -109,10 +112,27 @@ $$
 \end{tikzcd}
 $$
 
-Mając 
+Dla miar $\mu,\nu\in MG$ definiujemy odwzorowanie $MG\times MG\to M(G\times G)$ jako odwzorowanie przypisujące parze $(\mu,\nu)$ miarę $\lambda$ (istniejącą i jedyną na mocy twierdzenia Riesza) taką, że
+$$\int \phi(g,h) \lambda(d(g,h))=\int \phi(g, h)\mu(dg)\nu(dh).$$
+Dalej, odwzorowanie $m_*:M(G\times G)\to MG$ przypisuje mierze $\mu$ na $G\times G$ miarę $\lambda$ na $G$ taką, że 
+$$\int \phi(gh)\lambda(d(gh))=\int \phi(m(g,h))\mu(d(g,h)),$$
+co dla nas składa się do poniższej definicji mnożenia na $MG$:
+$$\int \phi\mu\ast\nu=\int \phi(gh)\mu(dg)\mu(dh)$$
 
+\begin{example}
+  Niech $\delta_g$ będzie deltą Diraca. Wtedy $\delta_g\ast\delta_h=\delta_{gh}$.
+\end{example}
 
+Zdefiniowaliśmy już splot funkcjonałów na funkcjach ograniczonych (bo $MG=(C_b(G))^*$), pora na funkcje o zwartym nośniku. Niech $\psi_1,\psi_2\in C_c(G)$, a przez $\lambda$ oznaczmy miarę Haara na $G$. Rozważmy miarę $\psi_1\lambda\ast\psi_2\lambda$, która jest zdefiniowana jako
+$$\int\phi(\psi_1\lmabd\ast\psi_2\lambda)=\mapsto \int\int\phi(gh)\psi_1(g)\lambda(dg)\psi_2(h)\lambda(dh).$$
+Ponieważ $\lambda$ jest miarą Haara, to jest ona niezmiennicza na lewe przesunięcia. Przesuwając więc $h$ o $g^{-1}$ z lewej strony dostajemy
+$$\int\int\phi(g) \underbrace{\psi_1(g)\psi_2(g^{-1}h)\lambda(dg)}_{\psi_1\ast\psi_2}\lambda(dh).$$
+Definiujemy $\psi_1\ast\psi_2=\int \psi_1(g)\psi_2(g^{-1}h)\lambda(dg)$.
 
+\begin{lemma}{}{}
+  $C_c(G)$ z miarą $\|\phi\|_1=\int|\phi|\lambda$ jest algebrą Banacha, tzn.
+  $$\|\psi_1\ast\psi_2\|\leq\|\psi_1\|\|\psi_2\|.$$
+\end{lemma}
 
 
 
