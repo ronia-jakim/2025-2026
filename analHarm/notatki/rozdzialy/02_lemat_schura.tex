@@ -1,0 +1,65 @@
+\section{27.02.2026}{Reprezentacje unitarne}
+
+\begin{definition}{}{}
+  ${}^*$-podalgebra $A\subseteq \B(\Hh)$ nazywa się \buff{algebrą von Neumanna}, jeśli
+  \begin{enumerate}
+    \item $A$ jest domknięte w WO
+    \item $A=A''$
+  \end{enumerate}
+  gdzie $X':=\{T\in\B(\Hh)\;:\;\forall\;s\in X\;Ts=sT\}$ to \acc{komutant} zbioru $X\subseteq \B(\Hh)$.
+\end{definition}
+
+\begin{fact}{}{}
+  Jeśli $X=X^*$ to $X'$ jest algebrą von Neumanna.
+\end{fact}
+
+\begin{proof}
+  Wychodzimy od stwierdzenia, że
+  $$X\subseteq X'',$$
+  które widać od razu rozpisując definicje
+  $$X'=\{T\;:\;\forall\; s\in X\;Ts=sT\}$$
+  $$X''=\{T\;:\;\forall\; s'\in X\;Ts'=s'T\}$$
+
+  Stawiając $X'$ pod $X$ dostajemy $X'\subseteq X'''=(X')''$.
+
+  Z drugiej strony, nakładanie $'$ odwraca zawierania (łatwiej komutować z każdym elementem mniejszego zbioru), więc $X'\supseteq X'''=(X')''$.
+\end{proof}
+
+\begin{fact}{}{}\color{red}
+  Jeśli $T=T^*$ to $T$ ma rozkład spektralny
+  $$T=\int t dE_t$$
+\end{fact}
+
+\begin{lemma}{Schura}{}
+  \begin{enumerate}
+    \item Jeśli $\pi$ jest reprezentacją nieprzywiedlnia to $Hom(\pi, \pi)=\C$.
+    \item Jeśli $\pi$ oraz $\pi'$ są nieprzywiedlnie, to $\dim Hom(\pi, \pi')\leq 1$.
+  \end{enumerate}
+\end{lemma}
+
+Punkt 2. oznacza w szczególności, że albo dwie reprezentacje nieprzywiedlnie są izomorficzne, albo wogóle nie mają przeplataczy.
+
+\begin{proof}
+  \color{red}tutaj trzeba wstawkę z twierdzeniem spektralnym
+\end{proof}
+
+Wynika z tego, że przeplatacze reprezentacji nad $\C$ nie mają jądra, czyli tworza algebrę z dzieleniem. Nad $\R$ jest trochę trudniej i przeplatacze przychodzą w trzech smakach
+\begin{itemize}
+  \item krotność identyczności,
+  \item obroty (struktura zespolona),
+  \item struktura kwaternionowa.
+\end{itemize}
+
+\begin{conclusion}{}{}
+  Nieprzywiedlnie zespolone reprezentacje grup abelowych są jednowymiarowe.
+\end{conclusion}
+
+
+
+
+
+
+
+
+
+
