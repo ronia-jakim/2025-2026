@@ -100,6 +100,12 @@ Powstaje pytanie o unikalność rozkładu reprezentacji na reprezentacje nieprzy
   $$\lambda(g)f(x)=f(g^{-1}x)$$
 \end{definition}
 
+\begin{lemma}{}{}
+  Niech $L:V\to W$ będzie dowolnym przekształceniem liniowym, a $\rho_1$, $\rho_2$ niech będą dwie reprezentacje $G$. Wówczas odwzorowanie $A_G(L):V\to W$ dane wzorem
+  $$\frac{1}{|G|}\sum_{g\in G}\rho_1(g)^{-1}L\rho_2(g)$$
+  jest przeplataczem $\rho_1$ i $\rho_2$.
+\end{lemma}
+
 \subsection{Produkt tensorowy reprezentacji}
 
 Każdy zna i kocha produkt prosty dwóch przestrzeni wektorowych $V\oplus V'$, gdzie dodawanie i mnożenie przez skalary odbywa się po współrzędnych. 
@@ -123,7 +129,40 @@ Tak się składa, że jeśli $V$ ma bazę $\{v_i\}_{i\leq n}$, a $W$ - $\{w_i\}_
   \item $\C\otimes_\R\C\cong \C^2$
 \end{example}
 
-Jeśli $\rho:G\to V$ i $\rho':G\too V'$ są reprezentacjami $G$, to 
+Jeśli $\rho:G\to V$ i $\rho':G\to V'$ są reprezentacjami $G$, to możemy zdefiniować reprezentację (działanie) $G$ na $V\otimes V'$ w następujący sposób:
+$$g(v\otimes v'):=gv\otimes gv'=\rho(g)v\otimes \rho'(g)v'.$$
+
+Produkt tensorowy bardzo przypomina mnożenie liczb, ale nie do końca. Jeśli rozważamy $v\otimes w\in V\otimes V$, to bardzo rzadko $v\otimes w=w\otimes v$. Czasami jednak przemienność mnożenia wektorów byłaby przydatna - stąd definiujemy tensory symetryczne w którym relacja ta zachodzi zawsze.
+
+\begin{definition}{produkt symetryczny}{}
+  Dla przestrzeni wektorowej $V$ definiujemy jej produkt symetryczny jako
+  $$S^2(V):=V\otimes V\langle v\otimes w-w\otimes v\rangle.$$
+  To znaczy produkujemy odwzorowanie $V\otimes V\to V\otimes V$ posyłające $v\otimes w\to w\otimes v$ i wydzielamy przez jego jądro. Wtedy $v\otimes w=w\otimes v$.
+  \bigskip
+  
+  Definicję tę można uogólnić: $n$-ty produkt symetryczny $V$ to
+  $$S^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes n_v-v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
+\end{definition}
+
+Tak jak istnieją macierze symetryczne i antysymetryczne, hermitowskie i antyhermitowskie, symetryczny produkt tensorowy też ma swojego kuzyna spod ciemnej gwiazdy, nazywającego się \buff{produktem alternującym}.
+
+\begin{definition}{produkt alternujący}{}
+  Dla przestrzeni wektorowej $V$ definiujemy jej produkt alternujący (potęga zewnętrzna) jako
+  $$\Lambda^2(V):=V\otimes V\langle v\otimes w+w\otimes v\rangle.$$
+  To znaczy produkujemy odwzorowanie $V\otimes V\to V\otimes V$ posyłające $v\otimes w\to -w\otimes v$ i wydzielamy przez jego jądro. Wtedy w ilorazie $v\otimes w=-w\otimes v$.
+  \bigskip
+  
+  Definicję tę można uogólnić: $n$-ty produkt alternujący $V$ to
+  $$\Lambda^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes n_v+v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
+\end{definition}
+
+Jak się okazuje, symetria i antysymetria sumują się do całości, tzn.
+$$V\otimes V\cong S^2(V)\oplus \Lambda^2(V)$$
+przez operację symetryzacji i antysymetryzacji (?). Pierwsza z dowolnego tensora robi tensorek symetryczny
+$$v\otimes w\mapsto\frac{1}{2}(v\otimes w+w\otimes v)$$
+druga z dowolnego tensora robi tensor antysymetryczny
+$$v\otimes w\mapsto\frac{1}{2}(v\otimes w-w\otimes v).$$
+Sumując obie dostajemy $v\otimes w$ z powrotem.
 
 \subsection{Charakter}
 
@@ -145,12 +184,19 @@ Na tę chwilę będą interesować nas unitarne reprezentacje grup skończonych.
 \end{fact}
 
 \begin{lemma}{Schura}{}
-  Niech $\rho_i:G\to GL(V_i)$, $i=1,2$ będą dwoma nieprzywiedlnimi reprezentacjami grupy $G$. Niech $f:V_1\to V_2$ będzie liniowym odwzorowaniem takim, że $\rho_2f=f\rho_1$. Wtedy
+  Niech $\rho_i:G\to GL(V_i)$, $i=1,2$ będą dwoma nieprzywiedlnimi reprezentacjami grupy $G$. Niech $f:V_1\to V_2$ będzie przeplataczem $\rho_1$ i $\rho_2$. Wtedy
   \begin{enumerate}
     \item jeśli $\rho_1$ nie jest izomorficzne z $\rho_2$ to $f=0$,
     \item jeśli $V_1=V_2$ oraz $\rho_1=\rho_2$ to $f$ jest wielokrotnością identyczności.
   \end{enumerate}
 \end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Rozważmy $x\in\ker f$, wtedy $0=\rho_2 fx=f\rho_1 x$, czyli $\rho_1x\in \ker f$, a więc $\ker f$ jest niezmiennicza na $\rho_1$. W takim razie $\ker f=V_1$ lub $\ker f=0$. Pierwszy przypadek jest przez nas pożądany, więc przyjrzyjmy się drugiemu. Jeśli $\ker f=0$, to $\im f$ jest niezmiennicze na działanie $\rho_2$ ($f\rho_1 x=\rho_2 fx$). W takim razie $\im f=V_2$ lub $\im f=0$. Skoro $\ker f=0$, to musowo $\im f=V_2$, a więc $f\neq 0$ musiałoby być izomorfizmem.
+    \item Skoro pracujemy nad $\C$, to $f$ posiada co najmniej jedną wartość własną $\lambda$. Funkcja $f'=f-\lambda$ nie jest izomorfizmem, ale nadal jest przeplataczem $\rho$ z $\rho$, więc na mocy punktu pierwszego $f'=0$.
+  \end{enumerate}
+\end{proof}
 
 Na przestrzeni zespolonych funkcji ze skończonej grupy $G$ możemy określić iloczyn skalarny wzorem
 $$\langle \phi, \psi\rangle=\frac{1}{|G|}\sum_{g\in G}\phi(g)\psi(g)^*$$
@@ -160,19 +206,40 @@ W takim razie mając dwie unitarne reprezentacje $G$ jesteśmy w stanie
   \item sprawdzić, czy są one ortogonalne licząc iloczyn skalarny ich charakterów.
 \end{itemize}
 
-Jak się okazuje, charaktery są przydatnym narzędziem do badania reprezentacji grup.
+% Jak się okazuje, charaktery są przydatnym narzędziem do badania reprezentacji grup.
+
+
+\begin{lemma}{}{}
+  Reprezentacja $V$ o charakterze $\chi$ jest nieprzywiedlnia $\iff$ $\langle\chi,\chi\rangle=1$
+\end{lemma}
+
+\begin{proof}
+  Niech $\rho$ będzie nieprzywiedlnią reprezentacją $G$ działającą przez macierze $(a_{ij})(g)$. Wówczas $\chi=\sum a_{ii}(g)$ oraz
+  $$\langle \chi, \chi\rangle=\sum_{i,j} \langle a_{ii}(g),a_{jj}(g)\rangle=\sum_{i,j}a_{ii}(g)\overline{a_{jj}(g)}=\sum_{i,j}a_{ii}(g)a_{jj}(g^{-1})=\begin{cases}1 & i=j\\ 0 & i\neq j\end{cases}$$
+\end{proof}
+
+\begin{lemma}{}{}
+  Nieprzywiedlnie nieizomorficzne reprezentacje mają ortogonalne charaktery.
+\end{lemma}
+
+\begin{proof}
+  Niech $\rho_1$, $\rho_2$ będą dwiema nieprzywiedlnimi reprezentacjami, a $\chi_1$, $\chi_2$ ich charakterami.
+\end{proof}
 
 \begin{theorem}{}{}
   Niech $V=W_1\oplus W_2\oplus ... \oplus W_n$ będzie rozkładem reprezentacji $G$ o charakterze $\phi$ na nieprzywiedlnie podreprezentacje. Jeśli $W$ jest inną reprezentacją $G$ z charakterem $\chi$ to liczba $W_i$ które są z $W$ izomorficzne wynosi $\langle \chi, \phi\rangle$.
 \end{theorem}
 
-\begin{theorem}{}{}
-  Nieredukowalne reprezentacje o tym samym charakterze są izomorficzne.
-\end{theorem}
 
-\begin{theorem}{}{}
-  Reprezentacja $V$ o charakterze $\chi$ jest nieredukowalna $\iff$ $\langle\chi,\chi\rangle=1$
-\end{theorem}
+
+% \begin{theorem}{}{}
+%   Nieredukowalne reprezentacje o tym samym charakterze są izomorficzne.
+% \end{theorem}
+%
+% \begin{proof}
+%   Jest to szybki wniosek z te
+% \end{proof}
+
 
 
 \section{Miara Haara}
