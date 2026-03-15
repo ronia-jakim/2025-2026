@@ -45,8 +45,13 @@ Jeśli $\dim(V)=n$ to przez $GL(V)$ rozumiemy macierze $n\times n$ o wyrazach z 
 
   wtedy $\rho\simeq \pi$
 
-  \color{red} reprezentacje Titsa na różnych wyborach generatorów?
+
+  Dowód zaczyna od pokazania, że $k[G]\cong \oplus_{n} M_n(C)$
+
+  % \color{red} reprezentacje Titsa na różnych wyborach generatorów?
 \end{example}
+
+Dla ustalonej grupy $G$ możemy rozważać kategorię jej reprezentacji liniowych. Obiektami będą wtedy pary $(V, \rho)$ (zwykle jednak będziemy odwzorowanie i przestrzeń utożsamiać). Jako morfizmy między reprezentacjami zdefiniujemy \buff{przeplatacze}, czyli liniowe odwzorowania spełniające diagram wyżej, ale niekoniecznie będące izomorfizmami. Dla $\rho:G\to V$, $\rho':G\to V'$ zbiór przeplataczy między nimi będziemy czasem (zależnie od wybryków autorki) oznaczać $Hom_G(\rho, \rho')$, a czasami $Hom_G(V,V')$.
 
 \subsection{Reprezentacje nieprzywiedlnie}
 
@@ -94,6 +99,31 @@ Powstaje pytanie o unikalność rozkładu reprezentacji na reprezentacje nieprzy
   Lewa regularna reprezentacja $\lambda$ grupy $G$ to reprezentacja na przestrzeni funkcji ciągłych, $C^*(G)$, zadana przez
   $$\lambda(g)f(x)=f(g^{-1}x)$$
 \end{definition}
+
+\subsection{Produkt tensorowy reprezentacji}
+
+Każdy zna i kocha produkt prosty dwóch przestrzeni wektorowych $V\oplus V'$, gdzie dodawanie i mnożenie przez skalary odbywa się po współrzędnych. 
+
+\begin{definition}{produkt tensorowy}{}
+  Produkt tensorowy przestrzeni $A$ i $B$ to jedyna przestrzeń wektorowa $A\otimes B$ taka, że każde dwuliniowe odwzorowanie $A\oplus B\to C$ faktoryzuje się przez $A\otimes B$. To znaczy komutuje diagram
+  $$\begin{tikzcd}
+    A\oplus B\arrow[r]\arrow[dr] & A\otimes B \arrow[d, dashed]\\ 
+                                 & C
+  \end{tikzcd}$$
+  gdzie strzałka $A\oplus B\to A\otimes B$ to dwuliniowe "mnożenie" $(a,b)\mapsto a\otimes b$.
+\end{definition}
+
+Tak się składa, że jeśli $V$ ma bazę $\{v_i\}_{i\leq n}$, a $W$ - $\{w_i\}_{i\leq m}$, to ich iloczyn tensorowy $V\otimes W$ ma bazę $\{v_i\otimes w_j\}_{i\leq n, j\leq m}$.
+
+\begin{example}[m]
+  \item $\R\otimes \R\cong \R$ jako przestrzenie wektorowe nad $\R$: 
+    $$(x,y)=(x\cdot 1, y\cdot 1)\mapsto (x\cdot 1)\otimes (y\cdot 1)=xy(1\otimes 1).$$
+  \item Ogólniej: jeśli $V$ jest przestrzenią liniową nad ciałem $K$, to $V\otimes_KK\cong V$.
+  \item Dla trzech przestrzeni liniowych $V$, $V'$, $W$ mamy $(V\oplus V')\otimes W\cong (V\otimes W)\oplus (V'\otimes W)$ - zupełnie jak mnożenie i dodawanie
+  \item $\C\otimes_\R\C\cong \C^2$
+\end{example}
+
+Jeśli $\rho:G\to V$ i $\rho':G\too V'$ są reprezentacjami $G$, to 
 
 \subsection{Charakter}
 
@@ -144,6 +174,7 @@ Jak się okazuje, charaktery są przydatnym narzędziem do badania reprezentacji
   Reprezentacja $V$ o charakterze $\chi$ jest nieredukowalna $\iff$ $\langle\chi,\chi\rangle=1$
 \end{theorem}
 
+
 \section{Miara Haara}
 
 Oryginalna praca w której Haar dowodzi istnienie lewo-niezmienniczej miary jest konstruktywna, ale my, ku smutkowi wykładowcy, podamy dowód bez liczenia.
@@ -173,24 +204,28 @@ Dla grup, które nie są lokalnie zwarte możemy definiować miary Gaussa.
 Pierwsze dowody istnienia miary Haara były dla grup ośrodkowych i my się do tych grup ograniczymy.
 
 \begin{proof}
-  Oznaczmy
-  $$C^+_c(G)=\{f\in C_c(G)\;:\;f\geq 0\;\land\;f\not\equiv 0\}$$
-  liniowe kombinacje elementów tego zbioru dają całe $C_c(G)$.
-
-
-  Używamy twierdzenia o fix-punkcie, co jest niekonstruktywną zabawką.
+  Pominiemy dokładny dowód istnienia miary Haara. Idea polega na pokazaniu, że 
+  \begin{itemize}
+    \item przestrzeń funkcji nieujemnych o zwartym nośniku, $C_c^+(G)$, jest lokalnie wypukła,
+    \item lokalnie zwarta grupa $G$ działa na niej przez operatory liniowe przez lewe przesunięcia, tzn. $(gf)(h)=f(g^{-1}h)$,
+    \item istnieje zwarty zbiór $K\subseteq C_c^+(G)$ zachowywany przez działanie $G$
+  \end{itemize}
+  
+  a następnie skorzystaniu z twierdzenia Kakutani, podanego niżej.
 
   \begin{theorem}{Kakutani}{}
     Niech $K\subseteq E$ będzie zwartym podzbiorem przestrzeni lokalnie wypukłej, czyli każdy otwarty podzbiór zawiera mniejszy otwarty podzbiór wypukły. Jeśli $G$ działa na $E$ przez operatory liniowe tak, że $gK\subseteq K$ dla wszystkich $g\in G$ to istnieje punkt $k_0\in K$ taki, że $gk_0=k_0$ dla wszystkich $g\in G$.
   \end{theorem}
+
+  W ten sposób dostajemy funkcję $\mu$ będącą fix punktem działania $G$. Pozostaje pokazać (w ramach ćwiczenie dla czytelnika), że jest ona jedyna z dokładnością do skalowania.
 \end{proof}
 
 
-na wykładzie - szkic dowodu dla grup zwartych
-
-on leci z riesza
-
-$A(S_3)$ - afiniczna grupa permutacji
+% na wykładzie - szkic dowodu dla grup zwartych
+%
+% on leci z riesza
+%
+% $A(S_3)$ - afiniczna grupa permutacji
 
 
 
