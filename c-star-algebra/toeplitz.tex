@@ -1,0 +1,127 @@
+%! TeX program = lualatex
+\documentclass{book} 
+
+\title{Algebry Toeplitza i twierdzenie o indeksie}
+\author{Weronika Jakimowicz}
+\date{20.03.2026}
+
+\usepackage{../template}
+
+\begin{document}
+% \maketitle 
+
+Kto lubi kompleksy łańcuchowe?
+
+Powiemy, że ograniczony operator $F:V\to W$ między dwoma przestrzeniami Banacha jest Fredholmowski, jeśli jego jądro i kojądro mają skończony wymiar. Ciąg
+$$\begin{tikzcd}
+  K:&0\arrow[r] & V\arrow[r, "F" above] & W\arrow[r] & 0
+\end{tikzcd}$$
+jest kompleksem łańcuchowym - obraz strzałki jest zawarty w jądrze następnej strzałki. Możemy więc liczyć jego kohomologie! $H^0(K)=\ker F$, $H^1(K)=\coker F$. Indeks $F$ to będzie charakterystyka Eulera tego kompleksu, czyli alternująca suma wymiarów jego kohomologii:
+$$ind(F)=\chi(K)=\dim(H^0(K))-\dim(H^1(K)).$$
+
+Tak się składa, że czasami operatory Toeplitza są Fredholmowskie, ale wpierw potrzebujemy powiedzieć co to wogóle jest algebra i operator Toeplitza.
+
+$\lambda$ - miara Haara na $S^1$
+
+Dla $n\in\Z$ definiujemy operator
+$$\epsilon_n: S^1\to S^1$$
+$$\epsilon_n(z)=z^n$$
+Interesują nas dwie podalgebry (jeszcze nie powiem w czym)
+$$\Gamma=\span\{\epsilon_n\;:\;n\in\Z\}$$
+$$\Gamma_+=\span\{\epsilon_n\;:\;n\in\N\}$$
+
+Kilka faktów o $\Gamma$:
+\begin{itemize}
+  \item $\epsilon_n$ tworzą ortonormalną bazę $L^2S^2$, bo to proste wyliczenie
+    $$\int\epsilon_n\overline{\epsilon_m}\lambda= \int_0^{2\pi} e^{itn}\overline{e^{itm}}dt=\int_0^{2\pi}e^{it(n-m)}=\begin{cases}1 & n=m\\0&n\neq m\end{cases}$$
+  \item Stone-Weierstrass mówi, że jest gęsta w $CS^1$, a ponieważ $CS^1$ jest gęste w $L^pS^1$ to $\Gamma$ też (dla nas ważne, że w $L^2S^1$, bo mamy bazę Hilberta)
+  \item jest *-podalgebrą $CS^1$ (addytywne bo span, mnożenie bo $z^nz^m=z^{n+m}$, inwolucja to minus w wykładniku, C* to S-W punkt wyżej) [{\color{red}ĆWICZENIE?}]
+\end{itemize}
+
+\begin{definition}{współczynniki Fouriera}{}
+  Dla $f\in L^pS^1$ definiujemy $n$-ty współczynnik Foueriera jako
+  $$\hat{f}(n)=\int f(x)\overline{x^n}d\lambda(x)$$
+\end{definition}
+
+\begin{example}
+  $f(x)=x^m$, wtedy $\hat{f}(n)=\begin{cases}1 & n=m\\0 & wpp\end{cases}$ bo to jest dokładnie to samo co liczyliśmy wcześniej 
+\end{example}
+
+\begin{definition}{Hardy space}{}
+  $$H^p(S^1)=\{f\in L^p(S^1)\;:\;\hat{f}(n)=0\text{ dla }n<0\}$$
+\end{definition}
+
+Nas będzie interesować $H^2(S^1)$.
+
+Fun fact: $\Gamma$ jest gęste i ortonormalne w $L^2S^1$, a $\Gamma_+$ - w $H^2S^1$.
+
+Mamy rzut ortogonalny
+$$P:L^2S^1\to H^2S^1.$$
+Dla $\phi\in L^\infty S^1$ definiujemy operator mnożenia jako
+$$M_\phi(f)=\phi f$$
+a \buff{operator Toeplitza} jako rzut operatora mnożenia
+$$T_\phi=PM_\phi.$$
+Funkcję $\phi$ często nazywa się \buff{symbolem} operatora $T_\phi$.
+
+\begin{lemma}{}{}
+  $T_\phi$ is compact iff $\phi=0$
+\end{lemma}
+
+\begin{proof}\color{red} 3.5.8 Murphy
+
+  $v:=M_{\epsilon_1}$ (przesuwa bazę), $u:=v\restriction{H^2S^1}$.
+\end{proof}
+
+\begin{lemma}{}{}
+  $\phi\in CS^1$, $\psi\in L^\infty S^1$ wtedy $T_\phi T_\psi-T_{\phi\psi}$ and $T_\psi T_\phi-T_{\psi\phi}$ są zwarte
+\end{lemma}
+
+\begin{theorem}{Toeplitza o indeksie}{}
+  Jeśli $\phi$ jest ciągłe, to $T_\phi$ jest Fredholmowskie oraz 
+  $$ind(T_\phi)=-winding(\phi),$$
+  gdzie $winding(\phi)$ to ilość nawinięć $\phi$ na $S^1$.
+\end{theorem}
+
+% Zanim to pokażemy potrzebujemy szybko zanurzyć stópki w świecie operatorów zwartych.
+
+\begin{proof}\color{red}
+  charakteryzacja Atkinsona ble ble ble 3.5.12
+\end{proof}
+
+Przypomnienie:
+\begin{description}
+  \item[spektrum algebry] (aka spektrum Gelfanda) $\Spec(A)=\{\text{niezerowe *-homomorfizmy }\phi:A\to \C\}$ (akurat zgadza się ze spektrum maksymalnym $A$)
+  \item[widmo elementu] $\sigma(a)=\{\lambda\in\C\;:\;a-\lambda\text{ nieodwracalne}\}$
+  \item[widmo operatora] $\sigma(T)=\{\lambda\;:\;T-\lambda\text{ nieodwracalne}\}$
+\end{description}
+
+$B(H)$ niech będą operatory ograniczone, $K(H)$ - operatory zwarte, czyli domknięcie obrazu kuli jednostkowej przez nie jest zwarte. 
+$$\pi:B(H)\to B(H)/K(H)$$
+
+\begin{definition}{widmo właściwe operatora (ang. essential spectrum)}{}
+  Niech $T$ będzie operatorem ograniczonym na przestrzeni Hilberta $H$. 
+  Widmo zwarte operatora $T$ to spektrum obrazu rzutu $T$ na $B(H)/K(H)$.
+\end{definition}
+
+Intuicja: widmo operatora mówi kiedy nie da się odwrócić $T-\lambda$, widmo właściwe powie kiedy nawet dodanie jakiegoś małego (czyli zwartego) operatroa nie pomoże.
+
+% \begin{theorem}{}{}
+%   $T_1$, $T_2$ - samosprzężone operatory na ośrodkowej przestrzeni Hilberta (którą jest np. $L^pS^1$, która nas będzie potem interesować) mające to samo widmo właściwe. Wtedy istnieje unitarny automorfizm $U$ dla którego $T_1-U*T_2U$ jest zwartym operatorem.
+% \end{theorem}
+%
+% Dowód używa maszynki, którą Weyl i von Neumann dawno temu wytworzyli:
+% \begin{theorem}{Weyl-von Neumann}{}
+%   Każdy ograniczony, samosprzężony operator na ośrodkowej przestrzeni Hilberta jest dowolnie małym zwartym potrząśnięciem operatora diagonalnego (macierz jest diagonalna).
+% \end{theorem}
+%
+% \begin{proof}
+%   Tego twierdzenia wyżej.
+%
+%   $T_1$ i $T_2$ to potrząsnięcia diagonalnego operatora zwartego mające to samo spektrum.
+% \end{proof}
+
+
+
+
+
+\end{document}
