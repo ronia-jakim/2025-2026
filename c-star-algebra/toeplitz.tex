@@ -7,6 +7,10 @@
 
 \usepackage{../template}
 
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\myspan}{span}
+\renewcommand{\span}{\myspan}
+
 \begin{document}
 % \maketitle 
 
@@ -67,9 +71,10 @@ Funkcję $\phi$ często nazywa się \buff{symbolem} operatora $T_\phi$.
   $T_\phi$ is compact iff $\phi=0$
 \end{lemma}
 
-\begin{proof}\color{red} 3.5.8 Murphy
+\begin{proof}
+  $v:=M_{\epsilon_1}$ (przesuwa bazę), $u:=v\restriction{H^2S^1}$
 
-  $v:=M_{\epsilon_1}$ (przesuwa bazę), $u:=v\restriction{H^2S^1}$.
+  $$(u^*)^n(\epsilon_m)=\begin{cases}\epsilon_{m-n} & m\geq n \\ 0 & m < n \end{cases}$$
 \end{proof}
 
 \begin{lemma}{}{}
