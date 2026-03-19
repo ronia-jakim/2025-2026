@@ -1,5 +1,5 @@
 %! TeX program = lualatex
-\documentclass{book} 
+\documentclass[12pt]{book} 
 
 \title{Algebry Toeplitza i twierdzenie o indeksie}
 \author{Weronika Jakimowicz}
@@ -67,53 +67,126 @@ a \buff{operator Toeplitza} jako rzut operatora mnożenia
 $$T_\phi=PM_\phi.$$
 Funkcję $\phi$ często nazywa się \buff{symbolem} operatora $T_\phi$.
 
+\begin{example}
+  Najprostszy operator Toeplitza - $M_{\epsilon_1}$. Po angielsku ma nazwę - unilateral shift
+\end{example}
+
+\begin{lemma}{}{}
+  Dla każdego $\phi\in L^\infty S^1$ mamy
+  $$u^*T_\phi u=T_{\epsilon_1^*}T_\phi T_{\epsilon_1}=T_\phi$$
+\end{lemma}
+
+\begin{proof}
+  $T_{\epsilon_1}$ to mnożenie przez $z$, więc jest przemienne z mnożeniem przez cokolwiek innego. 
+\end{proof}
+
 \begin{lemma}{}{}
   $T_\phi$ is compact iff $\phi=0$
 \end{lemma}
 
-\begin{proof}
-  $v:=M_{\epsilon_1}$ (przesuwa bazę), $u:=v\restriction{H^2S^1}$
+Zanim dowód szybki operator: dla $x,y\in H$ Hilberta definiujemy operator
+$$(x\otimes y)z=\langle z,y\rangle x.$$
+Jak się okazuje (tu używamy blackboxa), zbiór $F(H)$ operatorów na $H$ o skończenie wymiarowym obrazie jest samosprzężonym ideałem w $B(H)$ generowanym przez $x\otimes x$. Dodatkowo $F(H)$ jest gęste w $K(H)$ - operatorach zwartych. Czyli każdy element $F(H)$ zapisuje się jako $\sum f_j\otimes g_j$ dla $f_i,g_i\in H$.
 
+\begin{proof}
+  $\phi=0\implies T_\phi$ compact
+
+  $$T_\phi f=P\phi f=P0=0$$
+  jak nic zwarte :D
+
+  $T_\phi$ zwarte $\implies \phi=0$
+
+  Zanim mięso dowodu, kilka faktów i oznaczeń
+
+  $v:=M_{\epsilon_1}$, $u:=v\restriction{H^2S^1}$
   $$(u^*)^n(\epsilon_m)=\begin{cases}\epsilon_{m-n} & m\geq n \\ 0 & m < n \end{cases}$$
+
+  Dla $f\in H^2(S^1)$ mamy
+  $$f=\sum \langle f, \epsilon_n\rangle \epsilon_n$$
+  a więc
+  $$\|(u^*)^nf\|^2=\|\sum_{m=n}^\infty\langle f,\epsilon_m\rangle \epsilon_{m-n}\|^2$$
+  ponieważ $\epsilon_n$ są ortogonalne, to norma ich kombinacji liniowej jest pierwiastkiem sumy kwadratów współczynników:
+  $$\|\sum_{m=n}^\infty\langle f,\epsilon_m\rangle \epsilon_{m-n}\|^2=\sum_{m=n}^\infty|\langle f,\epsilon_m\rangle|^2,$$
+  więc jak $n\to \infty$ to $((u^*)^nf)\to 0$, bo $u^*$ jest zwarte, a $\epsilon_n\to 0$ słabo, bo przez coraz krótsze fragmenty czasu pokrywa się z jakąś inną funkcją.
+
+  Wracając do dowodu, niech $T_\phi$ będzie zwartym operatorem Toeplitza.
+
+  Ponieważ skończeniewymiarowe operatory są gęste w zbiorze zwartych operatorów, żeby otrzymać $\lim_{n\to\infty} (u^*)^nv=0$ dla $v\in K(H^2)$ wystarczy popatrzeć na  $v\in F(H^2)$, a wiemy że takie są postaci $\sum f_j\otimes g_j$ dla $f_i,g_i\in H^2$.
+  $$(u^*)^n(\sum f_j\otimes g_j)=\sum f_j\otimes(u^*)^n(g_j)$$
+  tak jak zawuażyliśmy wcześniej, $(u^*)^ng_j$ będzie zbiegać do $0$ gdy $n$ rośnie, więc całość też zbiega do zera.
+
+  Korzystając z lemaciku wyżej,
+  $$\| T_\phi\|=\|(u^*)^n T_\phi u^n\|\leq \|(u^*)^n T_\phi\|,$$
+  a skoro $(u^*)^n T_\phi\to 0$ to $T_\phi=0$, czyli $\phi=0$.
 \end{proof}
 
 \begin{lemma}{}{}
   $\phi\in CS^1$, $\psi\in L^\infty S^1$ wtedy $T_\phi T_\psi-T_{\phi\psi}$ and $T_\psi T_\phi-T_{\psi\phi}$ są zwarte
 \end{lemma}
 
+\begin{theorem}{}{}
+  Komutator algebry Toeplitza $A$ to zwarte operatory, $K(H^2)$.
+\end{theorem}
+
+\begin{proof}
+  Chcemy pokazać, że $T_\phi T_\psi$ różni się od $T_\psi T_\phi$ o zwarty operator - w ten sposób pokażemy, że $K(H^2)$ zawiera komutator. Lemat wyżej mówi, że
+  $$T_\phi T_\psi -T_{\phi\psi}-T_\psi T_\phi+T_{\psi\phi}=T_\phi T_\psi - T_\psi T_\phi +T_{\psi\phi}-T_{\phi\psi}$$
+  jest zwarte (suma zwartych zwarta bo to ideał), ponieważ $\phi$ i $\psi$ to funkcje, to $\psi\phi=\phi\psi$, czyli tam wyżej tak naprawdę mamy $[T_\phi, T_\psi]$.
+
+  Do drugiego zawierania potrzebujemy powiedzieć, że $A$ jest nieprzywiedlnia w $B(H^2)$. Trzebaby pokazać, że jedyne zamknięde podprzestrzenie wektorowe $H^2$ takie, że $uK\subseteq K$ oraz $uK^\perp\subseteq K^\perp$ to $0$ i $H^2$. Jeśli znajdziemy w komutatorze element zwarty, to z twierdzenia "$C^*$ algebra jest nieprzywiedlnia posiada co najmniej jeden niezerowy zwarty operator $\implies$ posiada wszystkie zwarte operatory" dostajemy co chcemy. Tak się składa, że $[u,u*]=uu*-u*u=uu*-1$ nie jest zerowa w $B(H^2)$, bo zabija $\epsilon_n$ dla $n>0$ ($u$ jest izometrią, ale nie jest unitarne).
+\end{proof}
+
+\begin{theorem}{}{}
+  Dokładny jest ciąg
+  $$\begin{tikzcd} 0\arrow[r] K(H^2)\arrow[r] & A \arrow[r] & C(S^1) \arrow[r] & 0 \end{tikzcd}$$
+\end{theorem}
+
 \begin{theorem}{Toeplitza o indeksie}{}
-  Jeśli $\phi$ jest ciągłe, to $T_\phi$ jest Fredholmowskie oraz 
+  Jeśli $\phi$ jest ciągłe i nie znika nigdzie, to $T_\phi$ jest Fredholmowskie oraz 
   $$ind(T_\phi)=-winding(\phi),$$
   gdzie $winding(\phi)$ to ilość nawinięć $\phi$ na $S^1$.
 \end{theorem}
 
-% Zanim to pokażemy potrzebujemy szybko zanurzyć stópki w świecie operatorów zwartych.
+\begin{proof}
+  Atkinson mówi, że jeśli $X$ jest nieskończenie wymiarową przestrzenią Banacha, a $u\in B(H)$ to $u$ jest Fredholmowskie $\iff$ $u+K(X)$ jest odwracalne w $B(X)/K(X)$.
 
-\begin{proof}\color{red}
-  charakteryzacja Atkinsona ble ble ble 3.5.12
+  Czyli przykładając do nas $T_\phi+K(H^2)$ ma być odwracalne w $B(H^2)/K(H^2)$, a więc dla nas musimy znaleźć odwracalność w $A/K(H^2)$. Ale $A/K(H^2)\cong C(S^1)$ (nawet mogę podać izomorfizm: $CS^1\ni \phi\mapsto T_\phi\in A/K(H^2)$), więc $T_\phi+K(H^2)$ jest odwracalne tylko jeśli $\phi$ takie jest, a $\phi$ jest odwracalne jeśli nie znika zbyt dużo razy.
 \end{proof}
 
-Przypomnienie:
-\begin{description}
-  \item[spektrum algebry] (aka spektrum Gelfanda) $\Spec(A)=\{\text{niezerowe *-homomorfizmy }\phi:A\to \C\}$ (akurat zgadza się ze spektrum maksymalnym $A$)
-  \item[widmo elementu] $\sigma(a)=\{\lambda\in\C\;:\;a-\lambda\text{ nieodwracalne}\}$
-  \item[widmo operatora] $\sigma(T)=\{\lambda\;:\;T-\lambda\text{ nieodwracalne}\}$
-\end{description}
+Dlaczego to ma sens? W Hatcherze definiujemy stopień funkcji $S^n\to S^n$ jako $f^*(z)=z^n$, gdzie $f^*:H^n(S^n)=Z\to H^n(S^n)$. Tutaj dostajemy odwracalne funkcje z okręgu do odwracalnych liczb zespolonych, więc mamy $\phi: S^1\to S^1\subseteq \C-0$. Ale $\C-0$ to jest to samo co $S^1$ - mamy ciągłą funkcję $\C-0\to S^1$ zadaną $z\mapsto \frac{z}{|z|}$. Czyli racjonalne jest liczenie jej indeksu jako $\phi^*:H^1(S^1)\to H^1(S^1)$, ale tak się składa, że $H^1(S^1)\cong(\pi_1(S^1)^{ab})=\pi_1(S^1)=\Z$, a winding number to właśnie charakteryzacja funkcji $\phi: S^1\to S^1$ przy pomocy liczenia liczby nawinięć.
 
-$B(H)$ niech będą operatory ograniczone, $K(H)$ - operatory zwarte, czyli domknięcie obrazu kuli jednostkowej przez nie jest zwarte. 
-$$\pi:B(H)\to B(H)/K(H)$$
+Operator Fredholmowski możemy potraktować jako kocykl. Tylko zamiast z pętelki $\phi$ iść w grzeczną jednowymiarową przestrzeń liniową operujemy na włóknach wiązki trywialnej $H^2$ tak jak nam $\phi$ za pomocą $T_\phi$ nakazuje. Nie dostajemy co prawda uczciwych kohomologii, ale klasy homotopii odwzorowań nadal można liczyć i dostać niezmiennik.
 
-\begin{definition}{widmo właściwe operatora (ang. essential spectrum)}{}
-  Niech $T$ będzie operatorem ograniczonym na przestrzeni Hilberta $H$. 
-  Widmo zwarte operatora $T$ to spektrum obrazu rzutu $T$ na $B(H)/K(H)$.
-\end{definition}
-
-Intuicja: widmo operatora mówi kiedy nie da się odwrócić $T-\lambda$, widmo właściwe powie kiedy nawet dodanie jakiegoś małego (czyli zwartego) operatroa nie pomoże.
-
-% \begin{theorem}{}{}
-%   $T_1$, $T_2$ - samosprzężone operatory na ośrodkowej przestrzeni Hilberta (którą jest np. $L^pS^1$, która nas będzie potem interesować) mające to samo widmo właściwe. Wtedy istnieje unitarny automorfizm $U$ dla którego $T_1-U*T_2U$ jest zwartym operatorem.
-% \end{theorem}
+% jako chodzenie po wiązce $H^2\to S^1$. $\phi$ zadaje pętle, $T_\phi$ mówi jak wektor wędruje po tej pętelce - zadaje kocykle. 
 %
+%
+% % Zanim to pokażemy potrzebujemy szybko zanurzyć stópki w świecie operatorów zwartych.
+% %
+% % \begin{proof}\color{red}
+% %   charakteryzacja Atkinsona ble ble ble 3.5.12
+% % \end{proof}
+%
+% Przypomnienie:
+% \begin{description}
+%   \item[spektrum algebry] (aka spektrum Gelfanda) $\Spec(A)=\{\text{niezerowe *-homomorfizmy }\phi:A\to \C\}$ (akurat zgadza się ze spektrum maksymalnym $A$)
+%   \item[widmo elementu] $\sigma(a)=\{\lambda\in\C\;:\;a-\lambda\text{ nieodwracalne}\}$
+%   \item[widmo operatora] $\sigma(T)=\{\lambda\;:\;T-\lambda\text{ nieodwracalne}\}$
+% \end{description}
+%
+% $B(H)$ niech będą operatory ograniczone, $K(H)$ - operatory zwarte, czyli domknięcie obrazu kuli jednostkowej przez nie jest zwarte. 
+% $$\pi:B(H)\to B(H)/K(H)$$
+%
+% \begin{definition}{widmo właściwe operatora (ang. essential spectrum)}{}
+%   Niech $T$ będzie operatorem ograniczonym na przestrzeni Hilberta $H$. 
+%   Widmo zwarte operatora $T$ to spektrum obrazu rzutu $T$ na $B(H)/K(H)$.
+% \end{definition}
+%
+% Intuicja: widmo operatora mówi kiedy nie da się odwrócić $T-\lambda$, widmo właściwe powie kiedy nawet dodanie jakiegoś małego (czyli zwartego) operatroa nie pomoże.
+%
+% % \begin{theorem}{}{}
+% %   $T_1$, $T_2$ - samosprzężone operatory na ośrodkowej przestrzeni Hilberta (którą jest np. $L^pS^1$, która nas będzie potem interesować) mające to samo widmo właściwe. Wtedy istnieje unitarny automorfizm $U$ dla którego $T_1-U*T_2U$ jest zwartym operatorem.
+% % \end{theorem}
+% %
 % Dowód używa maszynki, którą Weyl i von Neumann dawno temu wytworzyli:
 % \begin{theorem}{Weyl-von Neumann}{}
 %   Każdy ograniczony, samosprzężony operator na ośrodkowej przestrzeni Hilberta jest dowolnie małym zwartym potrząśnięciem operatora diagonalnego (macierz jest diagonalna).
