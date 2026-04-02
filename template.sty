@@ -280,10 +280,19 @@
 \def\rmm{Remark}
 \def\fc{Fact}
 
-\NewTcbTheorem[
-  auto counter, 
-  number within=chapter
-  ]{definition}{\deff}{ theoremBoxTHM={green}{green} }{def} 
+\makeatletter
+\@ifclassloaded{book}{
+  \NewTcbTheorem[
+    auto counter, 
+    number within=chapter
+    ]{definition}{\deff}{ theoremBoxTHM={green}{green} }{def} 
+  }{
+  \NewTcbTheorem[
+    auto counter, 
+    number within=section
+    ]{definition}{\deff}{ theoremBoxTHM={green}{green} }{def} 
+  }
+\makeatother
 
 \NewTcbTheorem[
   use counter from=definition
