@@ -1,11 +1,12 @@
 %! TeX program = lualatex
-\documentclass[twoside, a4paper, 12pt]{book}
+\documentclass[a4paper, 12pt]{article}
+% \documentclass[twoside, a4paper, 12pt]{book}
 
 \title{Wstęp do analizy harmonicznej na grupach}
 \author{\color{subtext1}Weronika Jakimowicz}
 \date{Lato 2025/26}
 
-\usepackage[pl, dates]{../../template}
+\usepackage[pl]{../../template}
 
 \usepackage{halloweenmath}
 
@@ -73,20 +74,22 @@
 \DeclareMathOperator{\B}{\mathcal{B}}
 
 \begin{document}
-\frontmatter 
+% \frontmatter 
 \maketitle
 \thispagestyle{empty}
 \setcounter{page}{0}
 
 \tableofcontents
-\mainmatter
+% \mainmatter
 
 \pagestyle{fancy}
 
-\chapter{Analiza funkcjonalna}  
+\include{rozdzialy/01_c_star_algebra}
 
-\include{rozdzialy/01_wstep_sploty}
+% \chapter{Analiza funkcjonalna}  
 
-\include{rozdzialy/02_lemat_schura}
+% \include{rozdzialy/01_wstep_sploty}
+%
+% \include{rozdzialy/02_lemat_schura}
 
 \end{document}
