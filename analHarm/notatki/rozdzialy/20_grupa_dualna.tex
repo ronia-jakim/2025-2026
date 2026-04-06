@@ -1,0 +1,122 @@
+\section{Grupa dualna}
+
+$$L_yf(x)=f(y^{-1}x)$$
+
+\begin{theorem}{}{}
+  Nieredukowalne reprezentacje lokalnie zwartej abelowej grupy są jednowymiarowe.
+\end{theorem}
+
+Czyli każda reprezentacja lokalnie zwartej grupy abelowej $G$ działa na $\C$ i możemy ją zapisać jako $\pi(x)z=\xi(x)z$ dla $\xi:G\to S^1$ (\buff{charakter}).
+
+\begin{definition}{positive type function}{}
+Funkcja dodatnio określona (positive type function) to funkcja $\phi\in L^\infty G$ taka, że dla wszystkich $f\in L^1G$ 
+$$\int (f^*\ast f)\phi\geq 0$$
+\end{definition}
+
+$\Hat{G}$ to zbiór wszystkich charakterów $G$, jest on zawarty w zbiorze funkcji dodatnio określonych o normie jeden. 
+
+\begin{theorem}{}{}
+  Dla każdego $\xi\in\Hat{G}$ definiujemy niezdegenerowaną *-reprezentację $L^1G$
+  $$\xi(f)=\int \langle x,\xi\rangle f(x)dx=\int\xi(x)f(x)dx$$
+  To daje utożsamienie $\Hat(G)$ ze spektrum $L^1G$.
+\end{theorem}
+
+\subsection{Topologia na $\Hat{G}$}
+
+\begin{definition}{}{}
+  Topologia na $\Hat{G}$ to topologia zbieżności na zbiorach zwartych w $G$. 
+\end{definition}
+
+Inna nazwa: topologia jednostajnej zbieżności na zbiorach zwartych w $G$. Baza topologii to zbiory 
+$$N(\phi_0, \epsilon, K)=\{\phi:(\forall\;x\in K)\;|\phi(x)-\phi_0(x)|<\epsilon\}$$
+dla $\phi_0$ w $\Hat{G}$, $\epsilon>0$ i $K\subseteq G$ zwartego.
+
+
+\begin{definition}{*-słaba topologia}{}
+  To topologia na $X$ w której wszystkie funkcje $\langle x, -\rangle:X^*\to \C$, $\langle x,\phi\rangle =\phi(x)$, są ciągłe.
+\end{definition}
+
+Czyli na $L^\infty G$ zbiory otwarte to $\{f\in L^\infty\;:\;\int fg\in U\}$ dla $g\in L^1G$ i $U\subseteq \C$ otwartego.
+
+\begin{theorem}{}{}
+  Topologia zwartej zbieżności na $\Hat{G}$ pokrywa się z *-słabą topologią dziedziczoną z $L^\infty G$.
+\end{theorem}
+
+\begin{proof}\color{red}
+  3.31 z follanda, na razie nie mam czasu
+\end{proof}
+
+\begin{zadanie}{2}{2}
+  Niech $G$ będzie grupą zwartą, niech $\chi:G\to U(1)$ będzie homomorfizmem. Zauważ, że $\chi\in L^p(G)$ dla każdego $p$.
+\end{zadanie}
+
+\begin{zadanie}{2}{3}
+  Przy założeniach poprzedniego zadania pokaż, że jeśli $\chi$ nie jest stały, to $\int_G\chi=0$. Wskazówka: użyj niezmienniczości miary Haara.
+\end{zadanie}
+
+\begin{proof}
+  Nie wprost: weźmy $h\in G$ takie, że $\chi(h^{-1})\neq 1$. Wtenczas 
+  $$\int_G\chi(g)dg=\int_GL_h\chi(g)dg=\int_G\chi(h^{-1}g)dg=\int_G\chi(h^{-1})\chi(g)dg=\chi(h^{-1})\int_G\chi(g)dg$$
+  czyli
+  $$0=(1-\chi(h^{-1}))\int_G\chi(g)dg$$
+  no a skoro $\chi(h^{-1})\neq 1$ to musowo $\int\chi=0$.
+\end{proof}
+
+\begin{zadanie}{2}{4}\label{2:4}
+  Wywnioskuj, że dla $\chi,\tau\in\Hat{G}$, $\chi=\tau$ albo $\chi$ i $\tau$ są ortogonalne w $L^2G$
+\end{zadanie}
+
+\begin{proof}
+  $$\langle \chi, \tau\rangle = \int\chi\overline{\tau}$$
+  $\chi\overline{\tau}\in\Hat{G}$, więc mamy dwie opcje: 
+  \begin{itemize}
+    \item albo $\int \chi\overline{\tau}\neq 0$, więc $\chi\overline{\tau}$ jest stale równe 1, to znaczy że $\overline{\tau}=\overline{\chi}$ czyli $\chi=\tau$, 
+    \item albo $\int \chi\overline{\tau}=0$ czyli charaktery są ortogonalne.
+  \end{itemize}
+\end{proof}
+
+\begin{zadanie}{2}{5}
+  Jeśli $G$ jest zwarta, to $\Hat{G}$ jest dyskretna. Wskazówka: zauważ, że $U=\{f\in L^\infty G\;:\;\int f>\frac{1}{2}\}$ jest otwarty (w *-słabej topologii). Pokaż, że jeśli $\chi\in \Hat{G}\cap U$ to $\chi=1$.
+\end{zadanie}
+
+\begin{proof}
+  Skoro $G$ jest zwarta, to funkcja stale równa $1$ jest w $L^1G$. W takim razie 
+  $$\{f\in L^\infty G\;:\;\left|\int fd\lambda\right|=\left|\int f\cdot 1d\lambda\right|>\frac{1}{2}\}$$
+  jest zbiorem otwartym w *-słabej topologii. Z zadania \ref{2:4} dla dowolnego $\chi \in \Hat{G}$ jest $\int \chi=1$ gdy $\chi=1$ i $\int\chi=0$ w przeciwny przypadku. Stąd $\{1\}$ jest zbiorem otwartym w $\Hat{G}$, więc każdy singleton też jest zbiorem otwartym.
+\end{proof}
+
+\begin{theorem}{}{}
+  Jeśli $G$ jest dyskretna, to $\Hat{G}$ jest zwarta.
+\end{theorem}
+
+\begin{proof}
+  $G$ dyskretna $\implies$ $L^1G$ ma jednostkę, czyli funkcję $\delta$ która jest $1$ w jedynce i $0$ na całej reszcie. Jeśli $\sigma(G)\cong \Hat{G}$ jest niezwarta, to $\Hat{x}$, definiowane jako $\Hat{x}(h)=h(x)$ dla $h\in\sigma(G)$, znika w nieskończoności dla każdego $x\in G$ (przed 1.30 z Follanda). {\color{red}dokończyć}
+\end{proof}
+
+\subsection{Liczby p-adyczne}
+
+\begin{zadanie}{2}{8}
+  Niech $\Q_p$ oznacza grupę addytywną ciała $p$-adycznego. Każdy $x\in\Q_p$ jest reprezentowany przez sumę $\sum_{-\infty \leq k\leq \infty} c_kp^k$ gdzie $c_k\in (0,...,p-1)$ oraz istnieje takie $N_0\in\Z$, że $c_k=0$ jeśli $k<N_0$. Zdefiniujmy 
+  $$\chi_1(x)=\exp\left(2\pi i\sum_{k\leq -1} c_kp^k\right).$$
+  Pokaż, że $\chi_1\in\Hat{\Q_p}$. Ogólniej, dla $y\in\Q_p$ zdefiniujmy $\chi_y(x)=\chi_1(xy)$. Pokaż, że $\chi_y\in\Hat{\Q_p}$.
+\end{zadanie}
+
+\begin{zadanie}{2}{9}
+  Pokaż, że $\chi_y\chi_{y'}=\chi_{y+y'}$.
+\end{zadanie}
+
+\begin{proof}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+

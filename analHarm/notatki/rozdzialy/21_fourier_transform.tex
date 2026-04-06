@@ -1,0 +1,126 @@
+\subsection{Transformata Fouriera}
+
+$\Hat{G}$ identyfikujemy z $\sigma(L^1G)$: dla $\chi\in\Hat{G}$ przypisujemy
+$$f\mapsto \overline{\chi}(f)=\chi^{-1}(f)=\int\overline{\langle x,\chi\rangle}f(x)dx$$
+
+Transformata Gelfanda=Fouriera na $L^1G$ to wtenczas 
+$$L^1G\ni f\mapsto \Hat{f}(\xi)=\int\overline{\langle x,\xi\rangle}f(x)dx\in C(\Hat{G})$$
+
+\begin{zadanie}{3}{1}
+  Niech $f\in C_c^\infty(\R)$. Oblicz $\Hat{-if}'$.
+\end{zadanie}
+
+\begin{proof}
+  Czym jest $\Hat{-if}$? 
+  \begin{align*}
+    \Hat{-if}(\xi)&=\int \overline{\langle x,\xi\rangle}(-if(x))dx = \\ 
+                  &=\int \overline{\langle x, \xi\rangle i}f(x)dx
+  \end{align*}
+  ale $\Hat{\R}\cong \R$ przez $\langle x,\xi\rangle=e^{2\pi i\xi x\rangle}$. Korzystając z tego liczymy, że pochodna względem $\xi$ to (według reguły Leibniza) powinno być
+  \begin{align*}
+    \frac{d}{d\xi}\Hat{-if}(\xi)&=\int \frac{\partial}{\partial \xi}\overline{i\langle x,\xi\rangle}f(x)dx=\\ 
+                                &=\int \frac{\partial}{\partial\xi}\overline{i e^{2\pi i \xi x}}f(x)dx= \\ 
+                                &=\int \overline{-2\pi x e^{2\pi i \xi x}}f(x)dx=-2\pi\Hat{xf}(\xi).
+  \end{align*}
+\end{proof}
+
+\begin{zadanie}{3}{2}
+  Niech $f\in L^1A$, $\omega\in\Hat{A}$. Pokaż, że $\Hat{\omega\cdot f}=L_\omega \Hat{f}$.
+\end{zadanie}
+
+\begin{proof}
+  Rozpisujemy od lewej strony (dokładniej niż niżej)
+  \begin{align*}
+    \Hat{\omega\cdot f}(\xi)&=\int \overline{\langle x,\xi\rangle}\langle x,\omega\rangle f(x)dx=\\ 
+                       &=\int \overline{\langle x,\xi\rangle\langle x,\omega^{-1}\rangle}f(x)dx=\\ 
+                       &=\int \overline{\langle x,\xi\omega^{-1}\rangle}f(x)dx=\\ 
+                       &=\Hat{f}(\xi\omega^{-1})=\Hat{f}(\omega^{-1}\xi)=L_{\omega}\Hat{f}(\xi)
+  \end{align*}
+\end{proof}
+
+\begin{theorem}{}{}
+  Transformata Fouriera to zwężający *-homomorfizm $L^1G\to C_0(\Hat{G})$ (lub $C(\Hat{G})$ gdy $\Hat{G}$ jest zwarte) której obraz jest gęstym podzbiorem $C_0(\Hat{G})$.
+\end{theorem}
+
+To jest bardziej abstrakcyjne postawienie lematu Riemanna-Lesbegue'a
+
+Kilka ważnych własności transformaty Fouriera:
+$$\Hat{L_yg}(\xi)=\int\overline{\langle x,\xi\rangle}f(y^{-1}x)dx=\int\overline{\langle yx,\xi\rangle}f(x)dx=\overline{\langle y,\xi\rangle}\Hat{f}(\xi)$$
+$$\Hat{(\eta f)}(\xi)=\int\overline{\langle x,\xi\rangle}\langle x,\eta\rangle f(x)dx=\Hat{f}(\eta^{-1}\xi)=L_\eta \Hat{f}(\xi)$$
+
+Dla miary $\mu\in M(G)$ definiujemy 
+$$\Hat{\mu}(\xi)=\int\overline{\langle x,\xi\rangle}d\mu(x).$$
+
+\begin{theorem}{}{}
+  Odwzorowanie $M(\Hat{G})\ni\mu\to \phi_\mu\in C_b(G)$ definiowane jako
+  $$\phi_\mu(x)=\int\langle x,\xi\rangle d\mu(\xi)$$
+  jest zwężającą iniekcją.
+\end{theorem}
+
+\begin{theorem}{Bochnera}{}
+  Jeśli $\phi\in\mathcal{P}(G)$ to istnieje jedyna dodatnia miara $\mu\in M(\Hat{G})$ taka, że $\phi=\phi_\mu$.
+
+  \color{red}Gal robi dla niedodatnich tylko tak ogólniej?
+\end{theorem}
+
+Definiujemy 
+$$B(G)=\{\phi_\mu\;:\;\mu\in M(\Hat{G})\}$$
+oraz $B^p(G)=B(G)\cap L^pG$. Z twierdzenia Bochnera $span\left(\mathcal{P}(G)\right)=B(G)$.
+
+\begin{lemma}{}{}
+  Jeśli $K\subseteq\Hat{G}$ jest zwarty to istnieje $f\in C_c(G)\cap \mathcal{P}$ takie, że $\Hat{f}\geq 0$ na $\Hat{G}$ oraz $\Hat{f}>0$ na $K$.
+\end{lemma}
+
+Odwzorowanie $\mu\mapsto \phi_\mu$ to bijekcja $M(\Hat{G})\to B(G)$. Jej odwrotność oznaczymy $\phi\mapsto \mu_\phi$.
+
+\begin{theorem}{}{}
+  Dla $f,g\in B^1(G)$ mamy $\Hat{f}d\mu_g=\Hat{g}d\mu_f$.
+\end{theorem}
+
+\begin{theorem}{Fourier inversion theorem I}{}
+  \begin{itemize}
+    \item $f\in B^1(G)\implies \Hat{f}\in L^1(\Hat{G})$
+    \item miara Haara $d\xi$ na $\Hat{G}$ jest znormalizowana względem miary Haara $dx$ na $G$ to $d\mu_f(\xi)=\Hat{f}(\xi)d\xi$, czyli
+      $$f(x)=\int\langle x,\xi\rangle \Hat{f}(\xi)d\xi$$
+  \end{itemize}
+\end{theorem}
+
+Jeśli $dx$ to miara Haara na $G$, to $d\xi$ z założeń twierdzenia wyżej jest miara Haara na $\Hat{G}$. Nazywamy ją miarą dualna do $dx$.
+
+\begin{zadanie}{3}{7}
+  Jeśli $G$ jest zwarta z probabilistyczną miarą Haara, to dualna miara Haara jest miarą liczącą.
+\end{zadanie}
+
+\begin{proof}
+  Niech $g(x)=1$ będzie funkcją stale równą $1$. Wtedy $\Hat{g}=\chi_{\{1\}}$, bo 
+  $$\Hat{g}(\xi)=\int \overline{\langle x, \xi\rangle}g(x)dx=\int \overline{\langle x,\xi\rangle}dx$$
+  a skoro charaktery tworzą bazę ortonormalną, to całka po prawej jest $0$ gdy $\xi\neq 1$ i wynosi $1$ dla charakteru trywialnego, czyli stale równego $1$. 
+
+  Stąd 
+  $$1=g(x)=\int \langle x, \xi\rangle \Hat{g}(\xi)d\xi=\int\langle x,\xi\rangle \chi_{\{1\}}(\xi)d\xi=d\xi(\{1\})$$
+  czyli miara singletona $1$ wynosi $1$, całą resztę osiągamy przesuwaniem bo już pokazaliśmy, że dla zwartego $G$ grupa dualna jest dyskretna.
+\end{proof}
+
+\begin{zadanie}{3}{8}
+  Jeśli $G$ jest dyskretna z liczącą miarą Haara to dualna miara Haara na $\Hat{G}$ jest miarą probabilistyczną.
+\end{zadanie}
+
+\begin{proof}
+  Niech $g(x)=\chi_{\{1\}}(x)$ będzie funkcją, wtedy $\Hat{g}(\xi)=1$ z analogicznego powodu co wcześniej:
+  $$\Hat{g}(\xi)=\int \overline{\langle x,\xi\rangle}g(x)dx=\int \overline{\langle x, \xi\rangle}\chi_{\{1\}}(x)dx=\overline{\xi(1)}=1.$$
+  Korzystając z twierdzenia Fouriera mamy
+  $$1=g(1)=\int\overline{\langle 1, \xi\rangle}\Hat{g}(\xi)d\xi=\int 1d\xi=d\xi(\Hat{G})$$
+\end{proof}
+yhmath
+\begin{zadanie}{3}{11}
+  Wywnioskuj twierdzenie Reigleya-Parsevala-Plancherela: transformata Fouriera jednoznacznie rozszerza się do unitarnej izometrii $L^2A\to L^2\Hat{A}$.
+\end{zadanie}
+
+
+
+
+
+
+
+
+

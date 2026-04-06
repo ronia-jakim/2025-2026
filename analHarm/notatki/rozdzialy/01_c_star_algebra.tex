@@ -1,5 +1,7 @@
 \section{C${}^*$ algebra basics}
 
+\subsection{Spektrum elementu, rezolwenta}
+
 \begin{definition}{}{}
   \acc{Algebra Banacha} $A$ na której jest zdefiniowana operacja ${}^*$ taka, że
   \begin{enumerate}
@@ -17,6 +19,66 @@ $$x_n^*x_n=(e^{-ni\frac{2\pi}{k}})(e^{ni\frac{2\pi}{k}})$$
 ma na $n$-tej współrzędnej
 $$\sum_{m=0}^n e^{-mi\frac{2\pi}{k}}e^{(n-m)i\frac{2\pi}{k}}=e^{ni\frac{2\pi}{k}}\sum e^{-2mi\frac{2\pi}{k}}$$
 
+\begin{theorem}{}{}
+  Zbiór elementów odwracalnych algebry Banacha z jedynką jest otwarty i odwzorowanie $x\mapsto x^{-1}$ jest na nim ciągłe.
+\end{theorem}
+
+\begin{proof}
+  Startując z $\|x\|<1\implies 1-x$ jest odwracalne pokazujemy, że jeśli $x$ jest odwracalne i $\|y\|<\|x^{-1}\|^{-1}$ to odwrotnością $x-y$ jest $x^{-1}\sum (yx^{-1})^n$. Dalej pokazujemy, że jeśli $\|y\|\leq \frac{1}{2}\|x^{-1}\|^{-1}$ to $\|(x-y)^{-1}-x^{-1}\|\leq 2\|x^{-1}\|^2\|y\|$.
+
+  Uzbrojeni w te dwa fakty bierzemy dowolny element odwracalny $x\in A$ i chcemy pokazać, że dla dostatecznie małego $\epsilon$ kula o promieniu $\epsilon$ i środku w $x$ jest całkowicie zawarta w elementach odwracalnych $A$. To trzeba wziąć $u$ taki, że $\|x-u\|<\epsilon$ i wyrazić $u$ przy pomocy jakiegoś $\|y\|\leq \frac{1}{2}\|x^{-1}\|^{-1}$.
+\end{proof}
+
+\begin{definition}{spektrum, rezolwenta}{}
+  \buff{Spektrum} elementu $x\in A$ to zbiór
+  $$\sigma(x):=\{\lambda\in\C\;:\;\lambda-x\text{ nie jest odwracalne}\}$$
+  jest to domknięty podzbiór kuli $\|x\|$ w $\C$.
+
+  Dla $\lambda\not\in\sigma(x)$ \buff{rezolwentą} elementu $x$ nazywamy element
+  $$R)\lambda)=R_x(\lambda)=(\lambda-x)^{-1}$$
+\end{definition}
+
+\begin{lemma}{}{}
+  $R(\lambda)$ jest różniczkowalna na $\C-\sigma(x)$
+\end{lemma}
+
+\begin{proof}
+  Zadanie z listy: 
+  $$\frac{R(\lambda)-R(\mu)}{\lambda-\mu}=-R(\lambda)R(\mu),$$
+  co jest prostym napisaniem definicji i przemnożeniem z odpowiednich stron. Patrzymy co gdy $\mu$ zbiega do $\lambda$ i dostajemy $R'(\lambda)=-R^2(\lambda)$.
+\end{proof}
+
+\begin{theorem}{Lioville}{}
+  Każda ograniczona funkcja całkowita (nie częściowa) zespolona jest stała.
+\end{theorem}
+
+\begin{proposition}{}{}
+  $\sigma(x)$ nie jest puste.
+\end{proposition}
+
+\begin{proof}
+  Gdy $\lambda$ zmierza do nieskończoności 
+  $$\|R(\lambda)\|=|\lambda|^{-1}\|(e-\lambda^{-1}x)^{-1}\|\xrightarrow{\lambda\to\infty}0$$
+  czyli dla dowolnego funkcjonału $\phi\in A^*$ dostajemy ograniczoną funkcję $\phi\circ R:\C\to \C$. Z twierdzenia Liouville musi ona być stała, czyli tutaj byłaby stale równa zero.
+\end{proof}
+
+\begin{theorem}{Gelfanda-Mazura}{}
+  Jeśli $A$ jest algebrą Banacha w której każdy niezerowy element jest odwracalny to $A\cong \C$.
+\end{theorem}
+
+\begin{definition}{promień spektralny}{}
+  $$\rho(x)=\sup\{|\lambda|\;:\;\lambda\in\sigma(x)\}$$
+\end{definition}
+
+\begin{theorem}{}{}
+  $$\rho(x)=\lim_{n\to\infty}\|x^n\|^{1/n}$$
+\end{theorem}
+
+\begin{proof}
+  $\lambda\in \sigma(x)\implies \lambda^n\in\sigma(x^n)$, bo 
+  $$\lambda^n-x^n=(\lambda-x)\sum \lambda^jx^{n-1-j}$$
+  Stąd $|\lambda|^n\leq \|x^n\|$, więc $\rho(x)\leq \lim\inf \|x^n\|^{1/n}$.
+\end{proof}
 
 
 

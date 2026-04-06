@@ -1,0 +1,71 @@
+\subsection{Gelfand theory}
+
+\begin{definition}{spektrum algebry}{}
+  Zbiór wszystkich multiplikatywnych niezerowych funkcjonałów na $A$ (czyli homomorfizmów $A\to \C$) jest nazywany \buff{spektrum algebry}, $\sigma(A)$.
+\end{definition}
+
+Na $\sigma(A)$ dajemy topologię *-słabą, czyli zbieżności punktowej na $A$.
+
+$\sigma(A)$ jest domkniętym podzbiorem kuli jednostkowej w $A^*$, bo
+$$\sigma(A)=\{h\in A^*\;:\;|h|\leq 1\;\land\;h(1)=1\;\land\;(\forall\;x,y\in A)\;h(xy)=h(x)h(y)\}$$
+a warunek $h(xy)=h(x)h(y)$ jest zachowywany przez granice punktowe.
+
+\begin{theorem}{}{}
+  Domknięcie $\overline{I}$ właściwego ideału $I\subseteq A$ jest ideałem właściwym.
+\end{theorem}
+
+\begin{proof}
+  Zbiór elementów odwracalnych jest otwarty.
+\end{proof}
+
+\begin{theorem}{}{}
+  Niech $A$ będzie przemienną algebrą Banacha. Wtedy $h\mapsto \ker h$ to bijekcja pomiędzy $\sigma(A)$ i maksymalnym spektrum $A$
+\end{theorem}
+
+\begin{proof}
+  $h\mapsto \ker h$ injekcja, bo
+  \begin{itemize}
+    \item dla $h\in\sigma(A)$ mamy $h(1)=1\neq 0$ więc $\ker h$ ma kowymiar $1$
+    \item $\ker h=\ker g$ oznacza, że $h=g$ bo $x=h(x)+y$ dla $y\in \ker h$, więc $g(x)=h(x)g(1)+g(y)=h(x)$
+  \end{itemize}
+
+  W drugą stronę, niech $\mathfrak{m}$ będzie ideałem maksymalnym, wtedy
+  \begin{itemize}
+    \item $A/\mathfrak{m}$ jest algebrą Banacha bez nietrywialnych ideałów - wszystko odwracalne
+    \item Gelfand-Mazur: $A/\mathfrak{m}\cong\C$
+    \item $\ker(A\to A/\mathfrak{m}\to \C)=\mathfrak{m}$
+  \end{itemize}
+\end{proof}
+
+\begin{definition}{transformata Gelfanda}{}
+  Niech $x\in A$, wtedy $\Hat{x}$ to ciągła funkcja na $\sigma(A)$:
+  $$\Hat{x}(h)=h(x).$$
+
+  Odwzorowanie $x\mapsto \Hat{x}$ to \buff{transformata Gelfanda} na $A$.
+\end{definition}
+
+\begin{theorem}{}{}
+  Niech $A$ będzie przemienną algebrą Banacha z jedynką. Wtedy 
+  \begin{enumerate}
+    \item $x$ jest odwracalne $\iff$ $\Hat{x}$ nigdy nie znika
+    \item $\im(\Hat{x})=\sigma(x)$
+    \item $\|x\|_\infty=\rho(x)\leq\|x\|$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $x$ nie jest odwracalne $\iff$ ideał generowany przez $x$ jest właściwy $\iff$ $x$ jest zawarty w pewnym ideale maksymalnym w $A$ $\iff$ $x\in \ker h$ dla pewnego $h$ $\iff$ $\Hat{x}$ ma zero
+    \item $\lambda \in\sigma(x)$ $\iff$ $x-\lambda$ jest nieodwracalne $\iff$ $\Hat{x}(h)-\lambda=0$ dla jakiś $h\in \sigma(A)$
+    \item \color{red}wynika wprost z poprzedniego
+  \end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
