@@ -1,0 +1,68 @@
+\subsection{Dualność Pontrjagina}
+
+Cel: $G\cong \Hat{\Hat{G}}$ przez $x\mapsto \langle x, -\rangle$.
+
+\begin{theorem}{Bochnera}{}
+  Jeśli $\phi\in\mathcal{P}(G)$ to istnieje jedyna dodatnia miara $\mu\in M(\Hat{G})$ taka, że $\phi=\phi_\mu$.
+
+  \color{red}Gal robi dla niedodatnich tylko tak ogólniej?
+\end{theorem}
+
+\begin{proof}
+  BSO $\phi(1)=1$. Definiujemy formę Hermitowską
+  $$\langle f,g\rangle_\phi=\int\phi(g^*\ast f)$$
+  z nierówności Schwarza:
+  $$\left|\int\phi(g^*\ast f)\right|^2\leq \int \phi(f^*\ast f)\int \phi(g^*\ast g)$$
+  dla $f,g\in L^1G$.
+\end{proof}
+
+\begin{zadanie}{3}{10}
+  Niech $f\in L^1A\cap L^2A$. Niech $\Hat{\eta}$ będzie współczynnikiem diagonalnym $f$ (z twierdzenia Bochnera). Zrozum napis (wiadomo co to całka z miary; całka z funkcji to całka względem miary Haara):
+  $$\|f\|_2^2=\taH{\eta}(1)=\int\eta=\int\Hat{\taH{\eta}}=\int|\Hat{f}|^2=\|\Hat{f}\|^2_2.$$
+\end{zadanie}
+
+\begin{proof}
+  Według Follanda $\taH{\mu}$ to miara na $\Hat{G}$ taka, że
+  $$\int f\phi =\int \Hat{f}d\taH{\mu}=\int\int \overline{\langle x,\xi\rangle}f(x)dxd\taH{\mu}(\xi)$$
+  czyli 
+  
+  Ale skoro $\Hat{\eta}$ ma być z twierdzenia Bochnera to powinno być takim $\Hat{\eta}\in M(\Hat{G})$ że $f=f_{\Hat{\eta}}$, a
+  $$f_{\Hat{\eta}}(x)=\int \langle x, \xi\rangle d\Hat{\eta}(\xi)$$
+  $$\Hat{\eta}(\xi)=\int \overline{\langle x, \xi\rangle}d\eta(x)$$
+
+  
+  $$\Hat{\eta}(x)=\int\langle x,\xi\rangle d\eta(\xi)$$
+
+
+
+  jeśli to jest $\Hat{\eta}$ to teoretycznie $\Hat{\eta}(\xi)=\int\overline{\langle x,\xi\rangle}d\eta(x)$ powinno być to samo?
+
+
+
+
+  Skoro $\Hat{\eta}$ jest współczynnikiem diagonalnym $f$ z twierdzenia Bochnera to chyba 
+  $$f=\int \langle x, \xi\rangle d\Hat{\eta}(\xi).$$
+  Z twierdzenia Fouriera powinnam mieć
+  $$d\Hat{\eta}(\xi)=\Hat{f}(\xi)d\xi$$
+  i to jest jakoś to samo
+
+  Folland pisze
+  $$\int |f|^2=f\ast f^*(x)=\int f(y)f^*(y^{-1}x)dy=\int f(y)\Delta(x^{-1}y)\overline{f(x^{-1}y)}=\int f(y)\overline{f(x^{-1}y)}$$
+  gdyż iż i ponieważ $f^*(x)=\Delta(x^{-1})\overline{f(x^{-1})}$ oraz $G$ jest grupą przemienną.
+  Ale czemu tak miałoby być? 
+
+  $f(x)=\int \langle x, \xi\rangle d\Hat{\eta}(\xi)$ czyli $f^*(x)=\overline{f(x^{-1})}=\overline{\int \langle x, \xi\rangle d\Hat{\eta}(\xi)}=\int\overline{\langle x, \xi\rangle}d\Hat{\eta}(\xi^{-1})$
+  czyli 
+  $$f\ast f^*(x)=\int \int\langle y, \xi\rangle d\Hat{\eta}(\xi)\int \overline{\langle x^{-1}y, \xi\rangle }d\Hat{\eta}(\xi^{-1})dy=\int\int \langle y, \xi\rangle d\Hat{\eta}(\xi)\int \langle x^{-1}y, \xi^{-1}\rangle d\Hat{\eta}(\xi)dy$$
+
+  $$\|f\|_2^2=\int [f(x)]^2dx=\int f(x)\left[\int \langle x, \xi\rangle \Hat{f}(\xi)d\xi\right ]dx=\int f(x)\int \langle x, \xi\rangle d\Hat{\eta}(x) dx$$
+  $$=\int\int\int \langle y, \xi\rangle\langle x^{-1}y, \xi'^{-1}\rangle d\Hat{\eta}(\xi)d\Hat{\xi'})dy=$$
+  to nie powinno wyjść jakoś $d\Hat{\eta}\ast d\Hat{\eta}^*$?
+
+\end{proof}
+
+\begin{zadanie}{3}{11}
+  Wywnioskuj twierdzenie Reigleya-Parsevala-Plancherela: transformata Fouriera jednoznacznie rozszerza się do unitarnej izometrii $L^2A\to L^2\Hat{A}$.
+\end{zadanie}
+
+

@@ -23,8 +23,26 @@
 \DeclareMathOperator{\B}{\mathcal{B}}
 
 
-\usepackage{yhmath} 
+% \usepackage{yhmath} 
+% \renewcommand{\Hat}[1]{\widehat{#1}}
+%
+% \newcommand\widecheck[1]{%
+%     #1%
+%     \text{\llap{%
+%         \smash{\raisebox{\dimexpr 2\depth-0.5ex\relax}{%
+%             \scalebox{1}[-1]{$\widehat{\phantom{#1}}$}%
+%         }}%
+%     }\rule{0pt}{1.1em}}%
+% }
+%
+% \newcommand{\taH}[1]{\widecheck{#1}}
+\DeclareFontFamily{U}{mathx}{}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widehat}{0}{mathx}{"70}
+\DeclareMathAccent{\widecheck}{0}{mathx}{"71}
 \renewcommand{\Hat}[1]{\widehat{#1}}
+\newcommand{\taH}[1]{\widecheck{#1}}
 
 \newtcolorbox{zadanie}[2]{
   theoremBoxTHM={green}{green},
@@ -38,7 +56,6 @@
 \setcounter{page}{0}
 
 \tableofcontents
-% \mainmatter
 
 \pagestyle{fancy}
 
@@ -50,10 +67,6 @@
 
 \input{rozdzialy/21_fourier_transform}
 
-% \chapter{Analiza funkcjonalna}  
-
-% \include{rozdzialy/01_wstep_sploty}
-%
-% \include{rozdzialy/02_lemat_schura}
+\input{rozdzialy/22_pontrjagin_duality}
 
 \end{document}
