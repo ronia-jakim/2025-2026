@@ -22,47 +22,57 @@ Cel: $G\cong \Hat{\Hat{G}}$ przez $x\mapsto \langle x, -\rangle$.
 \end{zadanie}
 
 \begin{proof}
-  Według Follanda $\taH{\mu}$ to miara na $\Hat{G}$ taka, że
-  $$\int f\phi =\int \Hat{f}d\taH{\mu}=\int\int \overline{\langle x,\xi\rangle}f(x)dxd\taH{\mu}(\xi)$$
-  czyli 
+  Co robi Folland? Folland mówi
+  $$\|f\|_2^2=\int f^2=(f\ast f^*)(1)=\int\Hat{f\ast f^*}(\xi)d\xi=\int |\Hat{f}(\xi)|^2d\xi,$$
+  gdzie 
+  $$f\ast f^*(x)=\int f(y)f^*(y^{-1}x)dy=\int f(y)\Delta(x^{-1}y)\overline{f(x^{-1}y)}=\int f(y)\overline{f(x^{-1}y)}$$
+  bo mamy grupę abelową.
+
+  $\color{green}\|f\|_2^2=\taH{\eta}(1)$
+
+  Moje podejrzenia: bierzemy $f$ jak wyżej i robimy z tego na siłę funkcję dodatnio określoną, czyli $f\ast f^*$. Z twierdzenia Bochnera mamy $\eta\in M(\Hat{G})$ takie, że 
+  $$(f\ast f^*)(x)=\int\langle x, \xi\rangle d\eta(\xi)(=\Hat{\eta}(x)).$$
+
+  Czyli jak u Follanda dla miary $\mu\in M(\Hat{G})$ robimy funkcję z $C_b(G)$ przez $\mu\mapsto \phi_\mu$ i odwracamy to przez $\phi\mapsto \mu_\phi$, to u Gala to odwracanie to jest $\taH{\phi}=\mu_\phi$. 
   
-  Ale skoro $\Hat{\eta}$ ma być z twierdzenia Bochnera to powinno być takim $\Hat{\eta}\in M(\Hat{G})$ że $f=f_{\Hat{\eta}}$, a
-  $$f_{\Hat{\eta}}(x)=\int \langle x, \xi\rangle d\Hat{\eta}(\xi)$$
-  $$\Hat{\eta}(\xi)=\int \overline{\langle x, \xi\rangle}d\eta(x)$$
+  $\color{green}\taH{\eta}(1)=\int \eta$
 
+  Z twierdzenia Fouriera o inwersji/odwracaniu (?) mam
+  $$\taH{\eta}(x)=\int \langle x, \xi\rangle d\eta(\xi)$$
+  no a jeśli $x=1$ to mam po prostu po prawej $\int d\eta(\xi)$.
+
+  $\color{green}\int\eta=\int\Hat{\taH{\eta}}$
+
+  Z twierdzenia Fouriera o odwracaniu (?) wiemy, że $d\eta(\xi)=\Hat{\taH{\eta}}(\xi)d\xi$. 
+
+  $\color{green}\int\Hat{\taH{\eta}}=\int |\Hat{f}|^2$
   
-  $$\Hat{\eta}(x)=\int\langle x,\xi\rangle d\eta(\xi)$$
+  Po pierwsze z definicji $f^*$ i transformaty Foueriera mam
+  \begin{align*}
+    \Hat{f^*}(\xi)&=\int \overline{\langle x, \xi\rangle}f^*(x)dx=\int\overline{\langle x,\xi\rangle f(x^{-1})}dx=\\ 
+                  &=[x^{-1}=u,\;dx=du]=\int \overline{\langle u^{-1}, \xi\rangle f(u)}du=\\ 
+                  &=\int\langle u,\xi\rangle \overline{f(u)}du=\overline{\int \overline{\langle x, \xi\rangle}f(x)dx}=\\ 
+                  &=\overline{\Hat{f}(\xi)}
+  \end{align*}
 
-
-
-  jeśli to jest $\Hat{\eta}$ to teoretycznie $\Hat{\eta}(\xi)=\int\overline{\langle x,\xi\rangle}d\eta(x)$ powinno być to samo?
-
-
-
-
-  Skoro $\Hat{\eta}$ jest współczynnikiem diagonalnym $f$ z twierdzenia Bochnera to chyba 
-  $$f=\int \langle x, \xi\rangle d\Hat{\eta}(\xi).$$
-  Z twierdzenia Fouriera powinnam mieć
-  $$d\Hat{\eta}(\xi)=\Hat{f}(\xi)d\xi$$
-  i to jest jakoś to samo
-
-  Folland pisze
-  $$\int |f|^2=f\ast f^*(x)=\int f(y)f^*(y^{-1}x)dy=\int f(y)\Delta(x^{-1}y)\overline{f(x^{-1}y)}=\int f(y)\overline{f(x^{-1}y)}$$
-  gdyż iż i ponieważ $f^*(x)=\Delta(x^{-1})\overline{f(x^{-1})}$ oraz $G$ jest grupą przemienną.
-  Ale czemu tak miałoby być? 
-
-  $f(x)=\int \langle x, \xi\rangle d\Hat{\eta}(\xi)$ czyli $f^*(x)=\overline{f(x^{-1})}=\overline{\int \langle x, \xi\rangle d\Hat{\eta}(\xi)}=\int\overline{\langle x, \xi\rangle}d\Hat{\eta}(\xi^{-1})$
-  czyli 
-  $$f\ast f^*(x)=\int \int\langle y, \xi\rangle d\Hat{\eta}(\xi)\int \overline{\langle x^{-1}y, \xi\rangle }d\Hat{\eta}(\xi^{-1})dy=\int\int \langle y, \xi\rangle d\Hat{\eta}(\xi)\int \langle x^{-1}y, \xi^{-1}\rangle d\Hat{\eta}(\xi)dy$$
-
-  $$\|f\|_2^2=\int [f(x)]^2dx=\int f(x)\left[\int \langle x, \xi\rangle \Hat{f}(\xi)d\xi\right ]dx=\int f(x)\int \langle x, \xi\rangle d\Hat{\eta}(x) dx$$
-  $$=\int\int\int \langle y, \xi\rangle\langle x^{-1}y, \xi'^{-1}\rangle d\Hat{\eta}(\xi)d\Hat{\xi'})dy=$$
-  to nie powinno wyjść jakoś $d\Hat{\eta}\ast d\Hat{\eta}^*$?
-
+  Tutaj wiem, że $\taH{\eta}=f\ast f^*$, czyli
+  $$\int \Hat{\taH{\eta}}(\xi)d\xi=\int \Hat{f\ast f^*}(\xi)d\xi=\int \Hat{f}(\xi)\Hat{f^*}(\xi)d\xi$$
+  i z wyliczenia wyżej dostaję $\int \Hat{f}(\xi)\overline{\Hat{f}(\xi)}d\xi=\int |\Hat{f}(\xi)|^2d\xi$.
 \end{proof}
 
 \begin{zadanie}{3}{11}
   Wywnioskuj twierdzenie Reigleya-Parsevala-Plancherela: transformata Fouriera jednoznacznie rozszerza się do unitarnej izometrii $L^2A\to L^2\Hat{A}$.
 \end{zadanie}
 
+\begin{proof}
+  Zbiór $L^1 G\cap L^2G$ jest gęsty w $L^2G$, bo Stone-Weierstrass lub pewnie można delikatniej. 
+
+  Zadanie wcześniej pokazuje, że $f\mapsto \Hat{f}$ jest izometrią w $L^2$ normie na $L^1G\cap L^2 G$. Czyli rozszerza się do izometrii $L^2G\to L^2\Hat{G}$ (która zachowuje granice ciągów -> chyba w ten sposób bym ja konstruowała wogóle).
+
+  Czyli mamy w ręku izometrię $F:L^2G\to L^2\Hat{G}$, czyli będzie $F^*F=Id$. Teraz że $FF^*=Id$, czyli że jest unitarna -> Folland pokazuje surjektywność. Tutaj mamy elegancki iloczyn skalarny, czyli żeby pokazać surjektywność $F$ wystarczy pokazać, że $F^\perp=0$. W takim razie bierzemy $\phi$ ortogonalne do wszystkich $\Hat{f}$ dla $f\in L^1G\cap L^2G$. To oznacza, że 
+  $$0=\langle \phi, \Hat{f}\rangle_{L^2}=\int \phi\overline{\Hat{f}}$$
+  w szczególności gdy pod $f$ podstawimy $L_\omega f$ dla dowolnego $\omega$ to dostajemy
+  $$0=\int \phi\overline{\Hat{L_\omega f}}=\int \phi(\xi)\overline{\overline{\langle\omega, \xi\rangle}\Hat{f}(\xi)}=\int \phi(\xi)\langle \omega, \xi\rangle \overline{\Hat{f}(\xi)}.$$
+  Dalej, skoro $\phi, \Hat{f}\in L^2\Hat{G}$, to $\phi\Hat{f}\in L^1\Hat{G}$, czyli $\phi(\xi)\overline{\Hat{f}(\xi)}d\xi$ definiuje miarę na $\Hat{G}$. Ale $\mu\to \phi_\mu$ dla $\phi_\mu(x)=\int \langle x, \xi\rangle d\mu(\xi)$ jest injekcją, więc skoro tutaj dla dowolnego $f$ mamy zero, to znaczy że miara $\phi\overline{\Hat{f}}d\xi$ jest felerna, czyli $\phi\overline{\Hat{f}}=0$ dla wszystkich $f$, czyli $\phi=0$.
+\end{proof}
 
