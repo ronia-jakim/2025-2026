@@ -1,0 +1,190 @@
+\section{Lista 4}
+
+\setcounter{zadanie}{0}
+
+\begin{lemma}{q.e. z back and forth (3.1.6 David Marker)}{}
+  Niech $T$ będzie teorią. Niech $M,N\models T$ będą modelami o wspólnej podstrukturze $A$. Wtedy jeśli dla wszystkich otwartych formuł $\phi(\overline{v}, w)$ zachodzi
+  $$(\forall\;\overline{a}\in A)[(\exists\;b\in M)\;M\models \phi(\overline{a}, b)]\implies (\exists\;c\in N)\;N\models\phi(\overline{a}, c)$$
+  (czyli chcę używać lematu o rozszerzaniu dla wszystkich $a\in M$ tj. przepchać typ $tp^M(a/A)$ do $tp^N(b/A)$) to teoria $T$ jest q.a..
+\end{lemma}
+
+\begin{zadanie}
+  Podaj aksjomaty teorii $Th(\omega^\omega, E_n)_{n\in\omega}$, gdzie $E_n(f,g)\iff f(n)=g(n)$, teoria niezależnych relacji równoważności o nieskończenie wielu klasach. Pokaż, że jest ona q.e.
+\end{zadanie}
+
+\begin{proof}
+  Aksjomaty:
+  \begin{itemize}
+    \item $E_n$ to relacja równoważności, czyli mamy zwrotność, przechodniość i symetryczność
+    \item jest nieskończenie wiele klas relacji $E_n$: 
+      $$(\exists\;x_1)\;...\;(\exists\;x_m)\;\bigwedge_{i\neq j} \neg E_n(x_i, x_j)$$
+    \item niezależność, czyli dla różnych $n_1$, ..., $n_m$ mamy
+      $$(\forall\;x_1)\;...\;(\forall\;x_m)(\exists\;y)\;\bigwedge E_{n_i}(x_i, y)$$
+      (w przekrojach zawsze coś jest).
+  \end{itemize}
+
+  Q.E.
+
+  Chcę zacząć od częściowego izomorfizmu $f:\{m_1,...,m_k\}\to \{n_1,...,n_k\}$ dla $M,N\models T$. Biorę $a\in M$ i chcę znaleźć $b\in N$ takie, że $tp^M(a/A)=tp^N(b/A)$.
+
+  Jak wygląda $tp^M(a/A)$? Dla każdego $k\in \N$ mam zbiór informacji $\pm E_k(m_i, a)$ dla wszystkich $m_i$. 
+  \begin{itemize}
+    \item Dla ustalonego $k$ jestem w stanie znaleźć takie $b_k\in N$ które by to spełniało, bo mamy nieskończenie wiele klas relacji $E_n$. 
+    \item Teraz mając te wszystkie $b_k$ możemy wziąć element z przekroju klas $b_k$ dzięki aksjomatowi niezależności.
+  \end{itemize}
+\end{proof}
+
+\subsection{Powtórka: teorie stabilne}
+
+Powiemy, że teoria $T$ ($\mathcal{M}\models T$ jest modelem monstrum w którym pracujemy) jest 
+\begin{description}
+  \item[$\kappa$-stabilna] jeśli $\kappa\geq \aleph_0$ oraz $(\forall\;A\subseteq M, |A|\leq \kappa)|S_1(A)|\leq \kappa$
+  \item[stabilna] gdy jest $\kappa$-stabilna dla pewnego $\kappa\geq\aleph_0$
+  \item[superstabilna] gdy istnieje $\mu\geq\aleph_0$ że dla każdego $\kappa\geq\mu$ jest $\kappa$-stabilna
+\end{description}
+
+Rozważamy poniższe teorie
+\begin{enumerate}
+  \item $Th(\Z, S)$ teoria następnika
+  \item teoria niezależnych predykatów $Th(2^\omega, P_n)$, $P_n(x)\iff x(n)=0$
+  \item teoria niezależnych relacji równoważności o $2$ klasach, $Th(2^\omega, E_n)$, $E_n(x, y)\iff x(n)=y(n)$
+  \item teoria z zadania wyżej
+  \item teoria nieskończonych przestrzeni liniowych nad ciałem skończonym $F$
+  \item teoria przestrzeni liniowych nad przeliczalnym ciałem nieskończonym $F$
+\end{enumerate}
+
+\begin{zadanie}
+  Dla każdego z przykładów teorii $T$ wyżej opisać zupełne $1$-typy nad modelem $M\models T$ oraz rozstrzygnąć, czy jest ona stabilna, superstabilna, $\aleph_0$-stabilna.
+\end{zadanie}
+
+\begin{proof}
+  \begin{enumerate}
+    \item $S_1(\emptyset)$ ma tylko jeden typ bo średnio cokolwiek można wyrazić jak nie mamy punktu zaczepienia. $S_1(A)$ ma dwa przypadki:
+      \begin{itemize}
+        \item $p(x)=\{x=S^n(a)\}$ dla jakiegoś $a\in A$ oraz $n\in\Z$ -> takie pyśki powinny być realizowane w każdym modelu tej teorii, czy to liczby całkowite, czy rozszerzone liczby całkowite jak te z analizy niestandardowej
+        \item $p(x)=\{x\neq S^n(a)\}$ dla wszystkich $a\in A$ oraz $n\in\Z$ -> ten typ może nie być realizowany, ale jak wezmę skończony podzbiór to jestem w stanie wykombinować $x$ który to spełni
+      \end{itemize}
+
+      Czy jest stabilne? Tak! Jeśli $|A|=\kappa$ to typów pierwszego rodzaju mam $|A\times \Z|=\kappa\cdot \aleph_0=\kappa$ jeśli $\kappa\geq \aleph_0$ plus jeden typ "brzydki". Czyli mam $\kappa+1=\kappa$ typów.
+
+      Czy jest $\aleph_0$-stabilne? Tak! Z tego samego powodu co wyżej
+      
+      Czy jest superstabilne? Tak! Dla $\mu=\aleph_0$.
+
+    \item Tutaj nawet $S_1(\emptyset)$ jest w stanie opisać nam dowolny element $2^\omega$ i dodawanie parametrów nic nie zmienia w sumie. Czyli zawsze mam $2^\aleph_0$ typów. Jeśli dorzucę parametry to tylko dodaję rozróżnienie dla typów zawierających $x=a$ dla $a\in A$, czyli dana maska binarna może pojawić się kilka razy teoretycznie. Czyli $|S_1(A)|\max(|A|+2^{\aleph_0})$.
+
+      Czy jest stabilna? Tak, np. dla $\kappa=2^{\aleph_0}$.
+
+      Czy jest superstabilna? Tak, od $\mu=2^{\aleph_0}$ w górę.
+      
+      Czy jest $\aleph_0$-stabilna? Za cholerę nie.
+
+    \item $S_1(\emptyset)$ chyba ma tylko jeden typ, bo nie ma na czym zawiesić informacji o elemencie. Co jeśli mam parametry? Wtedy dowolny ciąg $2^\omega$ mogę jednoznacznie wyznaczyć na tle tych parametrów, więc mam znowu $|S_1(A)|=\max(2^\aleph_0,|A|)$, bo dokładam bezkarnie formuły $x=a$ dla $a\in A$. 
+
+      Czyli historia powtarza się...
+
+    \item Znowu $S_1(\emptyset)$ ma jeden typ bo za nic na świecie nie rozróżnię ciągów tak o. Znowu mam dwa rodzaje typów imo:
+      \begin{itemize}
+        \item typy które na $n$-tej współrzędnej biorą jakiś element z $A$ i przyrównują do niego -> takich mam $|A|^{\aleph_0}$ 
+        \item mam wszystkie pozostałe elementy w worku p.t. "$x(n)\neq a(n)$" dla wszystkich $n$ i $a\in A$
+      \end{itemize}
+      To mi daje coś w stylu $|A|^{\aleph_0}$ typów.
+      
+      Czy jest $\aleph_0$-stabilna? Nie!
+
+      Czy jest stabilna? Pewnie tak, bo dla dużych $|A|$ będzie $|A|^{\aleph_0}=|A|$
+
+      To też mi mówi, że będzie superstabilne ale za mało umiem teorię mnogości żeby powiedzieć kiedy.
+
+    \item humpty dumpty $S_1(\emptyset)$ to będzie co, albo zero albo dowolna rzecz? Bo mam równania jednego parametru to mogę je skalować i śmiga. Co jeśli dorzucę parametry? Potrafię zapisać wtedy kombinacje liniowe wszystkich rzeczy z $A$ albo mogę powiedzieć, że mam wektor spoza $span(A)$ bo sobie neguję wszystkie możliwe kombinacje liniowe elementów z $A$ i jestem szczęśliwa. Czyli
+      \begin{itemize}
+        \item $x=\sum \lambda_i a_i$ dla $\lambda_i\in F$ i $a_i\in A$ -> takich mam $|A\times F|$, co dla nieskończonych $A$ powinno być równe $|A|$
+        \item ten jeden typ "nie w spanie"
+      \end{itemize}
+
+      Czy jest $\aleph_0$-stabilne? Tak!
+
+      Czy jest stabilne? No jasne
+
+      Czy jest superstabilne? Tak! Wystarczy $\mu=\aleph_0$.
+      
+    \item tutaj powinno być podobnie. Dalej mam podział na kombinacje liniowe elementów z $A$, czyli mam nie więcej jaik $|A\times F|$ kombinacji liniowych o współczynnikach z $F$
+
+      Czy jest $\aleph_0$-stabilne? Tak
+
+      Czy jest stabilne? Tak!
+
+      Czy jest super stabilne? Tak!
+  \end{enumerate}
+\end{proof}
+
+\subsection{Modele pierwsze i atomowe}
+
+\begin{definition}{model pierwszy, atomowy}{}
+  Model $M\models T$ teorii zupełnej nazywamy
+  \begin{description}
+    \item[atomowym] gdy $(\forall\;\overline{a}\subseteq M)\;tp(\overline{a})$ jest izolowany (istnieje $\phi$ takie, że $\phi\vdash tp(\overline{a})$)
+    \item[pierwszym] gdy $(\forall\;N\models T)\exists\;f:M\to N$ elementarne
+  \end{description}
+\end{definition}
+
+Model $M$ jest minimalny, gdy nie ma elementarnego podmodelu.
+
+\begin{zadanie}
+  Które z teorii wyżej maja model pierwszy? Czy jest on minimalny?
+\end{zadanie}
+
+\begin{theorem}{}{}
+  Jeśli $T$ jest teorią $\aleph_0$-stabilną to ma model pierwszy.
+\end{theorem}
+
+\begin{theorem}{}{}
+  Model pierwszy jest jedyny z dokładnością do izomorfizmu.
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Ma model pierwszy, bo jest $\aleph_0$-stabilna. Twierdze, że jest nim $(\Z, S)$
+      \begin{description}
+        \item[pierwszość=atomowość] bierę dowolny $(a_1,...,a_n)\in\Z^n$, jego typ jest izolowany przez $\phi(x_1,...,x_n)="x_1=S^{x_1-x_2}(x_2)\;\land x_1=S^{x_1-x_3}(x_3)\;\land\;..."$
+        \item[minimalność] nie wprost: jeśli $N\prec (\Z, S)$ ale $N\neq (\Z, S)$ to mogę wziąć $x\in \Z-N$ oraz $y\in N\subseteq \Z$. Wtedy dla $n=x-y$ zachodzi $x=S^n(y)$, ale to powinno być w $N$ a nie jest.
+      \end{description}
+    \item Tutaj nie ma modelu pierwszego, bo nie ma typów izolowanych. Każda formuła smyra tylko skończenie wiele indeksów, a żeby wyizolować jakiś typ trzebaby dokładnie określić co się dzieje na wszystkich indeksach.
+    \item skip
+    \item skip
+    \item Ma model pierwszy, gdyż iż i ponieważ jest $\aleph_0$-stabilne. Zapewne to jest przestrzeń wektorowa o nieskończonej, przeliczalnej bazie - inaczej: ciągi elementów z $F$ o skończenie wielu niezerowych elementach.
+      \begin{description}
+        \item[pierwszość=atomowość] bierę dowolnego pyśka $(a_1,...,a_n)\in V^n$ -> mogę zapisac formułę $\phi(x_1,...,x_n)$ która będzie konjiunkcją informacji o tym które pyśki są liniowo zależne, a które są liniowo niezależne. Czyli $(\exists \lambda_1...\lambda_i)\;\lambda_i\neq 0 \;\land\;\lambda_1x_{k_1}+...+\lambda_ix_{k_i}=0$ oraz $(\forall\;\lambda_1...\lambda_i)\; \lambda_i\neq 0\;\land\;\lambda_1x_{k_1}+...\lambda_ix_{k_i}\neq 0$
+        \item[minimalność] no nie, bo mogę usunąć np. pierwszy wektor bazowy (z nieskończenie wielu), nadal mieć nieskończenie wiele wektorów bazowych i mieć elegancką podprzestrzeń liniową
+      \end{description}
+    \item Ma model pierwszy jeszcze raz, bo jest $\aleph_0$-stabilne. Zapewne znowu to będzie nieskończenie wymiarowa przestrzeń liniowa i argumenty będą bardzo podobne jak wcześniej.
+  \end{enumerate}
+\end{proof}
+
+\begin{zadanie}
+  \begin{enumerate}
+    \item Załóżmy, że $T$ ma model pierwszy i nie jest on minimalny. Udowodnić, że wtedy istnieje nieprzeliczalny model atomowy teorii $T$.
+    \item Udowodnić także implikację odwrotną.
+  \end{enumerate}
+\end{zadanie}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Niech $M$ będzie nieminimalnym modelem pierwszym $T$. Fakt z wykładu:
+      \begin{fact}{chyba z konstrukcji ale też z dawida markera}{}
+        $M\models T$ jest pierwszy $\iff$ jest przeliczalny i atomowy (część że pierwszy $\implies$ atomowy jest z wykładu).
+      \end{fact}
+      Przeliczalność to jakiś turbo szybki dowód, który mówi że skoro pracujemy nad przeliczalnym językiem to mamy jakiś przeliczlany model.
+
+      Ponieważ $M$ nie jest minimalne, to zawiera $N\prec M$, $N\neq M$. Ale $M$ jest pierwsze, więc istnieje $f:M\to N\subseteq M$ elementarne zanurzenie $M$ w samego siebie takie, że $f(M)\subsetneq M$. Ja chcę jednak żyć w dużym modelu monstrum gdzie będę potrafiła to $f$ odwrócić. Jakiś automorfizm czy coś, bo orbity działania grupy automorfizmów powinny być w bijekcji z typami. 
+
+      Generalnie chcę przekonać się, że $M\supseteq f^{-1}(M)$, żeby móc stworzyć ciąg $M_0=M\prec M_1=f^{-1}(M)\prec....$ i wziąć jego (ko)granicę? Injective limit z pierwszej listy.
+      
+      Powinnam uzasadnić, że $\varinjlim M_i$ które dostaję jest atomowe. Każde $M_i$ powinno być atomowe, bo jest obrazem przez elegancką funkcję modelu atomowego i z tego też powodu granica powinna być atomowa.
+  
+      Dlaczego to co dostaję jest nieprzeliczalne? Bo mogę tę konstrukcję robić nieprzeliczalną ilość kroków, za każdym razem zwiększając mój model o co najmniej jeden element. 
+  \end{enumerate}
+\end{proof}
+
+
+
