@@ -1,0 +1,100 @@
+\section{Miara Haara}
+
+Oryginalna praca w której Haar dowodzi istnienie lewo-niezmienniczej miary jest konstruktywna, ale my, ku smutkowi wykładowcy, podamy dowód bez liczenia.
+
+\begin{definition}{}{}
+  Niech $G$ będzie grupą topologiczną lokalnie zwartą. Miara Haara $\mu$ na $G$ to niezerowa miara Radona która jest lewo niezmiennicza, tj. $\mu(gE)=\mu(E)$ dla każdego $g\in G$ oraz dla każdego $E$ borelowskiego.
+\end{definition}
+
+Dla grup, które nie są lokalnie zwarte możemy definiować miary Gaussa.
+
+\begin{lemma}{}{}
+  Jeśli $\mu$ jest lewo-niezmienniczą miarą Haara na $G$ to $\tilde{\mu}(E)=\mu(E^{-1})$ jest prawo-niezmienniczą miara Haara na $G$.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    \tilde{\mu}(Eg)=\mu(g^{-1}E^{-1})=\mu(E^{-1})=\tilde{\mu}(E)
+  \end{align*}
+\end{proof}
+
+% Istnieje grupa, która jest $T_{5/2}$ ale nie $T_4$
+
+\begin{theorem}{}{}
+  Na lokalnie zwartej grupie istnieje jedyna z dokładnością do stałych lewo-niezmiennicza miara.
+\end{theorem}
+
+Pierwsze dowody istnienia miary Haara były dla grup ośrodkowych i my się do tych grup ograniczymy.
+
+\begin{proof}
+  Pominiemy dokładny dowód istnienia miary Haara. Idea polega na pokazaniu, że 
+  \begin{itemize}
+    \item przestrzeń funkcji nieujemnych o zwartym nośniku, $C_c^+(G)$, jest lokalnie wypukła,
+    \item lokalnie zwarta grupa $G$ działa na niej przez operatory liniowe przez lewe przesunięcia, tzn. $(gf)(h)=f(g^{-1}h)$,
+    \item istnieje zwarty zbiór $K\subseteq C_c^+(G)$ zachowywany przez działanie $G$
+  \end{itemize}
+  
+  a następnie skorzystaniu z twierdzenia Kakutani, podanego niżej.
+
+  \begin{theorem}{Kakutani}{}
+    Niech $K\subseteq E$ będzie zwartym podzbiorem przestrzeni lokalnie wypukłej, czyli każdy otwarty podzbiór zawiera mniejszy otwarty podzbiór wypukły. Jeśli $G$ działa na $E$ przez operatory liniowe tak, że $gK\subseteq K$ dla wszystkich $g\in G$ to istnieje punkt $k_0\in K$ taki, że $gk_0=k_0$ dla wszystkich $g\in G$.
+  \end{theorem}
+
+  W ten sposób dostajemy funkcję $\mu$ będącą fix punktem działania $G$. Pozostaje pokazać, że jest ona jedyna z dokładnością do skalowania, co jest ćwiczeniem. Podążając następującą ścieżką dojdziemy do jedyności miary Haara:
+  \begin{enumerate}
+    \item dla każdego zwartego, symetrycznego $1\in \alpha\subseteq G$ istnieje $\psi_\alpha$ nieujemna, $\supp(\psi_\alpha)=\alpha$ taka, że $\int\psi_\alpha(x)d\mu(x)=1$
+    \item dla każdego $f\in C_c(G)$ ciąg $(f\ast\psi_\alpha)(y)\int f(x)\psi_\alpha(x^{-1}y)d\mu(x)$ zbiega jednostajnie do $f$.
+    \item \begin{align*}
+        \int f(y)d\nu(y)&=\lim_\alpha\int\int f(x)\psi_\alpha(x^{-1}y)d\mu(x)d\nu(y)=\\ 
+                        &=\int f(x)\lim_\alpha\int\psi_\alpha(x^{-1}y)d\nu(y)d\mu(x)=c\cdot \int f(y)d\mu(y)
+      \end{align*}
+  \end{enumerate}
+\end{proof}
+
+\subsection{Funkcja modularna}
+
+\begin{definition}{funkcja modularna}{}
+  Odwzorowanie $\Delta:G\to \R^+$ zdefiniowana jako $\Delta(g)\mu=(R_g)_*\mu$, gdzie $R_g$ to prawe przesunięcie.
+\end{definition}
+
+O funkcji modularnej można myśleć jak o stosunku między prawo a lewo-niezmienniczą miarą Haara.
+
+\begin{lemma}{}{}
+  Funkcja modularna jest ciągłym homomorfizmem grupy $G$ w $(R^+, \cdot)$.
+\end{lemma}
+
+\begin{example}\color{red}
+  Rozważmy grupę przekształceń afinicznych prostej $\R$, czyli przekształceń $x\mapsto ax+b$. Elementy można rozważać jako macierze
+  $$\begin{bmatrix}
+    a & b \\ 
+    0 & 1
+  \end{bmatrix}$$
+\end{example}
+
+\begin{lemma}{}{}
+  Grupa $G$ ma obustronnie niezmiennicza miarę Haara wtedy i tylko wtedy gdy $\Delta\equiv 1$.
+\end{lemma}
+
+\begin{definition}{grupa unimodularna}{}
+  Jeśli $\Delta\equiv 1$ na grupie $G$ to $G$ nazywa się \buff{unimodularną}.
+\end{definition}
+
+\begin{example}[m]
+  \item Oczywiście, grupy abelowe są zawsze unimodularne.
+  \item Na grupach skończonych miara Haara, lewa jak i prawa, jest miarą liczącą. Stąd grupy skończone są unimodularne.
+  \item Całkowite liczby $p$-addyczne są grupa unimodularną, która nie jest ani zwarta ani lokalnie zwarta.
+\end{example}
+
+\begin{lemma}{}{}
+  Grupy zwarte są zawsze unimodularne.
+\end{lemma}
+
+
+% na wykładzie - szkic dowodu dla grup zwartych
+%
+% on leci z riesza
+%
+% $A(S_3)$ - afiniczna grupa permutacji
+
+
+

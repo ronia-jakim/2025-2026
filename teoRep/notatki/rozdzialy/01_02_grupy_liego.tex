@@ -1,0 +1,43 @@
+\section{O konkretnych grupach krócej, czyli grupy Liego}
+
+\subsection{Grupa Liego}
+
+\begin{definition}{grupa Liego}{}
+  Grupą Liego nazwiemy grupę topologiczną, która ma dodatkowo strukturę rozmaitości różniczkowej.
+\end{definition}
+
+\begin{example}[m]
+  \item Grupa $U(1)$, czyli unitarnych macierzy $1\times 1$, często utożsamiana z okręgiem $S^1$.
+  \item $SU(2)$ czyli znowu sferka, tym razem $S^3$.
+  \item Grupa przekształceń afinicznych prostej, czyli $x\mapsto ax+b$, utożsamianymi z macierzami 
+    $$\begin{bmatrix}
+       a & b \\ 
+      0 & 1 \end{bmatrix}$$
+  \item Grupa Heisenberga, czyli macierzy $3\times 3$ górnotrójkątnych o wyrazach z $\R$,
+    $$\begin{bmatrix} 1 & a  & b \\ 
+      0 & 1 & c \\ 
+      0 & 0 & 1 \end{bmatrix}$$
+\end{example}
+
+\subsection{Algebra Liego}
+
+\begin{lemma}{}{}
+  Lewe przesunięcie $L_g:G\to G$, $L_g(h)=gh$, indukuje izomorfizm między $T_1G$ oraz $T_gG$.
+\end{lemma}
+
+Co więcej, $TG\cong G\times T_1G$.
+
+\begin{definition}{algebra Liego}{}
+  Algebra Liego to przestrzeń styczna do grupy Liego w identyczności z mnożeniem zadanym przez nawias Liego, $[X,Y]=XY-YX$. Zwykle oznaczamy $T_1G=\mathfrak{g}$.
+\end{definition}
+
+Mimo że jeszcze nie wiemy co to takiego reprezentacja, to i tak już powiemy, że grupy Liego maja pewną fajną reprezentację.
+
+\begin{example}
+  Rozważmy automorfizm grupy Liego $G$, $A_g(h)=ghg^{-1}$. Licząc jego pochodną w identyczności dostajemy odwzorowanie $Ad_g=\frac{d}{dh}A_g(H)|_{h=1}$ algebry Liego grupy $G$. Rozważając odwzorowanie $G\ni g\mapsto Ad_g\in Aut(\mathfrak{g})$ dostajemy tzn. \acc{dołączoną reprezentacje} grupy $G$.
+
+  Ale skoro lecimy w $T_1G$, to możemy też polecieć dalej, do przestrzeni kostycznej i dostać $Ad^*$ - reprezentację \acc{kodołączoną}.
+\end{example}
+
+
+

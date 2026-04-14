@@ -1,0 +1,398 @@
+\section{Reprezentacje liniowe}
+
+\begin{definition}{reprezentacja liniowa}{}
+  Niech $G$ będzie grupą, a $V$ przestrzenią wektorową nad ciałem $K$ (domyślnie $K=\C$). \buff{Liniową reprezentacją} grupy $G$ na $V$ nazywamy działanie grupy $G$ na $V$ przez liniowe automorfizmy. Innymi słowy, reprezentacja to liniowy homomorfizm
+  $$\rho:G\to GL(V).$$
+\end{definition}
+
+Jeśli $\dim(V)=n$ to przez $GL(V)$ rozumiemy macierze $n\times n$ o wyrazach z $K$ i niezerowym wyznaczniku.
+
+\begin{example}[m]
+  \item Rozważmy odwzorowanie 
+    $$\rho: \Z_n\to GL(2, \R)$$
+    zadane przez 
+    $$\rho(g)=\begin{bmatrix}\cos(\frac{2\pi}{g})&-\sin(\frac{2\pi}{g})\\ \sin(\frac{2\pi}{g})&\cos(\frac{2\pi}{g})\end{bmatrix}.$$
+    Od razu poznajemy, że macierz $\rho(g)$ to macierz obrotu o kąt $\frac{2\pi}{g}$. Nad $\C$ możemy zapisać $\rho(g)=e^{\frac{2\pi i}{g}}$.
+  \item Popatrzmy teraz na dwie reprezentacje znanej nam już grupy permutacji $S_3$. 
+
+    Pierwsza reprezentacja to działanie na $\R^3$ przez permutowanie współrzędnych. Taka reprezentacja ma dwuwymiarową podprzestrzeń niezmienniczą: $V=\{(x_1,x_2, x_3)\;:\;x_1+x_2+x_3=0\}$.
+
+    Zanim zdefiniujemy drugą reprezentację, przygotujemy pasującą nam przestrzeń liniową. Niech $V$ będzie rzeczywistą przestrzenią wektorową z bazą $\{e_{\sigma_1}, e_{\sigma_2}\}$ i symetryczną formą dwuliniową
+    $$B(e_{\sigma_i}, e_{\sigma_j})=\begin{cases}1 & i=j\\\cos(\frac{\pi}3)&i\neq j\end{cases}.$$
+    Definiujemy reprezentację (nazywaną \emph{reprezentacją Titsa}) na generatorach $S_3$ jako $\rho(\sigma_i)(v)=v-2B(v, e_{\sigma_i})e_{\sigma_i}$. Sprawdzenie poprawności oraz czy autorka nie pomyliła znaków zostaje pozostawione jako ćwiczenie dla czytelnika.
+\end{example}
+
+\begin{definition}{równoważność reprezentacji}{}
+  Niech $\rho:G\to GL(V)$ i $\rho':G\to GL(V')$ będą dwoma reprezentacjami grupy $G$. Powiemy, że $\rho$ i $\rho'$ są \buff{równoważne} (lub izomorficzne), \buff{$\rho\approx\rho'$}, jeśli istnieje izomorfizm $\phi: V\to V'$ taki, że diagram
+  $$\begin{tikzcd}[column sep=large]
+    V\arrow[r, "\phi"]\arrow[d, "\rho(g)" left] & V'\arrow[d, "\rho'(g)"]\\ 
+    V\arrow[r, "\phi" below] & V'
+  \end{tikzcd}$$
+  komutuje dla wszystkich $g$.
+\end{definition}
+
+\begin{example}
+  $G$ - grp skończona, $l^2(G)\ni f$, $(\rho(g)f)(h)=f(hg)$
+
+  wszystkie parami nieizomorficzne nieprzywiedlnie reprezentacje $\{(\rho_1, V_1),...,(\rho_k, V_k)\}$ $G$
+  $\pi: V_1^{\dim V_1}\oplus...\oplus V_k^{\dim V_k}$
+
+  wtedy $\rho\simeq \pi$
+
+
+  Dowód zaczyna od pokazania, że $k[G]\cong \oplus_{n} M_n(C)$
+
+  % \color{red} reprezentacje Titsa na różnych wyborach generatorów?
+\end{example}
+
+Dla ustalonej grupy $G$ możemy rozważać kategorię jej reprezentacji liniowych. Obiektami będą wtedy pary $(V, \rho)$ (zwykle jednak będziemy odwzorowanie i przestrzeń utożsamiać). Jako morfizmy między reprezentacjami zdefiniujemy \buff{przeplatacze}, czyli liniowe odwzorowania spełniające diagram wyżej, ale niekoniecznie będące izomorfizmami. Dla $\rho:G\to V$, $\rho':G\to V'$ zbiór przeplataczy między nimi będziemy czasem (zależnie od wybryków autorki) oznaczać $Hom_G(\rho, \rho')$, a czasami $Hom_G(V,V')$.
+
+\subsection{Reprezentacje nieprzywiedlnie}
+
+\begin{definition}{reprezentacja nieprzywiedlnia}{}
+  Niech $\rho:G\to GL(V)$ będzie reprezentacją liniową. Powiemy, że $\rho$ jest \buff{nieprzywiedlnia} (ang. irreducible), jeśli $V$ nie zawiera żadnej niezmienniczej na działanie $G$ przez $\rho$ podprzestrzeni różnej od $0$ i całego $V$.
+\end{definition}
+
+Dla przypomnienia: podprzestrzeń $W\subseteq V$ jest niezmiennicza na działanie $G$, jeśli dla każdego $g\in G$ zachodzi $gW\subseteq W$.
+
+\begin{example}
+  Reprezentacja $S_3$ przez macierze permutacji nie jest nieprzywiedlnia na $\R^3$, ale jeśli ograniczymy tę reprezentację do podprzestrzeni $V_0=\{(x_1,x_2,x_3)\;:\;\sum x_i=0\}$ to staje się ona nieprzywiedlnia.
+
+  Jak się okaże, $S_3$ ma dokładnie $3$ nieprzywiedlnie reprezentacje, ale o tym potem.
+\end{example}
+
+Załóżmy, że grupa $G$ działa na przestrzeni wektorowej $V$ z iloczynem skalarnym $\langle\cdot,\cdot\rangle$ w sposób zachowujący ten iloczyn. To znaczy, dla każdego $g\in G$ oraz $v,w\in V$ zachodzi $\langle v,w\rangle=\langle gv,gw\rangle$. W takiej sytuacji reprezentacja grupy $G$ dana przez to działanie jest przywiedlnie wtedy i tylko wtedy gdy istnieje rozkład $V=W\oplus W^\perp$ taki, że zarówno $W$ jak i $W^\perp$ są niezmiennicze na $G$.
+
+Dla grup skończonych działających na przestrzeni $(V, \langle\cdot,\cdot\rangle)$ zawsze jesteśmy w stanie stworzyć iloczyn skalarny niezmienniczy na jej działanie: 
+$$\langle v,w\rangle_G=\frac{1}{|G|}\sum_{g\in G}\langle gv, gw\rangle.$$
+
+W bardzo podobny sposób jesteśmy w stanie stworzyć niezmienniczy iloczyn skalarny na grupie zwartej (wystarczy wziąć do ręki miarę Haara $G$ zamiast $|G|$ i wycałkować). Dla grup lokalnie zwartych jest to już nieco problematyczne, gdyż miara Haara całej grupy wcale nie musi być skończona, wystarczy popatrzeć na $\R$.
+
+\begin{lemma}{}{}
+  Na nieprzywiedlniej reprezentacji $V$ niezmienniczy iloczyn skalarny jest jedyny z dokładnością do skalowania.
+\end{lemma}
+
+\begin{proof}
+  Ćwiczenie.
+\end{proof}
+
+\begin{theorem}{}{}
+  Jeśli $G$ jest grupą skończoną (lub zwartą), to każda jej reprezentacja $\rho:G\to GL(V)$ jest sumą prostą reprezentacji nieprzywiedlnich.
+\end{theorem}
+
+\begin{proof}
+  Udowodnimy twierdzenie wyżej przez indukcję względem $\dim(V)$.
+
+  Dla $\dim(V)=0$ wszystko jest jasne. Dla $\dim(V)\geq 1$ sprawdzamy, czy istnieje podprzestrzeń $W\subseteq V$ niezmiennicza na $\rho$. Jeśli nie istnieje, to $\rho$ jest już nieprzywiedlnia. W przeciwnym przypadku na mocy uwagi wyżej mamy rozkład $V=W\oplus W^\perp$. Ponieważ $W$ jak i $W^\perp$ są niezmiennicze na działanie $G$, możemy obciąć $\rho$ do tych podprzestrzeni tak, że $\rho=\rho\restriction{W}\oplus \rho_{\upharpoonright W^\perp}$
+  Ponieważ $\dim(W), \dim(W^\perp)<\dim(V)$ to znajdujemy rozkład $\rho_{\upharpoonright W}$ oraz $\rho_{\upharpoonright W^\perp}$ i łączymy je do rozkładu całego $\rho$.
+\end{proof}
+
+Powstaje pytanie o unikalność rozkładu reprezentacji na reprezentacje nieprzywiedlnie. Wystarczy wziąć reprezentację trywialną, czyli wszystkie elementy grupy działają przez macierz identycznościową. Taka reprezentacja rozkłada się w sumę $1$-wymiarowych reprezentacji, a jak wiadomo na przestrzeni $n$-wymiarowej mamy niesłychanie wiele wyborów $n$ liniowo niezależnych jej podprzestrzeni $1$-wymiarowych.
+
+\begin{theorem}{}{}
+  Niech $G$ będzie grupą skończoną, a $\{(\rho_1, V_1),...,(\rho_k, V_k)\}$ wszystkimi jej nieizomorficznymi reprezentacjami nieprzywiedlnimi. Wtedy
+  $$|G|=\sum (\dim V_i)^2$$
+\end{theorem}
+
+\begin{proof}
+  Dowód z niezerowym prawdopodobieństwem pojawi się kiedyś. Opiera się on o fakt, że algebra grupowa jest izomorficzna z sumą prostą algebra macierzowych.
+\end{proof}
+
+\begin{definition}{reprezentacja regularna}{}
+  % Reprezentacja regularna to działanie grupy na samej sobie przez lewe przesunięcia.
+  \buff{Lewa regularna reprezentacja} $\lambda$ grupy $G$ to reprezentacja na przestrzeni funkcji ciągłych, $C^*(G)$, zadana przez
+  $$\lambda(g)f(x)=f(g^{-1}x)$$
+\end{definition}
+
+Mamy tez \acc{prawą regularną reprezentację}, $\rho(g)f(x)=f(xg)$. 
+
+\begin{lemma}{}{}
+  Niech $L:V\to W$ będzie dowolnym przekształceniem liniowym, a $\rho_1$, $\rho_2$ niech będą dwie reprezentacje $G$. Wówczas odwzorowanie $A_G(L):V\to W$ dane wzorem
+  $$\frac{1}{|G|}\sum_{g\in G}\rho_1(g)^{-1}L\rho_2(g)$$
+  jest przeplataczem $\rho_2$ i $\rho_1$.
+\end{lemma}
+
+\begin{proof}
+  Mamy pokazać, że dla każdego $g\in G$ zachodzi
+  $$A_G(L)\rho_2(g)=\rho_1(g)A_G(L).$$
+  Rozpisujemy z definicji i dostajemy
+  \begin{align*}
+    |G|A_G(L)\rho_2(g)&=\sum_{h\in G}\rho_1(h)^{-1}L\rho_2(hg)= \\ 
+                      &=\sum_{h\in G}\rho_1(h^{-1})L\rho_2(hg)= \\ 
+                      &=\sum_{v\in G}\rho_1(gv^{-1})L\rho_2(v)= \\ 
+                      &=\rho_1(g)\sum_{v\in G}\rho_1(v^{-1})L\rho_2(v)=|G|\rho_1(g)A_G(L)
+  \end{align*}
+\end{proof}
+
+\subsection{Charakter}
+
+\begin{definition}{charakter}{}
+  Niech $\rho:G\to GL(V)$ będzie reprezentacją grupy $G$ nad ciałem $K$. Funkcję $\chi:G\to K$ daną przez $\chi(g)=Tr(\rho(g))$ nazywamy \buff{charakterem reprezentacji $\rho$}.
+\end{definition}
+
+Innymi słowy: charakter przypisuje reprezentacji sumę jej wartości własnych.
+
+Na tę chwilę będą interesować nas unitarne reprezentacje grup skończonych.
+
+\begin{fact}{}{}
+  Jeśli $\chi$ jest charakterem $n$-wymiarowej reprezentacji to
+  \begin{itemize}
+    \item $\chi(1)=n$
+    \item $\chi(s^{-1})=\chi(s)^*$ (gdy reprezentacja jest unitarna)
+    \item $\chi(tst^{-1})=\chi(s)$
+  \end{itemize}
+\end{fact}
+
+\begin{lemma}{Schura}{}
+  Niech $\rho_i:G\to GL(V_i)$, $i=1,2$ będą dwoma nieprzywiedlnimi reprezentacjami grupy $G$. Niech $f:V_1\to V_2$ będzie przeplataczem $\rho_1$ i $\rho_2$. Wtedy
+  \begin{enumerate}
+    \item jeśli $\rho_1$ nie jest izomorficzne z $\rho_2$ to $f=0$,
+    \item jeśli $V_1=V_2$ oraz $\rho_1=\rho_2$ to $f$ jest wielokrotnością identyczności.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Rozważmy $x\in\ker f$, wtedy $0=\rho_2 fx=f\rho_1 x$, czyli $\rho_1x\in \ker f$, a więc $\ker f$ jest niezmiennicza na $\rho_1$. W takim razie $\ker f=V_1$ lub $\ker f=0$. Pierwszy przypadek jest przez nas pożądany, więc przyjrzyjmy się drugiemu. Jeśli $\ker f=0$, to $\im f$ jest niezmiennicze na działanie $\rho_2$ ($f\rho_1 x=\rho_2 fx$). W takim razie $\im f=V_2$ lub $\im f=0$. Skoro $\ker f=0$, to musowo $\im f=V_2$, a więc $f\neq 0$ musiałoby być izomorfizmem.
+    \item Skoro pracujemy nad $\C$, to $f$ posiada co najmniej jedną wartość własną $\lambda$. Funkcja $f'=f-\lambda$ nie jest izomorfizmem, ale nadal jest przeplataczem $\rho$ z $\rho$, więc na mocy punktu pierwszego $f'=0$.
+  \end{enumerate}
+\end{proof}
+
+Na przestrzeni zespolonych funkcji ze skończonej grupy $G$ możemy określić iloczyn skalarny wzorem
+$$\langle \phi, \psi\rangle=\frac{1}{|G|}\sum_{g\in G}\phi(g)\psi(g)^*$$
+W takim razie mając dwie unitarne reprezentacje $G$ jesteśmy w stanie
+\begin{itemize}
+  \item policzyć normę charakteru tej reprezentacji,
+  \item sprawdzić, czy są one ortogonalne licząc iloczyn skalarny ich charakterów.
+\end{itemize}
+
+% Jak się okazuje, charaktery są przydatnym narzędziem do badania reprezentacji grup.
+
+
+\begin{lemma}{}{}
+  Reprezentacja $V$ o charakterze $\chi$ jest nieprzywiedlnia $\iff$ $\langle\chi,\chi\rangle=1$
+\end{lemma}
+
+\begin{proof}
+  Niech $\rho$ będzie nieprzywiedlnią reprezentacją $G$ działającą przez macierze $(a_{ij})(g)$. Wówczas $\chi=\sum a_{ii}(g)$ oraz
+  $$\langle \chi, \chi\rangle=\sum_{i,j} \langle a_{ii}(g),a_{jj}(g)\rangle=\sum_{i,j}a_{ii}(g)\overline{a_{jj}(g)}=\sum_{i,j}a_{ii}(g)a_{jj}(g^{-1})=\begin{cases}1 & i=j\\ 0 & i\neq j\end{cases}$$
+\end{proof}
+
+\begin{lemma}{}{}\color{red}
+  Nieprzywiedlnie nieizomorficzne reprezentacje mają ortogonalne charaktery.
+\end{lemma}
+
+\begin{proof}
+  Niech $\rho_1$, $\rho_2$ będą dwiema nieprzywiedlnimi reprezentacjami, a $\chi_1$, $\chi_2$ ich charakterami. 
+\end{proof}
+
+Z tych dwóch lematów wynika, że charaktery reprezentacji nieprzywiedlnich tworzą bazę ortogonalną przestrzeni ciągłych funkcji $G\to U(1)$.
+
+\begin{theorem}{}{ilosc nieredukowalnych w rozkladzie}
+  Niech $V=W_1\oplus W_2\oplus ... \oplus W_n$ będzie rozkładem reprezentacji $G$ o charakterze $\phi$ na nieprzywiedlnie podreprezentacje. 
+
+  Jeśli $W$ jest nieprzywiedlnią reprezentacją $G$ różną od $V$ z charakterem $\chi$, to liczba $W_i$ które są z $W$ izomorficzne wynosi $\langle \chi, \phi\rangle$.
+\end{theorem}
+
+\begin{proof}
+  Ponieważ $V=W_1\oplus...\oplus W_n$, to jeśli przez $\chi_i$ oznaczymy charakter $W_i$ mamy
+  $$\phi=\chi_1+...+\chi_n.$$
+  Z lematu Schura wiemy, że $W$ jest albo izomorficzne do $W_i$, wtedy $\langle \chi, \chi_i\rangle=1$, albo ich charaktery są ortogonalne. Czyli
+  $$\langle \phi, \chi\rangle=\langle \sum \chi_i, \chi\rangle =\sum \langle \chi_i, \chi\rangle$$
+  jest szukaną wartością.
+\end{proof}
+
+\subsection{Produkt tensorowy reprezentacji}
+
+Każdy zna i kocha produkt prosty dwóch przestrzeni wektorowych $V\oplus V'$, gdzie dodawanie i mnożenie przez skalary odbywa się po współrzędnych. 
+
+\begin{definition}{produkt tensorowy}{}
+  Produkt tensorowy przestrzeni $A$ i $B$ to jedyna przestrzeń wektorowa $A\otimes B$ taka, że każde dwuliniowe odwzorowanie $A\oplus B\to C$ faktoryzuje się przez $A\otimes B$. To znaczy komutuje diagram
+  $$\begin{tikzcd}
+    A\oplus B\arrow[r]\arrow[dr] & A\otimes B \arrow[d, dashed]\\ 
+                                 & C
+  \end{tikzcd}$$
+  gdzie strzałka $A\oplus B\to A\otimes B$ to dwuliniowe "mnożenie" $(a,b)\mapsto a\otimes b$.
+\end{definition}
+
+Tak się składa, że jeśli $V$ ma bazę $\{v_i\}_{i\leq n}$, a $W$ - $\{w_i\}_{i\leq m}$, to ich iloczyn tensorowy $V\otimes W$ ma bazę $\{v_i\otimes w_j\}_{i\leq n, j\leq m}$.
+
+\begin{example}[m]
+  \item $\R\otimes \R\cong \R$ jako przestrzenie wektorowe nad $\R$: 
+    $$(x,y)=(x\cdot 1, y\cdot 1)\mapsto (x\cdot 1)\otimes (y\cdot 1)=xy(1\otimes 1).$$
+  \item Ogólniej: jeśli $V$ jest przestrzenią liniową nad ciałem $K$, to $V\otimes_KK\cong V$.
+  \item Dla trzech przestrzeni liniowych $V$, $V'$, $W$ mamy $(V\oplus V')\otimes W\cong (V\otimes W)\oplus (V'\otimes W)$ - zupełnie jak mnożenie i dodawanie
+  \item $\C\otimes_\R\C\cong \C^2$
+\end{example}
+
+Jeśli $\rho:G\to V$ i $\rho':G\to V'$ są reprezentacjami $G$, to możemy zdefiniować reprezentację (działanie) $G$ na $V\otimes V'$ w następujący sposób:
+$$g(v\otimes v'):=gv\otimes gv'=\rho(g)v\otimes \rho'(g)v'.$$
+
+Produkt tensorowy bardzo przypomina mnożenie liczb, ale nie do końca. Jeśli rozważamy $v\otimes w\in V\otimes V$, to bardzo rzadko $v\otimes w=w\otimes v$. Czasami jednak przemienność mnożenia wektorów byłaby przydatna - stąd definiujemy tensory symetryczne w którym relacja ta zachodzi zawsze.
+
+\begin{definition}{produkt symetryczny}{}
+  Dla przestrzeni wektorowej $V$ definiujemy jej produkt symetryczny jako
+  $$S^2(V):=V\otimes V\langle v\otimes w-w\otimes v\rangle.$$
+  To znaczy produkujemy odwzorowanie $V\otimes V\to V\otimes V$ posyłające $v\otimes w\to w\otimes v$ i wydzielamy przez jego jądro. Wtedy $v\otimes w=w\otimes v$.
+  \bigskip
+  
+  Definicję tę można uogólnić: $n$-ty produkt symetryczny $V$ to
+  $$S^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes n_v-v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
+\end{definition}
+
+Tak jak istnieją macierze symetryczne i antysymetryczne, hermitowskie i antyhermitowskie, symetryczny produkt tensorowy też ma swojego kuzyna spod ciemnej gwiazdy, nazywającego się \buff{produktem alternującym}.
+
+\begin{definition}{produkt alternujący}{}
+  Dla przestrzeni wektorowej $V$ definiujemy jej produkt alternujący (potęga zewnętrzna) jako
+  $$\Lambda^2(V):=V\otimes V\langle v\otimes w+w\otimes v\rangle.$$
+  To znaczy produkujemy odwzorowanie $V\otimes V\to V\otimes V$ posyłające $v\otimes w\to -w\otimes v$ i wydzielamy przez jego jądro. Wtedy w ilorazie $v\otimes w=-w\otimes v$.
+  \bigskip
+  
+  Definicję tę można uogólnić: $n$-ty produkt alternujący $V$ to
+  $$\Lambda^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes n_v+v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
+\end{definition}
+
+Jak się okazuje, symetria i antysymetria sumują się do całości, tzn.
+$$V\otimes V\cong S^2(V)\oplus \Lambda^2(V)$$
+przez operację symetryzacji i antysymetryzacji (?). Pierwsza z dowolnego tensora robi tensorek symetryczny
+$$v\otimes w\mapsto\frac{1}{2}(v\otimes w+w\otimes v)$$
+druga z dowolnego tensora robi tensor antysymetryczny
+$$v\otimes w\mapsto\frac{1}{2}(v\otimes w-w\otimes v).$$
+Sumując obie dostajemy $v\otimes w$ z powrotem.
+
+
+
+
+
+\subsection{Tabelki charakterów}
+
+Jak już zauważyliśmy, charaktery reprezentacji nieprzywiedlnich są ortogonalne. Co więcej, każda reprezentacja sprowadza się do jej nieprzywiedlnich składników. Sensowne jest przedstawienie informacji o jej nieprzywiedlnich reprezentacjach w jakiś zwięzły sposób. Na pomoc przychodzą \buff{tabelki charakterów}, których 
+\begin{itemize}
+  \item wiersze odpowiadają reprezentacjom (w wersji podstawowej tylko nieprzywiedlnim),
+  \item kolumny to klasy sprzężoności elementów grupy $G$,
+  \item komórki zawierają wartość charakteru reprezentacji z tego wiersza na dowolnym elemencie klasy sprzężoności z tej kolumny.
+\end{itemize}
+
+Dlaczego klasy sprzężoności a nie elementy? Proste: jeśli $x=g^{-1}yg$ to $\chi(x)=\chi(g^{-1}yg)=\chi(g^{-1})\chi(y)\chi(g)=\chi(y)$.
+
+\begin{remark}{}{}
+  Nieizomorficznych nieprzywiedlnich reprezentacji jest nie więcej niż klas sprzężoności elementów grupy $G$.
+\end{remark}
+
+Popatrzmy na przykład, który dawno temu był ćwiczeniem.
+
+\begin{example}
+  {\slshape Niech $V=\C^3$ i rozważmy reprezentacje grupy $S_3$ przez permutację wpsółrzędnych. Jakie nieprzywiedlnie składniki i z jakimi krotnościami pojawią się w reprezentacji grupy $S_3$ na $\Hom(V^{\otimes 3}, \bigwedge^2 V)$.}
+
+  W grupie $S_3$ mamy trzy klasy sprzężoności: 
+  \begin{enumerate}
+    \item identyczność,
+    \item transpozycje (w sztukach $3$),
+    \item cykle długości $3$ (w sztukach $2$).
+  \end{enumerate}
+  Jak się później (potencjalnie) porządnie dowiemy, nieredukowalnych reprezentacji $S_3$ mamy dokładnie $3$ sztuki:
+  \begin{enumerate}
+    \item trywialna,
+    \item znak,
+    \item permutacja współrzędnych obcięta do podprzestrzeni gdzie suma współrzędnych wynosi $0$ ($\sum=0$).
+  \end{enumerate}
+
+  W podstawowej wersji dostajemy więc tabelkę
+  \bigskip
+
+  \begin{center}
+    \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}
+      \hline
+      & id & $(a\;b)\times 3$ & $(a\;b\;c)\times 2$ \\ 
+      \hline 
+      trywialna & 1 & 1 & 1 \\ 
+      \hline 
+      znak & 1 & -1 & 1 \\ 
+      \hline 
+      $\sum=0$ & 2 & 0 & -1 \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  \bigskip
+
+  Jedyna kontrowersja może powstać z ostatnim wierszem, czyli $\sum=0$. Oczywiście działamy na $2$-wymiarowej przestrzeni, czyli ślad macierzy identyczności wynosi $2$. Transpozycja $(1\;2)$ działa macierzą $\begin{bmatrix}0 & 1\\ 1 & 0 \end{bmatrix}$, której ślad jest zero. Cykl $(1\;2\;3)$ to z kolei macierz $\begin{bmatrix}0 & -1\\ 1 & -1 \end{bmatrix}$.
+
+  Ale chwila, chwila - te wiersze nie są ortogonalnymi wektorami, bo przecież $\langle (1,1,1),(1,-1,1)\rangle=1$. Błędem jest zapominanie o tym, że w pełnej wersji tabelki powinniśmy widzieć $3$ różne kolumny dla $3$ różnych transpozycji, a kolumna dla $3$-cyklu powinna pojawić się z wagą $2$. Czyli tak naprawdę mamy $1\cdot1+3\cdot (-1\cdot 1)+2\cdot (1\cdot 1)=1-3+2=0$ \emoji{smile-cat}.
+  \vskip1cm
+
+  Teraz potrzebujemy wyjść poza podstawową definicję tabelki charakterów i policzyć coś dla reprezentacji które nieprzywiedlnie nie są, czyli
+  \begin{itemize}
+    \item $V=\C^3$ przez permutacje współrzędnych
+
+      Charakter tej reprezentacji jest prosty do wyliczenia, bo w $id$ mamy $3$, w transpozycjach mamy $1$ i $0$ w cyklu długości $3$. 
+    \item {\color{orange}$V^{\otimes 3}$}
+
+      Reprezentacja $V\otimes V\otimes V$ ma wymiar $3^3=27$, czyli mamy pierwszą wartość kolejnego wiersza. 
+  Grupa $S_3$ działa na $V^{\otimes 3}$ przez $g(v\otimes w\otimes u)=(gv)\otimes(gw)\otimes (gu)$. Tak się składa, że jeśli mamy macierze $A$ i $B$, to $tr(A\otimes B)=tr(A)\cdot tr(B)$. Czyli ten wiersz to będzie podniesienie poprzedniego do potęgi $3$ - zgadza się z wymiarem który już obliczyliśmy.
+    \item {\color{orange}$\bigwedge^2V$}
+
+      Teraz wymiar to $\binom{3}{2}=3$. Baza przestrzeni $\bigwedge^2V$ to $e_1\wedge e_2$, $e_1\wedge e_3$ i $e_2\wedge e_3$. Zastanówmy się wpierw co robi transpozycja $(1\;2)$ z każdym z tym wektorów
+      \begin{align*}
+        &e_1\wedge e_2\mapsto e_2\wedge e_1=-e_1\wedge e_2 \\ 
+        &e_1\wedge e_3\mapsto e_2\wedge e_3 \\ 
+        &e_2\wedge e_3\mapsto e_1\wedge e_3
+      \end{align*}
+      czyli ślad wychodzi $-1$. To teraz zajmijmy się cyklem $(1\;2\;3)$
+      \begin{align*}
+        &e_1\wedge e_2\mapsto e_2\wedge e_3 \\ 
+        &e_1\wedge e_3\mapsto e_2\wedge e_1=-e_1\wedge e_2 \\ 
+        &e_2\wedge e_3\mapsto e_3\wedge e_1=-e_1\wedge e_3
+      \end{align*}
+      czyli cyk ślad jest $0$.
+
+      Alternatywnie można skorzystać z faktu, że jeśli $\chi$ jest charakterem reprezentacji $V$ to $g\mapsto\frac{1}{2}(\chi^2(g)-\chi(g^2))$ jest charakterem reprezentacji $V\wedge V$. Dlaczego? Bo jeśli $\lambda_1,...,\lambda_n$ to wartości własne $g$ na $V$, to $\lambda_i\lambda_j$, $i\neq j$, są wartościami własnymi $g$ na $V\wedge V$ (wystarczy wziąć $v_i$ że $gv_i=\lambda_i v_i$ i rozpisać). $\chi(g)=\sum \lambda_i$, więc $\chi(g)^2=\sum\lambda_i^2+2\sum \lambda_i\lambda_j$, ale $\sum\lambda_i2=\chi(g^2)$, a $\sum\lambda_i\lambda_j$ to ślad $g$ na $V\wedge V$.
+    \item {\color{orange}$\Hom(V^{\otimes 3}, \bigwedge^2V)\cong (V^{\otimes 3})^*\otimes \bigwedge^2V$}
+
+      Tutaj mówimy, że charakter $(V^{\otimes3})^*$ ma taki sam charakter co $V^{\otimes 3}$ i korzystamy z $tr(A\otimes B)=tr(A)tr(B)$
+  \end{itemize}
+  \bigskip 
+
+  Dostajemy więc tabelkę
+  \bigskip
+
+  \begin{center}
+    \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{2cm}|}
+      \hline
+      & id & $(a\;b)\times 3$ & $(a\;b\;c)\times 2$ \\ 
+      \hline 
+      $V$ & 3 & 1 & 0 \\ 
+      \hline
+      $V\otimes V\otimes V$ & 3${}^3$=27 & 1${}^3$=1 & 0${}^3$=0 \\ 
+      \hline 
+      $\bigwedge^2V$ & 3 & -1 & 0 \\ 
+      \hline
+      $\Hom(V^{\otimes3},\bigwedge^2V)$ & 81 & -1 & 0 \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  \vskip1.5cm
+
+  Pozostaje przypomnieć twierdzenie \ref{th:ilosc nieredukowalnych w rozkladzie} i policzyć iloczyn skalarny ostatniego wiersza z wierszami każdej nieredukowalnej reprezentacji.
+  \begin{align*}
+    \langle \text{trywialna}, \Hom(V^{\otimes3}, \bigwedge^2V)\rangle&=\frac{1}{6}[1\cdot 81+3\cdot (1\cdot(-1))+2\cdot (0\cdot 1)]=\frac{78}{6}=13 \\ 
+    \langle \text{znak},\Hom(V^{\otimes3},\bigwedge^2V)\rangle&=\frac{1}{6}[1\cdot 81+3\cdot(-1\cdot(-1))+2\cdot(1\cdot 0)]=\frac{84}{6}=14 \\ 
+    \langle \sum=0,\Hom(V^{\otimes3},\bigwedge^2V)\rangle&=\frac{1}{6}[2\cdot 81+3\cdot(-1\cdot0)+2\cdot (-1\cdot 0)]=\frac{162}{6}=27
+  \end{align*}
+
+  Sprawdzając czy się wymiary zgadzają upewniamy się, że nie było błędu rachunkowego:
+  $$\dim(\Hom(V^{\otimes3}, \bigwedge^2V))=81$$
+  a suma wymiarów z rozkładu wyżej wyszłaby $13+14+2\cdot 27=27+2\cdot 27=3\cdot 27=81$.
+\end{example}
+
+
+
+
+% \begin{theorem}{}{}
+%   Nieredukowalne reprezentacje o tym samym charakterze są izomorficzne.
+% \end{theorem}
+%
+% \begin{proof}
+%   Jest to szybki wniosek z te
+% \end{proof}
+
+

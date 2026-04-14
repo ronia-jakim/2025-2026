@@ -1,0 +1,48 @@
+\section{Algebra grupowa}
+
+Aka algebra Frobeniusa.
+
+W tym fragmencie $G$ jest grupą zwartą.
+
+\begin{definition}{algebra grupowa}{}
+  \buff{Algebra grupowa} grupy $G$ nad ciałem $K$ (u nas $K=\C$), oznaczana $K[G]$, to $K$-moduł generowany przez elementy $G$.
+\end{definition}
+
+Po ludzku: $K[G]$ zawiera formalne kombinacje liniowe elementów $G$ o współczynnikach z $K$.
+
+Inaczej można mówić, że $K[G]$ to funkcje $f:G\to K$ o skończonym nośniku (będziemy czasem $f:G\to K$ utożsamiać z $\sum_{g\in G} f(g)g$). Ten opis ma tę zaletę, że od razu zadaje mnożenie na $K[G]$ jako splot funkcji.
+
+Niech teraz $K=\C$.
+
+\begin{definition}{splot funkcji}{}
+  Niech $f,g:G\to \C$ będzie elementem $\C[G]$, a $\mu$ niech będzie miarą Haara na $G$. Wtedy splot $f\ast g$ definiujemy jako
+  $$(f\ast g)(y)=\int f(yx^{-1})g(x)d\mu(x).$$
+\end{definition}
+
+Zauważmy, że bazą $\C[G]$ są delty Diraca, $\delta_g$. Ich splot zgadza się ze zwykłym mnożeniem elementów, tzn. $\delta_g\ast\delta_h=\delta_{gh}$.
+% :
+$$\color{red}(\delta_g\ast\delta_h)(y)=\int \delta_g(yx^{-1})\delta_h(x)d\mu(x)=\int_{\{h\}}\delta_g(yx^{-1})d\mu(x)=\delta_g(yh^{-1})=\delta_{gh}(y).$$
+% $\delta_g(yx^{-1})\delta_h(x)\neq 0$ tylko gdy $yx^{-1}=g$ i $x=h$, czyli $y=gh$.
+% Stąd
+% $$(\delta_g\ast\delta_h)(y)=\delta_{gh}(y)$$
+
+% \begin{theorem}{}{}
+%   $\C[G]$ z dodawaniem punktowym, mnożeniem splotowym i inwolucją $f^*(g)=\overline{f(g^{-1})}$ jest algebrą Banacha.
+% \end{theorem}
+
+Co więcej, na algebrze $\C[G]$ możemy zdefiniować inwolucję wzorem
+$$f^*(g)=\overline{f(g^{-1})}.$$
+
+\begin{remark}{}{}
+  Jeśli $G$ jest grupą zwartą nieskończoną, to $\C[G]$ z mnożeniem splotowym nie jest grupą, bo nie mamy elementu neutralnego.
+\end{remark}
+
+Wpadamy znowu do świata grup skończonych, żeby powiedzieć cos o reprezentacjach grupy $G$.
+
+\begin{lemma}{}{}
+  Każda reprezentacja $\rho$ algebry $\C[G]$ traktowanej jako grupa z mnożeniem zadaje reprezentację $\pi(g)=\rho(\delta_g)$ grupy $G$.
+\end{lemma}
+
+
+
+
