@@ -102,11 +102,21 @@ Rozważamy poniższe teorie
 
       To też mi mówi, że będzie superstabilne ale za mało umiem teorię mnogości żeby powiedzieć kiedy.
 
-    \item humpty dumpty $S_1(\emptyset)$ to będzie co, albo zero albo dowolna rzecz? Bo mam równania jednego parametru to mogę je skalować i śmiga. Co jeśli dorzucę parametry? Potrafię zapisać wtedy kombinacje liniowe wszystkich rzeczy z $A$ albo mogę powiedzieć, że mam wektor spoza $span(A)$ bo sobie neguję wszystkie możliwe kombinacje liniowe elementów z $A$ i jestem szczęśliwa. Czyli
+    \item na poprzedniej liście: ta teoria ma redukcję kwantyfikatorów
+
+      Niech $M\models T$. Wtenczas $p(x)\in S_1(M)$ ma formę jednego z poniższych
       \begin{itemize}
-        \item $x=\sum \lambda_i a_i$ dla $\lambda_i\in F$ i $a_i\in A$ -> takich mam $|A\times F|$, co dla nieskończonych $A$ powinno być równe $|A|$
-        \item ten jeden typ "nie w spanie"
+        \item $p(x)=\{'x=m'\}$ dla pewnego $m\in M$
+        \item $p(x)=\{'x\neq\sum\lambda_im_i'\;:\;\lambda_i\in F_q,\;m_i\in M\}$
       \end{itemize}
+      czyli $|S_1(M)|\leq |M|+1=|M|$
+
+      %
+      % humpty dumpty $S_1(\emptyset)$ to będzie co, albo zero albo dowolna rzecz? Bo mam równania jednego parametru to mogę je skalować i śmiga. Co jeśli dorzucę parametry? Potrafię zapisać wtedy kombinacje liniowe wszystkich rzeczy z $A$ albo mogę powiedzieć, że mam wektor spoza $span(A)$ bo sobie neguję wszystkie możliwe kombinacje liniowe elementów z $A$ i jestem szczęśliwa. Czyli
+      % \begin{itemize}
+      %   \item $x=\sum \lambda_i a_i$ dla $\lambda_i\in F$ i $a_i\in A$ -> takich mam $|A\times F|$, co dla nieskończonych $A$ powinno być równe $|A|$
+      %   \item ten jeden typ "nie w spanie"
+      % \end{itemize}
 
       Czy jest $\aleph_0$-stabilne? Tak!
 
@@ -152,10 +162,14 @@ Model $M$ jest minimalny, gdy nie ma elementarnego podmodelu.
   \begin{enumerate}
     \item Ma model pierwszy, bo jest $\aleph_0$-stabilna. Twierdze, że jest nim $(\Z, S)$
       \begin{description}
-        \item[pierwszość=atomowość] bierę dowolny $(a_1,...,a_n)\in\Z^n$, jego typ jest izolowany przez $\phi(x_1,...,x_n)="x_1=S^{x_1-x_2}(x_2)\;\land x_1=S^{x_1-x_3}(x_3)\;\land\;..."$
+        \item[pierwszość=atomowość] bierę dowolny $(a_1,...,a_n)\in\Z^n$, jego typ jest izolowany przez $\phi(x_1,...,x_n)="x_1=S^{a_1-a_2}(x_2)\;\land x_1=S^{a_1-a_3}(x_3)\;\land\;..."$
         \item[minimalność] nie wprost: jeśli $N\prec (\Z, S)$ ale $N\neq (\Z, S)$ to mogę wziąć $x\in \Z-N$ oraz $y\in N\subseteq \Z$. Wtedy dla $n=x-y$ zachodzi $x=S^n(y)$, ale to powinno być w $N$ a nie jest.
       \end{description}
     \item Tutaj nie ma modelu pierwszego, bo nie ma typów izolowanych. Każda formuła smyra tylko skończenie wiele indeksów, a żeby wyizolować jakiś typ trzebaby dokładnie określić co się dzieje na wszystkich indeksach.
+      
+      \textbf{Brak typów izolowanych} załóżmy nie wprost, że $(a_1,...,a_n)\in 2^\omega$ ma typ izolowany przez pewną formułę $\psi(x_1,...,x_n)=\bigwedge P_{n_k}(x_{i_k})\;\land\;\bigwedge \neg P_{n_j}(x_{i_j})$. Niech $N$ będzie największym indeksem występującym w formule $\psi$. Wtedy krotka 
+      $$b_i=\begin{cases}a_i & i \leq N\\ -a_i & i > N \end{cases}$$
+      również spełnia $\psi$. Czyli $\psi\in tp(a_1,...,a_n)$ oraz $\psi\in tp(b_1,...,b_n)$, co by oznaczało że te typy są takie same, ale nie są - sprzeczność.
     \item skip
     \item skip
     \item Ma model pierwszy, gdyż iż i ponieważ jest $\aleph_0$-stabilne. Zapewne to jest przestrzeń wektorowa o nieskończonej, przeliczalnej bazie - inaczej: ciągi elementów z $F$ o skończenie wielu niezerowych elementach.
@@ -163,7 +177,7 @@ Model $M$ jest minimalny, gdy nie ma elementarnego podmodelu.
         \item[pierwszość=atomowość] bierę dowolnego pyśka $(a_1,...,a_n)\in V^n$ -> mogę zapisac formułę $\phi(x_1,...,x_n)$ która będzie konjiunkcją informacji o tym które pyśki są liniowo zależne, a które są liniowo niezależne. Czyli $(\exists \lambda_1...\lambda_i)\;\lambda_i\neq 0 \;\land\;\lambda_1x_{k_1}+...+\lambda_ix_{k_i}=0$ oraz $(\forall\;\lambda_1...\lambda_i)\; \lambda_i\neq 0\;\land\;\lambda_1x_{k_1}+...\lambda_ix_{k_i}\neq 0$
         \item[minimalność] no nie, bo mogę usunąć np. pierwszy wektor bazowy (z nieskończenie wielu), nadal mieć nieskończenie wiele wektorów bazowych i mieć elegancką podprzestrzeń liniową
       \end{description}
-    \item Ma model pierwszy jeszcze raz, bo jest $\aleph_0$-stabilne. Zapewne znowu to będzie nieskończenie wymiarowa przestrzeń liniowa i argumenty będą bardzo podobne jak wcześniej.
+    \item \color{red} może nie tak szybko? Ma model pierwszy jeszcze raz, bo jest $\aleph_0$-stabilne. Zapewne znowu to będzie nieskończenie wymiarowa przestrzeń liniowa i argumenty będą bardzo podobne jak wcześniej.
   \end{enumerate}
 \end{proof}
 
@@ -180,15 +194,34 @@ Model $M$ jest minimalny, gdy nie ma elementarnego podmodelu.
       \begin{fact}{chyba z konstrukcji ale też z dawida markera}{}
         $M\models T$ jest pierwszy $\iff$ jest przeliczalny i atomowy (część że pierwszy $\implies$ atomowy jest z wykładu).
       \end{fact}
-      Przeliczalność to jakiś turbo szybki dowód, który mówi że skoro pracujemy nad przeliczalnym językiem to mamy jakiś przeliczlany model.
+      $M$ nie jest minimalne $\implies$ istnieje $N_0\prec M$, $N_0\neq M$
 
-      Ponieważ $M$ nie jest minimalne, to zawiera $N\prec M$, $N\neq M$. Ale $M$ jest pierwsze, więc istnieje $f:M\to N\subseteq M$ elementarne zanurzenie $M$ w samego siebie takie, że $f(M)\subsetneq M$. Ja chcę jednak żyć w dużym modelu monstrum gdzie będę potrafiła to $f$ odwrócić. Jakiś automorfizm czy coś, bo orbity działania grupy automorfizmów powinny być w bijekcji z typami. 
+      $M$ jest pierwsze, czyli istnieje elementarne włożenie $f_0:M\to N_0$
 
-      Generalnie chcę przekonać się, że $M\supseteq f^{-1}(M)$, żeby móc stworzyć ciąg $M_0=M\prec M_1=f^{-1}(M)\prec....$ i wziąć jego (ko)granicę? Injective limit z pierwszej listy.
-      
-      Powinnam uzasadnić, że $\varinjlim M_i$ które dostaję jest atomowe. Każde $M_i$ powinno być atomowe, bo jest obrazem przez elegancką funkcję modelu atomowego i z tego też powodu granica powinna być atomowa.
-  
-      Dlaczego to co dostaję jest nieprzeliczalne? Bo mogę tę konstrukcję robić nieprzeliczalną ilość kroków, za każdym razem zwiększając mój model o co najmniej jeden element. 
+      w modelu monstrum $\mathcal{M}$ widzę to elementarne włożenie jako obcięcie pewnego automorfizmu
+
+      w takim razie $g_0=f_0^{-1}$ jest sensowne i mogę zdefiniować ciąg
+      $$M_0=M\prec M_1=g_0(M_0)\prec ...$$
+      dla $i<\omega$
+
+      pierwsze przejście graniczne to
+      $$M_\omega=\bigcup_{i<\omega} M_i$$
+      po tym przejściu granicznym mam model, który jest przeliczalny i typ każdej krotki jest izolowany, bo tak było po drodze -> jest to izomorficzne z typem pierwszym
+
+      czyli teraz mogę znaleźć nowy podmodel $N_1\prec M_\omega$, $N_1\neq M_\omega$ i elementarne włożenie $f_1:M_\omega\to N_1$ które da się odwrócić jako automorfizm modelu monstrum, by skonstruować nowy ciąg -> po $i<\omega_1$, które jest już chyba nieprzeliczalne, a jak nie to mogę powtórzyć i kiedyś osiągnę to nieprzeliczalne piekło.
+
+    \item 
+      \begin{description}
+        \item[istnienie pierwszego] tak jak w dowodzie istnienia modelu pierwszego dla $\aleph_0$-stabilnej teorii 
+
+          wybieramy $\{a_n\;:\;n<\omega\}$ spełniające test tarskiego-vaughta (czyli będące elementarnym podmodelem) takie, że $tp(a_n/a_{<n})$ jest izolowany (co mogę zapewnić, bo jest to twierdzenie że $tp(a)$ i $tp(b/a)$ są izolowane $\iff$ $tp(a,b)$ jest izolowany)
+
+          to mi daje przeliczalny model atomowy, czyli jest to model pierwszy
+        \item[nie jest minimalny] załóżmy nie wprost, że $M_0$ z konstrukcji wyżej jest minimalnym modelem pierwszym
+
+
+      \end{description}
+
   \end{enumerate}
 \end{proof}
 
