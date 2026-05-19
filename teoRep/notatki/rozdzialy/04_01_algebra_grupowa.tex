@@ -2,7 +2,7 @@
 
 Aka algebra Frobeniusa.
 
-W tym fragmencie $G$ jest grupą zwartą.
+W tym fragmencie $G$ jest grupą zwartą, a nawet skończoną.
 
 \begin{definition}{algebra grupowa}{}
   \buff{Algebra grupowa} grupy $G$ nad ciałem $K$ (u nas $K=\C$), oznaczana $K[G]$, to $K$-moduł generowany przez elementy $G$.
@@ -10,9 +10,12 @@ W tym fragmencie $G$ jest grupą zwartą.
 
 Po ludzku: $K[G]$ zawiera formalne kombinacje liniowe elementów $G$ o współczynnikach z $K$.
 
-Inaczej można mówić, że $K[G]$ to funkcje $f:G\to K$ o skończonym nośniku (będziemy czasem $f:G\to K$ utożsamiać z $\sum_{g\in G} f(g)g$). Ten opis ma tę zaletę, że od razu zadaje mnożenie na $K[G]$ jako splot funkcji.
+Jeszcze bardziej po ludzku: $K[G]$ to funkcje $f:G\to K$ o skończonym nośniku (będziemy czasem $f:G\to K$ utożsamiać z $\sum_{g\in G} f(g)g$). Ten opis ma tę zaletę, że od razu zadaje mnożenie na $K[G]$ jako splot funkcji.
 
-Niech teraz $K=\C$.
+Niech teraz $K=\C$. Możemy wtedy na $\C[G]$ zadać inwolucję wzorem
+$$f^*(g)=\overline{f(g^{-1})}.$$
+
+\subsection{Sploty - mnożenie w algebrze grupowej}
 
 \begin{definition}{splot funkcji}{}
   Niech $f,g:G\to \C$ będzie elementem $\C[G]$, a $\mu$ niech będzie miarą Haara na $G$. Wtedy splot $f\ast g$ definiujemy jako
@@ -20,29 +23,76 @@ Niech teraz $K=\C$.
 \end{definition}
 
 Zauważmy, że bazą $\C[G]$ są delty Diraca, $\delta_g$. Ich splot zgadza się ze zwykłym mnożeniem elementów, tzn. $\delta_g\ast\delta_h=\delta_{gh}$.
-% :
-$$\color{red}(\delta_g\ast\delta_h)(y)=\int \delta_g(yx^{-1})\delta_h(x)d\mu(x)=\int_{\{h\}}\delta_g(yx^{-1})d\mu(x)=\delta_g(yh^{-1})=\delta_{gh}(y).$$
-% $\delta_g(yx^{-1})\delta_h(x)\neq 0$ tylko gdy $yx^{-1}=g$ i $x=h$, czyli $y=gh$.
-% Stąd
-% $$(\delta_g\ast\delta_h)(y)=\delta_{gh}(y)$$
+$$(\delta_g\ast\delta_h)(y)=\int \delta_g(yx^{-1})\delta_h(x)d\mu(x)=\int_{\{h\}}\delta_g(yx^{-1})d\mu(x)=\delta_g(yh^{-1})=\delta_{gh}(y).$$
 
-% \begin{theorem}{}{}
-%   $\C[G]$ z dodawaniem punktowym, mnożeniem splotowym i inwolucją $f^*(g)=\overline{f(g^{-1})}$ jest algebrą Banacha.
-% \end{theorem}
+Jeśli patrzymy na $\C[G]$ jako zbiór funkcji $G\to \C$ o skończonym nośniku, to splot funkcji jest mnożeniem jej elementów i na mocy uwagi wyżej zgadza się z innymi definicjami $\C[G]$.
 
-Co więcej, na algebrze $\C[G]$ możemy zdefiniować inwolucję wzorem
-$$f^*(g)=\overline{f(g^{-1})}.$$
+\begin{theorem}{}{}
+  Dla $G$ skończonych mamy $L^1(G)=\C[G]$. Co więcej, $\C[G]$ z dodawaniem punktowym, mnożeniem splotowym i inwolucją $f^*(g)=\overline{f(g^{-1})}$ jest algebrą Banacha (z jedynką!).
+\end{theorem}
 
 \begin{remark}{}{}
-  Jeśli $G$ jest grupą zwartą nieskończoną, to $\C[G]$ z mnożeniem splotowym nie jest grupą, bo nie mamy elementu neutralnego.
+  Jeśli $G$ jest grupą zwartą nieskończoną, to $L^1(G)$ z mnożeniem splotowym nie jest grupą, bo nie mamy elementu neutralnego.
 \end{remark}
 
-Wpadamy znowu do świata grup skończonych, żeby powiedzieć cos o reprezentacjach grupy $G$.
+\begin{proof}
+  % Rozważmy $G=S^1$ z mnożeniem. 
+  Gdyby istniała funkcja $e\in L^1(G)$ taka, że dla każdej innej $f\in L^1(G)$ $f\ast e=f$, to musiałaby ona spełniać
+  \begin{align*}
+    f(x)=(f\ast e)(x)&=\int_{G}f(y)e(y^{-1}x)dy=\int_{G}f(xz^{-1})e(z)dz
+  \end{align*}
+  Niech $V=V^{-1}$ będzie symetrycznym otoczeniem $1\in G$. Wtedy dla $f=\chi_V$ funkcji charakterystycznej $V$ mamy
+  \begin{align*}
+    1=\chi_V(1)=(\chi_V\ast e)(1)&=\int_{G}\chi_V(z^{-1})e(z)dz=\int_{V}e(z)dz
+  \end{align*}
+  czyli $\int_V e(z)dz=1$ dla dowolnego symetrycznego $V$. Co się dzieje z tą całka gdy $\mu(V)\to 0$? Generalnie całka po zbiorze miary zero powinna być zerem, więc dostajemy sprzeczność.
+\end{proof}
+
+\subsection{Reprezentacje grupy a algebra grupowa}
+
+W tej sekcji będziemy chcieli zrozumieć jak algebra grupowa $\C[G]$ pomaga w badaniu grupy $G$ i jej reprezentacji.
+
+\begin{lemma}{}{}
+  Niech $\C_{class}[G]$ oznacza podzbiór $\C[G]$ złożony z funkcji które są stałe na klasach sprzężoności $G$. Zbiór ten jest podalgebrą $\C[G]$.
+\end{lemma}
+
+\begin{proof}
+  Ćwiczenie.
+\end{proof}
+
+Dla reprezentacji $\rho$ na $V$ możemy zdefiniować odwzorowanie $\rho:\C[G]\to End_\C(V)$ w następujący sposób
+$$\rho(f)=\sum_{g\in G}f(g)\rho(g).$$
+Łatwo sprawdzić że jest to homomorfizm algebr. Co więcej, jeśli $f\in \C_{class}[G]$ to $\rho(f)$ jest przeplataczem $\rho$ (tzn. $\rho(f)\in End_G(V)$).
 
 \begin{lemma}{}{}
   Każda reprezentacja $\rho$ algebry $\C[G]$ traktowanej jako grupa z mnożeniem zadaje reprezentację $\pi(g)=\rho(\delta_g)$ grupy $G$.
 \end{lemma}
 
+Na $\C[G]$ możemy zdefiniować w bardzo prosty (i znany nam już) sposób iloczyn skalarny:
+$$\langle f,h\rangle=\sum_{g\in G}f(g)\overline{h(g)}.$$
 
+\begin{theorem}{}{}
+  Charaktery nieprzywiedlnych reprezentacji $G$ tworzą ortonormalną bazę $\C_{class}[G]$.
+\end{theorem}
+
+\begin{theorem}{}{}
+  Niech $\{(\rho_i, W_i)\}$ będzie zbiorem wszystkich nieprzywiedlnich reprezentacji $G$. Wtedy
+  $$\C[G]\ni f\mapsto \oplus \rho_i(f)\in \bigoplus End_\C(W_i)$$
+  jest izomorfizmem algebr.
+\end{theorem}
+
+Innymi słowy, algebra grupowa jest izomorficzna z sumą prostą algebra macierzowych $\dim(W_i)\times\dim(W_i)$.
+
+\begin{proof}
+  Dowód zrobimy w dwóch krokach: najpierw pokażemy że
+  $$\dim(\C[G])=\sum \dim(W_i)^2$$
+  a potem pokażemy że odwzorowanie z tezy twierdzenia jest injektywne.
+
+  \begin{description}
+    \item[wymiar:] dla $\rho_i$ niech $e_1,...,e_{\dim(W_i)}$ będzie bazą $W_i$. Rozważmy współczynniki macierzowe, czyli funkcje $a_{ij}:G\to\C$ zdefiniowane jako
+      $$a_{ij}(g)=\langle\rho_i(g)e_i,e_j\rangle.$$
+    \item[injektywność:] 
+  \end{description}
+\end{proof}
 
 
