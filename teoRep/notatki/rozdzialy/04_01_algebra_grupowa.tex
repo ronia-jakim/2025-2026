@@ -1,4 +1,5 @@
 \section{Algebra grupowa}
+\label{algebra grupowa}
 
 Aka algebra Frobeniusa.
 
@@ -12,7 +13,7 @@ Po ludzku: $K[G]$ zawiera formalne kombinacje liniowe elementów $G$ o współcz
 
 Jeszcze bardziej po ludzku: $K[G]$ to funkcje $f:G\to K$ o skończonym nośniku (będziemy czasem $f:G\to K$ utożsamiać z $\sum_{g\in G} f(g)g$). Ten opis ma tę zaletę, że od razu zadaje mnożenie na $K[G]$ jako splot funkcji.
 
-Niech teraz $K=\C$. Możemy wtedy na $\C[G]$ zadać inwolucję wzorem
+Niech teraz $K=\C$. Na $\C[G]$ zadajemy inwolucję wzorem
 $$f^*(g)=\overline{f(g^{-1})}.$$
 
 \subsection{Sploty - mnożenie w algebrze grupowej}
@@ -32,7 +33,7 @@ Jeśli patrzymy na $\C[G]$ jako zbiór funkcji $G\to \C$ o skończonym nośniku,
 \end{theorem}
 
 \begin{remark}{}{}
-  Jeśli $G$ jest grupą zwartą nieskończoną, to $L^1(G)$ z mnożeniem splotowym nie jest grupą, bo nie mamy elementu neutralnego.
+  Jeśli $G$ jest grupą zwartą nieskończoną, to $L^1(G)$ z mnożeniem splotowym nie jest grupą, bo nie zawiera elementu neutralnego.
 \end{remark}
 
 \begin{proof}
@@ -47,6 +48,16 @@ Jeśli patrzymy na $\C[G]$ jako zbiór funkcji $G\to \C$ o skończonym nośniku,
   \end{align*}
   czyli $\int_V e(z)dz=1$ dla dowolnego symetrycznego $V$. Co się dzieje z tą całka gdy $\mu(V)\to 0$? Generalnie całka po zbiorze miary zero powinna być zerem, więc dostajemy sprzeczność.
 \end{proof}
+
+Nie jest jednak tak źle - mimo że prawdziwy element neutralny w $L^1(G)$ nie istnieje to możemy wyprodukować coś bardzo blisko bycia jedynką na splot.
+
+\begin{example}
+  Rozważmy grupę $S^1$, czyli liczby zespolone o module $1$ z mnożeniem. Dla $0\leq r< 1$ zdefiniujmy odwzorowanie
+  $$P_r(\theta)=\sum_{n\in\Z}r^{|n|}|e^{in\theta}=\frac{1-r^2}{|1-re^{i\theta}|^2}\geq0.$$
+ Weźmy teraz $f\in L^1(S^1)$, wówczas zachodzi
+ $$\|P_r\ast f-f\|_{L^1}\xrightarrow{r\to 1} 0,$$
+ czyli $P_r\ast f$ zgadza się z $f$ prawie wszędzie dla dowolnego $f\in L^1(S^1)$. Funkcję $P_r$ tak zdefiniowaną nazywamy \buff{jądrem Poissona}.
+\end{example}
 
 \subsection{Reprezentacje grupy a algebra grupowa}
 
@@ -75,13 +86,13 @@ $$\langle f,h\rangle=\sum_{g\in G}f(g)\overline{h(g)}.$$
   Charaktery nieprzywiedlnych reprezentacji $G$ tworzą ortonormalną bazę $\C_{class}[G]$.
 \end{theorem}
 
-\begin{theorem}{}{}
+\begin{theorem}{}{alg grupowa to suma algebr macierzowych}
   Niech $\{(\rho_i, W_i)\}$ będzie zbiorem wszystkich nieprzywiedlnich reprezentacji $G$. Wtedy
   $$\C[G]\ni f\mapsto \oplus \rho_i(f)\in \bigoplus End_\C(W_i)$$
   jest izomorfizmem algebr.
 \end{theorem}
 
-Innymi słowy, algebra grupowa jest izomorficzna z sumą prostą algebra macierzowych $\dim(W_i)\times\dim(W_i)$.
+Innymi słowy, algebra grupowa jest izomorficzna z sumą prostą algebr macierzowych $\dim(W_i)\times\dim(W_i)$.
 
 \begin{proof}
   Dowód zrobimy w dwóch krokach: najpierw pokażemy że
@@ -91,8 +102,25 @@ Innymi słowy, algebra grupowa jest izomorficzna z sumą prostą algebra macierz
   \begin{description}
     \item[wymiar:] dla $\rho_i$ niech $e_1,...,e_{\dim(W_i)}$ będzie bazą $W_i$. Rozważmy współczynniki macierzowe, czyli funkcje $a_{ij}:G\to\C$ zdefiniowane jako
       $$a_{ij}(g)=\langle\rho_i(g)e_i,e_j\rangle.$$
-    \item[injektywność:] 
+    \item[injektywność:] gdyby istniało $f\in \C[G]$ takie, że $f\mapsto 0$, to dla każdej nieprzywiedlniej $\rho_i$ musi zachodzić $\rho_i(f)=0$. W szczególności dla lewej reprezentacji regularnej, która jest wierna (injektywna), musi zachodzić $\lambda(f)=0$. 
   \end{description}
 \end{proof}
+
+
+\begin{theorem}{}{}
+  Niech $G$ będzie grupą zwartą, a $\pi$ będzie jej unitarną, nieprzywiedlnią reprezentacją. Wówczas $\pi$ jest podreprezentacją lewej regularnej reprezentacji grupy $G$ z krotnością $\dim(\pi)$.
+\end{theorem}
+
+\begin{proof}
+  Oznaczmy lewą regularną reprezentację $G$ przez $\lambda_G$. Wówczas jej charakter to
+  $$\chi_{\lambda_G}(g)=\begin{cases}|G| & g=1\\ 0 & g\neq 1\end{cases}.$$
+  % $\lambda_G$ działa na przestrzeni $L^2(G)$ przez lewe translacje.
+  Z kolei na mocy twierdzenia \ref{alg grupowa to suma prosta algebr macierzowych} wiemy, że 
+  $$|G|=\sum\dim(\pi)^2,$$
+  {\color{red}wystarczy uczciwie policzyć $\langle \lambda_G, \pi\rangle$}
+\end{proof}
+
+
+
 
 

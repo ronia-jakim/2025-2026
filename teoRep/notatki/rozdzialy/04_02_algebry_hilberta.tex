@@ -1,4 +1,4 @@
-\section{Algebry Hilberta}
+\section{Operatory Hilberta-Schmidta}
 
 Rozważamy unitarne reprezentacje grup zwartych $G$ z unormowaną miarą Haara $dx$, to znaczy $dx(G)=1$.
 
@@ -27,5 +27,88 @@ Rozważamy unitarne reprezentacje grup zwartych $G$ z unormowaną miarą Haara $
   \end{itemize}
 \end{definition}
 
+Niech $T:\Hh\to\Hh$ będzie operatorem ograniczonym na przestrzeni Hilberta $\Hh$ z bazą $\{e_i\;:\;i\in I\}$. Definiujemy normę Hilberta-Schmidta operatora $T$ jako
+$$\|T\|_{HS}^2:=\sum_{i\in I}\|Te_i\|_H^2.$$
+Powiemy, że $T$ jest \buff{operatorem Hilberta-Schmidta} jeśli ma skończoną normę Hilberta-Schmidta.
 
+\begin{remark}{}{}
+  Norma Hilbera-Schmidta jest dobrze określona, tzn. nie zależy od wyboru bazy przestrzeni $\Hh$.
+\end{remark}
 
+\begin{proof}
+  Zaczynamy od pokazania, że $\|T\|_{HS}^2=\|T^*\|_{HS}^2$. Pitagoras mówi nam, że jeśli $\{e_i\;:\;i\in I\}$ jest bazą ortonormalną $\Hh$, to
+  $$\|x\|^2=\sum_i|\langle x, e_i\rangle|^2=\sum_i|\langle e_i, x\rangle|^2,$$
+  bo $x=\sum\langle x,e_i\rangle e_i$. Stąd
+  $$\|T\|_{HS}^2=\sum_i\|Te_i\|^2_{HS}=\sum_i\sum_j|\langle Te_i, e_j\rangle|^2=\sum_i\sum_j|\langle e_i, T^*e_j\rangle|^2=\sum_j\|T^*e_j\|^2=\|T^*\|_{HS}^2.$$
+  Niech teraz $\{f_i\;:\;i\in I\}$ będzie konkurencyjna bazą ortonormalną $\Hh$. Wówczas
+  $$\sum_i\|Te_i\|^2=\sum_i\sum_j|\langle Te_i, f_j\rangle|^2=\sum_i\sum_j|\langle e_i, T^*f_j\rangle|^2=\sum_j\sum_i|\langle e_i, T^*f_j\rangle|^2=\sum_j\|T^*f_j\|^2.$$
+\end{proof}
+
+\begin{lemma}{}{}
+  Niech $B_{HS}(\Hh)$ będzie zbiorem wszystkich operatorów Hilberta-Schmidta na $\Hh$. Wówczas $B_{HS}(\Hh)$ jest obustronnym $*$-ideałem w $B(\Hh)$.
+\end{lemma}
+
+Zauważmy, że
+$$\|T\|_{HS}^2=\sum_{i\in I}\langle Te_i, Te_i\rangle=\tr(T*T),$$
+odważnym posunięciem jest więc zdefiniowanie iloczynu Hilberta-Schimdta jako
+$$\langle T,S\rangle_{HS}:=\tr(S^*T)=\sum_{i\in I}\langle Te_i, Se_i\rangle.$$
+
+\begin{lemma}{}{}
+  Przestrzeń operatorów Hilberta-Schmidta z iloczynem $\langle\cdot,\cdot\rangle_{HS}$ tworzy przestrzeń Hilberta.
+\end{lemma}
+
+\begin{theorem}{}{}
+  $T$ jest operatorem Hilberta-Schmidta wtedy i tylko wtedy gdy $|T|=\sqrt{T^*T}$ jest operatorem Hilberta-Schmidta.
+\end{theorem}
+
+\begin{definition}{norma Schattena}{}
+  Niech $p\in[1,\infty)$ oraz $T\in B(\Hh)$ będzie operatorem ograniczonym. Wówczas definiujemy \buff{$p$-normę Schattena} jako
+  $$\|T\|_p:=[\tr(|T|^p)]^{\frac{1}{p}}.$$
+\end{definition}
+
+Dla $p=2$ norma Schattena jest normą Hilberta-Schmidta, dla $p=1$ dostajemy normę śladową (nuklearną), a dla $p=\infty$ dostajemy $\|T\|_{\infty}=\sup_{\|\xi\|=1}\|T\xi\|$ zwykłą normę operatorową.
+
+\begin{lemma}{}{}
+  $$\|T\|_{HS}\geq \|T\|$$
+\end{lemma}
+
+\begin{proof}
+  Dla dowolnego $\epsilon>0$ niech $\xi_0$, $\|\xi_0\|=1$, będzie wektorem takim, że 
+  $$\|T\xi_0\|\geq \|T\|-\epsilon.$$
+  Możemy takie $\xi_0$ rozszerzyć do bazy ortonormalnej $\{\xi_i\;:\;i\in I\}$ by dostać
+  $$\|T\|_{HS}^2=\sum_i\|T\xi_i\|^2\geq\|T\xi_0\|^2\geq (\|T\|-\epsilon)^2.$$
+  Przechodząc z $\epsilon\to 0$ dostajemy pożądaną nierówność.
+\end{proof}
+
+% ==============================================
+%
+% Twierdzenie von Neumanna-Bożejki-iiiiiiii
+%
+% \begin{theorem}{GNS konstrukcja}{}
+%   se napisze
+% \end{theorem}
+%
+%
+% \begin{definition}{dodatnio określony operator}{}
+%   Reprezentacja grupy $G$ operatorami liniowymi $\phi:G\to B(\Hh)$ nazywa sie dodatnio określoną, jeśli
+%   $$(\forall\;x_i\in G,\xi_j\in\Hh)\;\sum_{i,j\leq N}\langle \phi(x_ix_j^{-1})\xi_i\;|\;\xi_j\rangle\geq0$$
+% \end{definition}
+%
+% twierdzenie o reprezentacji funkcji dodatnio określonej na grupie dyskretnej: jeśli $\pi:G\to U(\Hh)$ jest unitarna reprezentacja, to $\phi(x)=\langle \pi(x)\xi_0\;|\;\xi_0\rangle$ dla $\|\xi_0\|=1$ jest jedyna
+%
+% GNS to twierdzenie odwrotne
+%
+% Przykłady: $G=(\Z, +)$, $\mu$ - miara probabilistyczna na grp dualnej (torus)
+%
+% $\phi(n)=\frac{1}{2\pi}\int_0^{2\pi}e^{int}d\mu(t)$ - opis całkowity (Bochner)
+%
+% Przykład: Najmark: niech $T$ taki, że $\|T\|\leq1$, $T\in M_n(\C)$, $N=\infty, 1, 2,...$. Niech $\phi_T:\Z\to B(\Hh)$
+% $$\phi_T(n)=\begin{cases}
+%   T^n & n\geq 0\\ 
+%   (T^*)^{-n}&n<0
+% \end{cases}$$
+%
+% dla $T=z$ dla $z\in\C$, $|z|\leq 1$ to $\phi_T$ jest jądrem Poissant
+%
+%
+%
