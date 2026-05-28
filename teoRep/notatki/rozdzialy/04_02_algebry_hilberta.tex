@@ -2,38 +2,38 @@
 
 Rozważamy unitarne reprezentacje grup zwartych $G$ z unormowaną miarą Haara $dx$, to znaczy $dx(G)=1$.
 
-\begin{definition}{H-*-algebra}{}
-  Algebra $A$ z inwolucją $x\mapsto x^*$ która jest przestrzenią Hilberta z iloczynem skalarnym $\langle \cdot,\cdot\rangle$ nazywa się \buff{H-*-algebrą} jeśli 
-  \begin{itemize}
-    \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
-    \item $\|x^*\|=\|x\|$
-  \end{itemize}
-  Dodatkowo chcemy, żeby ta algebra była \acc{półprosta}, czyli dla $x\neq 0$ wymagamy $xx^*\neq 0$.
-    %
-    % Powiemy, że przestrzeń Hilberta $A$ z unitarnym działaniem $*$ nazywamy *-algebrą jeśli
-    % \begin{itemize}
-    %   \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
-    %   \item $\|x^*\|=\|x\|$
-    % \end{itemize}
-\end{definition}
-
-\begin{definition}{algebra Hilberta}{}
-  W literaturze algebrą Hilberta nazywamy algebrę $A$ z inwolucją $x\mapsto x^*$ oraz iloczynem skalarnym $\langle \cdot,\cdot\rangle$ taką, że
-  \begin{itemize}
-    \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
-    \item $(\forall\;x,y\in A)\;\langle x,y\rangle=\langle y^*,x^*\rangle$
-    \item dla dowolnego ustalonego $a\in A$ operator $x\mapsto ax$ jest ograniczony
-    \item przestrzeń liniowa rozpięta przez $xy$ dla $x,y\in A$ jest gęstym podzbiorem $A$.
-  \end{itemize}
-\end{definition}
+% \begin{definition}{H-*-algebra}{}
+%   Algebra $A$ z inwolucją $x\mapsto x^*$ która jest przestrzenią Hilberta z iloczynem skalarnym $\langle \cdot,\cdot\rangle$ nazywa się \buff{H-*-algebrą} jeśli 
+%   \begin{itemize}
+%     \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
+%     \item $\|x^*\|=\|x\|$
+%   \end{itemize}
+%   Dodatkowo chcemy, żeby ta algebra była \acc{półprosta}, czyli dla $x\neq 0$ wymagamy $xx^*\neq 0$.
+%     %
+%     % Powiemy, że przestrzeń Hilberta $A$ z unitarnym działaniem $*$ nazywamy *-algebrą jeśli
+%     % \begin{itemize}
+%     %   \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
+%     %   \item $\|x^*\|=\|x\|$
+%     % \end{itemize}
+% \end{definition}
+%
+% \begin{definition}{algebra Hilberta}{}
+%   W literaturze algebrą Hilberta nazywamy algebrę $A$ z inwolucją $x\mapsto x^*$ oraz iloczynem skalarnym $\langle \cdot,\cdot\rangle$ taką, że
+%   \begin{itemize}
+%     \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
+%     \item $(\forall\;x,y\in A)\;\langle x,y\rangle=\langle y^*,x^*\rangle$
+%     \item dla dowolnego ustalonego $a\in A$ operator $x\mapsto ax$ jest ograniczony
+%     \item przestrzeń liniowa rozpięta przez $xy$ dla $x,y\in A$ jest gęstym podzbiorem $A$.
+%   \end{itemize}
+% \end{definition}
 
 Niech $T:\Hh\to\Hh$ będzie operatorem ograniczonym na przestrzeni Hilberta $\Hh$ z bazą $\{e_i\;:\;i\in I\}$. Definiujemy normę Hilberta-Schmidta operatora $T$ jako
 $$\|T\|_{HS}^2:=\sum_{i\in I}\|Te_i\|_H^2.$$
 Powiemy, że $T$ jest \buff{operatorem Hilberta-Schmidta} jeśli ma skończoną normę Hilberta-Schmidta.
 
-\begin{remark}{}{}
+\begin{fact}{}{}
   Norma Hilbera-Schmidta jest dobrze określona, tzn. nie zależy od wyboru bazy przestrzeni $\Hh$.
-\end{remark}
+\end{fact}
 
 \begin{proof}
   Zaczynamy od pokazania, że $\|T\|_{HS}^2=\|T^*\|_{HS}^2$. Pitagoras mówi nam, że jeśli $\{e_i\;:\;i\in I\}$ jest bazą ortonormalną $\Hh$, to
@@ -44,18 +44,18 @@ Powiemy, że $T$ jest \buff{operatorem Hilberta-Schmidta} jeśli ma skończoną 
   $$\sum_i\|Te_i\|^2=\sum_i\sum_j|\langle Te_i, f_j\rangle|^2=\sum_i\sum_j|\langle e_i, T^*f_j\rangle|^2=\sum_j\sum_i|\langle e_i, T^*f_j\rangle|^2=\sum_j\|T^*f_j\|^2.$$
 \end{proof}
 
-\begin{lemma}{}{}
+\begin{remark}{}{}
   Niech $B_{HS}(\Hh)$ będzie zbiorem wszystkich operatorów Hilberta-Schmidta na $\Hh$. Wówczas $B_{HS}(\Hh)$ jest obustronnym $*$-ideałem w $B(\Hh)$.
-\end{lemma}
+\end{remark}
 
 Zauważmy, że
 $$\|T\|_{HS}^2=\sum_{i\in I}\langle Te_i, Te_i\rangle=\tr(T*T),$$
-odważnym posunięciem jest więc zdefiniowanie iloczynu Hilberta-Schimdta jako
+odważnym posunięciem jest więc zdefiniowanie iloczynu Hilberta-Schmidta jako
 $$\langle T,S\rangle_{HS}:=\tr(S^*T)=\sum_{i\in I}\langle Te_i, Se_i\rangle.$$
 
-\begin{lemma}{}{}
+\begin{remark}{}{}
   Przestrzeń operatorów Hilberta-Schmidta z iloczynem $\langle\cdot,\cdot\rangle_{HS}$ tworzy przestrzeń Hilberta.
-\end{lemma}
+\end{remark}
 
 \begin{theorem}{}{}
   $T$ jest operatorem Hilberta-Schmidta wtedy i tylko wtedy gdy $|T|=\sqrt{T^*T}$ jest operatorem Hilberta-Schmidta.
@@ -79,6 +79,21 @@ Dla $p=2$ norma Schattena jest normą Hilberta-Schmidta, dla $p=1$ dostajemy nor
   $$\|T\|_{HS}^2=\sum_i\|T\xi_i\|^2\geq\|T\xi_0\|^2\geq (\|T\|-\epsilon)^2.$$
   Przechodząc z $\epsilon\to 0$ dostajemy pożądaną nierówność.
 \end{proof}
+
+\begin{example}[m]
+  \item Rozważmy $\Hh=L^2(X,\mu)$ z $\mu(X)<\infty$. Dla $k\in L^2(X\times X)$ rozważmy operator
+    $$(T_kf)(x)=\int_Xk(x,y)f(y)d\mu(y).$$
+    Jego norma Hilberta-Schmidta zgadza się z $L^2$ normą $k$ (ćwiczenie):
+    $$\|T_k\|^2_{HS}=\int_X\int_X |k(x,y)|^2 d\mu(y)d\mu(x).$$
+    \bigskip 
+
+    Co więcej, jeśli $k_1, k_2\in L^2(X\times X)$, to zachodzi
+    $$T_{k_1}T_{k_2}=T_{k_3},$$
+    gdzie
+    $$k_3(x,y)=\int_X k_1(x,z)k_2(z,y)d\mu(z).$$
+  \item Dla $\phi\in C(G)$ określamy operator splotu 
+    $$(T_\phi f)(x)=(f\ast\phi)(x)=\int_G f(y)\phi(y^{-1}x)dy$$
+\end{example}
 
 % ==============================================
 %
