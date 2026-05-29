@@ -78,6 +78,37 @@
     }
 }
 
+\renewenvironment{proof}{
+  \renewenvironment{fact}[2]{
+    \begin{center}\begin{facct*}[width=0.8\linewidth, theoremBoxTHM={black}{black}]{##1}{##2}
+  }{
+    \end{facct*}\end{center}
+  }
+  \renewenvironment{lemma}[2]{
+    \begin{center}\begin{lemmmma*}[width=0.8\linewidth, theoremBoxTHM={black}{black}]{##1}{##2}
+  }{
+    \end{lemmmma*}\end{center}
+  }
+  \stepcounter{proofdepth}%
+  \ifnum\value{proofdepth}>1
+    % --- Nested proof style ---
+    \begin{center}
+    \begin{minipage}{0.85\linewidth} % make it narrower
+      {\bfseries\color{green!40!black} \dwd}$ $\newline
+    \else
+      {\bfseries\color{green!60!black} \dwd}$ $\newline
+    \fi
+}{
+  \ifnum\value{proofdepth}>1
+    \begin{flushright} \emoji{bikini} \end{flushright}$ $\newline
+    \end{minipage}
+    \end{center}
+  \else
+    \begin{flushright} \emoji{bikini} \end{flushright}$ $\newline
+  \fi
+  \addtocounter{proofdepth}{-1}%
+}
+
 \begin{document}
 \frontmatter 
 \maketitle
