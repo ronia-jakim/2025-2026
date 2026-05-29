@@ -29,6 +29,54 @@
 \DeclareMathOperator{\B}{\mathcal{B}}
 
 \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\sgn}{sgn}
+
+\newcommand{\young}[1]{
+    \edef\rownr{0}
+
+    \foreach \l in {#1} {
+      \foreach \c in { 1, ..., \l } {
+        \draw (\c*0.5, \rownr*0.5) rectangle ($(\c*.5, \rownr*.5) + (.5, .5)$);
+      }
+      \pgfmathparse{\rownr-1}
+      \xdef\rownr{\pgfmathresult}
+    }
+}
+
+\newcommand{\youngtable}[1]{
+    \edef\rownr{0}
+    \edef\cellnr{1}
+
+    \foreach \l in {#1} {
+      \foreach \c in { 1, ..., \l } {
+        \draw (\c*0.5, \rownr*0.5) rectangle ($(\c*.5, \rownr*.5) + (.5, .5)$);
+        \node at ($(\c*.5, \rownr*.5)+(.25, .25)$) {\pgfmathprintnumber{\cellnr}};
+        \pgfmathparse{\cellnr+1}
+        \xdef\cellnr{\pgfmathresult}
+      }
+      \pgfmathparse{\rownr-1}
+      \xdef\rownr{\pgfmathresult}
+    }
+}
+
+\newcommand{\youngperm}[2]{
+    \edef\rownr{0}
+    \edef\cellidx{0}
+
+    \foreach \l in {#1} {
+      \foreach \c in { 1, ..., \l } {
+        \draw (\c*0.5, \rownr*0.5) rectangle ($(\c*.5, \rownr*.5) + (.5, .5)$);
+        
+        \pgfmathtruncatemacro{\cellval}{{#2}[\cellidx]}
+        \node at ($(\c*.5, \rownr*.5)+(.25, .25)$) {\pgfmathprintnumber{\cellval}};
+        
+        \pgfmathparse{\cellidx+1}
+        \xdef\cellidx{\pgfmathresult}
+      }
+      \pgfmathparse{\rownr-1}
+      \xdef\rownr{\pgfmathresult}
+    }
+}
 
 \begin{document}
 \frontmatter 
@@ -43,7 +91,7 @@
 
 \include{rozdzialy/01_00_wstep_grupy}
 \include{rozdzialy/02_00_pierwsze_reprezentacji}
-\include{rozdzialy/03_00_diagramy_younga}
-\include{rozdzialy/04_00_reprezentacje_unitarne}
+\include{rozdzialy/03_00_reprezentacje_unitarne}
+\include{rozdzialy/04_00_diagramy_younga}
 
 \end{document}

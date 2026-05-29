@@ -1,0 +1,136 @@
+% W tej sekcji będziemy badać nieredukowalne reprezentacje grup $S_n$. Jak się okazuje, istnieje bardzo ładny opis tych danych, przy pomocy diagramów Younga. Jest on o tyle istotny, że w przyszłości przy opisie reprezentacji grup $SL_n\C$.
+
+\section{Reprezentacje z diagramu Younga}
+
+Zaczynamy od szybkiego lematu dotyczącego struktury grupy symetrycznej.
+
+\begin{lemma}{}{}
+  Niech $\sigma=c_1...c_k$, $\sigma'=c_1'...c_l'$ będą dwiema permutacjami z $S_n$. Wówczas $\sigma$ jest sprzężone z $\sigma'$ wtedy i tylko wtedy gdy $k=l$ oraz długości cyklów występujących w $\sigma$ i $\sigma'$ są takie same.
+\end{lemma}
+
+Z tego lematu wynika, że klasy sprzężoności $S_n$ odpowiadaja partycjom $n$.
+
+\begin{proof}
+  \color{red}TODO
+\end{proof}
+
+Chcemy teraz partycje $n$ przedstawiać w sposób graficzny. Niech $\lambda=(\lambda_1,...,\lambda_k)$, gdzie $\lambda_1\geq \lambda_2\geq...\geq\lambda_k$. Będziemy rysować tabelkę, której $i$-ty wiersz od góry będzie długości $\lambda_i$. Poniżej trzy przykłady: diagram dla partycji $(5, 3, 3, 1)$, $(3, 3, 3, 3)$ oraz $(6, 5, 1)$.
+
+\begin{center}
+  \begin{tikzpicture}
+    \young{5,3,3,1}
+    \begin{scope}[shift={(4,0)}]
+      \young{3,3,3,3}
+    \end{scope}
+    \begin{scope}[shift={(7,0)}]
+      \young{6,5,1}
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+Diagramy jak wyżej dla partycji $\lambda=(\lambda_1,...,\lambda_k)$ zwykle oznaczamy przez $\lambda$ i nazywamy \buff{diagramem Younga}. Jeśli dodatkowo w kratki diagramu Younga partycji liczby $n$ wpiszemy kolejno liczby od $1$ do $n$ to dostaniemy \buff{tableau Younga}. Poniżej przykłady tableau Younga dla diagramów wyżej.
+
+\begin{center}
+  \begin{tikzpicture}
+    \youngtable{5,3,3,1}
+    \begin{scope}[shift={(4,0)}]
+      \youngtable{3,3,3,3}
+    \end{scope}
+    \begin{scope}[shift={(7,0)}]
+      \youngtable{6,5,1}
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+Zdefiniujmy jeszcze diagram sprzężony $\lambda'$ do $\lambda$ na dwa sposoby: 
+\begin{itemize}
+  \item $\lambda'_i$ to liczba wyrazów $\lambda$ nie mniejszych od $i$,
+  \item $\lambda'_i$ to "transpozycja" diagramu $\lambda$, tzn. odbicie go względem przekątnej.
+\end{itemize}
+
+Na przykład do diagramu $\lambda=(5, 3, 3, 1)$ sprzężony jest diagram $\lambda'=(4, 3, 3, 1, 1)$
+\begin{center}
+  \begin{tikzpicture}
+    \young{5, 3, 3, 1}
+    \draw[green,dashed] (0,1) -- (2.5, -1.5);
+    \begin{scope}[shift={(4,0)}]
+      \draw[green,dashed] (0,1) -- (2.5, -1.5);
+      \young{4,3,3,1,1}
+    \end{scope}
+    \node at (1.5, 1) {\lambda};
+    \node at (5.5, 1) {\lambda'};
+  \end{tikzpicture}
+\end{center}
+\bigskip
+
+Na zbiorze tableau Younga dla partycji liczby $n$ działa grupa $S_n$: $\sigma T$ to diagram, który ma liczbę $\sigma(i)$ w kratce, w której $T$ miał liczbę $i$. Poniższy przykład obrazuje sytuację gdy $T=(5,3,3,1)$, a $\sigma=(1; 9; 5)(2; 11; 7)(4; 6)(12; 8)$:
+\begin{center}
+  \begin{tikzpicture}
+    \youngtable{5,3,3,1}
+    \begin{scope}[shift={(5,0)}]
+      \youngperm{5,3,3,1}{5,7,3,6,9,4,11,12,1,10,2,8}
+    \end{scope}
+    \draw[->] (3.5, -0.625) -- node[midway, above] {$\sigma$} (5, -0.625);
+  \end{tikzpicture}
+\end{center}
+
+Dla diagramu Younga $T$ możemy wyróżnić dwie podgrupy $S_d$: te które zachowują liczby w obrębie wiersza i te, które zachowują liczby w obrębie kolumn. Nazwijmy je $W$ i $K$ odpowiednio. Zdefiniujmy trzy elementy algebry grupowe $\C S_n$:
+$$a_\lambda=\sum_{w\in W}w,\quad b_\lambda=\sum_{k\in K}\sgn(k)k,$$
+$$c_\lambda=a_\lambda b_\lambda=\sum_{w\in W}\sum_{k\in K}\sgn(k)wk.$$
+Ostatni z nich, czyli $c_\lambda$, nazywamy \buff{symetryzatorem Younga} diagramu $T$. Zwiążemy z nim podreprezentację $V_\lambda=\C S_nc_\lambda$ lewej regularnej reprezentacji $S_n$.
+
+\begin{theorem}{}{}\mbox{}
+  \begin{enumerate} 
+    \item Reprezentacje $V_\lambda$ są nieprzywiedlne.
+    \item Każda nieprzywiedlna reprezentacja $S_n$ jest izomorficzna z $V_\lambda$ dla pewnego diagramu Younga $\lambda$.
+  \end{enumerate}
+\end{theorem}
+
+Zanim przejdziemy do dowodu popatrzmy na trzy przykłady reprezentacji $V_\lambda$, dla grupy $S_3$.
+\begin{example}
+  Dla $S_n$ mamy dokładnie trzy diagramy Younga:
+
+  \begin{center}
+    \begin{tikzpicture}
+      \node at (0.75, 1) {$\lambda_1$};
+      \node at (3, 1) {$\lambda_2$};
+      \node at (5.25, 1) {$\lambda_3$};
+
+      \youngtable{1, 1, 1}
+      \begin{scope}[shift={(2,0)}]
+        \youngtable{2, 1}
+      \end{scope}
+      \begin{scope}[shift={(4,0)}]
+        \youngtable{3}
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+
+  Przyjrzyjmy się podgrupom $W$ i $K$ dla każdego z nich.
+  \begin{itemize}
+    \item[\buff{$\lambda_1$:}] $W=\{id\}$, $K=S_3$, więc 
+      $$c_{\lambda_1}=\sum_{\sigma\in S_3}\sgn(\sigma)\sigma.$$ 
+      Ta reprezentacja jest izomorficzna z jednowymiarową reprezentacją znaku permutacji.
+    \item[\buff{$\lambda_2$:}] $W=\{(1;2), id\}$, $K=\{(1;3), id\}$, więc 
+      \begin{align*}
+        c_{\lambda_2}&=1+(1;2)(1;3)+(1;2)-(1;3)=\\ 
+                     &=1+(1;2;3)+(1;2)-(1;3)
+      \end{align*}
+      generuje dwuwymiarową reprezentację $S_3$ powstałą przez permutowanie współrzędnych przestrzeni $\{(x,y,z)\;:\;x+y+z=0\}$.
+    \item[\buff{$\lambda_3$:}] $W=S_3$, $K=\{id\}$, więc
+      $$c_{\lambda_3}=\sum_{\sigma\in S_3}\sigma.$$
+      Ta reprezentacja jest izomorficzna z trywialną reprezentacją grupy permutacji.
+  \end{itemize}
+  
+
+\end{example}
+
+
+
+
+
+
+
+
+
+
