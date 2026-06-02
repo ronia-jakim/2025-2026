@@ -1,5 +1,7 @@
 \section{Operatory Hilberta-Schmidta}
 
+Wyjątkowo w tych notatkach zacznijmy od historii. Na przełonie XX wieku Hilbert pracował na przestrzeniach z iloczynem skalarnym (później nazwanych przestrzeniami Hilberta) takimi jak $\ell^2(\N)$. Jest to przestrzeń ciągów $\{a_n\}_n\geq 0$ sumowalnych z kwadratem, czyli $\sum_{n\geq0}|a_n|^2<\infty$. Jest to przestrzeń nieskończenie wymiarowa, więc naturalna jest próba zdefiniowania nieskończenie wymiarowej wersji macierzy. Jego student, Schmidt, rozważał macierze $\{m_{i,j}\}$ takie, że $\sum |m_{j,k}|^2<\infty$. W ten sposób dostajemy pierwsze przykłady operatorów Hilberta-Schmidta.
+
 Rozważamy unitarne reprezentacje grup zwartych $G$ z unormowaną miarą Haara $dx$, to znaczy $dx(G)=1$.
 
 % \begin{definition}{H-*-algebra}{}
@@ -95,35 +97,11 @@ Dla $p=2$ norma Schattena jest normą Hilberta-Schmidta, dla $p=1$ dostajemy nor
     $$(T_\phi f)(x)=(f\ast\phi)(x)=\int_G f(y)\phi(y^{-1}x)dy$$
 \end{example}
 
-% ==============================================
-%
-% Twierdzenie von Neumanna-Bożejki-iiiiiiii
-%
-% \begin{theorem}{GNS konstrukcja}{}
-%   se napisze
-% \end{theorem}
-%
-%
-% \begin{definition}{dodatnio określony operator}{}
-%   Reprezentacja grupy $G$ operatorami liniowymi $\phi:G\to B(\Hh)$ nazywa sie dodatnio określoną, jeśli
-%   $$(\forall\;x_i\in G,\xi_j\in\Hh)\;\sum_{i,j\leq N}\langle \phi(x_ix_j^{-1})\xi_i\;|\;\xi_j\rangle\geq0$$
-% \end{definition}
-%
-% twierdzenie o reprezentacji funkcji dodatnio określonej na grupie dyskretnej: jeśli $\pi:G\to U(\Hh)$ jest unitarna reprezentacja, to $\phi(x)=\langle \pi(x)\xi_0\;|\;\xi_0\rangle$ dla $\|\xi_0\|=1$ jest jedyna
-%
-% GNS to twierdzenie odwrotne
-%
-% Przykłady: $G=(\Z, +)$, $\mu$ - miara probabilistyczna na grp dualnej (torus)
-%
-% $\phi(n)=\frac{1}{2\pi}\int_0^{2\pi}e^{int}d\mu(t)$ - opis całkowity (Bochner)
-%
-% Przykład: Najmark: niech $T$ taki, że $\|T\|\leq1$, $T\in M_n(\C)$, $N=\infty, 1, 2,...$. Niech $\phi_T:\Z\to B(\Hh)$
-% $$\phi_T(n)=\begin{cases}
-%   T^n & n\geq 0\\ 
-%   (T^*)^{-n}&n<0
-% \end{cases}$$
-%
-% dla $T=z$ dla $z\in\C$, $|z|\leq 1$ to $\phi_T$ jest jądrem Poissant
-%
-%
-%
+
+\begin{theorem}{}{}\mbox{}
+  \begin{enumerate}
+    \item Operatory o normie Schattena $1$ tworzą $*$-ideał w $B(\Hh)$.
+    \item Co więcej, tworzą one przestrzeń Banacha.
+  \end{enumerate}
+\end{theorem}
+

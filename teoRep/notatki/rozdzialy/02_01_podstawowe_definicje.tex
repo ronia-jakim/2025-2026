@@ -132,7 +132,7 @@ Mamy tez \acc{prawą regularną reprezentację}, $\rho(g)f(x)=f(xg)$.
 
 Innymi słowy: charakter przypisuje reprezentacji sumę jej wartości własnych.
 
-Na tę chwilę będą interesować nas unitarne reprezentacje grup skończonych.
+Na tę chwilę będą interesować nas unitarne reprezentacje grup skończonych, czyli homomorfizmy $G\to U(\Hh)$, gdzie $U(\Hh)$ to grupa unitarnych przekształceń przestrzeni Hilberta $\Hh$. Do ciekawszego przypadku unitarnych reprezentacji grup zwartych przejdziemy w rozdziale \ref{chapter:reprezentacje unitarne}.
 
 \begin{fact}{}{}
   Jeśli $\chi$ jest charakterem $n$-wymiarowej reprezentacji to
@@ -225,8 +225,8 @@ Tak się składa, że jeśli $V$ ma bazę $\{v_i\}_{i\leq n}$, a $W$ - $\{w_i\}_
   \item $\C\otimes_\R\C\cong \C^2$
 \end{example}
 
-Jeśli $\rho:G\to V$ i $\rho':G\to V'$ są reprezentacjami $G$, to możemy zdefiniować reprezentację (działanie) $G$ na $V\otimes V'$ w następujący sposób:
-$$g(v\otimes v'):=gv\otimes gv'=\rho(g)v\otimes \rho'(g)v'.$$
+Jeśli $\rho:G\to GL(V)$ i $\rho':G\to GL(V')$ są reprezentacjami $G$, to możemy zdefiniować reprezentację (przypomnijmy, że reprezentacja grupy to po prostu jej działanie na przestrzeni liniowej) $G$ na $V\otimes V'$ w następujący sposób:
+$$(\rho\otimes \rho')(g)(v\otimes v')=g(v\otimes v'):=gv\otimes gv'=\rho(g)v\otimes \rho'(g)v'.$$
 
 Produkt tensorowy bardzo przypomina mnożenie liczb, ale nie do końca. Jeśli rozważamy $v\otimes w\in V\otimes V$, to bardzo rzadko $v\otimes w=w\otimes v$. Czasami jednak przemienność mnożenia wektorów byłaby przydatna - stąd definiujemy tensory symetryczne w którym relacja ta zachodzi zawsze.
 
@@ -237,7 +237,7 @@ Produkt tensorowy bardzo przypomina mnożenie liczb, ale nie do końca. Jeśli r
   \bigskip
   
   Definicję tę można uogólnić: $n$-ty produkt symetryczny $V$ to
-  $$S^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes n_v-v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
+  $$S^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes v_n-v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
 \end{definition}
 
 Tak jak istnieją macierze symetryczne i antysymetryczne, hermitowskie i antyhermitowskie, symetryczny produkt tensorowy też ma swojego kuzyna spod ciemnej gwiazdy, nazywającego się \buff{produktem alternującym}.
@@ -249,7 +249,7 @@ Tak jak istnieją macierze symetryczne i antysymetryczne, hermitowskie i antyher
   \bigskip
   
   Definicję tę można uogólnić: $n$-ty produkt alternujący $V$ to
-  $$\Lambda^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes n_v+v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
+  $$\Lambda^n(V):=V^{\otimes n}/\langle v_1\otimes..\otimes v_i\otimes v_{i+1}\otimes...\otimes v_n+v_1\otimes...\otimes v_{i+1}\otimes v_i\otimes ... \otimes v_n\rangle.$$
 \end{definition}
 
 Jak się okazuje, symetria i antysymetria sumują się do całości, tzn.

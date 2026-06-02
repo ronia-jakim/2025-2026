@@ -1,0 +1,117 @@
+\section{Pierwiastek operatora dodatniego}
+
+Powiemy, że operator $A$ jest dodatni, jeśli $A$ jest samosprzężony oraz dla każdego $\xi\in\Hh$ zachodzi $\langle A\xi,\xi\rangle\geq0$. Przestrzeń operatorów dodatnich na przestrzeni Hilberta $\Hh$ oznaczymy $B(\Hh)^+$.
+
+Zauważmy, że pracując na zespolonej przestrzeni Hilberta warunek $A^*=A$ wynika $\langle A\xi, \xi\rangle\geq 0$ dzięki tożsamości polaryzacyjnej.
+
+\begin{theorem}{pierwiastek operatora dodatniego}{}
+  Niech $A$ będzie operatorem dodatnim, wówczas istnieje dokładnie jeden operator dodatni $S$ taki, że $S^2=A$. Nazwiemy go wówczas $S=\sqrt{A}$.
+\end{theorem}
+
+Co więcej, jeśli $[B, A]=BA-AB=0$, to $[B,\sqrt{A}]=0$, bo
+$$\sqrt{A}[B,\sqrt{A}]=\sqrt{A}B\sqrt{A}-AB$$
+$$[B, \sqrt{A}]\sqrt{A}=BA-\sqrt{A}B\sqrt{A}$$
+dodając obustronnie dostajemy
+$$\sqrt{A}[B,\sqrt{A}]+[B,\sqrt{A}]\sqrt{A}=BA-AB=0.$$
+Biorąc $v\in\Hh$ wektor własny $\sqrt{A}$ dla wartości własnej $a$ dostajemy
+$$CDv=-DCv=-D(av)=-aDv$$
+czyli $-a$ musiałby być wartością własną $C$ dla wektora $Dv$, ale $C$ jest dodatnio określony, co daje sprzeczność.
+  
+\begin{proof}
+  Zaczynamy od istnienia pierwiastka z $A$. Możemy do tego użyć twierdzenia Vigiera z 1946:
+  \begin{theorem}{Vigier 1946}{}
+    Niech $S_n$ będzie ciągiem samosprzężonych ograniczonych operatorów na $\Hh$ takich, że 
+    \begin{enumerate}
+      \item $S_1\leq S_2\leq ...$
+      \item istnieje operator $T$ taki, że dla każdego $n$ $S_n\leq T$.
+    \end{enumerate}
+    Wówczas $S_n$ zbiega w słabej topologii operatorowej do pewnego samosprzężonego operatora $S$.
+  \end{theorem}
+  Dodatkowo nowsze wyniki (Rennela 2014 oraz Bohata 2019) mówią, że ciąg operatorów zbiegający w WOT zbiega też w SOT.
+
+  Oczywiście $A\leq \|A\|Id$ bo z Cauchy'ego-Schwarza $\langle(\|A\|Id-A)x, x\rangle=\|A\|\|x\|-\langle Ax, x\rangle\geq \|A\|x\|-\|A\|\|x\|=0$. Możemy więc założyć, że $A\leq Id$, co uprości rachunki.
+
+  Definiujemy teraz rekurencyjnie ciąg operatorów samosprzężonych spełniający założenia twierdzenia Vigiera. Stawiamy $S_0=0$ oraz
+  $$S_{n+1}=S_n+\frac{1}{2}(A-S_n^2).$$
+  \begin{enumerate}
+    \item $S_n$ są samosprzężone. Dla $n=0$ jest to oczywiście prawdą, jeśli $S_n$ jest samosprzężone, to wówczas
+      \begin{align*}
+        S_{n+1}^*&=(S_n+\frac{1}{2}(A-S_n^2))^*=S_n^*+\frac{1}{2}(A^*-(S_n^*)^2)=\\ 
+                 &=S_n+\frac{1}{2}(A-S_n^2)=S_{n+1}.
+      \end{align*}
+    \item $S_n$ są ograniczone z góry przez $Id$. 
+      Dla $S_0=0\leq Id$ jest bezproblemowe, a jeśli $S_n\leq Id$ to
+      \begin{align*}
+        Id-S_{n+1}&=Id-S_n-\frac{1}{2}(A-S_n^2)=\\ 
+                  &=Id-S_n-\frac{1}{2}A+\frac{1}{2}S_n^2=\\ 
+                  &=\frac{1}{2}(Id-A)+\frac{1}{2}Id-S_n+\frac{1}{2}S_n^2=\\ 
+                  &=\frac{1}{2}(Id-A)+\frac{1}{2}(Id-S_n)^2\geq0
+      \end{align*}
+    \item $S_{n+1}\geq S_n$, co jest oczywiste dla $n=0$, bo 
+      $$S_1-S_0=\frac{1}{2}A\geq 0.$$
+      Jeśli $S_n\geq S_{n-1}$, czyli $S_n-S_{n+1}\geq 0$, to 
+      \begin{align*}
+        S_{n+1}-S_n&=(S_n-\frac{1}{2}(A-S_n^2))-(S_{n-1}-\frac{1}{2}(A-S_{n-1}^2))=\\ 
+                   &=S_n-S_{n-1}+\frac{1}{2}(A-S_{n-1}^2-A+S_n^2)=\\ 
+                   &=(S_n-S_{n-1})+\frac{1}{2}(S_n-S_{n-1})(S_n+S_{n+1})\geq 0
+      \end{align*}
+  \end{enumerate}
+  Stąd istnieje granica ciągu $S_n$, nazwijmy ją $S$. Podstawiając do definicji ciągu dostajemy
+  $$0=S_{n+1}-S_n-\frac{1}{2}(A-S_n^2)\xrightarrow{n\to\infty}S-S-\frac{1}{2}(A-S^2)=\frac{1}{2}(S^2-A)$$
+  więc $A=S^2$ tak jak chcieliśmy.
+
+  {\color{red}DZIUBAŃSKA WERSJA???}
+  \bigskip 
+
+  Pozostaje nam pokazać, że operator $S$ jak w tezie jest jedyny. Załóżmy, że $S'$ jest innym pierwiastkiem operatora $A$. Od razu widać, że
+  $$AS'=S'A=(S')^3.$$
+  Tak jak w dyskusji przed dowodem, skoro $S'$ komutuje z $A$ to komutuje również z pierwszym kandydatem na pierwiastek, czyli $S$. Stąd
+  $$S'S=SS'$$
+  korzystając z tego dostajemy
+  $$(S-S')(S+S')=S^2+SS'-S'S-(S')^2=S^2-(S')^2=A-A=0.$$
+  Ponieważ $(S+S')\geq 0$, to dla $\xi=(S-S')x$, gdzie $x\in\Hh$ dowolny, dostajemy
+  $$0\leq \langle(S+S')\xi, \xi\rangle=\langle (S+S')(S-S')x,\xi\rangle=0,$$
+  więc $S=-S'$. Ale skoro oba są dodatnie, to 
+  $$0\leq \langle S\xi,\xi\rangle=\langle -S'\xi,\xi\rangle=-\langle S' \xi,\xi\rangle\leq 0,$$
+  więc $S\xi=S'\xi=(S-S')\xi=0$. Czyli korzystając z samosprzężoności operatorów dodatnich:
+  $$0=\|(S-S')x\|^2=\langle (S-S')x,(S-S')x\rangle=\langle(S-S')(S-S')x,x\rangle=\langle (S-S')\xi, x\rangle=0$$
+  dla dowolnego $x\in\Hh$. Stąd $S-S'=0$.
+\end{proof}
+
+
+\section{Operatory śladowe (nuklearne)}
+
+\begin{definition}{}{}
+  Dla dodatniego operatora $A\in B(\Hh)$ na przestrzeni Hilberta $\Hh$ z ortonormalną bazą $\{e_i\;:\;i\in I\}$ definiujemy jego ślad (czyli trop) jako
+  $$\tr(A)=\sum_{i\in I}\langle Ae_i\;|\;e_i\rangle.$$
+\end{definition}
+
+Ważną obserwacją jest fakt, że ślad faktycznie jest śladem i jest dobrze zdefiniowany.
+
+\begin{lemma}{}{}\mbox{}
+  \begin{enumerate}
+    \item $\tr(A)$ nie zależy od wyboru bazy ortonormalnej przestrzeni $\Hh$.
+    \item Ślad jest odwzorowaniem liniowym, czyli dla $A,B\in B(\Hh)^+$ oraz $\lambda\in\C$ zachodzi
+      $$\tr(A+B)=\tr(A)+\tr(B)$$
+      $$\tr(\lambda A)=\lambda\tr(A)$$
+    \item Ślad jest niezmienniczy na sprzęganie przez operatory unitarne, czyli dla $A\in B(\Hh)^+$ oraz $U\in U(\Hh)$
+      $$\tr(UAU^{-1})=\tr(A).$$
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}\mbox{}
+  \begin{enumerate}
+    \item {\color{red}NAPISAĆ TEN DOWÓD}
+  \end{enumerate}
+\end{proof}
+
+Definicję śladu operatora dodatniego można bez problemu uogólnić na ogół operatorów ograniczonych.
+
+\begin{definition}{}{}
+  Dla $A\in B(\Hh)$ definiujemy operator śladowy jako
+  $$\tr(A)=\tr(|A|)=\tr(\sqrt{A^*A})$$
+\end{definition}
+
+
+
+

@@ -1,0 +1,71 @@
+\chapter{Konstrukcja GNS}
+
+\section{*-algebra Hilberta}
+
+\begin{definition}{*-algebra Hilberta}{}
+  Algebra $A$ z inwolucją $x\mapsto x^*$ która jest przestrzenią Hilberta z iloczynem skalarnym $\langle \cdot,\cdot\rangle$ nazywa się \buff{H-*-algebrą} jeśli 
+  \begin{itemize}
+    \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
+    \item $\|x^*\|=\|x\|$
+  \end{itemize}
+  Dodatkowo chcemy, żeby ta algebra była \acc{półprosta}, czyli dla $x\neq 0$ wymagamy $xx^*\neq 0$.
+    %
+    % Powiemy, że przestrzeń Hilberta $A$ z unitarnym działaniem $*$ nazywamy *-algebrą jeśli
+    % \begin{itemize}
+    %   \item $(\forall\;x,y,z\in A)\;\langle xy, z\rangle=\langle y, x^*z\rangle$
+    %   \item $\|x^*\|=\|x\|$
+    % \end{itemize}
+\end{definition}
+
+\begin{example}[m]
+  \item $A=L^2(G, dx)$, gdzie $dx$ to unormowana miara Haara na zwartej grupie $G$
+  \item $A_{HS}(\Hh)=\{T\in B(\Hh)\;:\;\|T\|_{HS}<\infty\}$, czyli przestrzeń operatorów Hilberta-Schmidta na przestrzeni Hilberta $\Hh$.
+\end{example}
+
+Tak jak definiowaliśmy reprezentację grupy na przestrzeni Hilberta $\Hh$ jako odwzorowanie
+$$G\to B(\Hh)$$
+tak jesteśmy w stanie zdefiniować reprezentację $*$-algebry $A$ (nazywa się to $*$-reprezentacją $A$) na $\Hh$ jako homomorfizm
+$$A\to B(\Hh).$$
+W rozdziale \ref{algebra grupowa} zdefiniowaliśmy na $\C[G]$ strukturę $*$-algebry: $f^*(g)=\vec{f(g^{-1})}$.
+
+Niech $\lambda_G$ będzie lewą regularną reprezentacją grupy $G$ na $L^2G$, czyli
+$$[\lambda_G(g)f](x)=f(g^{-1}x).$$
+Podniesiemy to do lewej regularnej $*$-reprezentacji $*$-algebry $L^2G$ na samej sobie, dla zmyłki oznaczanej tak samo. Dla $\xi,\eta\in L^2G$ wymagamy, by $\lambda_G(f)$ spełniało
+$$\langle \lambda_G(f)\xi\;|\;\eta\rangle=\int_G\langle \lambda_G(x)\xi\;|\;\eta\rangle f(x)dx.$$
+
+{\color{red}coś z tego powinno wynikać - GNS}
+
+
+
+% ==============================================
+%
+% Twierdzenie von Neumanna-Bożejki-iiiiiiii
+%
+% \begin{theorem}{GNS konstrukcja}{}
+%   se napisze
+% \end{theorem}
+%
+%
+% \begin{definition}{dodatnio określony operator}{}
+%   Reprezentacja grupy $G$ operatorami liniowymi $\phi:G\to B(\Hh)$ nazywa sie dodatnio określoną, jeśli
+%   $$(\forall\;x_i\in G,\xi_j\in\Hh)\;\sum_{i,j\leq N}\langle \phi(x_ix_j^{-1})\xi_i\;|\;\xi_j\rangle\geq0$$
+% \end{definition}
+%
+% twierdzenie o reprezentacji funkcji dodatnio określonej na grupie dyskretnej: jeśli $\pi:G\to U(\Hh)$ jest unitarna reprezentacja, to $\phi(x)=\langle \pi(x)\xi_0\;|\;\xi_0\rangle$ dla $\|\xi_0\|=1$ jest jedyna
+%
+% GNS to twierdzenie odwrotne
+%
+% Przykłady: $G=(\Z, +)$, $\mu$ - miara probabilistyczna na grp dualnej (torus)
+%
+% $\phi(n)=\frac{1}{2\pi}\int_0^{2\pi}e^{int}d\mu(t)$ - opis całkowity (Bochner)
+%
+% Przykład: Najmark: niech $T$ taki, że $\|T\|\leq1$, $T\in M_n(\C)$, $N=\infty, 1, 2,...$. Niech $\phi_T:\Z\to B(\Hh)$
+% $$\phi_T(n)=\begin{cases}
+%   T^n & n\geq 0\\ 
+%   (T^*)^{-n}&n<0
+% \end{cases}$$
+%
+% dla $T=z$ dla $z\in\C$, $|z|\leq 1$ to $\phi_T$ jest jądrem Poissant
+%
+%
+%
