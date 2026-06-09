@@ -105,3 +105,164 @@ Dla $p=2$ norma Schattena jest normą Hilberta-Schmidta, dla $p=1$ dostajemy nor
   \end{enumerate}
 \end{theorem}
 
+\subsection{O zbieżności słabych słów kilka}
+
+\begin{definition}{słaba zbieżność}{}
+  Powiemy, że ciąg $x_n$ z przestrzeni Hilberta $\Hh$ zbiega słabo do $x$, jeśli 
+  $$(\forall\;y\in\Hh)\langle x_n, y\rangle\to\langle x,y\rangle$$
+\end{definition}
+
+Przez mocną zbieżność będziemy rozumieć zbieżność w normie, tzn. $x_n$ zbiega mocno do $x$ jeśli $\|x_n-x\|\to 0$.
+
+\begin{remark}{}{}
+  Jeśli $x_n$ zbiega słabo do $x$ oraz $\|x_n\|\to \|x\|$ to $x_n$ zbiega mocno do $x$.
+\end{remark}
+
+\begin{proof}
+  \begin{align*}
+    \|x_n-x\|^2&=\langle x_n-x, x_n-x\rangle=\\ 
+               &=\langle x_n, x_n\rangle -2Re\langle x_n, x\rangle + \langle x, x\rangle=\\ 
+               &=\|x_n\|^2-2Re\langle x_n, x\rangle +\|x\|^2\to\\ 
+               ^\to \|x\|^2-2Re\langle x, x\rangle + \|x\|^2=\\ 
+               &=2\|x\|^2-2\|x\|^2=0
+  \end{align*}
+\end{proof}
+
+\begin{theorem}{nierówność Bessel'a}{}
+  Jeśli $\{e_n\}$ to baza ortonormalna $\Hh$, to dla dowolnego wektora $x\in\Hh$ zachodzi
+  $$\sum_{k\geq 0}|\langle x, e_k\rangle|^2\leq \|x\|^2$$
+\end{theorem}
+
+\begin{proof}
+  Dla dowolnego $N$ niech 
+  $$x_N=\sum_{k\leq N}\langle x, e_k\rangle e_k,$$
+  co jest rzutem ortogonalnym $x$ na podprzestrzeń $\langle e_0,...,e_k\rangle$, czyli $x-x_N\perp x_N$. Twierdzenie Pitagorasa mówi nam, że $\|x\|^2=\|x_N\|^2+\|x-x_N\|^2$, czyli wystarczy wyliczyć $\|x-x_N\|$:
+  \begin{align*}
+    0&\leq \|x-x_N\|^2=\left\langle x-\sum_{k\leq N}\langle x, e_k\rangle e_k, x-\sum_{j\leq N}\langle x, e_j\rangle e_j\right\rangle=\\ 
+                     &=\|x\|^2-\sum_{k\leq N}\overline{\langle x, e_k\rangle}\langle x, e_k\rangle-\sum_{j\leq N}\langle x, e_j\rangle \langle x, e_j\rangle+\sum_{j\leq N}\sum_{k\leq N}\overline{\langle x, e_k\rangle}\langle x, e_j\rangle\langle e_k, e_j\rangle=\\ 
+                     &=\|x\|^2-\sum_{k\leq N}|\langle x, e_k\rangle|^2
+  \end{align*}
+  Dostajemy $\|x\|^2\geq \sum_{k\leq N}|\langle x, e_k\rangle|^2$, czyli w granicy również ta nierówność zachodzi.
+\end{proof}
+
+\begin{lemma}{}{slaba zbieznosc iff po wspolrzednych}
+  Niech $\{e_n\}$ będzie baza ortonormalną przestrzeni $\Hh$. Wówczas ograniczony ciąg $x_n$ zbiega słabo do $x$ wtedy i tylko wtedy gdy
+  $$(\forall\;m)\;\langle x_n, e_m\rangle \to \langle x, e_m\rangle.$$
+\end{lemma}
+
+\begin{proof}
+  $\implies$ 
+
+  $e_n$ jest dowolnym elementem $\Hh$. 
+
+  $\impliedby$
+
+  Niech $M\geq\|x_n\|$ dla wszystkich $n$. Ustalmy dowolne $y\in \Hh$ i zapiszmy je w bazie $\{e_n\}$ jako $y=\sum y_ne_n$. Ponieważ $\|y\|<\infty$ to dla każdego $\epsilon>0$ istnieje $N$ takie, że 
+  $$\left \|\sum_{n\geq N} y_n e_n \right \|<\epsilon.$$
+  Z założenia dostajemy
+  $$\lim_m \langle x_m, \sum_{n\leq N} y_ne_n\rangle=\sum_{n\leq N}y_n\lim_m \langle x_m, e_n\rangle=\sum_{n\leq N}y_n\langle x, e_n\rangle=\langle x, \sum_{n\leq N}y_ne_n\rangle.$$
+  Przechodząc do sedna,
+  \begin{align*}
+    &|\langle x_m, y\rangle-\langle x, y\rangle|=\\ 
+    =&|\langle x_m, y\rangle-\langle x_m, \sum_{n\leq N}y_ne_n\rangle+\langle x_m, \sum_{n\leq N}y_ne_n\rangle-\langle x, \sum_{n\leq N}y_ne_n\rangle+\langle x, \sum_{n\leq N}y_ne_n\rangle-\langle x, y\rangle|\leq \\ 
+    \leq& |\langle x_m, \sum_{n> N}y_ne_n\rangle|+|\langle x_m-x, \sum_{n\leq N}y_ne_n\rangle|+|\langle x, \sum_{n>N}y_ne_n\rangle|
+  \end{align*}
+  środkowy wyraz zbiega do $0$, a skrajne dzięki nierówności Cauchy'ego-Schwarza są dowolnie małe. Stąd $\langle x_m, y\rangle\to\langle x, y\rangle$.
+\end{proof}
+
+Dla przypomnienia szybki lemat z analizy funkcjonalnej.
+
+\begin{lemma}{}{kula jednostkowa slabo zwarta}
+  Kula jednostkowa $B$ jest zwarta w słabej topologii.
+\end{lemma}
+
+\begin{proof}
+  Niech $x_n\in B$ będzie dowolnym ciągiem, a $\{e_n\}$ będzie baza ortonormalną przestrzeni Hilberta w której pracujemy. Ponieważ liczby $\langle e_1, x_m\rangle$ tworzą ciąg z $[-1, 1]$ to możemy wybrać podciąg $x_{\alpha_1(m)}$ dla którego $\langle e_1, x_{\alpha_1(m)}\rangle$ zbiega do $a_1$. Powtarzamy to samo dla $\langle e_2, x_{\alpha_1(m)}\rangle$ i dostajemy podciąg $x_{\alpha_2(m)}$ dla którego te liczby zbiegają do $a_2$. Iterując tę procedurę dostajemy ciąg ciągów $x_{\alpha_n(m)}$ oraz liczb $a_n$ do których one zbiegają na $n$-tej współrzędnej. 
+
+  Interesuje nas podciąg z przekątnej tej konstrukcji, tzn. 
+  $$y_m=x_{\alpha_m(m)}.$$
+  Zauważmy, że dla każdego $N$ zachodzi
+  $$\sum_{n\leq N}|a_n|^2=\lim_m\sum_{n\leq N}|\langle e_n,y_m\rangle|^2\leq \lim\|y_\|^2\leq 1.$$
+  Stąd $\sum |a_n|^2\leq 1$ i możemy zdefiniować kandydata na granicę podciągu $y_m$ ciągu $x_n$ w następujący sposób
+  $$y=\sum a_n e_n\in B.$$
+  Ponieważ $y_n\to y$ po współrzędnych, to z lematu \ref{lmm:slaba zbieznosc iff po wspolrzednych}.
+\end{proof}
+
+\begin{theorem}{}{operatory hilberta schmidta sa calkowe}
+    Każdy operator Hilberta-Schmidta jest postaci $Af(x)=\int_X k(x,y)f(y)d\mu(y)$ dla pewnego $k\in L^2(X\times X)$, to znaczy
+    $$\langle f\;|\;Ag\rangle=\int\int \vec{f}(x)k(x,y)g(y)dxdy.$$
+\end{theorem}
+
+
+\begin{proof}
+  Zaczynamy od powiedzenia, że każdy ograniczony operator $A$ którego obraz ma skończony wymiar zapisuje się jako $Af(x)=\int k(x,y)f(y)dy$. Dowód tego stwierdzenia pozostawiamy jako ćwiczenie, które powinno się zacząć od tego, że $\dim(\im(A))<\infty\iff\dim(\im(A^*))<\infty$ oraz zdefiniowania $k(x,y)=\sum_jA\phi_j(x)\phi_j(y)$ dla $\{\phi_i\}$ bazy $\im(A^*)$.
+
+    Niech $A$ będzie teraz operatorem Hilberta-Schmidta, natomiast $A_n$ niech będzie ciągiem operatorów o skończenie wymiarowym obrazie takich, że $\|A_n\|\to \|A\|$. Odwzorowanie $k\mapsto T_k$, gdzie $T_k$ jest operatorem w postaci przez nas pożądanej, jest izometrią (ćwiczenie). Niech $T_{k_n}=A_n$, wtedy $k_n$ będzie ciągiem Cauchy'ego, więc jest przenoszony na ciąg Cauchy'ego $T_{k_n}$, który musi mieć granicę zgadzającą się z granicą $A_n$. Stąd $k=\lim k_n$ daje nam tezę.
+\end{proof}
+
+\begin{lemma}{}{a jest ciagla}
+  Dla każdego operatora Hilberta-Schmidta funkcjonał na kuli jednostkowej $B\ni f\mapsto \langle Af, f\rangle\in\C$ jest ciągły.
+\end{lemma}
+
+Funkcję $f\mapsto \langle Af, f\rangle$ oznaczymy $a(f)$.
+
+\begin{proof}
+  \color{red} Jeśli $\{e_n\}$ jest bazą ortonormalną w $L^2X$, to $\{e_ne_m\}$ tworzy bazę ortonormalną $L^2(X\times x)$. W takim razie
+    $$k(x,y)=\sum a_{n,m}e_n(x)e_m(y),$$
+    gdzie $\sum|a_{n,m}|^2<\infty$.
+\end{proof}
+
+\subsection{Twierdzenie spektralne dla Hilberta-Schmidta}
+
+Celem tego rozdzialiku będzie przedstawienie, wraz z dowodem, twierdzenia spektralnego dla samosprzeżonych operatorów Hilberta-Schmidta. Zanim do tego przejdziemy jednak potrzebujemy szybki lemacik.
+
+\begin{lemma}{}{supremum wo wartosc wlasna}
+  Niech $A=A^*$ będzie operatorem samosprzężonym. Jeśli $x_0\in B$ taki, że
+  $$\langle Ax_0, x_0\rangle=a(x_0)=\sup_{y\in B}a(y),$$
+  to $\|x_0\|=1$ i jest on wektorem własnym $A$, tzn. istnieje $\lambda\in\C$ takie, że $Ax_0=\lambda x_0$.
+\end{lemma}
+
+Analogicznie zachowuje się $x_0$ takie, że $a(x_0)=\inf_{y\in B}a(y)$.
+
+\begin{proof}
+  Zacznijmy od udowodnienia, że $\|x_0\|=1$. Dla dowolnego $x\in B$ zachodzi
+  $$a(x)=\|x\|^2a(\frac{x}{\|x\|}).$$
+  W takim razie jeśli $\|x\|<1$ to $a(x)<a(\frac{x}{\|x\|})$, czyli nie osiągnie on nigdy supremum. Stąd $\|x_0\|=1$.
+
+  Ustalmy $y\in B$ takie, że $\|y\|=1$ oraz $\langle x_0,y\rangle=0$. Wtedy dla każdego $\alpha\in\R$ zachodzi $\|x_0+\alpha y\|^2=1+\alpha^2$. Skoro w $x_0$ mamy maksimum funkcjonału $a$, to pochodna musi się zerować 
+  \begin{align*}
+    0&=\frac{\dd}{\dd\alpha}\left[a\left(\frac{x_0+\alpha y}{\|x_0+\alpha y\|}\right)\right]\Big|_{\alpha=0}=\frac{\dd}{\dd\alpha}\left[\frac{1}{1+\alpha^2}\langle x_0+\alpha y, A(x_0+\alpha y)\rangle\right]\Big|_{\alpha=0}=\\ 
+     &=\frac{\dd}{\dd\alpha}\left[\frac{1}{1+\alpha^2}(a(x_0)+\alpha^2a(y)+ Re(\alpha\langle y, Ax_0\rangle))\right]\Big|_{\alpha=0}=\\ 
+     &=\left[-\frac{2\alpha a(x_0)}{(1+\alpha^2)^2}+\frac{2xa(y)}{(1+x^2)^2}+Re\langle y, Ax_0\rangle \right]_{\alpha=0}=Re(\langle y, Ax_0\rangle)
+  \end{align*}
+  Zastępując $y$ przez $iy$ dostajemy $Im\langle y, Ax_0\rangle=0$, więc $\langle y, Ax_0\rangle=0$. Czyli $Ax_0\perp y$ dla każdego $y\perp x_0$, więc $Ax_0$ jest w przestrzeni rozpiętej przez $\{x_0\}$, czyli musi być wielokrotnością $x_0$. Stąd $x_0$ jest wektorem własnym $A$.
+\end{proof}
+
+\begin{theorem}{spektralne}{}
+  Niech $A=A^*$ będzie operatorem Hilberta-Schmidta na przestrzeni $\Hh$. Istnieje wtedy baza ortonormalna $\{e_n\}$ przestrzeni Hilberta $\Hh$ oraz ciąg liczb $\{\lambda_n\}$ takich, że
+  \begin{itemize}
+    \item $Ax_n=\lambda_nx_n$, czyli $x_n$ jest wektorem własnym dla wartości własnej $\lambda_n$,
+    \item jeśli $\dim(\Hh)=\infty$, to $\lim\lambda_n=0$.
+  \end{itemize}
+\end{theorem}
+  W szczególności jeśli $\lambda\neq 0$ to $\{x\in\Hh\;:\;Ax=\lambda x\}$ jest skończenie wymiarową przestrzenią.
+
+\begin{proof}
+  Rozpatrujemy funkcję $a(x)$ jak wcześniej. Pokazaliśmy już w lemacie \ref{lmm:a jest ciagla}, że funkcja $a$ jest ciągła na kuli jednostkowej $B$ w słabej topologii. Z lematu \ref{lmm:kula jednostkowa slabo zwarta} wiemy, że $B$ jest zwarta. W takim razie $\sup_{x\in B} a(x)$ oraz $\inf_{y\in B}a(y)$ są osiągane przez pewne $x_0,y_0\in B$.
+  
+  Oznaczmy $M^+=\sup a(x)$, $M^-=\inf a(x)$. Mamy trzy opcje
+  \begin{enumerate}
+    \item $|M^+|\geq|M^-|$, wtedy korzystamy z lematu \ref{lmm:supremum to wartosc wlasna} tak jak stoi,
+    \item $|M^+|\leq|M^-|$, wtedy musimy przeformułować lemat \ref{lmm:supremum to wartosc wlasna} dla $\inf$ (dowód jest analogiczny),
+    \item $|M^+|=|M^-|=0$, wtedy operator jest zerowy i nie ma co dowodzić.
+  \end{enumerate}
+  W sytuacji 1. i 2. dostajemy wektor $x_0$ który osiąga pożądane przez nas ekstremum i jest wartością własną operatora $A$ dla $M^\pm$. Stawiamy go jako kolejny wektor z szukanej przez nas bazy ortonormalnej zawierającej wektory własne. 
+
+  Ponieważ dopełnienie ortogonalne podprzestrzeni niezmienniczej jest również podprzestrzenią niezmienniczą, to $\{x_0\}^\perp\cap B$ jest nadal zwartą przestrzenią na której określony jest operator $A$. Co więcej, zbiór ten jest nadal słabo zwarty, więc możemy powtórzyć dla $B$ obciętego do $\{x_0\}^\perp\cap B$ powtórzyć szukanie wektora i wartości własnej. 
+  
+  Tą indukcyjną metodą dostajemy ciąg wektorów $\{x_n\}$ oraz ich wartości własnych $\{\lambda_n\}$, które spełniają $|\lambda_1|\geq|\lambda_2|\geq...>0$, co kończy dowód.
+\end{proof}
+
+
+
+
