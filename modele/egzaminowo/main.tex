@@ -1,0 +1,54 @@
+%! TeX program = lualatex
+\documentclass[a4paper, 12pt]{article}
+
+\title{Teoria modeli}
+\author{\color{subtext1}Weronika Jakimowicz}
+\date{Lato 2025/26}
+
+\usepackage[pl]{../../template}
+
+\usepackage{halloweenmath}
+
+\let\oldamalg\amalg
+\newcommand{\uu}[1]{\underline{#1}}
+\newcommand{\Mm}{\ensuremath{\mathfrak{M}}}
+\newcommand{\lr}{\leftrightarrow}
+
+\DeclareMathOperator{\Cn}{Cn}
+\DeclareMathOperator{\Th}{Th}
+
+\theoremstyle{definition}
+\newtheorem{zadanie}{Zadanie}
+
+\newcommand{\elementarna}{\xrightarrow{\equiv}}
+
+\begin{document}
+\thispagestyle{empty}
+\setcounter{page}{1}
+
+\tableofcontents
+
+\pagestyle{fancy}
+
+\noindent\hbox to 0pt{\hss № 1.\hskip1em}{\slshape Typy zupełne (w teorii zupełnej $T$, nad $\emptyset$, nad $A$ w modelu $M$), przestrzeń topologiczna typów, test Tarskiego-Vaughta, twierdzenie o omijaniu typów, funkcje elementarne, podmodel elementarny, elementarna równoważność (przykład).}
+
+\noindent\hbox to 0pt{\hss № 2.\hskip1em} {\slshape Nasyconość, uniwersalność, (silna) jednorodność : definicje (wszystkie warianty), związki (np. $\kappa$-nasycony $\iff$ $\kappa$-jednorodny i $\kappa$ [lub $<\aleph_0$]-uniwersalny). Konstrukcje modeli o odpowiednich własnościach (łańcuch elementarny). Jedyność modelu nasyconego w danej mocy. Modele jednorodne tej samej mocy, które realizują te same typy nad $\emptyset$ są izomorficzne (szkice dowodów).}
+
+Niech $\aleph_0\leq\kappa$. Powiemy, że modeł $M$ jest
+\begin{description}[format=\color{green}]
+  \item[$\kappa$-nasycony] gdy dla każdego $A\subseteq M$, $|A|<\kappa$ zachodzi
+    $$(\forall\;p\in S_1(A))\;p(M)\neq \emptyset$$
+  \item[nasycony] gdy jest $|M|$-nasycony
+  \item[$\kappa$-uniwersalny] gdy dla każdego $N\equiv M$ mocy $\leq\kappa$ istnieje $f:N\elementarna M$
+  \item[uniwersalny] gdy jest $|M|$-uniwersalny
+  \item[$\kappa$-jednorodny] gdy dla każdego $A\subseteq M$, $|A|<\kappa$ zachodzi
+    $$(\forall\;a\in M)(\forall\;f:A\elementarna M)(\exists\;g:A\cup\{a\}\elementarna M)\;g\supseteq f$$
+  \item[jednorodny] gdy jest $|M|$-jednorodny
+  \item[silnie $\kappa$-jednorodny] gdy dla każdego $A\subseteq M$, $|A|<\kappa$ zachodzi
+    $$(\forall\;f:A\elementarna M)(\exists\;g:M\xrightarrow{\cong}M)\;g\supseteq f$$
+  \item[$kappa$-zwarty] gdy dla każdego 1-typu $p(x)$ nad $M$ mocy $<\kappa$ mamy $p(M)\neq\emptyset$.
+\end{description}
+
+
+  
+\end{document}
