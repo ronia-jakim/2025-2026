@@ -17,10 +17,14 @@
 \DeclareMathOperator{\Cn}{Cn}
 \DeclareMathOperator{\Th}{Th}
 
-\theoremstyle{definition}
-\newtheorem{zadanie}{Zadanie}
+
+\newcommand{\zadanie}[2]{\textbf{\color{orange}Lista #1. Zadanie #2.}}
 
 \newcommand{\elementarna}{\xrightarrow{\equiv}}
+\newcommand{\mMonster}{\mathcal{M}}
+\DeclareMathOperator{\Aut}{Aut}
+
+\newcommand{\appendcolon}[1]{#1:}
 
 \begin{document}
 \thispagestyle{empty}
@@ -31,8 +35,22 @@
 \pagestyle{fancy}
 
 \noindent\hbox to 0pt{\hss № 1.\hskip1em}{\slshape Typy zupełne (w teorii zupełnej $T$, nad $\emptyset$, nad $A$ w modelu $M$), przestrzeń topologiczna typów, test Tarskiego-Vaughta, twierdzenie o omijaniu typów, funkcje elementarne, podmodel elementarny, elementarna równoważność (przykład).}
+\bigskip
+
+\begin{lemma}{o rozszerzaniu odwzorowań elementarnych}{}
+  Załóżmy, że $M,N\models T$. Niech $f:A\elementarna{na}B$, gdzie $A\subseteq M$, $B\subseteq N$. Weźmy $a\in M$ oraz $b\in N$. 
+
+  Wówczas $f\cup\{(a,b)\}$ jest elementarna $\iff$ $f^*(tp(b/B))=tp(a/A)$.
+\end{lemma}
+
+\zadanie{2}{1} Podać przykład liniowych porządków $M$ i $N$ i częściowego izomorfizmu $f$ między nimi, który nie jest odwzorowaniem elementarnym.
+
+\zadanie{2}{2} $T$ - niesprzeczna teoria (niekoniecznie zupełna). $T$ jest zupełna $\iff$ każde dwa modele mają izomorficzne elementarne rozszerzenia.
+
+\bigskip
 
 \noindent\hbox to 0pt{\hss № 2.\hskip1em} {\slshape Nasyconość, uniwersalność, (silna) jednorodność : definicje (wszystkie warianty), związki (np. $\kappa$-nasycony $\iff$ $\kappa$-jednorodny i $\kappa$ [lub $<\aleph_0$]-uniwersalny). Konstrukcje modeli o odpowiednich własnościach (łańcuch elementarny). Jedyność modelu nasyconego w danej mocy. Modele jednorodne tej samej mocy, które realizują te same typy nad $\emptyset$ są izomorficzne (szkice dowodów).}
+\bigskip
 
 Niech $\aleph_0\leq\kappa$. Powiemy, że modeł $M$ jest
 \begin{description}[format=\color{green}]
@@ -41,6 +59,7 @@ Niech $\aleph_0\leq\kappa$. Powiemy, że modeł $M$ jest
   \item[nasycony] gdy jest $|M|$-nasycony
   \item[$\kappa$-uniwersalny] gdy dla każdego $N\equiv M$ mocy $\leq\kappa$ istnieje $f:N\elementarna M$
   \item[uniwersalny] gdy jest $|M|$-uniwersalny
+  \item[$(<\aleph_0)$-uniwersalny] gdy dla dowolnego $n$ wszystkie typy z $S_n(\emptyset)$ są realizowane w $M$.
   \item[$\kappa$-jednorodny] gdy dla każdego $A\subseteq M$, $|A|<\kappa$ zachodzi
     $$(\forall\;a\in M)(\forall\;f:A\elementarna M)(\exists\;g:A\cup\{a\}\elementarna M)\;g\supseteq f$$
   \item[jednorodny] gdy jest $|M|$-jednorodny
@@ -49,6 +68,183 @@ Niech $\aleph_0\leq\kappa$. Powiemy, że modeł $M$ jest
   \item[$kappa$-zwarty] gdy dla każdego 1-typu $p(x)$ nad $M$ mocy $<\kappa$ mamy $p(M)\neq\emptyset$.
 \end{description}
 
+To teraz kilka implikacji przymiotnikowych
+\begin{description}[format=\color{orange}\appendcolon]
+  \item[$\kappa$-uniersalność $\implies$ $(<\aleph_0)$-uniwersalność] bierzemy dowolny typ, nieduży model model w którym on jest realizowany i cyk z $\kappa$-uniwersalności mamy elementarne odwzorowanie na nasz model
+  \item[$\kappa$-nasycony $\iff$ $\kappa$-jednorodny oraz $\kappa$-uniwersalny] $\implies$ to skorzystanie z lematu o rozszerzaniu odwzorowań oraz faktu, że $f^*:S(B)\to S(A)$ to homeomorfizm do $\kappa$-jednorodności, a do $\kappa$-uniwersalności indukcja po elementach $M$ (stopniowo budujemy odwzorowanie elementarne) + lemat o rozszerzaniu odwzorowań elementarnych
 
+    $\impliedby$ dużo trudniej, więc zamiotę to pod dywan 
+  \item[\neg($\kappa$-jednorodność $\implies$ $\kappa$-uniwersalność)] gdyż iż i ponieważ $(\Q,+)$ jest jednorodną grupą, ale nie jest uniwersalna (2-typ omijany przez $S_2(\emptyset)$)
+  \item[jednorodny $\implies$ silnie jednorodny] back and forth
+\end{description}
   
+\begin{theorem}{modele nasycone są jedyne}{}
+  Jeśli $M,N\models T$ są modelami nasyconymi oraz $|M|=|N|$ to $M\cong N$.
+\end{theorem}
+
+\begin{proof}
+  Przebrzydły back and forth + $f^*$ jest homeomorfizmem na przestrzeniach 1-typów.
+\end{proof}
+
+\begin{theorem}{}{}
+  $M,N\models T$ są jednorodne i $|M|=|N|=\kappa$ oraz realizują dokładnie te same typy zupełne
+  to $M\cong N$.
+\end{theorem}
+
+\begin{proof}
+  \textbf{\color{green}Lemacik:} $(\forall\;A\subseteq M)(\exists\;f:A\elementarna N)$.
+
+  \textbf{Dowód lemaciku:} Indukcja względem $|A|$. Skończone $A$ traktujemy jako krotkę $(a_1,...,a_n)$ która ma typ. Dla $|A|=\mu\geq\aleph_0$  bierim rosnący łańuch częściowych odwzorowań elementarnych + back and forth
+  \medskip 
+
+  Lemacik daje rosnący ciąg elementarnych odwzorowań bierim sumę i cyk?
+\end{proof}
+
+\bigskip
+
+\noindent\hbox to 0pt{\hss № 3.\hskip1em} {\slshape Model monstrum $\mMonster$: definicja, istnienie, własności, znaczenie. Implikacja typów $p(x)\vdash q(x)$: definicja, równoważne warunki syntaktyczne; równoważność typów $p\equiv q$. Typy izolowane nad $A$: definicja, alternatywne ujęcie topologiczne. }
+\bigskip
+
+$\Aut(M/A):=\{f\in\Aut(M)\;:\;f|_A=id_A\}$
+
+\begin{theorem}{}{}
+  $M$ - silnie $\kappa$-jednorodny i $\kappa$-nasycony, $|A|<\kappa$
+  \begin{itemize}
+    \item $tp(\overline{a}/A)=tp(\overline{b}/A)\iff$ $\overline{a}$ oraz $\overline{b}$ są w tej samej orbicie działania $\Aut(M/A)$
+    \item bijekcja między $\Aut(M/A)$ oraz $S_n(A)$.
+  \end{itemize}
+\end{theorem}
+
+\buff{Model monstrum $\mMonster$} teorii $T$ to model mocy $|M|=\kappa$, gdzie $\kappa$ jest dostatecznie dużą liczbą kardynalna, który jest
+\begin{itemize}
+  \item $\kappa$-nasycony
+  \item silnie $\kappa$-jednorodny.
+\end{itemize}
+
+\begin{theorem}{}{}
+  Model monstrum istnieje dla każdej nieskończonej $\kappa$.
+\end{theorem}
+
+udaję, że dowodu nie trzeba znać
+% \begin{proof}
+%   Elementarny łańcuch modeli spełniający
+%   \begin{enumerate}
+%     \item $M_\gamma=\bigcup_{\alpha<\gamma}M_\alpha$
+%     \item $(\forall\;p\in S_1(M_\alpha))\;p(M_{\alpha+1})\neq\emptyset$
+%     \item $(\forall\;f:A\elementarna B)(\exists\;f':A'\elementarna B') f'\subseteq M_{\alpha+q}\times M_{\alpha+1},\;f\subseteq f'$
+%   \end{enumerate}
+% \end{proof}
+
+\zadanie{2}{6} $N,M\prec\mMonster$, $f:M\to N$ izomorfizm $\implies$ $f$ jest elementarnym odwzorowaniem między podzbiorami $\mMonster$. 
+{\slshape Z silnej $\kappa$-jednorodności modelu monstrum.}
+\medskip
+
+$$p\vdash q := p(\mMonster)\subseteq q(\mMonster)$$
+$$p\equiv q := p\vdash q\;\text{oraz}\;q\vdash p$$
+Syntaktycznie
+$$(\forall\;\phi\in q)(\exists p_0\underset{sk.}{\subseteq}p)\;T(A)\vdash\bigwedge p_p(x)\to \phi(x)$$
+
+\zadanie{3}{1} $p'\subseteq p$ oraz $p'\vdash p\implies p\equiv p'$
+
+\zadanie{3}{6} $tp(a/\emptyset)\vdash tp(a/b)\iff tp(b/\emptyset)\vdash tp(b/a)$
+
+Typ $p$ nad $A$ jest \buff{izolowany} jeśli istnieje niesprzeczna formuła $\phi\in L(A)$ taka, że $\phi\vdash p$, to będzie implikować $\phi(\mMonster)= p(\mMonster)$.
+
+\zadanie{3}{2} $p$ jest izolowany nad $A$ $\iff$ $p(\mMonster)$ zawiera niepusty podzbiór definiowalny nad $A$
+
+\begin{theorem}{o omijaniu typów}{}
+  Załóżmy, że $p_n(x)$ dla $n<\omega$ jest rodziną nieizolowanych typów nad $\emptyset$. Wtedy istnieje model, który omija je wszystkie. Symbolicznie: $\exists\;M\models T\;\forall\;n\;p_n(m)=\emptyset$.
+\end{theorem}
+
+
+\bigskip 
+
+\noindent\hbox to 0pt{\hss № 4.\hskip1em} {\slshape Redukcja kwantyfikatorów: warunek równoważny: $p_p\vdash p$ dla każdego $p\in S_n(\emptyset)$ ($p_0$ to część bez kwantyfikatorów) z dowodem ! Przykład $ACF_p$: aksjomaty, zupełność, redukcja kwantyfikatorów, opis przestrzeni typów. }
+\bigskip
+
+\begin{theorem}{}{}
+  $T$ ma redukcję kwantyfikatorów $\iff\;(\forall\;n)(\forall\;p\in S_n(\emptyset)\;p^{qfree}\vdash p$
+\end{theorem}
+
+\begin{proof}
+  $\implies$ prosto z definicji
+
+  $\impliedby$ $p^{qfree}\vdash p$ czyli istnieje skończony $p_0\subseteq p^{qfree}$ taki, że $p_0\vdash \phi$ dla dowolnego $\phi\in p$. W takim razie dla $\psi_p=\bigwedge p_0$ zachodzi $\psi_p\vdash \phi$. Teraz cyk zwartość $S_n(\emptyset)$ daje skończenie wiele takich $\psi_p$ i koniec. 
+\end{proof}
+
+$ACF_p$ := teoria ciał algebraicznie domkniętych, aksjomaty:
+\begin{enumerate}
+  \item aksjomaty ciała
+  \item $p\neq 0\implies \underbrace{1+1+...+1}_p=0$
+  \item $p=0\implies\;(\forall\;n)\underbrace{1+1+...+1}_n\neq 0$
+  \item każdy wielomian stopnia $n>0$ ma pierwiastek
+\end{enumerate}
+
+$ACF_p$ jest zupełna -> tutaj newi bierze dwa $M,N\models ACF_p$ i pokazuje, że $M\equiv N$ {\color{red}porque???}
+
+$ACF_p$ ma redukcję kwantyfikatorów: 
+\begin{itemize}
+  \item bierim $(a_1,...,a_n)\in p^{qfree}(\mMonster)$, $(b_1,...,b_n)\in p(\mMonster)$, $f:\overline{a}\elementarna\overline{b}$
+  \item $\mMonster$ to gigantyczne ciało alg. domknięte, więc ma podciało $\mathbb{F}_p$, 
+  \item w nim widzimy $\langle \overline{a}\rangle=\{W(\overline{a})\;:\;W(x)\in \mathbb{F}_p[x]\}$, $\langle \overline{b}\rangle$ podpierścienie generowane przez elementy krotek, 
+  \item definiujemy $f\subseteq f':\langle a\rangle\to\langle a\rangle$ przez $f'(W(a))=W(b)$ - jest to izomorfizm
+  \item między ciałami ułamków $\langle a\rangle_0$ $\langle v\rangle_0$ mamy izomorfizm, tak samo między ich algebraicznymi domknięciami
+  \item rozszerzamy ten izomorfizm do automorfizmu $\mMonster$ i dostajemy, że $\overline{a}$ oraz $\overline{b}$ są w tej samej orbicie działania $\Aut(\mMonster)$
+  \item $tp(\overline{a})=tp(\overline{b})=p$ i śmiga
+\end{itemize}
+
+$K\subseteq \mMonster$ - małe ciało algebraicznie domknięte
+\begin{itemize}
+  \item $tp(\overline{a}/K)=tp(\overline{b}/K)\iff \langle \overline{a}\rangle=\langle \overline{b}\rangle\triangleleft K$
+  \item dla każdego ideału pierwszego $I\triangleleft K[\overline{X}]$ istnieje krotka $\overline{a}$ taka, że $I=\langle \overline{a}\rangle$
+  \item $p(x)\in S_1(K)$ ma dwie możliwości
+    \begin{enumerate}
+      \item $I_p\neq\{0\}$, czyli $a$ jest algebraiczny nad $K$
+      \item $I_p=\{0\}$, czyli $a$ jest przestępny nad $K$
+    \end{enumerate}
+    stąd $S_1(K)=\{\text{ typy algebraiczne }\}\cup\{\text{ typy przestępne }\}$
+\end{itemize}
+
+\bigskip
+
+\noindent\hbox to 0pt{\hss № 5.\hskip1em} {\slshape Hierarchia stabilności: teorei $\kappa$-stabilne, stabilne, superstabilne, $\aleph_0$-stabilne. Przykłady każdego rodzaju (z list zadań). $\aleph_0$-stabilność $\implies$ $\kappa$-stabilność. Model atomowy, pierwszy (nad $\emptyset$, nad $A$). Teoria ma model pierwszy $\iff$ $\forall\;n<\omega$ typy izolowane są gęste w $S_n(\emptyset)$. Teoria $\aleph_0$-stabilna ma model pierwszy nad każdym $A$. Teoria mała ($S_n(\emptyset)$ przeliczalny) ma model pierwszy. Charakteryzacja modelu pierwszego (atomowy, przeliczalny), własności (jednorodność, jedyność). Izolacja typów: rachunki. }
+
+Powiemy, że teoria $T$ jest
+\begin{description}[format={\color{green}}]
+  \item[$\kappa$-stabilna] gdy $\kappa\geq\aleph_0$ oraz $(\forall\;A\subseteq\mMonster, |A|\leq\kappa)\;|S_1(A)|\leq\kappa$
+  \item[stabilna] gdy jest $\kappa$-stabilna dla pewnej $\kappa$
+  \item[superstabilna] gdy jest $\kappa$-stabilna dla wszystkich $\kappa\geq\mu$ dla pewnego $\mu$
+  \item[całkowicie przestępna] gdy dla każdego $\kappa\geq\aleph_0$ jest $\kappa$-stabilna
+\end{description}
+
+\begin{theorem}{}{}
+  $\aleph_0$-stabilna $\implies$ $\kappa$-stabilna dla każdego $\kappa$
+\end{theorem}
+
+\begin{proof}
+  Nie wprost - istnieje $\kappa>\aleph_0$ takie, że dla $A\subseteq\mMonster$, $|A|\leq\kappa$ $S_1(A)>\kappa$. Cel: przeliczalny $A_0\subseteq A$ że $|S_1(A_0)|>\aleph_0$
+
+  Definicja: $\phi$ jest duża jeśli $|[\phi]|>|A|$
+
+  \textbf{Lemacik:} dużą formułę można podzielić na dwa duże kawałki, tj. istnieją $\psi_1,\psi_2$ duże takie, że $\phi(\mMonster)=\psi_1(\mMonster)\sqcup\psi_2(\mMonster)$
+
+  Dowodzi się nie wprost. Zakładamy, że się nie da podzielić - wtedy istnieje tylko jeden duży typ $p^*$ - ale to by znaczyło, że $[\phi]=\{p^*\}\cup\bigcup_{\psi\text{ mała},[\psi]\cap[\phi]\neq\emptyset}[\psi]$ - patrząc na wielkość sprzeczność z dużością $\phi$.
+
+
+  Lemacik używamy by skonstruować binarne drzewo formuł dużych. syfne to
+\end{proof}
+\medskip
+
+\buff{Model atomowy:} każdy element ma izolowany typ
+
+\buff{Model pierwszy:} wkłada się w każdy inny model
+
+\begin{theorem}{}{}
+  Teoria ma model pierwszy $\iff$ dla każdego $n<\omega$ typy izolowane leżą gęsto w $S_n(\emtpyset)$
+\end{theorem}
+
+\begin{proof}
+  $\implies$ pierwszy jest atomowy, dla dowolnego $N\models T$ zachodzi $\{p\in S_n(\emtpyset)\;:\;p(N)\neq\emtpyset\}\subseteq S_n(\emptyset)$ gęsty
+\end{proof}
+
 \end{document}
