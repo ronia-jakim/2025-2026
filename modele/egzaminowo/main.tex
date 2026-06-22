@@ -240,11 +240,70 @@ Powiemy, że teoria $T$ jest
 \buff{Model pierwszy:} wkłada się w każdy inny model
 
 \begin{theorem}{}{}
-  Teoria ma model pierwszy $\iff$ dla każdego $n<\omega$ typy izolowane leżą gęsto w $S_n(\emtpyset)$
+  Teoria ma model pierwszy $\iff$ dla każdego $n<\omega$ typy izolowane leżą gęsto w $S_n(\emptyset)$
 \end{theorem}
 
 \begin{proof}
-  $\implies$ pierwszy jest atomowy, dla dowolnego $N\models T$ zachodzi $\{p\in S_n(\emtpyset)\;:\;p(N)\neq\emtpyset\}\subseteq S_n(\emptyset)$ gęsty
+  $\implies$ pierwszy jest atomowy, dla dowolnego $N\models T$ zachodzi $\{p\in S_n(\emptyset)\;:\;p(N)\neq\emptyset\}\subseteq S_n(\emptyset)$ gęsty
+
+  $\impliedby$ zaczynamy od lematu pomocniczego $(\forall\;\overline{a}\subseteq\mMonster)\;[tp(\overline{a})\text{ izolowany}\implies \{\text{tp izolowane}\}\subseteq S_1(\overline{a})\text{ gesto}]$
+
+  przy pomocy lematu konstruujemy model pierwszy $\{a_n\;:\;n<\omega\}=M\models T$ taki, że $tp(a_n/a_{<n})$ jest izolowany i śmiga
 \end{proof}
+
+Model pierwszy jest jednorodny: {\slshape lemat o rozszerzaniu odwzorowań? wszystkie elementy mają izolowany typ}
+
+\bigskip
+
+\noindent\hbox to 0pt{\hss № 7.\hskip1em} {\slshape Pochodna i ranga Cantora-Benedixsona $CB$ w przestrzeni zwartej $X$, w przestrzeni typów $S(A)$. Ranga Morleya $RM$ formuły, typu, związki z $CB$, własności. $T$ $\aleph_0$-stabilna $\iff$ $RM(x=x)<\infty$ }
+\bigskip
+
+$$X'=X-\{x\in X\;:\;x\text{ izolowany}\}$$
+Cantor-Bendixon na zbiorze $X$
+$$CB(p)=\begin{cases}\min\{\alpha\;:\;p\not\in X^{(\alpha+1)}\}&p\not\in X^{(\infty)}\\\infty\end{cases}$$
+Cantor-Bendixon na clopenach $X$
+\begin{enumerate}
+  \item $CB(V)\geq0\iff V\neq\emptyset$
+  \item $(\forall\;V\in Clopen(X))(\forall\;\alpha)\left[ CB(V)\geq \alpha+1\iff(\forall\;n)(\exists\;v_1,...,V_n\in Clopen(V))\;\bigwedge CB(V_i)\geq\alpha\right]$
+\end{enumerate}
+
+Ranga Morleya - analogicznie, ale zbiory definiowalne a nie clopeny.
+$$RM(\phi):=RM(\phi(\mMonster))$$
+$$RM(p):=\min\{RM(\phi)\;:\;p\vdash \phi\}=\min\{RM(U)\;:\;p(\mMonster)\subseteq U\underset{def.}{\subseteq} \mMonster\}$$
+
+\begin{theorem}{}{}
+  $T$ jest $\aleph_0$-stabilna $\iff$ $RM(x=x)<\infty$
+\end{theorem}
+
+$$Mlt(\phi)=\max\{n\;:\;(\exists \underset{parami sprzeczne}{\psi_1,...,\psi_n}\vdash\phi)\bigwedge RM(\psi_i)=\alpha\}\geq 1\quad\text{gdy }RM(\phi)=\alpha$$
+$$Mlt(p)=\min\{ Mlt(\phi)\;:\;p\vdash \phi,\;RM(\phi)=\alpha\}\quad\text{gdy }RM(p)=\alpha$$
+
+\buff{typ stacjonarny} gdy $Mlt(p)=1$
+
+\bigskip 
+
+\noindent\hbox to 0pt{\hss № 8.\hskip1em} {\slshape Zbiory (porządkowo) nieodróżnialne: definicja, istnienie (przez twierdzenie Ramseya lub metodą ultraproduktu z listy zadań). W teorii stabilnej: nieskończony zbiór porządkowo nieodróżnialny jest nieodróżnialny }
+\bigskip 
+
+$\{\overline{a}_i\;:\;i\in I\}$ jest \buff{nieodróżnialny} nad $A$, gdy
+$$(\forall\;k)(\forall\;i_1,...,i_k, j_1,...,j_k)\;tp(\overline{a}_{i_1},...,\overline{a}_{i_k}/A)=tp(\overline{a}_{j_1},...,\overline{a}_{j_k}/A)$$
+
+$\{\overline{a}_i\;:\;i\in I\}$ jest \buff{porządkowo nieodróżnialny} nad $A$, gdy
+$$(\forall\;k)(\forall\;i_1<...<i_k, j_1<...<j_k)\;tp(\overline{a}_{i_1},...,\overline{a}_{i_k}/A)=tp(\overline{a}_{j_1},...,\overline{a}_{j_k}/A)$$
+
+\begin{theorem}{}{}
+  $T$ stabilna $\implies$ porządkowo nieodróżnialny = nieodróżnialne
+\end{theorem}
+
+\bigskip 
+
+\noindent\hbox to 0pt{\hss № 9.\hskip1em} {\slshape $T$ $\aleph_0$-stabilna $\implies$ ma model nasycony dowolnej mocy (bez dowodu). Kategoryczność. Przykłady teorii $\aleph_1$-kategorycznych. $T$ $\kappa$-kategoryczna $\implies$ $T$ $\aleph_0$-stabilna (idea dowodu. $s$-izolacja: definicja, własności. }
+\bigskip 
+
+\buff{Ciąg Morleya} w typie $p$ długości $\beta$ to $\{a_\alpha\}$ taki, że dla każdego $\alpha<\beta$ $a_\alpha\models p_{Aa_{<\alpha}}\in S(Aa_{<\alpha})$
+
+pojawiają się w dowodzie "$\aleph_0$-stabilna $\implies$ istnieje model nasycony dowolnej mocy"
+
+
 
 \end{document}
